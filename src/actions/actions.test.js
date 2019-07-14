@@ -21,4 +21,28 @@ describe('actions', () => {
 
     expect(result).toEqual(expected)
   });
+
+  it('should return a type of setFetching  with a boolean', () => {
+    const bool = true;
+    const expected = {
+      type:'SET_FETCHING',
+      isFetching: bool
+    }
+
+    const result = actions.setFetching(bool);
+
+    expect(result).toEqual(expected);
+  });
+
+  it('should return a type of setError with an error message', () => {
+    const error = 'Something went wrong';
+    const expected = {
+      type: 'SET_ERROR',
+      error
+    };
+    
+    const result = actions.setError(error);
+
+    expect(result).toEqual(expected);
+  });
 });

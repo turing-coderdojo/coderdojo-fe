@@ -3,7 +3,12 @@ export const addUser = (user) => ({
   user
 });
 
-export const isFetching = (bool) => ({
-  type: 'IS_FETCHING',
+export const setFetching = (bool) => ({
+  type: 'SET_FETCHING',
   isFetching: bool
+});
+
+export const setError = (error) => ({
+  type:'SET_ERROR',
+  error
 });
