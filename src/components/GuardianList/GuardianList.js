@@ -1,6 +1,6 @@
 import React from 'react'
 
-function StudentPreview() {
+function GuardianList() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function StudentPreview() {
   )
 }
 
-export default StudentPreview
+export default GuardianList
