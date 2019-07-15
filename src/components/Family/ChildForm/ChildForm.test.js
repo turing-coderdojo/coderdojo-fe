@@ -1,12 +1,12 @@
 import React from 'react';
-import { App } from './App';
+import ChildForm from './ChildForm';
 import { shallow } from 'enzyme';
 
-describe('App', () => {
+describe('ChildForm', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(< App /> )
+    wrapper = shallow(< ChildForm /> )
   })
 
   it('should match snapshot', () => {

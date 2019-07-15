@@ -1,12 +1,12 @@
 import React from 'react';
-import { App } from './App';
+import GuardianCard from './GuardianCard';
 import { shallow } from 'enzyme';
 
-describe('App', () => {
+describe('GuardianCard', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(< App /> )
+    wrapper = shallow(< GuardianCard /> )
   })
 
   it('should match snapshot', () => {

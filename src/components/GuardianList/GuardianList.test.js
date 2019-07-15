@@ -1,12 +1,12 @@
 import React from 'react';
-import { App } from './App';
+import GuardianList from './GuardianList';
 import { shallow } from 'enzyme';
 
-describe('App', () => {
+describe('GuardianList', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(< App /> )
+    wrapper = shallow(< GuardianList /> )
   })
 
   it('should match snapshot', () => {

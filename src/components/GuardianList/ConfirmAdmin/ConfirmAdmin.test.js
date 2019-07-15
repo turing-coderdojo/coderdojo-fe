@@ -1,12 +1,12 @@
 import React from 'react';
-import { App } from './App';
+import ConfirmAdmin from './ConfirmAdmin';
 import { shallow } from 'enzyme';
 
-describe('App', () => {
+describe('ConfirmAdmin', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(< App /> )
+    wrapper = shallow(< ConfirmAdmin /> )
   })
 
   it('should match snapshot', () => {

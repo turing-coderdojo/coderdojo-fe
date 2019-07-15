@@ -1,12 +1,12 @@
 import React from 'react';
-import { App } from './App';
+import EventCodeForm from './EventCodeForm';
 import { shallow } from 'enzyme';
 
-describe('App', () => {
+describe('EventCodeForm', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(< App /> )
+    wrapper = shallow(< EventCodeForm /> )
   })
 
   it('should match snapshot', () => {
