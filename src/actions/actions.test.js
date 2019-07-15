@@ -4,11 +4,7 @@ describe('actions', () => {
   it('should return a type of user', () =>  {
     const user = {
       name: "Finn",
-      email: "finn@finn.com",
-      password: "1234",
-      role: "student",
-      phone_number: "310-555-5555",
-      address_id: 1,
+      role: 0,
       id:1
     }
 
