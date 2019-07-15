@@ -1,12 +1,12 @@
 import React from 'react';
-import EventsContainer from './EventsContainer';
+import CurrentStudents from './CurrentStudents';
 import { shallow } from 'enzyme';
 
-describe('EventsContainer', () => {
+describe('CurrentStudents', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(< EventsContainer /> )
+    wrapper = shallow(< CurrentStudents /> )
   })
 
   it('should match snapshot', () => {

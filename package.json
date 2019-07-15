@@ -5,6 +5,7 @@
   "dependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.3.5",
     "node-sass": "^4.12.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
@@ -38,7 +39,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "enzyme-to-json": "^3.3.5"
-  }
+  "devDependencies": {}
 }
