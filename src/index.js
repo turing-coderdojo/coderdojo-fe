@@ -6,20 +6,18 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootReducer } from './reducers';
 import thunk from 'redux-thunk';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import App from './components/App/App';
+import './index.scss'
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 const router = (
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      < App />
     </BrowserRouter>
   </Provider>
 )
 
 
 ReactDOM.render(router, document.getElementById('root'));
-
-serviceWorker.unregister();
