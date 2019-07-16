@@ -13,7 +13,7 @@ function Controls() {
       <Route exact path="/student/:id" component={Profile} />
       <Route exact path="/students" component={CurrentStudents} />
       <Route exact path="/contact/:id" component={ContactInfo} />
-      <Route exact path="myFamily" component={Family} />
+      <Route exact path="/myFamily" component={Family} />
     </div>
   );
 }
