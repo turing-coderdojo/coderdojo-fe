@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function ConfirmAdmin() {
   return (
     <div>
-      
+
     </div>
-  )
+  );
 }
 
-export default ConfirmAdmin
+export default ConfirmAdmin;

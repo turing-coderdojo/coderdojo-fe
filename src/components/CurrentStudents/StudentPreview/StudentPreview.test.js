@@ -1,15 +1,15 @@
 import React from 'react';
-import StudentPreview from './StudentPreview';
 import { shallow } from 'enzyme';
+import StudentPreview from './StudentPreview';
 
 describe('StudentPreview', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(< StudentPreview /> )
-  })
+    wrapper = shallow(<StudentPreview />);
+  });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  })
-})
+  });
+});

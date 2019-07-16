@@ -1,16 +1,16 @@
-import { userReducer } from './userReducer';
+import userReducer from './userReducer';
 import * as actions from '../actions';
 
 describe('userReducer', () => {
   const user = {
-    name: "Finn",
+    name: 'Finn',
     role: 0,
     id: 1
-  }
+  };
 
   it('should return default state', () => {
     const expected = {};
-    const result = userReducer(undefined, {})
+    const result = userReducer(undefined, {});
 
     expect(result).toEqual(expected);
   });
@@ -21,7 +21,7 @@ describe('userReducer', () => {
       const action = actions.addUser(user);
       const result = userReducer({}, action);
 
-      expect(result).toEqual(expected)
+      expect(result).toEqual(expected);
     });
   });
 });

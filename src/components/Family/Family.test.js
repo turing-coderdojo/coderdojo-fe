@@ -1,15 +1,15 @@
 import React from 'react';
-import Family from './Family';
 import { shallow } from 'enzyme';
+import Family from './Family';
 
 describe('Family', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(< Family /> )
-  })
+    wrapper = shallow(<Family />);
+  });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  })
-})
+  });
+});

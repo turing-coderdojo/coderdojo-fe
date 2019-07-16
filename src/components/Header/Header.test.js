@@ -1,15 +1,15 @@
 import React from 'react';
-import Header from './Header';
 import { shallow } from 'enzyme';
+import Header from './Header';
 
 describe('Header', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(< Header /> )
-  })
+    wrapper = shallow(<Header />);
+  });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  })
-})
+  });
+});
