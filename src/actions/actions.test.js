@@ -1,30 +1,27 @@
-import * as actions from './index'
+import * as actions from './index';
 
 describe('actions', () => {
-  it('should return a type of user', () =>  {
+  it('should return a type of user', () => {
     const user = {
-      name: "Finn",
+      name: 'Finn',
       role: 0,
-      id:1
-    }
-
+      id: 1
+    };
     const expected = {
-      type:"ADD_USER",
+      type: 'ADD_USER',
       user
-    }
-    
-    const result = actions.addUser(user)
+    };
+    const result = actions.addUser(user);
 
-    expect(result).toEqual(expected)
+    expect(result).toEqual(expected);
   });
 
   it('should return a type of setFetching  with a boolean', () => {
     const bool = true;
     const expected = {
-      type:'SET_FETCHING',
+      type: 'SET_FETCHING',
       isFetching: bool
-    }
-
+    };
     const result = actions.setFetching(bool);
 
     expect(result).toEqual(expected);
@@ -36,7 +33,6 @@ describe('actions', () => {
       type: 'SET_ERROR',
       error
     };
-    
     const result = actions.setError(error);
 
     expect(result).toEqual(expected);

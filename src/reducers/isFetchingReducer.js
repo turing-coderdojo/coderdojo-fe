@@ -1,8 +1,10 @@
-export const isFetchingReducer = (state = false, action) => {
+const isFetchingReducer = (state = false, action) => {
   switch (action.type) {
     case 'SET_FETCHING':
       return action.isFetching;
-    default: 
+    default:
       return state;
   }
-}
+};
+
+export default isFetchingReducer;

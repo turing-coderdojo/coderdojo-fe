@@ -1,15 +1,15 @@
 import React from 'react';
-import CurrentStudents from './CurrentStudents';
 import { shallow } from 'enzyme';
+import CurrentStudents from './CurrentStudents';
 
 describe('CurrentStudents', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(< CurrentStudents /> )
-  })
+    wrapper = shallow(<CurrentStudents />);
+  });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  })
-})
+  });
+});

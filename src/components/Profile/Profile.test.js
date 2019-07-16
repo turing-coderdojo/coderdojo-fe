@@ -1,15 +1,15 @@
 import React from 'react';
-import Profile from './Profile';
 import { shallow } from 'enzyme';
+import Profile from './Profile';
 
 describe('Profile', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(< Profile /> )
-  })
+    wrapper = shallow(<Profile />);
+  });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  })
-})
+  });
+});

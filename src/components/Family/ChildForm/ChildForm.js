@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function ChildForm() {
   return (
     <div>
-      
+
     </div>
-  )
+  );
 }
 
-export default ChildForm
+export default ChildForm;

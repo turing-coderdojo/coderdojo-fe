@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function VenuesContainer() {
   return (
     <div>
-      
+
     </div>
-  )
+  );
 }
 
-export default VenuesContainer
+export default VenuesContainer;

@@ -1,8 +1,7 @@
-import { isFetchingReducer } from './isFetchingReducer';
+import isFetchingReducer from './isFetchingReducer';
 import * as actions from '../actions';
 
 describe('isFetchingReducer', () => {
-
   it('should return default state', () => {
     const expected = false;
     const result = isFetchingReducer(undefined, {});

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function StudentPreview() {
   return (
     <div>
-      
+
     </div>
-  )
+  );
 }
 
-export default StudentPreview
+export default StudentPreview;
