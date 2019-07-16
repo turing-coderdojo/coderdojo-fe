@@ -12,11 +12,11 @@ import './index.scss';
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 const router = (
-    <Provider store={store}>
-      <BrowserRouter>
-        < App />
-      </BrowserRouter>
-    </Provider>
+  <Provider store={store}>
+    <BrowserRouter>
+      < App />
+    </BrowserRouter>
+  </Provider>
 )
 
 
