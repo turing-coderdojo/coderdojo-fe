@@ -1,15 +1,15 @@
 import React from 'react';
-import EventForm from './EventForm';
 import { shallow } from 'enzyme';
+import EventForm from './EventForm';
 
 describe('EventForm', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(< EventForm /> )
-  })
+    wrapper = shallow(<EventForm />);
+  });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  })
-})
+  });
+});

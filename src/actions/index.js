@@ -1,14 +1,14 @@
-export const addUser = (user) => ({
-  type:'ADD_USER',
+export const addUser = user => ({
+  type: 'ADD_USER',
   user
 });
 
-export const setFetching = (bool) => ({
+export const setFetching = bool => ({
   type: 'SET_FETCHING',
   isFetching: bool
 });
 
-export const setError = (error) => ({
-  type:'SET_ERROR',
+export const setError = error => ({
+  type: 'SET_ERROR',
   error
 });

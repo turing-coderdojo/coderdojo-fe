@@ -1,8 +1,7 @@
-import { errorReducer } from './errorReducer';
+import errorReducer from './errorReducer';
 import * as actions from '../actions';
 
 describe('errorReducer', () => {
-
   it('should return default state', () => {
     const expected = '';
     const result = errorReducer(undefined, {});

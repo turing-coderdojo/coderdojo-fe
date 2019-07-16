@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function Family() {
   return (
     <div>
-      
+
     </div>
-  )
+  );
 }
 
-export default Family
+export default Family;
