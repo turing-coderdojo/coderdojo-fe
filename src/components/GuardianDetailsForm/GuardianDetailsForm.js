@@ -34,7 +34,7 @@ function GuardianDetailsForm(props) {
         />
       </label>
 
-      <div className="adress-section">
+      <div className="address-section">
         <label htmlFor="street1-input">
           Street 1:
           <input

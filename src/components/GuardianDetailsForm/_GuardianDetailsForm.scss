@@ -1,0 +1,9 @@
+form.GuardianDetailsForm {
+  margin: 0 auto;
+  width: 50%;
+  @include flex-column;
+
+  div.address-section, label {
+    @include flex-column;
+  }
+}

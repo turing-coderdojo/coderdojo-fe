@@ -11,7 +11,7 @@ describe('GuardianDetailsForm', () => {
       name: 'email',
       value: 'nim@sum.com'
     }
-  }
+  };
 
   beforeEach(() => {
     wrapper = shallow(

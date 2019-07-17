@@ -7,7 +7,15 @@ class App extends Component {
   state = {
     error: '',
     users: [],
-    guardianDetails: {}
+    guardianDetails: {
+      email: '',
+      phoneNumber: '',
+      street1: '',
+      street2: '',
+      city: '',
+      state: '',
+      zip: ''
+    }
   }
 
   async componentDidMount() {
@@ -37,7 +45,6 @@ class App extends Component {
   }
 
   submitGuardianDetails = (e) => {
-    console.log(this.state.guardianDetails);
     e.preventDefault();
   }
 
