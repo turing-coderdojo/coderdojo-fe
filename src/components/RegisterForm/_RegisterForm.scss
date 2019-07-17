@@ -1,0 +1,22 @@
+.RegisterForm {
+  margin: 0 auto;
+  width:50%;
+  @include flex-column;
+  
+  label {
+    @include flex-column;
+  }
+  
+  .signin-btn {
+    @include form-submit;
+  }
+
+  #full-name-input,
+  #username-input,
+  #password-input,
+  #reentered-password-input {
+    @include form-input-style
+  }
+
+
+}
