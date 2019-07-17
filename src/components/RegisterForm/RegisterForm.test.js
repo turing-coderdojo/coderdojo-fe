@@ -5,8 +5,12 @@ import * as actions from '../../actions';
 
 jest.mock('../../actions');
 
+
 describe('RegisterForm', () => {
   let wrapper;
+  const mockHandleSubmit = jest.fn();
+  const mockDispatch = jest.fn();
+
 
   beforeEach(() => {
     wrapper = shallow(<RegisterForm />);
@@ -33,12 +37,16 @@ describe('RegisterForm', () => {
   });
 
   it('should dispatch addUser', () => {
-    const mockDispatch = jest.fn();
     const mockUser = { username: 'ehk' };
     const mockAction = actions.addUser(mockUser);
 
     mapDispatchToProps(mockDispatch).addUser(mockUser);
 
     expect(mockDispatch).toHaveBeenCalledWith(mockAction);  
+  });
+
+  it('should invoke handleSubmit prop on form submit', () => {
+    wrapper.find('form.register-form-style').simulate('submit');
+    expect(mockHandleSubmit).toHaveBeenCalledTimes(1);
   });
 });

@@ -36,7 +36,11 @@ export class RegisterForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleRegister}>
+      <form 
+        className="register-form-style"
+        onSubmit={this.handleRegister}
+
+      >
         <h2>Create Account</h2>
         <label htmlFor="full-name-input">
           Full Name
