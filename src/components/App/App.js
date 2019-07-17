@@ -34,10 +34,10 @@ class App extends Component {
     const { guardianDetails } = this.state;
     guardianDetails[type] = value;
     this.setState({ guardianDetails });
-    console.log(this.state.guardianDetails);
   }
 
   submitGuardianDetails = (e) => {
+    console.log(this.state.guardianDetails);
     e.preventDefault();
   }
 

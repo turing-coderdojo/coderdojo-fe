@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 
 function GuardianDetailsForm(props) {
   const { handleSubmit, handleChange } = props;
@@ -23,15 +24,63 @@ function GuardianDetailsForm(props) {
           onChange={eventHandler}
         />
       </label>
-      <label htmlFor="phone-number-input">
+      <label htmlFor="phoneNumber-input">
         Phone Number:
         <input
-          id="phone-number-input"
+          id="phoneNumber-input"
           type="text"
-          name="phone-number"
+          name="phoneNumber"
           onChange={eventHandler}
         />
       </label>
+
+      <div className="adress-section">
+        <label htmlFor="street1-input">
+          Street 1:
+          <input
+            id="street1-input"
+            type="text"
+            name="street1"
+            onChange={eventHandler}
+          />
+        </label>
+        <label htmlFor="street2-input">
+          Street 2:
+          <input
+            id="street2-input"
+            type="text"
+            name="street2"
+            onChange={eventHandler}
+          />
+        </label>
+        <label htmlFor="city-input">
+          City:
+          <input
+            id="city-input"
+            type="text"
+            name="city"
+            onChange={eventHandler}
+          />
+        </label>
+        <label htmlFor="state-input">
+          State:
+          <input
+            id="state-input"
+            type="text"
+            name="state"
+            onChange={eventHandler}
+          />
+        </label>
+        <label htmlFor="zip-input">
+          Zip Code:
+          <input
+            id="zip-input"
+            type="text"
+            name="zip"
+            onChange={eventHandler}
+          />
+        </label>
+      </div>
       <button type="submit" className="signin-btn">Submit</button>
     </form>
   );
