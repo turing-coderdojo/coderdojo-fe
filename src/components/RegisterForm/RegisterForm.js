@@ -62,9 +62,8 @@ export class RegisterForm extends Component {
     return (
       <section>
         <form 
-          className="register-form-style"
+          className="RegisterForm"
           onSubmit={this.handleRegister}
-
         >
           <h2>Create Account</h2>
           <label htmlFor="full-name-input">
@@ -94,10 +93,10 @@ export class RegisterForm extends Component {
               onChange={this.handleChange}
             />
           </label>
-          <label htmlFor="reentered-password">
+          <label htmlFor="reentered-password-input">
             Re-enter Password
             <input 
-              id="reentered-password"
+              id="reentered-password-input"
               type="password"
               name="reEnteredPassword"
               onChange={this.handleChange}
