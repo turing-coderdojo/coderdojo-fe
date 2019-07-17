@@ -18,6 +18,36 @@ export const CREATE_STUDENT = gql`
   }
 `;
 
+export const CREATE_GUARDIAN = gql`
+  mutation createUser(
+    $email: String!,
+    $username: String!,
+    $password: String!,
+    $name: String!,
+    $phoneNumber: String!,
+    $street1: String!,
+    $street2: String,
+    $city: String!,
+    $state: String!,
+    $zip: String!
+    ) {
+    createUser(
+      email: $email,
+      username: $username,
+      password: $password,
+      name: $name,
+      phone_number: $phoneNumber,
+      street1: $street1,
+      street2: $street2,
+      city: $city,
+      state: $state,
+      zip: $zip
+    ) {
+      id
+    }
+  }
+`;
+
 export const SIGN_IN = gql`
   mutation signIn(
     $username: String!,
