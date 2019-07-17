@@ -4,10 +4,18 @@ import { connect } from 'react-redux';
 
 export class RegisterForm extends Component {
   state = {
+    fullName:'',
     username: '',
     password:'',
-    reEnteredPassword: '',
-    fullName:''
+    reEnteredPassword: ''
+  }
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+
+    this.setState({
+      [name]: value
+    });
   }
 
   render() {
@@ -24,6 +32,7 @@ export class RegisterForm extends Component {
           />
         </label>
         <label htmlFor="username-input">
+          Username
           <input 
             id="username-input"
             type="text"
@@ -31,7 +40,26 @@ export class RegisterForm extends Component {
             onChange={this.handleChange}
           />
         </label>
-
+        <label htmlFor="password-input">
+          Password
+          <input 
+            id="password-input"
+            type="password"
+            name="password"
+            onChange={this.handleChange}
+          />
+        </label>
+        <label htmlFor="reentered-password">
+          Re-enter Password
+          <input 
+            id="reentered-password"
+            type="password"
+            name="reEnteredPassword"
+            onChange={this.handleChange}
+          />
+        </label>
+        <button type="submit">I am a student over 13</button>
+        <button type="submit">I am a guardian</button>
       </form>
     );
   }
