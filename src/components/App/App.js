@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import queries from '../../utils/queries/queries';
 import { LoginForm } from '../LoginForm/LoginForm';
+import GuardianDetailsForm from '../GuardianDetailsForm/GuardianDetailsForm';
 
 class App extends Component {
   state = {
@@ -35,7 +36,7 @@ class App extends Component {
         <button type="submit" onClick={this.createUser}>
           CREATE
         </button>
-        <LoginForm />
+        <GuardianDetailsForm />
       </div>
     );
   }
