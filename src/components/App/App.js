@@ -5,7 +5,7 @@ import LoginForm from '../LoginForm/LoginForm';
 class App extends Component {
   state = {
     error: '',
-    users: []
+    users: [] 
   }
 
   async componentDidMount() {
