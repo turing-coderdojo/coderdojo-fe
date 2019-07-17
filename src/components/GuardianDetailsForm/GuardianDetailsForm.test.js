@@ -32,4 +32,8 @@ describe('GuardianDetailsForm', () => {
     expect(mockHandleChange).toHaveBeenCalledWith(name, value);
   });
 
+  it('should invoke handleSubmit prop on form submit', () => {
+    wrapper.find('form.GuardianDetailsForm').simulate('submit');
+    expect(mockHandleSubmit).toHaveBeenCalledTimes(1);
+  });
 });
