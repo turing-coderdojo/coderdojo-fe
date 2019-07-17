@@ -5,6 +5,7 @@ import Profile from '../Profile/Profile';
 import CurrentStudents from '../CurrentStudents/CurrentStudents';
 import ContactInfo from '../ContactInfo/ContactInfo';
 import Family from '../Family/Family';
+import RegisterForm from '../RegisterForm/RegisterForm';
 
 function Controls() {
   return (
@@ -14,6 +15,7 @@ function Controls() {
       <Route exact path="/students" component={CurrentStudents} />
       <Route exact path="/contact/:id" component={ContactInfo} />
       <Route exact path="/myFamily" component={Family} />
+      <Route exact path="/register" component={RegisterForm} />
     </div>
   );
 }

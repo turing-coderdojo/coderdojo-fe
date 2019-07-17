@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import queries from '../../utils/queries/queries';
 import LoginForm from '../LoginForm/LoginForm';
+import Controls from '../Controls/Controls';
 import GuardianDetailsForm from '../GuardianDetailsForm/GuardianDetailsForm';
 
 class App extends Component {
@@ -31,7 +32,7 @@ class App extends Component {
   createUser = async () => {
     const mockUser = {
       email: 'tiff@sum.com',
-      nickname: 'ERICCCCCC',
+      nickname: 'ERIKKKKK',
       password: 'asdfasdf'
     };
     
@@ -60,6 +61,7 @@ class App extends Component {
           handleChange={this.handleGuardianDetails}
         />
         <LoginForm />
+        <Controls />
       </div>
     );
   }
