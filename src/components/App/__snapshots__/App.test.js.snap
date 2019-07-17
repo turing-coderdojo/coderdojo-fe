@@ -13,7 +13,7 @@ exports[`App should match snapshot 1`] = `
   >
     CREATE
   </button>
-  <GuardianDetailsForm />
+  <ContactForm />
   <Connect(LoginForm) />
 </div>
 `;
