@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import queries from '../../utils/queries/queries';
+import LoginForm from '../LoginForm/LoginForm';
 
 export class App extends Component {
   state = {
@@ -11,9 +12,10 @@ export class App extends Component {
   async componentDidMount() {
     try {
       const users = await queries.getUsers();
-      this.setState({ users: users.allUsers })
+
+      this.setState({ users: users.allUsers });
     } catch({ message }) {
-      this.setState({ error: message })
+      this.setState({ error: message });
     }
   }
   
@@ -22,7 +24,7 @@ export class App extends Component {
       email: "tiff@sum.com",
       nickname: "ERICCCCCC",
       password: "asdfasdf",
-    }
+    };
     const newUser = await queries.newUser(mockUser);
   }
 
@@ -33,6 +35,7 @@ export class App extends Component {
         <button onClick={this.createUser}>
           CREATE
         </button>
+        <LoginForm />
       </div>
     );
   }
