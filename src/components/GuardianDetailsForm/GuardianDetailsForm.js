@@ -87,3 +87,13 @@ function GuardianDetailsForm(props) {
 }
 
 export default GuardianDetailsForm;
+
+GuardianDetailsForm.propTypes = {
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func
+}
+
+GuardianDetailsForm.defaultProps = {
+  handleChange: () => {},
+  handleSubmit: () => {}
+};
