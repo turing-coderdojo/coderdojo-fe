@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GuardianDetailsForm should match snapshot 1`] = `
+exports[`ContactForm should match snapshot 1`] = `
 <form
-  className="GuardianDetailsForm"
+  className="ContactForm"
   onSubmit={[Function]}
 >
   <h2>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { PropTypes } from 'prop-types';
 
-export class GuardianDetailsForm extends Component {
+export class ContactForm extends Component {
   state = {}
 
   handleChange = ({ target }) => {
@@ -16,7 +15,7 @@ export class GuardianDetailsForm extends Component {
   render() {
     return (
       <form
-        className="GuardianDetailsForm"
+        className="ContactForm"
         onSubmit={this.handleSubmit}
       >
         <h2>Guardian Details</h2>
@@ -92,4 +91,4 @@ export class GuardianDetailsForm extends Component {
   }
 }
 
-export default GuardianDetailsForm;
+export default ContactForm;

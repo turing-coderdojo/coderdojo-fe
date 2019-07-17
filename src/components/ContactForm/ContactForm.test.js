@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import GuardianDetailsForm from './GuardianDetailsForm';
+import ContactForm from './ContactForm';
 
-describe('GuardianDetailsForm', () => {
+describe('ContactForm', () => {
   let wrapper;
   const mockInputChange = {
     target: {
@@ -16,7 +16,7 @@ describe('GuardianDetailsForm', () => {
 
   beforeEach(() => {
     wrapper = shallow(
-      <GuardianDetailsForm />
+      <ContactForm />
     );
   });
 
@@ -45,7 +45,7 @@ describe('GuardianDetailsForm', () => {
   });
 
   it('should invoke handleSubmit prop on form submit', () => {
-    wrapper.find('form.GuardianDetailsForm').simulate('submit', mockSubmitEvent);
+    wrapper.find('form.ContactForm').simulate('submit', mockSubmitEvent);
     expect(mockSubmitEvent.preventDefault).toHaveBeenCalled();
   });    
 });

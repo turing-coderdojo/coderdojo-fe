@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import queries from '../../utils/queries/queries';
 import LoginForm from '../LoginForm/LoginForm';
-import GuardianDetailsForm from '../GuardianDetailsForm/GuardianDetailsForm';
+import GuardianDetailsForm from '../ContactForm/ContactForm';
 
 class App extends Component {
   state = {
