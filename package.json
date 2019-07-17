@@ -26,6 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "test:coverage": "npm t -- --coverage --watchAll=false",
     "lint": "eslint src/"
   },
   "eslintConfig": {
@@ -48,5 +49,10 @@
   },
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.1"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

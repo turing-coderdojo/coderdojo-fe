@@ -8,7 +8,6 @@ jest.mock('../../actions');
 
 describe('RegisterForm', () => {
   let wrapper;
-  const mockHandleSubmit = jest.fn();
   const mockDispatch = jest.fn();
 
 
