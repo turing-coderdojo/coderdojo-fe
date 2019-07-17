@@ -11,17 +11,17 @@ export const GET_USERS = gql`
 `
 
 export const NEW_USER = gql`
-mutation createUser(
-  $email: String!, 
-  $nickname: String!, 
-  $password: String!) {
-  createUser(
-    email: $email,
-    nickname: $nickname,
-    password: $password
-  )
-  {
-    id
-  } 
-}
+  mutation createUser(
+    $email: String!, 
+    $nickname: String!, 
+    $password: String!) {
+    createUser(
+      email: $email,
+      nickname: $nickname,
+      password: $password
+    )
+    {
+      id
+    } 
+  }
 `
