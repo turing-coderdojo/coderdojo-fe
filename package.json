@@ -27,7 +27,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "test:coverage": "npm t -- --coverage --watchAll=false",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "updateSnapshot": "jest --updateSnapshot"
   },
   "eslintConfig": {
     "extends": [

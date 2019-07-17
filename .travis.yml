@@ -3,6 +3,8 @@ node_js:
 - node
 notifications:
   email: false
+scripts:
+  npm run updateSnapshot
 deploy:
   provider: heroku
   api_key:
