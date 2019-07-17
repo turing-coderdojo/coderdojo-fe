@@ -29,6 +29,16 @@ describe('GuardianDetailsForm', () => {
     expect(wrapper.state()).toEqual(defaultState);
   });
 
+  it('should set state data on handleChange', () => {
+    wrapper.instance().handleChange(mockInputChange);
+    expect(wrapper.state().email).toEqual(mockInputChange.target.value);
+  });
+
+  it('should be able to handle submit', () => {
+    wrapper.instance().handleSubmit(mockSubmitEvent);
+    expect(mockSubmitEvent.preventDefault).toHaveBeenCalled();
+  });
+
   it('should send name and value to handleChange props on input change', () => {
     wrapper.find('input#email-input').simulate('change', mockInputChange);
     expect(wrapper.state().email).toEqual(mockInputChange.target.value);
