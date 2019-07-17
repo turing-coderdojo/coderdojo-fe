@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import queries from '../../utils/queries/queries';
 import LoginForm from '../LoginForm/LoginForm';
+import Controls from '../Controls/Controls';
 
 class App extends Component {
   state = {
@@ -21,7 +22,7 @@ class App extends Component {
   createUser = async () => {
     const mockUser = {
       email: 'tiff@sum.com',
-      nickname: 'ERICCCCCC',
+      nickname: 'ERIKKKKK',
       password: 'asdfasdf'
     };
     
@@ -36,6 +37,7 @@ class App extends Component {
           CREATE
         </button>
         <LoginForm />
+        <Controls />
       </div>
     );
   }

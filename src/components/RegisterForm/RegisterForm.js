@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Proptypes } from 'prop-types';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 export class RegisterForm extends Component {
   state = {
-    fullName:'',
+    fullName: '',
     username: '',
-    password:'',
+    password: '',
     reEnteredPassword: ''
   }
 
@@ -18,9 +19,24 @@ export class RegisterForm extends Component {
     });
   }
 
+  handleRegister = (e) => {
+    const { name } = e.target;
+    const { username, password, fullName, reEnteredPassword } = this.state;
+    const { addUser } = this.props;
+    const newUser = {
+      username,
+      password,
+      fullName
+    };
+
+    e.preventDefault();
+
+    addUser(newUser);
+  }
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleRegister}>
         <h2>Create Account</h2>
         <label htmlFor="full-name-input">
           Full Name
@@ -58,11 +74,23 @@ export class RegisterForm extends Component {
             onChange={this.handleChange}
           />
         </label>
-        <button type="submit">I am a student over 13</button>
-        <button type="submit">I am a guardian</button>
+        <button type="submit" className="signin-btn" name="student">I am a student over 13</button>
+        <button type="submit" className="signin-btn" name="guardian">I am a guardian</button>
       </form>
     );
   }
 }
 
-export default RegisterForm;
+export const mapDispatchToProps = dispatch => ({
+  addUser: user => dispatch(actions.addUser(user))
+});
+
+export default connect(null, mapDispatchToProps)(RegisterForm);
+
+RegisterForm.propTypes = {
+  addUser: PropTypes.func
+};
+
+RegisterForm.defaultProps = {
+  addUser: () => {}
+};
