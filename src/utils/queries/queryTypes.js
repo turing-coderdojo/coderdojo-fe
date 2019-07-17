@@ -25,3 +25,23 @@ export const NEW_USER = gql`
     } 
   }
 `;
+
+export const CREATE_STUDENT = gql`
+  mutation createStudent(
+    $username: String!,
+    $password: String!,
+    $name: String!,
+    $birthdate: String!    
+    ) {
+      createStudent(
+      username: $username,
+      password: $password,
+      name: $name,
+      birthdate: $birthdate
+    ) {
+      id
+    }
+  }
+`;
+
+
