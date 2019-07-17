@@ -8,7 +8,7 @@ export const GET_USERS = gql`
       role
     }
   }
-`
+`;
 
 export const NEW_USER = gql`
   mutation createUser(
@@ -24,4 +24,4 @@ export const NEW_USER = gql`
       id
     } 
   }
-`
+`;
