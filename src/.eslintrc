@@ -6,6 +6,7 @@
     "comma-dangle": ["error", "never"],
     "max-lines-per-function": ["error", 100],
     "no-trailing-spaces": 0,
-    "import/no-named-as-default": 0
+    "import/no-named-as-default": 0,
+    "react/self-closing-comp": "off"
   }
 }
