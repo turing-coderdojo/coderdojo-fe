@@ -25,7 +25,8 @@ describe('RegisterForm', () => {
       fullName: '',
       username: '',
       password: '',
-      reEnteredPassword: ''
+      reEnteredPassword: '',
+      displayContactForm: false
     }); 
 
     const mockEvent = {
@@ -43,10 +44,5 @@ describe('RegisterForm', () => {
     mapDispatchToProps(mockDispatch).addUser(mockUser);
 
     expect(mockDispatch).toHaveBeenCalledWith(mockAction);  
-  });
-
-  it('should invoke handleSubmit prop on form submit', () => {
-    wrapper.find('form.register-form-style').simulate('submit');
-    expect(mockHandleSubmit).toHaveBeenCalledTimes(1);
   });
 });
