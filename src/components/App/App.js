@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import queries from '../../utils/queries/queries';
-import { LoginForm } from '../LoginForm/LoginForm';
+import LoginForm from '../LoginForm/LoginForm';
 
 class App extends Component {
   state = {
     error: '',
-    users: []
+    users: [] 
   }
 
   async componentDidMount() {
