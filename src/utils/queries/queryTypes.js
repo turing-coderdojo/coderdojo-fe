@@ -1,31 +1,5 @@
 import { gql } from 'apollo-boost';
 
-export const GET_USERS = gql`
-  {
-    allUsers {
-      id
-      nickname
-      role
-    }
-  }
-`;
-
-export const NEW_USER = gql`
-  mutation createUser(
-    $email: String!, 
-    $nickname: String!, 
-    $password: String!) {
-    createUser(
-      email: $email,
-      nickname: $nickname,
-      password: $password
-    )
-    {
-      id
-    } 
-  }
-`;
-
 export const CREATE_STUDENT = gql`
   mutation createStudent(
     $username: String!,
@@ -33,7 +7,7 @@ export const CREATE_STUDENT = gql`
     $name: String!,
     $birthdate: String!    
     ) {
-      createStudent(
+    createStudent(
       username: $username,
       password: $password,
       name: $name,
@@ -44,4 +18,21 @@ export const CREATE_STUDENT = gql`
   }
 `;
 
-
+export const SIGN_IN = gql`
+  mutation signIn(
+    $username: String!,
+    $password: String!    
+    ) {
+    signIn(
+      username: $username,
+      password: $password
+    ) {
+      token
+      user{
+        id
+        username
+        name
+      }
+    }
+  }
+`;
