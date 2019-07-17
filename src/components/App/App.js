@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import queries from '../../utils/queries/queries';
 import LoginForm from '../LoginForm/LoginForm';
+import GuardianDetailsForm from '../GuardianDetailsForm/GuardianDetailsForm';
 
 class App extends Component {
   state = {
     error: '',
-    users: [] 
+    users: [],
+    guardianDetails: {
+      email: '',
+      phoneNumber: '',
+      street1: '',
+      street2: '',
+      city: '',
+      state: '',
+      zip: ''
+    }
   }
 
   async componentDidMount() {
@@ -28,6 +38,16 @@ class App extends Component {
     await queries.newUser(mockUser);
   }
 
+  handleGuardianDetails = (type, value) => {
+    const { guardianDetails } = this.state;
+    guardianDetails[type] = value;
+    this.setState({ guardianDetails });
+  }
+
+  submitGuardianDetails = (e) => {
+    e.preventDefault();
+  }
+
   render() {
     return (
       <div className="App">
@@ -35,6 +55,10 @@ class App extends Component {
         <button type="submit" onClick={this.createUser}>
           CREATE
         </button>
+        <GuardianDetailsForm
+          handleSubmit={this.submitGuardianDetails}
+          handleChange={this.handleGuardianDetails}
+        />
         <LoginForm />
       </div>
     );
