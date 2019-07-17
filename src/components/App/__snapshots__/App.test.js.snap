@@ -17,5 +17,8 @@ exports[`App should match snapshot 1`] = `
     handleChange={[Function]}
     handleSubmit={[Function]}
   />
+  <LoginForm
+    addUser={[Function]}
+  />
 </div>
 `;

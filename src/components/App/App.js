@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import queries from '../../utils/queries/queries';
-import { LoginForm } from '../LoginForm/LoginForm';
+import LoginForm from '../LoginForm/LoginForm';
 import GuardianDetailsForm from '../GuardianDetailsForm/GuardianDetailsForm';
 
 class App extends Component {

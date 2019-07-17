@@ -31,7 +31,7 @@ exports[`GuardianDetailsForm should match snapshot 1`] = `
     />
   </label>
   <div
-    className="adress-section"
+    className="address-section"
   >
     <label
       htmlFor="street1-input"
