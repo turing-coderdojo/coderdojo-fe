@@ -17,6 +17,15 @@ export const GET_ALL_USERS = gql`
   }
 `;
 
+export const GET_USER_VIA_TOKEN = gql`
+  {
+    me{
+        username
+        role
+    }
+  }
+`;
+
 export const CREATE_STUDENT = gql`
   mutation createStudent(
     $username: String!,
