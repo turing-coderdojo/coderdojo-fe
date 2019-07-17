@@ -12,9 +12,9 @@ class App extends Component {
 
   async componentDidMount() {
     try {
-      // const users = await queries.getUsers();
+      const users = await queries.getAllUsers();
 
-      // this.setState({ users: users.allUsers });
+      this.setState({ users });
     } catch ({ message }) {
       // this.setState({ error: message });
     }

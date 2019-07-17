@@ -1,5 +1,22 @@
 import { gql } from 'apollo-boost';
 
+export const GET_ALL_USERS = gql`
+  {
+    allUsers {
+      id
+      name
+      username
+      role
+      guardianId{
+        name
+      }
+      students{
+        name
+      }
+    }
+  }
+`;
+
 export const CREATE_STUDENT = gql`
   mutation createStudent(
     $username: String!,

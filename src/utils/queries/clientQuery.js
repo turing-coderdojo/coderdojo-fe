@@ -2,15 +2,13 @@ import ApolloClient from 'apollo-boost';
 
 const client = new ApolloClient({
   uri: 'https://cors-anywhere.herokuapp.com/https://pure-castle-14648.herokuapp.com/graphql',
-  request: async (operation) => {
+  request: (operation) => {
     const token = localStorage.getItem('token');
-    console.log(token);
     operation.setContext({
       headers: {
         authorization: token || ''
       }
     });
-    console.log(operation);
   }
 });
 
