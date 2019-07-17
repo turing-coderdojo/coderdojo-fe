@@ -37,7 +37,7 @@ class App extends Component {
         <button type="submit" onClick={this.createUser}>
           CREATE
         </button>
-        <GuardianDetailsForm />
+        <ContactForm />
         <LoginForm />
         <Controls />
       </div>
