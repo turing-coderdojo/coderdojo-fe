@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
-class LoginForm extends Component {
+export class LoginForm extends Component {
   state = {
     username: '',
     password: ''
@@ -15,7 +18,16 @@ class LoginForm extends Component {
   }
 
   handleLogin = (e) => {
+    const { addUser } = this.props;
+    const { username, password } = this.state;
+    const user = {
+      username,
+      password
+    };
+
     e.preventDefault();
+
+    addUser(user);
   }
 
   render() {
@@ -48,4 +60,16 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export const mapDispatchToProps = dispatch => ({
+  addUser: user => dispatch(actions.addUser(user))
+});
+
+export default connect(undefined, mapDispatchToProps)(LoginForm);
+
+LoginForm.propTypes = {
+  addUser: PropTypes.func
+};
+
+LoginForm.defaultProps = {
+  addUser: () => {}
+};
