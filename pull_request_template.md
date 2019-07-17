@@ -27,7 +27,9 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 - [ ] My code has no unused/commented out code
 - [ ] My code has no console logs
 - [ ] I have performed a self-review of my own code
-- [ ] I have commented on my code, particularly in hard-to-understand areas
+- [ ] I have no linter errors in my code
+- [ ] I have run testing on my code to ensure they are all passing
+- [ ] I will comment on my code, particularly in hard-to-understand areas
 
 
 # Message for reviewer:
