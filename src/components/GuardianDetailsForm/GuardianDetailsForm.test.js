@@ -4,21 +4,19 @@ import GuardianDetailsForm from './GuardianDetailsForm';
 
 describe('GuardianDetailsForm', () => {
   let wrapper;
-  const mockHandleSubmit = jest.fn();
-  const mockHandleChange = jest.fn();
   const mockInputChange = {
     target: {
       name: 'email',
       value: 'nim@sum.com'
     }
   };
+  const mockSubmitEvent = {
+    preventDefault: jest.fn()
+  };
 
   beforeEach(() => {
     wrapper = shallow(
-      <GuardianDetailsForm
-        handleSubmit={mockHandleSubmit}
-        handleChange={mockHandleChange}
-      />
+      <GuardianDetailsForm />
     );
   });
 
@@ -26,14 +24,18 @@ describe('GuardianDetailsForm', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should have default state', () => {
+    const defaultState = {};
+    expect(wrapper.state()).toEqual(defaultState);
+  });
+
   it('should send name and value to handleChange props on input change', () => {
     wrapper.find('input#email-input').simulate('change', mockInputChange);
-    const { name, value } = mockInputChange.target;
-    expect(mockHandleChange).toHaveBeenCalledWith(name, value);
+    expect(wrapper.state().email).toEqual(mockInputChange.target.value);
   });
 
   it('should invoke handleSubmit prop on form submit', () => {
-    wrapper.find('form.GuardianDetailsForm').simulate('submit');
-    expect(mockHandleSubmit).toHaveBeenCalledTimes(1);
-  });
+    wrapper.find('form.GuardianDetailsForm').simulate('submit', mockSubmitEvent);
+    expect(mockSubmitEvent.preventDefault).toHaveBeenCalled();
+  });    
 });

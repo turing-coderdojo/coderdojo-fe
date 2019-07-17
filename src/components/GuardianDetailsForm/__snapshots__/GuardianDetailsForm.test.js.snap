@@ -3,7 +3,7 @@
 exports[`GuardianDetailsForm should match snapshot 1`] = `
 <form
   className="GuardianDetailsForm"
-  onSubmit={[MockFunction]}
+  onSubmit={[Function]}
 >
   <h2>
     Guardian Details
