@@ -6,7 +6,8 @@ import GuardianDetailsForm from '../GuardianDetailsForm/GuardianDetailsForm';
 class App extends Component {
   state = {
     error: '',
-    users: []
+    users: [],
+    guardianDetails: {}
   }
 
   async componentDidMount() {
@@ -29,6 +30,17 @@ class App extends Component {
     await queries.newUser(mockUser);
   }
 
+  handleGuardianDetails = (type, value) => {
+    const { guardianDetails } = this.state;
+    guardianDetails[type] = value;
+    this.setState({ guardianDetails });
+    console.log(this.state.guardianDetails);
+  }
+
+  submitGuardianDetails = (e) => {
+    e.preventDefault();
+  }
+
   render() {
     return (
       <div className="App">
@@ -36,7 +48,10 @@ class App extends Component {
         <button type="submit" onClick={this.createUser}>
           CREATE
         </button>
-        <GuardianDetailsForm />
+        <GuardianDetailsForm
+          handleSubmit={this.submitGuardianDetails}
+          handleChange={this.handleGuardianDetails}
+        />
       </div>
     );
   }
