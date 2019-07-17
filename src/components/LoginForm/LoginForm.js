@@ -36,6 +36,7 @@ export class LoginForm extends Component {
         className="LoginForm"
         onSubmit={this.handleLogin}
       >
+        <h2>LOGIN</h2>
         <label htmlFor="username-input">
           Username:
           <input
@@ -54,7 +55,7 @@ export class LoginForm extends Component {
             onChange={this.handleChange}
           />
         </label>
-        <button type="submit" className="signin-btn">SIGN IN</button>
+        <button type="submit" className="signin-btn">LOGIN</button>
       </form>
     );
   }

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import queries from '../../utils/queries/queries';
-import LoginForm from '../LoginForm/LoginForm';
+import { LoginForm } from '../LoginForm/LoginForm';
 
-export class App extends Component {
+class App extends Component {
   state = {
     error: '',
-    users: [],
-    newUserId: 0,
+    users: []
   }
 
   async componentDidMount() {
@@ -14,25 +13,26 @@ export class App extends Component {
       const users = await queries.getUsers();
 
       this.setState({ users: users.allUsers });
-    } catch({ message }) {
+    } catch ({ message }) {
       this.setState({ error: message });
     }
   }
   
-  async createUser() {
+  createUser = async () => {
     const mockUser = {
-      email: "tiff@sum.com",
-      nickname: "ERICCCCCC",
-      password: "asdfasdf",
+      email: 'tiff@sum.com',
+      nickname: 'ERICCCCCC',
+      password: 'asdfasdf'
     };
-    const newUser = await queries.newUser(mockUser);
+    
+    await queries.newUser(mockUser);
   }
 
   render() {
     return (
       <div className="App">
         <h1>CODERDOJO!</h1>
-        <button onClick={this.createUser}>
+        <button type="submit" onClick={this.createUser}>
           CREATE
         </button>
         <LoginForm />

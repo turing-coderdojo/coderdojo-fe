@@ -4,6 +4,16 @@
   margin: 0 auto;
   width: 50%;
 
+  h2 {
+    margin: 0 0 15px 0;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 2px 0;
+  }
+
   #username-input,
   #password-input {
     border: 2px solid black;
