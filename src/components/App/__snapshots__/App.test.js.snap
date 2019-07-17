@@ -1,3 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should match snapshot 1`] = `ShallowWrapper {}`;
+exports[`App should match snapshot 1`] = `
+<div
+  className="App"
+>
+  <h1>
+    CODERDOJO!
+  </h1>
+  <button
+    onClick={[Function]}
+    type="submit"
+  >
+    CREATE
+  </button>
+  <GuardianDetailsForm
+    handleChange={[Function]}
+    handleSubmit={[Function]}
+  />
+</div>
+`;
