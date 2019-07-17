@@ -13,10 +13,7 @@ exports[`App should match snapshot 1`] = `
   >
     CREATE
   </button>
-  <GuardianDetailsForm
-    handleChange={[Function]}
-    handleSubmit={[Function]}
-  />
+  <ContactForm />
   <Connect(LoginForm) />
   <Controls />
 </div>
