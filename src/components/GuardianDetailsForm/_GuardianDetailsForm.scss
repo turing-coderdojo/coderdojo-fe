@@ -6,4 +6,12 @@ form.GuardianDetailsForm {
   div.address-section, label {
     @include flex-column;
   }
+
+  input {
+    @include form-input-style;
+  }
+
+  button {
+    @include form-submit;
+  }
 }

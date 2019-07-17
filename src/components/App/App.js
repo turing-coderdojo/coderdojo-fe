@@ -59,6 +59,7 @@ class App extends Component {
           handleSubmit={this.submitGuardianDetails}
           handleChange={this.handleGuardianDetails}
         />
+        <LoginForm />
       </div>
     );
   }
