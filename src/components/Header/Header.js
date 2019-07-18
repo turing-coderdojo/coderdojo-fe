@@ -4,18 +4,21 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../styles/images/CoderDojo.svg';
 
 function Header() {
-  const assignNavLink = () => {
+  const assignLogin = () => {
+    const { user } = this.props
+    const loginButton;
+    if ()
 
+    return loginButton;
   }
 
   return (
     <header>
       {logo}
-
-      
-
-
-
+      <section>
+        <NavLink>Dojos</NavLink>
+        <NavLink>Login/Register</NavLink>
+      </section>
     </header>
   );
 }
