@@ -1,9 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header should match snapshot 1`] = `
-<div>
-  <h1>
-     HEADER HEADER HEADER HEADER HEADER
-  </h1>
-</div>
+<header>
+  <Link
+    className="logo-a-tag"
+    to="/"
+  >
+    <ForwardRef(SvgLogoBlack)
+      className="logo"
+    />
+    <h1>
+      Colorado
+    </h1>
+  </Link>
+  <section>
+    <NavLink
+      className="nav-link"
+      to="/"
+    >
+      FIND A DOJO
+    </NavLink>
+    <NavLink
+      className="nav-link"
+      to="/register"
+    >
+      REGISTER
+    </NavLink>
+    <NavLink
+      className="nav-link"
+      to="/login"
+    >
+      LOGIN
+    </NavLink>
+  </section>
+</header>
 `;
