@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect, Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
@@ -7,7 +8,9 @@ import requests from '../../utils/requests/requests';
 export class LoginForm extends Component {
   state = {
     username: '',
-    password: ''
+    password: '',
+    success: false,
+    error: 'Failed to Login'
   }
 
   handleChange = (e) => {
@@ -65,7 +68,12 @@ export class LoginForm extends Component {
             onChange={this.handleChange}
           />
         </label>
+        { error && <p className="error-msg">{ error }</p>}
         <button type="submit" className="signin-btn">LOGIN</button>
+        <p className="register-link">
+          Don&#39;t have an account?&nbsp;&nbsp;
+          <Link to="/register"><span>Register Here</span></Link>
+        </p>
       </form>
     );
   }
