@@ -58,4 +58,11 @@ describe('Queries', () => {
     queries.getAllUsers();
     expect(gqlQuery).toHaveBeenCalledWith(expectedQuery);
   });
+
+  it('getUserByToken: should invoke gql query with correct args', () => {
+    const expectedQuery = queryTypes.GET_USER_BY_TOKEN;
+
+    queries.getUserByToken();
+    expect(gqlQuery).toHaveBeenCalledWith(expectedQuery);
+  });
 });
