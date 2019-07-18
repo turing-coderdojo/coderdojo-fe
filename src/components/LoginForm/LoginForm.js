@@ -37,13 +37,21 @@ export class LoginForm extends Component {
 
     try {
       const result = await requests.signIn(user);
-      addUser(result);
+      const { user: validUser, token } = result.signIn;
+      if (token && validUser) {
+        localStorage.setItem('token', JSON.stringify(token));
+        addUser(validUser);
+        this.setState({ success: true, error: '' });
+      }
     } catch ({ message }) {
-      this.setState({ message });
+      this.setState({ error: message });
     }
   }
 
   render() {
+    const { success, error } = this.state;
+    if (success) return <Redirect to="/" />;
+
     return (
       <form
         className="LoginForm"
