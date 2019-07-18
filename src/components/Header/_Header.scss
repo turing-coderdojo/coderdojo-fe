@@ -5,14 +5,31 @@ header {
   justify-content: space-between;
 }
 
+header h1 {
+  color:#49B749;
+  margin-right: auto;
+  align-self: center;
+}
+
+header a {
+  text-decoration: none;
+}
+
+.logo-a-tag{
+  display: inherit;
+}
+
 .logo {
   width: 175px;
   margin: 23px;
+  margin-right: 2px;
 }
 
 .nav-link {
-  margin-right: 35px;
-  font-size: 28px;
-  color:rgb(15, 1, 1);
+  margin-right: 55px;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: Lato;
+  color:#000;
 }
 
