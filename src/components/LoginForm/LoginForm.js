@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import requests from '../../utils/requests/requests';
 
 export class LoginForm extends Component {
   state = {
@@ -26,7 +27,7 @@ export class LoginForm extends Component {
     };
 
     e.preventDefault();
-
+    
     addUser(user);
   }
 
