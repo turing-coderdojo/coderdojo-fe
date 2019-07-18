@@ -31,4 +31,24 @@ describe('Queries', () => {
     queries.createStudent(newStudent);
     expect(gqlMutate).toHaveBeenCalledWith(expectedQuery, newStudent);
   });
+
+  it('createGuardian: should invoke mutation query with correct args', () => {
+    const newGuardian = {
+      username: 'nim',
+      password: 'sum',
+      name: 'nimsum',
+      birthdate: '07/07/7077',
+      email: 'nim@sum.com',
+      phoneNumber: '210210210',
+      street1: '123 Market St',
+      street2: '456 Turing Ln',
+      city: 'Denver',
+      state: 'Colorado',
+      zip: '80202'
+    };
+    const expectedQuery = queryTypes.CREATE_GUARDIAN;
+
+    queries.createGuardian(newGuardian);
+    expect(gqlMutate).toHaveBeenCalledWith(expectedQuery, newGuardian);
+  });
 });
