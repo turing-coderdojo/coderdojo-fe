@@ -1,4 +1,5 @@
 header {
+  background: #FFFFFF;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -6,16 +7,20 @@ header {
 }
 
 header h1 {
-  color:#49B749;
+  color: #49B749;
   margin-right: auto;
   align-self: center;
 }
 
 header a {
   text-decoration: none;
+
+  &:hover {
+    color: $green;
+  }
 }
 
-.logo-a-tag{
+.logo-a-tag {
   display: inherit;
 }
 

@@ -9,8 +9,8 @@ body {
 }
 
 div.App {
-  height: 100vh;
   @include lato-font;
+  height: 100vh;
   width: 100vw;
   background-color: #EEEEEE;
     
