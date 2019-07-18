@@ -19,16 +19,25 @@ export class LoginForm extends Component {
   }
 
   handleLogin = (e) => {
-    const { addUser } = this.props;
     const { username, password } = this.state;
     const user = {
       username,
       password
     };
-
-    e.preventDefault();
     
-    addUser(user);
+    e.preventDefault();
+    this.signIn(user);
+  }
+
+  signIn = async (user) => {
+    const { addUser } = this.props;
+
+    try {
+      const result = await requests.signIn(user);
+      addUser(result);
+    } catch ({ message }) {
+      this.setState({ message });
+    }
   }
 
   render() {
