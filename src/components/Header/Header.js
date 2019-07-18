@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../images/logo-black.svg';
 
-function Header(props) {
+export function Header(props) {
   const assignLogin = () => {
     const { user } = props;
     let loginButton;
