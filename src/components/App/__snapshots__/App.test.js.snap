@@ -7,12 +7,6 @@ exports[`App should match snapshot 1`] = `
   <h1>
     CODERDOJO!
   </h1>
-  <button
-    onClick={[Function]}
-    type="submit"
-  >
-    CREATE
-  </button>
   <ContactForm />
   <Connect(LoginForm) />
   <Controls />
