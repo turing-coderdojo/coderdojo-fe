@@ -8,7 +8,7 @@ gqlQuery.mockImplementation(() => {});
 gqlMutate.mockImplementation(() => {});
 
 describe('Queries', () => {
-  it('signIn: should invoke mutation query with correct args', () => {
+  it('signIn: should invoke gql mutation with correct args', () => {
     const user = {
       email: 'nim',
       password: 'sum'
@@ -19,7 +19,7 @@ describe('Queries', () => {
     expect(gqlMutate).toHaveBeenCalledWith(expectedQuery, user);
   });
 
-  it('createStudent: should invoke mutation query with correct args', () => {
+  it('createStudent: should invoke gql mutation with correct args', () => {
     const newStudent = {
       username: 'nim',
       password: 'sum',
@@ -32,7 +32,7 @@ describe('Queries', () => {
     expect(gqlMutate).toHaveBeenCalledWith(expectedQuery, newStudent);
   });
 
-  it('createGuardian: should invoke mutation query with correct args', () => {
+  it('createGuardian: should invoke gql mutation with correct args', () => {
     const newGuardian = {
       username: 'nim',
       password: 'sum',
@@ -50,5 +50,12 @@ describe('Queries', () => {
 
     queries.createGuardian(newGuardian);
     expect(gqlMutate).toHaveBeenCalledWith(expectedQuery, newGuardian);
+  });
+
+  it('getAllUsers: should invoke gql query with correct args', () => {
+    const expectedQuery = queryTypes.GET_ALL_USERS;
+
+    queries.getAllUsers();
+    expect(gqlQuery).toHaveBeenCalledWith(expectedQuery);
   });
 });
