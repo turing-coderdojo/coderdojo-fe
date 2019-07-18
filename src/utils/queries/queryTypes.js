@@ -17,7 +17,7 @@ export const GET_ALL_USERS = gql`
   }
 `;
 
-export const GET_USER_VIA_TOKEN = gql`
+export const GET_USER_BY_TOKEN = gql`
   {
     me{
         username
@@ -62,7 +62,7 @@ export const CREATE_GUARDIAN = gql`
       username: $username,
       password: $password,
       name: $name,
-      phone_number: $phoneNumber,
+      phoneNumber: $phoneNumber,
       street1: $street1,
       street2: $street2,
       city: $city,
