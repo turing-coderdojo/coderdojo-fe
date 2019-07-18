@@ -1,21 +1,14 @@
-import React, { Component } from 'react';
-import LoginForm from '../LoginForm/LoginForm';
-import ContactForm from '../ContactForm/ContactForm';
+import React from 'react';
 import Controls from '../Controls/Controls';
+import Header from '../Header/Header';
 
-class App extends Component {
-  state = {};
-
-  render() {
-    return (
-      <div className="App">
-        <h1>CODERDOJO!</h1>
-        <ContactForm />
-        <LoginForm />
-        <Controls />
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <Header />
+      <Controls />
+    </div>
+  );
 }
 
 export default App;

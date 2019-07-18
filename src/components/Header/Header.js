@@ -3,21 +3,25 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import logo from '../../styles/images/CoderDojo.svg';
 
-function Header() {
+function Header(props) {
   const assignLogin = () => {
-    const { user } = this.props
-    const loginButton;
-    if ()
+    const { user } = props;
+    let loginButton;
+    if (user) {
+      loginButton = <NavLink to="/">Sign Out </NavLink>;
+    } else {
+      loginButton = <NavLink to="/login">Login/Register</NavLink>;
+    }
 
     return loginButton;
-  }
+  };
 
   return (
     <header>
       {logo}
       <section>
         <NavLink>Dojos</NavLink>
-        <NavLink>Login/Register</NavLink>
+        {assignLogin()}
       </section>
     </header>
   );
