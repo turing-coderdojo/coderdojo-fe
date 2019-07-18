@@ -2,21 +2,35 @@
 
 exports[`Header should match snapshot 1`] = `
 <header>
-  <ForwardRef(SvgLogoBlack)
-    className="logo"
-  />
+  <Link
+    className="logo-a-tag"
+    to="/"
+  >
+    <ForwardRef(SvgLogoBlack)
+      className="logo"
+    />
+    <h1>
+      Colorado
+    </h1>
+  </Link>
   <section>
     <NavLink
       className="nav-link"
       to="/"
     >
-      Dojos
+      FIND A DOJO
+    </NavLink>
+    <NavLink
+      className="nav-link"
+      to="/register"
+    >
+      REGISTER
     </NavLink>
     <NavLink
       className="nav-link"
       to="/login"
     >
-      Login/Register
+      LOGIN
     </NavLink>
   </section>
 </header>
