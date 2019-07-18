@@ -10,7 +10,8 @@ export class LoginForm extends Component {
     username: '',
     password: '',
     success: false,
-    error: 'Failed to Login'
+    error: '',
+    loading: false
   }
 
   handleChange = (e) => {
@@ -27,7 +28,7 @@ export class LoginForm extends Component {
       username,
       password
     };
-    this.setState({ error: '' });
+    this.setState({ error: '', loading: true });
     
     e.preventDefault();
     this.signIn(user);
@@ -42,15 +43,16 @@ export class LoginForm extends Component {
       if (token && validUser) {
         localStorage.setItem('token', JSON.stringify(token));
         addUser(validUser);
-        this.setState({ success: true });
+        this.setState({ success: true, loading: false });
       }
-    } catch ({ message }) {
-      this.setState({ error: message });
-    }
+    } catch (error) {
+      const { message } = error.graphQLErrors[0];
+      this.setState({ error: message, loading: false });
+    }    
   }
 
   render() {
-    const { success, error } = this.state;
+    const { success, error, loading } = this.state;
     if (success) return <Redirect to="/" />;
 
     return (
@@ -78,6 +80,7 @@ export class LoginForm extends Component {
           />
         </label>
         { error && <p className="error-msg">{ error }</p>}
+        { loading && <p>LOADINGGG.....</p>}
         <button type="submit" className="signin-btn">LOGIN</button>
         <p className="register-link">
           Don&#39;t have an account?&nbsp;&nbsp;
