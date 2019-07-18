@@ -1,14 +1,14 @@
-import queries from '../queries';
-import * as queryTypes from '../queryTypes';
-import * as gql from '../clientQuery';
+import queries from '../requests';
+import * as queryTypes from '../gqlRequests';
+import * as apollo from '../apolloRequests';
 
 
-jest.mock('../clientQuery.js');
-gql.gqlQuery.mockImplementation(() => {});
-gql.gqlMutate.mockImplementation(() => {});
+jest.mock('../apolloRequests.js');
+apollo.apolloQuery.mockImplementation(() => {});
+apollo.apolloMutate.mockImplementation(() => {});
 
 describe('Queries', () => {
-  it('signIn: should invoke gql mutation with correct args', () => {
+  it('signIn: should invoke apollo mutation with correct args', () => {
     const user = {
       email: 'nim',
       password: 'sum'
@@ -16,10 +16,10 @@ describe('Queries', () => {
     const expectedQuery = queryTypes.SIGN_IN;
 
     queries.signIn(user);
-    expect(gql.gqlMutate).toHaveBeenCalledWith(expectedQuery, user);
+    expect(apollo.apolloMutate).toHaveBeenCalledWith(expectedQuery, user);
   });
 
-  it('createStudent: should invoke gql mutation with correct args', () => {
+  it('createStudent: should invoke apollo mutation with correct args', () => {
     const newStudent = {
       username: 'nim',
       password: 'sum',
@@ -29,10 +29,10 @@ describe('Queries', () => {
     const expectedQuery = queryTypes.CREATE_STUDENT;
 
     queries.createStudent(newStudent);
-    expect(gql.gqlMutate).toHaveBeenCalledWith(expectedQuery, newStudent);
+    expect(apollo.apolloMutate).toHaveBeenCalledWith(expectedQuery, newStudent);
   });
 
-  it('createGuardian: should invoke gql mutation with correct args', () => {
+  it('createGuardian: should invoke apollo mutation with correct args', () => {
     const newGuardian = {
       username: 'nim',
       password: 'sum',
@@ -49,20 +49,20 @@ describe('Queries', () => {
     const expectedQuery = queryTypes.CREATE_GUARDIAN;
 
     queries.createGuardian(newGuardian);
-    expect(gql.gqlMutate).toHaveBeenCalledWith(expectedQuery, newGuardian);
+    expect(apollo.apolloMutate).toHaveBeenCalledWith(expectedQuery, newGuardian);
   });
 
-  it('getAllUsers: should invoke gql query with correct args', () => {
+  it('getAllUsers: should invoke apollo query with correct args', () => {
     const expectedQuery = queryTypes.GET_ALL_USERS;
 
     queries.getAllUsers();
-    expect(gql.gqlQuery).toHaveBeenCalledWith(expectedQuery);
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
   });
 
-  it('getUserByToken: should invoke gql query with correct args', () => {
+  it('getUserByToken: should invoke apollo query with correct args', () => {
     const expectedQuery = queryTypes.GET_USER_BY_TOKEN;
 
     queries.getUserByToken();
-    expect(gql.gqlQuery).toHaveBeenCalledWith(expectedQuery);
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
   });
 });

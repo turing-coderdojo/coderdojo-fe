@@ -12,12 +12,12 @@ const client = new ApolloClient({
   }
 });
 
-export async function gqlQuery(query) {
+export async function apolloQuery(query) {
   const result = await client.query({ query });
   return result.data;
 }
 
-export async function gqlMutate(mutation, variables) {
+export async function apolloMutate(mutation, variables) {
   const result = await client.mutate({ mutation, variables });
   return result.data;
 }
