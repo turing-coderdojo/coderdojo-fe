@@ -1,11 +1,11 @@
 import queries from '../queries';
 import * as queryTypes from '../queryTypes';
-import { gqlQuery } from '../clientQuery';
-import { gqlMutate } from '../clientQuery';
+import * as gql from '../clientQuery';
+
 
 jest.mock('../clientQuery.js');
-gqlQuery.mockImplementation(() => {});
-gqlMutate.mockImplementation(() => {});
+gql.gqlQuery.mockImplementation(() => {});
+gql.gqlMutate.mockImplementation(() => {});
 
 describe('Queries', () => {
   it('signIn: should invoke gql mutation with correct args', () => {
@@ -16,7 +16,7 @@ describe('Queries', () => {
     const expectedQuery = queryTypes.SIGN_IN;
 
     queries.signIn(user);
-    expect(gqlMutate).toHaveBeenCalledWith(expectedQuery, user);
+    expect(gql.gqlMutate).toHaveBeenCalledWith(expectedQuery, user);
   });
 
   it('createStudent: should invoke gql mutation with correct args', () => {
@@ -29,7 +29,7 @@ describe('Queries', () => {
     const expectedQuery = queryTypes.CREATE_STUDENT;
 
     queries.createStudent(newStudent);
-    expect(gqlMutate).toHaveBeenCalledWith(expectedQuery, newStudent);
+    expect(gql.gqlMutate).toHaveBeenCalledWith(expectedQuery, newStudent);
   });
 
   it('createGuardian: should invoke gql mutation with correct args', () => {
@@ -49,20 +49,20 @@ describe('Queries', () => {
     const expectedQuery = queryTypes.CREATE_GUARDIAN;
 
     queries.createGuardian(newGuardian);
-    expect(gqlMutate).toHaveBeenCalledWith(expectedQuery, newGuardian);
+    expect(gql.gqlMutate).toHaveBeenCalledWith(expectedQuery, newGuardian);
   });
 
   it('getAllUsers: should invoke gql query with correct args', () => {
     const expectedQuery = queryTypes.GET_ALL_USERS;
 
     queries.getAllUsers();
-    expect(gqlQuery).toHaveBeenCalledWith(expectedQuery);
+    expect(gql.gqlQuery).toHaveBeenCalledWith(expectedQuery);
   });
 
   it('getUserByToken: should invoke gql query with correct args', () => {
     const expectedQuery = queryTypes.GET_USER_BY_TOKEN;
 
     queries.getUserByToken();
-    expect(gqlQuery).toHaveBeenCalledWith(expectedQuery);
+    expect(gql.gqlQuery).toHaveBeenCalledWith(expectedQuery);
   });
 });
