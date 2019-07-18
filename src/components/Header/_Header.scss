@@ -1,3 +1,18 @@
-header.section {
+header {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
+
+.logo {
+  width: 175px;
+  margin: 23px;
+}
+
+.nav-link {
+  margin-right: 35px;
+  font-size: 28px;
+  color:rgb(15, 1, 1);
+}
+
