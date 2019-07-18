@@ -6,7 +6,7 @@ exports[`LoginForm should match snapshot 1`] = `
   onSubmit={[Function]}
 >
   <h2>
-    LOGIN
+    Login
   </h2>
   <label
     htmlFor="username-input"
@@ -36,5 +36,17 @@ exports[`LoginForm should match snapshot 1`] = `
   >
     LOGIN
   </button>
+  <p
+    className="register-link"
+  >
+    Don't have an account?  
+    <Link
+      to="/register"
+    >
+      <span>
+        Register Here
+      </span>
+    </Link>
+  </p>
 </form>
 `;

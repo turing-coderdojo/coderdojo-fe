@@ -60,7 +60,7 @@ export class LoginForm extends Component {
         className="LoginForm"
         onSubmit={this.handleLogin}
       >
-        <h2>LOGIN</h2>
+        <h2>Login</h2>
         <label htmlFor="username-input">
           Username:
           <input
