@@ -80,7 +80,7 @@ export class LoginForm extends Component {
           />
         </label>
         { error && <p className="error-msg">{ error }</p>}
-        { loading && <p>LOADINGGG.....</p>}
+        { loading && <p>Loading...</p>}
         <button type="submit" className="signin-btn">LOGIN</button>
         <p className="register-link">
           Don&#39;t have an account?&nbsp;&nbsp;
