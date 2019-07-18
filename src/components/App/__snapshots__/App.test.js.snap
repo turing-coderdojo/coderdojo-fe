@@ -4,11 +4,7 @@ exports[`App should match snapshot 1`] = `
 <div
   className="App"
 >
-  <h1>
-    CODERDOJO!
-  </h1>
-  <ContactForm />
-  <Connect(LoginForm) />
+  <Header />
   <Controls />
 </div>
 `;
