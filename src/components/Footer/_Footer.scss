@@ -1,0 +1,11 @@
+.Footer {
+  height: 20vh;
+
+  section.social-media {
+    position: absolute;
+    top: 100vh;
+    height: 12vh;
+    width: 100%;
+    background-color: $footer-color;
+  }
+}

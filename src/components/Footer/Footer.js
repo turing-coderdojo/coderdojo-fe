@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 function Footer() {
   return (
-    <footer>
-      LEEE FOOOOOT
+    <footer className="Footer">
+      
+      <section className="social-media">
+        s
+      </section>
     </footer>
   );
 }
