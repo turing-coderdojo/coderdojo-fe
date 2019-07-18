@@ -1,15 +1,20 @@
 .LoginForm {
   @include flex-column;
-  margin: 0 auto;
-  width: 50%;
+  margin: 10% auto;
+  width: 500px;
+  min-width: 300px;
+  padding: 40px;
+  background-color: #FFFFFF;
 
   h2 {
     margin: 0 0 15px 0;
+    text-align: center;
   }
 
   label {
     @include flex-column;
     margin: 0 0 2px 0;
+    color: #333532;
   }
 
   #username-input,
@@ -18,6 +23,16 @@
   }
 
   .signin-btn {
-    @include form-submit
-  }  
+    @include form-submit;
+    background-color: $btn-orange;
+  }
+
+  .register-link {
+    text-align: center;
+    margin: 15px 15px 0 15px;
+
+    span {
+      color: #000000;
+    }
+  }
 }

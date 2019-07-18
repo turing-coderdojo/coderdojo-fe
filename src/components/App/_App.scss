@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -8,7 +9,11 @@ body {
 }
 
 div.App {
-  height: 100%;
+  height: 100vh;
+  @include lato-font;
+  width: 100vw;
+  background-color: #EEEEEE;
+    
   h1 {
     color: red;
   }

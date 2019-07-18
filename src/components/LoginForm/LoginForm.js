@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
+import { Redirect, Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import requests from '../../utils/requests/requests';
 
 export class LoginForm extends Component {
   state = {
     username: '',
-    password: ''
+    password: '',
+    success: false,
+    error: '',
+    loading: false
   }
 
   handleChange = (e) => {
@@ -18,25 +23,44 @@ export class LoginForm extends Component {
   }
 
   handleLogin = (e) => {
-    const { addUser } = this.props;
     const { username, password } = this.state;
     const user = {
       username,
       password
     };
-
+    this.setState({ error: '', loading: true });
+    
     e.preventDefault();
+    this.signIn(user);
+  }
 
-    addUser(user);
+  signIn = async (user) => {
+    const { addUser } = this.props;
+
+    try {
+      const result = await requests.signIn(user);
+      const { user: validUser, token } = result.signIn;
+      if (token && validUser) {
+        localStorage.setItem('token', JSON.stringify(token));
+        addUser(validUser);
+        this.setState({ success: true, loading: false });
+      }
+    } catch (error) {
+      const { message } = error.graphQLErrors[0];
+      this.setState({ error: message, loading: false });
+    }    
   }
 
   render() {
+    const { success, error, loading } = this.state;
+    if (success) return <Redirect to="/" />;
+
     return (
       <form
         className="LoginForm"
         onSubmit={this.handleLogin}
       >
-        <h2>LOGIN</h2>
+        <h2>Login</h2>
         <label htmlFor="username-input">
           Username:
           <input
@@ -55,7 +79,13 @@ export class LoginForm extends Component {
             onChange={this.handleChange}
           />
         </label>
+        { error && <p className="error-msg">{ error }</p>}
+        { loading && <p>Loading...</p>}
         <button type="submit" className="signin-btn">LOGIN</button>
+        <p className="register-link">
+          Don&#39;t have an account?&nbsp;&nbsp;
+          <Link to="/register"><span>Register Here</span></Link>
+        </p>
       </form>
     );
   }
