@@ -3,10 +3,11 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  background-color: #FFFFFF;
 }
 
 header h1 {
-  color:#49B749;
+  color: $orange;
   margin-right: auto;
   align-self: center;
 }
