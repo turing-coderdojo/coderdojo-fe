@@ -27,6 +27,7 @@ export class LoginForm extends Component {
       username,
       password
     };
+    this.setState({ error: '' });
     
     e.preventDefault();
     this.signIn(user);
@@ -41,7 +42,7 @@ export class LoginForm extends Component {
       if (token && validUser) {
         localStorage.setItem('token', JSON.stringify(token));
         addUser(validUser);
-        this.setState({ success: true, error: '' });
+        this.setState({ success: true });
       }
     } catch ({ message }) {
       this.setState({ error: message });
