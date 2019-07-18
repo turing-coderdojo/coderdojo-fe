@@ -88,6 +88,7 @@ export const SIGN_IN = gql`
         id
         username
         name
+        role
       }
     }
   }
