@@ -1,3 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Controls should match snapshot 1`] = `ShallowWrapper {}`;
+exports[`Controls should match snapshot 1`] = `
+<div>
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(LoginForm)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/login"
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/student/:id"
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/students"
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/contact/:id"
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/myFamily"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(RegisterForm)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/register"
+  />
+</div>
+`;

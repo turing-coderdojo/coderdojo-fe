@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegisterForm should match snapshot 1`] = `
+<section>
+  <form
+    className="RegisterForm"
+    onSubmit={[Function]}
+  >
+    <h2>
+      Create Account
+    </h2>
+    <label
+      htmlFor="full-name-input"
+    >
+      Full Name
+      <input
+        id="full-name-input"
+        name="fullName"
+        onChange={[Function]}
+        type="text"
+      />
+    </label>
+    <label
+      htmlFor="username-input"
+    >
+      Username
+      <input
+        id="username-input"
+        name="username"
+        onChange={[Function]}
+        type="text"
+      />
+    </label>
+    <label
+      htmlFor="password-input"
+    >
+      Password
+      <input
+        id="password-input"
+        name="password"
+        onChange={[Function]}
+        type="password"
+      />
+    </label>
+    <label
+      htmlFor="reentered-password-input"
+    >
+      Re-enter Password
+      <input
+        id="reentered-password-input"
+        name="reEnteredPassword"
+        onChange={[Function]}
+        type="password"
+      />
+    </label>
+    <button
+      className="signin-btn"
+      name="student"
+      type="submit"
+    >
+      I am a student over 13
+    </button>
+    <button
+      className="signin-btn"
+      name="guardian"
+      type="submit"
+    >
+      I am a guardian
+    </button>
+  </form>
+</section>
+`;
