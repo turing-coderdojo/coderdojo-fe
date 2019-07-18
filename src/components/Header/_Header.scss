@@ -7,7 +7,7 @@ header {
 }
 
 header h1 {
-  color: #49B749;
+  color: $primary-color;
   margin-right: auto;
   align-self: center;
 }
@@ -16,7 +16,7 @@ header a {
   text-decoration: none;
 
   &:hover {
-    color: $green;
+    color: $primary-color;
   }
 }
 

@@ -24,7 +24,7 @@
 
   .signin-btn {
     @include form-submit;
-    background-color: $orange;
+    background-color: $footer-color;
   }
 
   .register-link {
