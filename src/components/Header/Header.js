@@ -16,7 +16,7 @@ export function Header(props) {
     let menuOptions;
     
     if (user.username) {
-      menuOptions = <NavLink to="/" className="nav-link" onClick={logOutUser}>LOGOUT</NavLink>;
+      menuOptions = <NavLink to="/" className="nav-link logout" onClick={logOutUser}>LOGOUT</NavLink>;
     } else {
       menuOptions = (
         <div>

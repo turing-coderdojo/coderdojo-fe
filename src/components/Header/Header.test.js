@@ -9,13 +9,25 @@ describe('Header', () => {
     username: 'ehk',
     role: 0
   };
+  const mockResetUser = jest.fn();
 
   beforeEach(() => {
-    wrapper = shallow(<Header user={mockUser} />);
+    wrapper = shallow(<Header user={mockUser} resetUser={mockResetUser} />);
   });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+
+  it('should match snapshot if there is no user', () => {
+    wrapper.setProps({ user: {} });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should resetUser on logout click', () => {
+    wrapper.find('.logout').simulate('click');
+    expect(mockResetUser).toHaveBeenCalledTimes(1);
   });
 
   describe('mapStateToProps', () => {
@@ -33,7 +45,7 @@ describe('Header', () => {
     });
   });
 
-   describe('mapDispatchToProps', () => {
+  describe('mapDispatchToProps', () => {
     const mockDispatch = jest.fn();
     const mappedDispatch = mapDispatchToProps(mockDispatch);
     const expectedAction = addUser({});

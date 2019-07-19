@@ -21,12 +21,50 @@ exports[`Header should match snapshot 1`] = `
       FIND A DOJO
     </NavLink>
     <NavLink
-      className="nav-link"
+      className="nav-link logout"
       onClick={[Function]}
       to="/"
     >
       LOGOUT
     </NavLink>
+  </section>
+</header>
+`;
+
+exports[`Header should match snapshot if there is no user 1`] = `
+<header>
+  <Link
+    className="logo-a-tag"
+    to="/"
+  >
+    <ForwardRef(SvgLogoBlack)
+      className="logo"
+    />
+    <h1>
+      Colorado
+    </h1>
+  </Link>
+  <section>
+    <NavLink
+      className="nav-link"
+      to="/"
+    >
+      FIND A DOJO
+    </NavLink>
+    <div>
+      <NavLink
+        className="nav-link"
+        to="/login"
+      >
+        LOGIN
+      </NavLink>
+      <NavLink
+        className="nav-link"
+        to="/register"
+      >
+        REGISTER
+      </NavLink>
+    </div>
   </section>
 </header>
 `;
