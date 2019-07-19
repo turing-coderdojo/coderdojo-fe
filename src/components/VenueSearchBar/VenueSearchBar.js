@@ -1,12 +1,15 @@
 import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
-function VenueSearchBar() {
+export function VenueSearchBar(props) {
   let cityInput;
   
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    props.setSearchResults(cityInput);
   }
 
   return (
@@ -32,8 +35,8 @@ function VenueSearchBar() {
   );
 }
 
-// export const mapDispatchToProps = dispatch => ({
-//   addSearchResults = results => dispatch()
-// });
+export const mapDispatchToProps = dispatch => ({
+  setSearchResults: results => dispatch(actions.setSearchResults(results))
+});
 
-export default VenueSearchBar;
+export default connect(undefined, mapDispatchToProps)(VenueSearchBar);
