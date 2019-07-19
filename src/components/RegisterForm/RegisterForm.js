@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import ContactForm from '../ContactForm/ContactForm';
+import AgeVerifier from '../AgeVerifier/AgeVerifier';
 
 export class RegisterForm extends Component {
   state = {
@@ -10,7 +11,8 @@ export class RegisterForm extends Component {
     username: '',
     password: '',
     reEnteredPassword: '',
-    displayContactForm: false
+    displayContactForm: false,
+    displayAgeForm: false
   }
 
   handleChange = (e) => {
@@ -35,24 +37,23 @@ export class RegisterForm extends Component {
       password,
       fullName
     };
-    let displayContactForm;
 
     e.preventDefault();
 
     if (name === 'student') {
-      addUser(newUser);
+      this.setState({ displayAgeForm: true });
     } else {
       this.setState({ displayContactForm: true });
-      displayContactForm = <ContactForm {...this.state} />
     }
-    return displayContactForm;
   }
 
   assignContactForm = () => {
     let assignContact;
-    const { displayContactForm } = this.state;
+    const { displayContactForm, displayAgeForm } = this.state;
     if (displayContactForm) {
       assignContact = <ContactForm {...this.state} />;
+    } else if (displayAgeForm) {
+      assignContact = <AgeVerifier {...this.state} />;
     } else {
       assignContact = (
         <form className="RegisterForm" onSubmit={this.handleRegister}>
@@ -100,6 +101,7 @@ export class RegisterForm extends Component {
     }
     return assignContact;
   }
+
 
   render() { 
     const displayForms = this.assignContactForm();
