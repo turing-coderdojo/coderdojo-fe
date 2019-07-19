@@ -6,11 +6,11 @@ import * as actions from '../../actions';
 export function VenueSearchBar(props) {
   let cityInput;
   
-
   function handleSubmit(e) {
     e.preventDefault();
-
-    props.setSearchResults(cityInput);
+    if (cityInput) {
+      props.setSearchResults(cityInput);
+    }
   }
 
   return (
