@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { VenueSearchBar } from './VenueSearchBar';
+import { VenueSearchBar, mapDispatchToProps } from './VenueSearchBar';
+import * as actions from '../../actions';
+
+jest.mock('../../actions');
 
 describe('VenueSearchBar', () => {
   let wrapper;
@@ -11,5 +14,15 @@ describe('VenueSearchBar', () => {
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should dispatch setSearchResults', () => {
+    const searchResults = [{ name: 'Dojo' }];
+    const action = actions.setSearchResults(searchResults);
+    const dispatch = jest.fn();
+
+    mapDispatchToProps(dispatch).setSearchResults(searchResults);
+
+    expect(dispatch).toHaveBeenCalledWith(action);
   });
 });

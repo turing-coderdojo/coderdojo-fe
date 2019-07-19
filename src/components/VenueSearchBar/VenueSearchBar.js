@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import * as actions from '../../actions';
 
 export function VenueSearchBar(props) {
@@ -40,3 +41,11 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(undefined, mapDispatchToProps)(VenueSearchBar);
+
+VenueSearchBar.propTypes = {
+  setSearchResults: PropTypes.func
+};
+
+VenueSearchBar.defaultProps = {
+  setSearchResults: () => {}
+};
