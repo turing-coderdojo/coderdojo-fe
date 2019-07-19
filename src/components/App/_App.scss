@@ -6,11 +6,10 @@
 
 body {
   font-family: sans-serif;
+  background-color: #EEEEEE;
 }
 
 div.App {
-  height: 100%;
   @include lato-font;
   width: 100vw;
-  background-color: #EEEEEE;
 }
