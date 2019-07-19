@@ -1,7 +1,7 @@
 .Footer {
   height: 200px;
   position: absolute;
-  bottom: 0;
+  top: 120%;
   display: flex;
   justify-content: center;
 
@@ -12,14 +12,14 @@
 
   .globe {
     position: absolute;
-    bottom: 55%;
-    width: 20%;
+    bottom: 40%;
     min-width: 200px;
+    max-width: 20%;
   }
 
   .icon-container {
     position: absolute;
-    top: 50%;
+    top: 60%;
     width: 100%;
     text-align: center;
         
