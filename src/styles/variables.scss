@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i&display=swap');
 
-$btn-orange: #49B749;
+$footer-color: #ED684A;
+$primary-color: #49B749;
 
 @mixin lato-font {
   font-family: 'Lato', sans-serif;
@@ -20,7 +21,7 @@ $btn-orange: #49B749;
 
 @mixin form-submit {
   color: white;
-  border: 2px solid $btn-orange;
+  border: 2px solid $primary-color;
   font-size: 1em;
   margin: 20px 0 0 0;
   padding: 10px;
