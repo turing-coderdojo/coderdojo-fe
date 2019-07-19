@@ -22,7 +22,8 @@ function VenueSearchBar() {
           id="city-input"
           onChange={(e) => {
             cityInput = e.target.value;
-          }} />
+          }} 
+        />
       </label>
       <button type="submit" className="city-search-btn">
         Find a Dojo
