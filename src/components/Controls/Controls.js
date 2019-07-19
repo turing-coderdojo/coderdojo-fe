@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Splash from '../Splash/Splash';
 import LoginForm from '../LoginForm/LoginForm';
 import Profile from '../Profile/Profile';
 import CurrentStudents from '../CurrentStudents/CurrentStudents';
@@ -11,7 +12,7 @@ function Controls() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" render={() => <h1>HOME COMPONENT</h1>} />
+        <Route exact path="/" component={Splash} />
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/student/:id" component={Profile} />
         <Route exact path="/students" component={CurrentStudents} />

@@ -1,9 +1,10 @@
 header {
+  background: #FFFFFF;
   display: flex;
-  flex-direction: row;
   align-items: center;
+  flex-direction: row;
   justify-content: space-between;
-  background-color: #FFFFFF;
+  padding: 30px 125px;
 }
 
 header h1 {
@@ -14,23 +15,29 @@ header h1 {
 
 header a {
   text-decoration: none;
+
+  &:hover {
+    color: $primary-color;
+  }
 }
 
-.logo-a-tag{
+.logo-a-tag {
   display: inherit;
 }
 
 .logo {
-  width: 175px;
-  margin: 23px;
+  width: 150px;
   margin-right: 2px;
 }
 
 .nav-link {
   margin-right: 55px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   font-family: Lato;
-  color:#000;
-}
+  color: #000;
 
+  &:last-child {
+    margin-right: 0;
+  }
+}

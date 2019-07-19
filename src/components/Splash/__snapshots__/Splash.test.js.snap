@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Splash should match snapshot 1`] = `
+<section
+  className="Splash"
+>
+  <div
+    className="Splash-container"
+  >
+    <img
+      alt="Splash page illustration that depicts 2 children having fun at their computers."
+      className="main-splash-img"
+      src="CD-main-banner.png"
+    />
+    <div
+      className="green-container"
+    />
+  </div>
+</section>
+`;
