@@ -53,31 +53,22 @@ export class RegisterForm extends Component {
     const { displayContactForm } = this.state;
     if (displayContactForm) {
       assignContact = <ContactForm {...this.state} />;
-    }
-    return assignContact;
-  }
-
-  render() { 
-    const displayContactForm = this.assignContactForm();
-    return (
-      <section>
-        <form 
-          className="RegisterForm"
-          onSubmit={this.handleRegister}
-        >
+    } else {
+      assignContact = (
+        <form className="RegisterForm" onSubmit={this.handleRegister}>
           <h2>Register an Account</h2>
           <label htmlFor="full-name-input">
             Full Name
-            <input 
+            <input
               id="full-name-input"
-              type="text" 
+              type="text"
               name="fullName"
               onChange={this.handleChange}
             />
           </label>
           <label htmlFor="username-input">
             Username
-            <input 
+            <input
               id="username-input"
               type="text"
               name="username"
@@ -86,7 +77,7 @@ export class RegisterForm extends Component {
           </label>
           <label htmlFor="password-input">
             Password
-            <input 
+            <input
               id="password-input"
               type="password"
               name="password"
@@ -95,7 +86,7 @@ export class RegisterForm extends Component {
           </label>
           <label htmlFor="reentered-password-input">
             Re-enter Password
-            <input 
+            <input
               id="reentered-password-input"
               type="password"
               name="reEnteredPassword"
@@ -105,7 +96,16 @@ export class RegisterForm extends Component {
           <button type="button" className="signin-btn" value="submit" name="student" onClick={this.handleRegister}>I am a student over 13</button>
           <button type="button" className="signin-btn guardian-btn" name="guardian" onClick={this.handleRegister}>I am a guardian</button>
         </form>
-        {displayContactForm}
+      );
+    }
+    return assignContact;
+  }
+
+  render() { 
+    const displayForms = this.assignContactForm();
+    return (
+      <section>
+        {displayForms}
       </section>
     );
   }
