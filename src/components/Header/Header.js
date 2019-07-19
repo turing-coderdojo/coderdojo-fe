@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { ReactComponent as Logo } from '../../images/logo-black.svg';
 import { addUser } from '../../actions';
 
@@ -51,3 +52,13 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+Header.propTypes = {
+  user: PropTypes.object,
+  resetUser: PropTypes.func
+};
+
+Header.defaultProps = {
+  user: {},
+  resetUser: () => {}
+};
