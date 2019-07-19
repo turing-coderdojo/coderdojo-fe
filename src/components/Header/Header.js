@@ -7,6 +7,7 @@ export function Header(props) {
   const assignLogin = () => {
     const { user } = props;
     let loginButton;
+    
     if (user.length) {
       loginButton = <NavLink to="/" className="nav-link">LOGOUT</NavLink>;
     } else {
