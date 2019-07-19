@@ -65,7 +65,7 @@ export class RegisterForm extends Component {
           className="RegisterForm"
           onSubmit={this.handleRegister}
         >
-          <h2>Create Account</h2>
+          <h2>Register an Account</h2>
           <label htmlFor="full-name-input">
             Full Name
             <input 
@@ -102,8 +102,8 @@ export class RegisterForm extends Component {
               onChange={this.handleChange}
             />
           </label>
-          <button type="submit" className="signin-btn" name="student">I am a student over 13</button>
-          <button type="submit" className="signin-btn" name="guardian">I am a guardian</button>
+          <button type="button" className="signin-btn" value="submit" name="student" onClick={this.handleRegister}>I am a student over 13</button>
+          <button type="button" className="signin-btn guardian-btn" name="guardian" onClick={this.handleRegister}>I am a guardian</button>
         </form>
         {displayContactForm}
       </section>
