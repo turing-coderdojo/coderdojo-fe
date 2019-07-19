@@ -1,4 +1,4 @@
-const searchResultsReducer = (action = [], state) => {
+const searchResultsReducer = (state = [], action) => {
   switch (action.type) {
     case ('SET_SEARCH_RESULTS'):
       return action.results;
