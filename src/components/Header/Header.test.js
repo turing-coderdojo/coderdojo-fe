@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Header, mapStateToProps } from './Header';
+import { Header, mapStateToProps, mapDispatchToProps } from './Header';
 
 describe('Header', () => {
   let wrapper;
@@ -16,4 +16,21 @@ describe('Header', () => {
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  describe('mapStateToProps', () => {
+    const mockReduxState = {
+      user: {
+        username: 'nimsum',
+        name: 'nim',
+        role: '3'
+      }
+    };
+
+    it('should map state to props', () => {
+      const result = mapStateToProps(mockReduxState);
+      expect(result).toEqual(mockReduxState);
+    });
+  });
+
+  
 });
