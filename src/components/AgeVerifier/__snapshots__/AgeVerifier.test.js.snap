@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AgeVerifier should match snapshot 1`] = `
+<form
+  className="AgeForm"
+  onSubmit={[Function]}
+>
+  <h2>
+    Please Verify Your Age
+  </h2>
+  <label
+    htmlFor="dob"
+  >
+    Enter your date of birth
+    <input
+      id="dob"
+      name="dob"
+      onChange={[Function]}
+      type="text"
+    />
+  </label>
+  <button
+    className="signin-btn"
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
+`;
