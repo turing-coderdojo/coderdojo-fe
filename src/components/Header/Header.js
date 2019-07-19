@@ -9,6 +9,7 @@ export function Header(props) {
   const logOutUser = () => {
     const { resetUser } = props;
     resetUser();
+    localStorage.setItem('token', JSON.stringify(''));
   };
 
   const createMenuOptions = () => {
