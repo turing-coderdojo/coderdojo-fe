@@ -11,13 +11,12 @@
   p {
     color: #ffffff;
     margin: 5px 0;
-    font-weight: 300;
   }
 
   input,
   button {
     margin: 30px 30px 0 0;
-    height: 2rem;
+    height: 2.5rem;
     font-size: 1rem;
   }
 
@@ -26,6 +25,7 @@
     background-color: $footer-color;
     border: 2px solid $footer-color;
     color: #ffffff;
+    font-weight: 300;
   }
 
   input {

@@ -5,6 +5,10 @@ header {
   flex-direction: row;
   justify-content: space-between;
   padding: 30px 125px;
+
+  section {
+    display: flex;
+  }
 }
 
 header h1 {
