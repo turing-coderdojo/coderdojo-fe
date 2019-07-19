@@ -4,9 +4,9 @@ exports[`Controls should match snapshot 1`] = `
 <div>
   <Switch>
     <Route
+      component={[Function]}
       exact={true}
       path="/"
-      render={[Function]}
     />
     <Route
       component={
