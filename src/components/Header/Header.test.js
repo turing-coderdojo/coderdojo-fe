@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Header, mapStateToProps, mapDispatchToProps } from './Header';
+import { addUser } from '../../actions';
 
 describe('Header', () => {
   let wrapper;
@@ -32,5 +33,14 @@ describe('Header', () => {
     });
   });
 
-  
+   describe('mapDispatchToProps', () => {
+    const mockDispatch = jest.fn();
+    const mappedDispatch = mapDispatchToProps(mockDispatch);
+    const expectedAction = addUser({});
+
+    it('should map dispatch to props', () => {
+      mappedDispatch.resetUser();
+      expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
+    });
+  });
 });
