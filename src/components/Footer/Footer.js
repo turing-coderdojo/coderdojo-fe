@@ -12,13 +12,16 @@ function Footer() {
       <section className="social-media">
         <div className="icon-container">
           <h3>Talk to our community</h3>
-          <a href="google.com">
+          <a href="https://www.facebook.com/CoderDojo">
             <img src={fbIcon} alt="facebook" />
           </a>
-
-            <img src={twitterIcon} alt="facebook" />
-            <img src={linkedInIcon} alt="facebook" />
-            <img src={emailIcon} alt="facebook" />
+          <a href="https://twitter.com/CoderDojo">
+            <img src={twitterIcon} alt="twitter" />
+          </a>
+          <a href="https://www.linkedin.com/company/coderdojo/">
+            <img src={linkedInIcon} alt="linked in" />
+          </a>
+          <img src={emailIcon} alt="contact" />
         </div>
       </section>
     </footer>
