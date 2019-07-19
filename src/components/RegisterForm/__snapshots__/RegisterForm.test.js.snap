@@ -7,7 +7,7 @@ exports[`RegisterForm should match snapshot 1`] = `
     onSubmit={[Function]}
   >
     <h2>
-      Create Account
+      Register an Account
     </h2>
     <label
       htmlFor="full-name-input"
@@ -56,14 +56,17 @@ exports[`RegisterForm should match snapshot 1`] = `
     <button
       className="signin-btn"
       name="student"
-      type="submit"
+      onClick={[Function]}
+      type="button"
+      value="submit"
     >
       I am a student over 13
     </button>
     <button
-      className="signin-btn"
+      className="signin-btn guardian-btn"
       name="guardian"
-      type="submit"
+      onClick={[Function]}
+      type="button"
     >
       I am a guardian
     </button>
