@@ -1,15 +1,33 @@
 .RegisterForm {
-  margin: 0 auto;
-  width:50%;
   @include flex-column;
+  margin: 10% auto;
+  width:500px;
+  min-width: 300px;
+  padding: 40px;
+  background-color: #FFFFFF;
+
+  h2 {
+    margin: 0 0 15px 0;
+    text-align: center;
+  }
   
   label {
     @include flex-column;
+    margin: 0 0 2px 0;
   }
   
   .signin-btn {
     @include form-submit;
+    background-color: #724695;
+    border: 2px solid #724695;
   }
+
+  .guardian-btn {
+    background-color: #ED684A;
+    border: 2px solid #ED684A;
+
+  }
+
 
   #full-name-input,
   #username-input,
@@ -17,6 +35,4 @@
   #reentered-password-input {
     @include form-input-style
   }
-
-
 }
