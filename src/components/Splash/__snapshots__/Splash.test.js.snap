@@ -14,7 +14,9 @@ exports[`Splash should match snapshot 1`] = `
     />
     <div
       className="green-container"
-    />
+    >
+      <VenueSearchBar />
+    </div>
   </div>
 </section>
 `;

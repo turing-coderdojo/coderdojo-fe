@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 function VenueSearchBar() {
   let cityInput;
@@ -7,8 +7,6 @@ function VenueSearchBar() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    console.log(cityInput)
   }
 
   return (
@@ -26,7 +24,9 @@ function VenueSearchBar() {
             cityInput = e.target.value;
           }} />
       </label>
-      <button type="submit" className="city-search-btn">Find a Dojo</button>
+      <button type="submit" className="city-search-btn">
+        Find a Dojo
+      </button>
     </form>
   );
 }

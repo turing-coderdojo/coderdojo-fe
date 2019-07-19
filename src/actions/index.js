@@ -12,3 +12,8 @@ export const setError = error => ({
   type: 'SET_ERROR',
   error
 });
+
+export const setSearchResults = results => ({
+  type: 'SET_SEARCH_RESULTS',
+  results
+});
