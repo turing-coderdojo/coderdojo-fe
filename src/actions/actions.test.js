@@ -37,4 +37,15 @@ describe('actions', () => {
 
     expect(result).toEqual(expected);
   });
+
+  it('should return a type of SET_SEARCH_RESULTS and an array of search results', () => {
+    const results = [{ name: 'Dojo', id: 1 }];
+    const expected = {
+      type: 'SET_SEARCH_RESULTS',
+      results
+    };
+    const result = actions.setSearchResults(results);
+
+    expect(result).toEqual(expected);
+  });
 });
