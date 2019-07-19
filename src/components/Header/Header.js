@@ -2,14 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../images/logo-black.svg';
+import { addUser } from '../../actions';
 
 export function Header(props) {
+  const logOutUser = () => {
+    const { resetUser } = props;
+    resetUser();
+  };
+
   const createMenuOptions = () => {
     const { user } = props;
     let menuOptions;
     
     if (user.username) {
-      menuOptions = <NavLink to="/" className="nav-link">LOGOUT</NavLink>;
+      menuOptions = <NavLink to="/" className="nav-link" onClick={logOutUser}>LOGOUT</NavLink>;
     } else {
       menuOptions = (
         <div>
@@ -40,4 +46,8 @@ export const mapStateToProps = ({ user }) => ({
   user
 });
 
-export default connect(mapStateToProps, null)(Header);
+export const mapDispatchToProps = dispatch => ({
+  resetUser: () => dispatch(addUser({}))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
