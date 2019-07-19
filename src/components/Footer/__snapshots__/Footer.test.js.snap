@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should match snapshot 1`] = `
+<footer
+  className="Footer"
+>
+  <img
+    alt="globe"
+    className="globe"
+    src="CD-footer-globe.png"
+  />
+  <section
+    className="social-media"
+  >
+    <div
+      className="icon-container"
+    >
+      <h3>
+        Talk to our community
+      </h3>
+      <a
+        href="https://www.facebook.com/CoderDojo"
+      >
+        <img
+          alt="facebook"
+          src="facebook.svg"
+        />
+      </a>
+      <a
+        href="https://twitter.com/CoderDojo"
+      >
+        <img
+          alt="twitter"
+          src="twitter.svg"
+        />
+      </a>
+      <a
+        href="https://www.linkedin.com/company/coderdojo/"
+      >
+        <img
+          alt="linked in"
+          src="linkedin.svg"
+        />
+      </a>
+      <img
+        alt="contact"
+        src="email.svg"
+      />
+    </div>
+  </section>
+</footer>
+`;
