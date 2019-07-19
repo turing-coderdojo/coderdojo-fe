@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export class AgeVerifier extends Component {
   state = {
@@ -8,22 +10,26 @@ export class AgeVerifier extends Component {
   handleSubmit = (e) => {
     const { dob } = this.state;
   } 
-  
-  handleChange = (e) => {
-    const { name, value } = e.target;
 
-    this.setState({
-      [name]: value
-    });
+  hanldeDate = (date) => {
+    console.log(date);
+
   }
 
   render() {
+    const { dob } = this.state;
     return (
       <form className="AgeForm" onSubmit={this.handleSubmit}>
         <h2>Please Verify Your Age</h2>
         <label htmlFor="dob">
           Enter your date of birth
-          <input type="text" id="dob" name="dob" onChange={this.handleChange}/>
+          <DatePicker 
+            onSelect={this.hanldeDate}
+            showYearDropdown
+            dropdownMode="select"
+            scrollableYearDropdown
+            maxDate={new Date()}
+          />
         </label>
         <button type="submit" className="signin-btn">Submit</button>
       </form>
