@@ -20,12 +20,12 @@ export function dispatchError(error) {
   store.dispatch(setFetching(false));
 }
 
-export async function apolloQuery(query) {
+export async function apolloQuery(query, variables) {
   store.dispatch(setFetching(true));
   store.dispatch(setError(''));
   let result;
   try {
-    result = await client.query({ query });
+    result = await client.query({ query, variables });
     if (result) store.dispatch(setFetching(false));
   } catch (error) {
     dispatchError(error);
