@@ -22,6 +22,9 @@
   }
 
   #dob {
-    @include form-input-style
+    @include form-input-style;
+    width: 420px;
+    margin-top: 25px;
   }
+
 }

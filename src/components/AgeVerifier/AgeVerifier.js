@@ -4,16 +4,22 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 export class AgeVerifier extends Component {
   state = {
-    dob:''
+    dob: ''
   }
 
   handleSubmit = (e) => {
-    const { dob } = this.state;
+    
   } 
 
   hanldeDate = (date) => {
-    console.log(date);
+    this.setState({ dob: date });
+  }
 
+  subYears = () => {
+    const date = new Date();
+
+    date.setFullYear(date.getFullYear() - 13);
+    return date;
   }
 
   render() {
@@ -24,11 +30,16 @@ export class AgeVerifier extends Component {
         <label htmlFor="dob">
           Enter your date of birth
           <DatePicker 
+            id="dob"
             onSelect={this.hanldeDate}
             showYearDropdown
+            dateFormat="yyyy/MM/dd"
             dropdownMode="select"
             scrollableYearDropdown
-            maxDate={new Date()}
+            maxDate={this.subYears()}
+            showMonthDropdown
+            useShortMonthInDropdown
+            className="date-picker"
           />
         </label>
         <button type="submit" className="signin-btn">Submit</button>
