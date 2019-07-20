@@ -15,7 +15,16 @@ const client = new ApolloClient({
 });
 
 export async function apolloQuery(query) {
-  const result = await client.query({ query });
+  store.dispatch(setFetching(true));
+  let result;
+  try {
+    result = await client.query({ query });
+    if (result) store.dispatch(setFetching(false));
+  } catch (error) {
+    const { message } = error.graphQLErrors[0];
+    store.dispatch(setError(message));
+    store.dispatch(setFetching(false));
+  }
   return result.data;
 }
 
