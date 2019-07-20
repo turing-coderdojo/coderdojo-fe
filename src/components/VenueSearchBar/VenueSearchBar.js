@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as actions from '../../actions';
-import { Redirect } from 'react-router-dom';
 import requests from '../../utils/requests/requests';
 
 export function VenueSearchBar(props) {
@@ -19,15 +19,7 @@ export function VenueSearchBar(props) {
     }
   }
   
-  if (redirect) {
-    return (
-      <Redirect to={{
-        pathname: '/venues',
-        city
-      }}
-      />
-    );
-  }
+  if (redirect) return <Redirect to="/venues" />;
 
   return (
     <form 
@@ -57,9 +49,11 @@ export const mapDispatchToProps = dispatch => ({
 export default connect(undefined, mapDispatchToProps)(VenueSearchBar);
 
 VenueSearchBar.propTypes = {
-  setSearchResults: PropTypes.func
+  setSearchResults: PropTypes.func,
+  location: PropTypes.string
 };
 
 VenueSearchBar.defaultProps = {
-  setSearchResults: () => {}
+  setSearchResults: () => {},
+  location: ''
 };

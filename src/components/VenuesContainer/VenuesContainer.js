@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import VenueSearchBar from '../VenueSearchBar/VenueSearchBar';
 
-export function VenuesContainer({ venues, isLoading, error }) {
+export function VenuesContainer({
+  venues, isLoading, error 
+}) {  
   const generatedVenues = () => venues
     .map(venue => (
       <article className="venue-card" key={venue.id}>
