@@ -25,7 +25,8 @@ describe('RegisterForm', () => {
       username: '',
       password: '',
       reEnteredPassword: '',
-      displayContactForm: false
+      displayContactForm: false,
+      displayAgeForm: false
     }); 
 
     const mockEvent = {
