@@ -3,5 +3,34 @@
 exports[`VenuesContainer should match snapshot 1`] = `
 <section>
   <Connect(VenueSearchBar) />
+  <article
+    key="1"
+  >
+    <h3>
+      Venue One
+    </h3>
+    <p>
+      Here be Dragons
+    </p>
+  </article>
+</section>
+`;
+
+exports[`VenuesContainer should match snapshot with error/loading 1`] = `
+<section>
+  <Connect(VenueSearchBar) />
+  <h4>
+    Failed to fetch
+  </h4>
+  <article
+    key="1"
+  >
+    <h3>
+      Venue One
+    </h3>
+    <p>
+      Here be Dragons
+    </p>
+  </article>
 </section>
 `;

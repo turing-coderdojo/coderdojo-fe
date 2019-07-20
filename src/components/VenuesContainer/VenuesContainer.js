@@ -24,7 +24,7 @@ export function VenuesContainer({ venues, isLoading, error }) {
   );
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   venues: state.searchResults,
   isLoading: state.isFetching,
   error: state.error
