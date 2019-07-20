@@ -7,7 +7,8 @@ const requests = {
   createGuardian: guardian => apolloMutate(queryTypes.CREATE_GUARDIAN, guardian),
   getAllUsers: () => apolloQuery(queryTypes.GET_ALL_USERS),
   getUserByToken: () => apolloQuery(queryTypes.GET_USER_BY_TOKEN),
-  getAllVenues: () => apolloQuery(queryTypes.GET_ALL_VENUES)
+  getAllVenues: () => apolloQuery(queryTypes.GET_ALL_VENUES),
+  getVenuesByCity: city => apolloQuery(queryTypes.GET_VENUES_BY_CITY, city)
 };
 
 export default requests;

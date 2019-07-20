@@ -111,3 +111,21 @@ export const GET_ALL_VENUES = gql`
     }
   }
 `;
+
+export const GET_VENUES_BY_CITY = gql`
+  query allVenues($city: String!) {
+    allVenues(city: $city) {
+      id
+      name
+      notes
+      addresses{
+        city
+        street1
+        street2
+        zip
+        state
+        id
+      }
+    }
+  }
+`;
