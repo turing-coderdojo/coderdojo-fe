@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from '../../actions';
+import { Redirect } from 'react-router-dom';
 import requests from '../../utils/requests/requests';
 
 export function VenueSearchBar(props) {
-  let cityInput;
+  const { location } = props;
+  const [city, handleChange] = useState('');
+  const [redirect, setRedirect] = useState(false);
   
   async function handleSubmit(e) {
     e.preventDefault();
+    if (location === 'splash') setRedirect(true);
     const venues = await requests.getAllVenues();
     if (venues) {
       props.setSearchResults(venues.allVenues);
     }
   }
+  
+  if (redirect) return <Redirect to="/venues" />;
 
   return (
     <form 
@@ -26,9 +32,7 @@ export function VenueSearchBar(props) {
         <input 
           type="text" 
           id="city-input"
-          onChange={(e) => {
-            cityInput = e.target.value;
-          }} 
+          onChange={e => handleChange(e.target.value)} 
         />
       </label>
       <button type="submit" className="city-search-btn">

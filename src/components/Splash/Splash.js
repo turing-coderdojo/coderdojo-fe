@@ -12,7 +12,7 @@ function Splash() {
           alt="Splash page illustration that depicts 2 children having fun at their computers." 
         />
         <div className="green-container">
-          <VenueSearchBar />
+          <VenueSearchBar location="splash" />
         </div>
       </div>
     </section>

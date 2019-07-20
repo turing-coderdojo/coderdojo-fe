@@ -17,7 +17,7 @@ export function VenuesContainer({ venues, isLoading, error }) {
   return (
     <section className="VenuesContainer">
       <article className="search-bar-container">
-        <VenueSearchBar />
+        <VenueSearchBar location="venues" />
       </article>
       <article className="venues-container">
         { isLoading && <h3>Loading dojos...</h3>}
