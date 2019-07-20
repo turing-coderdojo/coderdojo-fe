@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function VenuesContainer() {
-  return (
-    <div>
+export class VenuesContainer extends Component {
+  state = { 
+    venues: []
+  };
 
-    </div>
-  );
+  generateVenues() {
+    const { venues } = this.state;
+    
+    venues.map(venue => (
+      <article>
+        <h3>
+          CARD 
+          {venue}
+        </h3>
+      </article> 
+    ));
+  }
+
+  render() {
+    return (
+      <section>
+        {this.generateVenues()}
+      </section>
+    )
+  }
 }
 
 export default VenuesContainer;
