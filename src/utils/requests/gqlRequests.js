@@ -93,3 +93,13 @@ export const SIGN_IN = gql`
     }
   }
 `;
+
+export const GET_ALL_VENUES = gql`
+  {
+    allVenues{
+      id
+      name
+      notes
+    }
+  }
+`;

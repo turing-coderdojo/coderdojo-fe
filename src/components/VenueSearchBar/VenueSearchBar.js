@@ -2,15 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from '../../actions';
+import requests from '../../utils/requests/requests';
 
 export function VenueSearchBar(props) {
   let cityInput;
   
-
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-
-    props.setSearchResults(cityInput);
+    const venues = await requests.getAllVenues();
+    if (venues) {
+      props.setSearchResults(venues.allVenues);
+    }
   }
 
   return (
