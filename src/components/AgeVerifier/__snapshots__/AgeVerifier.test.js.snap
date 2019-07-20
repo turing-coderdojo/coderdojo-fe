@@ -12,11 +12,46 @@ exports[`AgeVerifier should match snapshot 1`] = `
     htmlFor="dob"
   >
     Enter your date of birth
-    <input
+    <DatePicker
+      allowSameDay={false}
+      className="date-picker"
+      dateFormat="yyyy/MM/dd"
+      dateFormatCalendar="LLLL yyyy"
+      disabled={false}
+      disabledKeyboardNavigation={false}
+      dropdownMode="select"
       id="dob"
-      name="dob"
+      inlineFocusSelectedMonth={false}
+      maxDate={2006-07-20T19:11:24.793Z}
+      monthsShown={1}
+      nextMonthButtonLabel="Next month"
+      onBlur={[Function]}
       onChange={[Function]}
-      type="text"
+      onClickOutside={[Function]}
+      onFocus={[Function]}
+      onInputClick={[Function]}
+      onInputError={[Function]}
+      onKeyDown={[Function]}
+      onMonthChange={[Function]}
+      onSelect={[Function]}
+      onYearChange={[Function]}
+      preventOpenOnFocus={false}
+      previousMonthButtonLabel="Previous Month"
+      readOnly={false}
+      renderDayContents={[Function]}
+      scrollableYearDropdown={true}
+      shouldCloseOnSelect={true}
+      showMonthDropdown={true}
+      showMonthYearPicker={false}
+      showTimeInput={false}
+      showTimeSelect={false}
+      showYearDropdown={true}
+      strictParsing={false}
+      timeCaption="Time"
+      timeInputLabel="Time"
+      timeIntervals={30}
+      useShortMonthInDropdown={true}
+      withPortal={false}
     />
   </label>
   <button
