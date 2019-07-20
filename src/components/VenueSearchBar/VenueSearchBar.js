@@ -15,7 +15,11 @@ export function VenueSearchBar(props) {
     if (location === 'splash') setRedirect(true);
     const venues = await requests.getAllVenues();
     if (venues) {
-      props.setSearchResults(venues.allVenues);
+      const searchResults = {
+        city,
+        venues: venues.allVenues
+      };
+      props.setSearchResults(searchResults);
     }
   }
   
