@@ -20,9 +20,7 @@ describe('LoginForm', () => {
     expect(wrapper.state()).toEqual({
       username: '',
       password: '',
-      success: false,
-      error: '',
-      loading: false
+      success: false
     });
 
     const mockEvent = {

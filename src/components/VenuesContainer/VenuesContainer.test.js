@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import VenuesContainer from './VenuesContainer';
+import { VenuesContainer } from './VenuesContainer';
 
 describe('VenuesContainer', () => {
   let wrapper;
