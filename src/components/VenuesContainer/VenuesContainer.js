@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import VenueSearchBar from '../VenueSearchBar/VenueSearchBar';
 
 export function VenuesContainer({
-  venues, isLoading, error 
+  searchResults, isLoading, error 
 }) {  
-  const generatedVenues = () => venues
+  const generatedVenues = () => searchResults.venues
     .map(venue => (
       <article className="venue-card" key={venue.id}>
         <h3>
@@ -31,19 +31,19 @@ export function VenuesContainer({
 }
 
 export const mapStateToProps = state => ({
-  venues: state.searchResults,
+  searchResults: state.searchResults,
   isLoading: state.isFetching,
   error: state.error
 });
 
 VenuesContainer.propTypes = {
-  venues: PropTypes.array,
+  searchResults: PropTypes.object,
   isLoading: PropTypes.bool,
   error: PropTypes.string
 };
 
 VenuesContainer.defaultProps = {
-  venues: [],
+  searchResults: {},
   isLoading: false,
   error: ''
 };
