@@ -6,7 +6,7 @@ describe('VenuesContainer', () => {
   let wrapper;
   const isLoading = false;
   const error = '';
-  let mockVenues = [
+  const mockVenues = [
     {
       id: 1,
       name: 'Venue One',

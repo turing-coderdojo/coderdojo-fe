@@ -15,8 +15,10 @@ export function VenuesContainer({ venues, isLoading, error }) {
     ));
   
   return (
-    <section>
-      <VenueSearchBar />
+    <section className="VenueSearchBar">
+      <div className="search-bar-container">
+        <VenueSearchBar />
+      </div>
       { isLoading && <h3>Loading dojos...</h3>}
       { error && <h4>{error}</h4>}
       { generatedVenues() }
