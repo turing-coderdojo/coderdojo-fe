@@ -1,5 +1,5 @@
 import ApolloClient from 'apollo-boost';
-import store from '../../index';
+import store from '../../store';
 import { setFetching, setError } from '../../actions';
 
 const client = new ApolloClient({
