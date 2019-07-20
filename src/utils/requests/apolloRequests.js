@@ -14,6 +14,12 @@ const client = new ApolloClient({
   }
 });
 
+export function dispatchError(error) {
+  const { message } = error.graphQLErrors[0];
+  store.dispatch(setError(message));
+  store.dispatch(setFetching(false));
+}
+
 export async function apolloQuery(query) {
   store.dispatch(setFetching(true));
   let result;
@@ -21,9 +27,7 @@ export async function apolloQuery(query) {
     result = await client.query({ query });
     if (result) store.dispatch(setFetching(false));
   } catch (error) {
-    const { message } = error.graphQLErrors[0];
-    store.dispatch(setError(message));
-    store.dispatch(setFetching(false));
+    dispatchError(error);
   }
   return result.data;
 }
@@ -35,9 +39,7 @@ export async function apolloMutate(mutation, variables) {
     result = await client.mutate({ mutation, variables });
     if (result) store.dispatch(setFetching(false));
   } catch (error) {
-    const { message } = error.graphQLErrors[0];
-    store.dispatch(setError(message));
-    store.dispatch(setFetching(false));
+    dispatchError(error);
   }
   return result.data;
 }
