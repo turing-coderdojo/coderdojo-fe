@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as Logo } from '../../images/logo-white.svg';
+import { ReactComponent as Logo } from '../../images/yin-yang-logo.svg';
 
 function VenueCard({ venue }) {
   const { 
