@@ -96,9 +96,13 @@ export const mapStateToProps = ({ isFetching, error }) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
 
 LoginForm.propTypes = {
-  addUser: PropTypes.func
+  addUser: PropTypes.func,
+  error: PropTypes.string,
+  isFetching: PropTypes.bool
 };
 
 LoginForm.defaultProps = {
-  addUser: () => {}
+  addUser: () => {},
+  error: '',
+  isFetching: false
 };
