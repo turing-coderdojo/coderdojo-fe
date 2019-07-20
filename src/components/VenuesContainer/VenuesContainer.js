@@ -1,42 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
 
-export class VenuesContainer extends Component {
-  state = { 
-    venues: [],
-    loading: false,
-    error: ''
-  };
-
-  componentDidMount() {
-    this.searchVenues();
-  }
-
-  componentDidUpdate(prevProps) {
-    const { setSearchResults } = this.props;
-    if (setSearchResults !== prevProps) {
-      // this.searchVenues();
-    }
-  }
-
-  searchVenues() {
-    const { setSearchResults } = this.props;
-    try {
-      const venues = [
-        { name: '1', address: '1234' },
-        { name: '1', address: '1234' },
-        { name: '1', address: '1234' }
-      ];
-      this.setState({ venues });
-    } catch (error) {
-      this.setState({ error });
-    }
-  }
-
-  generateVenues() {
-    const { venues } = this.state;
-    
-    return venues.map(venue => (
+function VenuesContainer({ venues }) {
+  const generatedVenues = () => venues
+    .map(venue => (
       <article>
         <h3>
           CARD 
@@ -45,15 +13,20 @@ export class VenuesContainer extends Component {
         </h3>
       </article> 
     ));
-  }
-
-  render() {
-    return (
-      <section>
-        {this.generateVenues()}
-      </section>
-    );
-  }
+  
+  return (
+    <section>
+      { generatedVenues() }
+    </section>
+  );
 }
 
-export default VenuesContainer;
+const mapStateToProps = state => ({
+  venues: [
+    { name: '1', address: '1234' },
+    { name: '1', address: '1234' },
+    { name: '1', address: '1234' }
+  ]
+});
+
+export default connect(mapStateToProps)(VenuesContainer);
