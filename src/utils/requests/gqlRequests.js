@@ -105,6 +105,8 @@ export const GET_ALL_VENUES = gql`
         street1
         street2
         zip
+        state
+        id
       }
     }
   }
