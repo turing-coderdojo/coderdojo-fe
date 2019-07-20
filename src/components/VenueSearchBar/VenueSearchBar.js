@@ -6,19 +6,12 @@ import requests from '../../utils/requests/requests';
 
 export function VenueSearchBar(props) {
   let cityInput;
-
-  function searchVenues() {
-    try {
-      
-    } catch (error) {
-      
-    }
-  }
   
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (cityInput) {
-      props.setSearchResults(cityInput);
+    const venues = await requests.getAllVenues();
+    if (venues) {
+      props.setSearchResults(venues.allVenues);
     }
   }
 
