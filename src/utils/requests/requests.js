@@ -6,7 +6,8 @@ const requests = {
   createStudent: student => apolloMutate(queryTypes.CREATE_STUDENT, student),
   createGuardian: guardian => apolloMutate(queryTypes.CREATE_GUARDIAN, guardian),
   getAllUsers: () => apolloQuery(queryTypes.GET_ALL_USERS),
-  getUserByToken: () => apolloQuery(queryTypes.GET_USER_BY_TOKEN)
+  getUserByToken: () => apolloQuery(queryTypes.GET_USER_BY_TOKEN),
+  getAllVenues: () => apolloQuery(queryTypes.GET_ALL_VENUES)
 };
 
 export default requests;

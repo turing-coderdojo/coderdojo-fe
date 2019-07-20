@@ -1,3 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VenuesContainer should match snapshot 1`] = `<div />`;
+exports[`VenuesContainer should match snapshot 1`] = `
+<section
+  className="VenuesContainer"
+>
+  <article
+    className="search-bar-container"
+  >
+    <Connect(VenueSearchBar) />
+  </article>
+  <article
+    className="venues-container"
+  >
+    <article
+      className="venue-card"
+      key="1"
+    >
+      <h3>
+        Venue One
+      </h3>
+      <p>
+        Here be Dragons
+      </p>
+    </article>
+  </article>
+</section>
+`;
+
+exports[`VenuesContainer should match snapshot with error/loading 1`] = `
+<section
+  className="VenuesContainer"
+>
+  <article
+    className="search-bar-container"
+  >
+    <Connect(VenueSearchBar) />
+  </article>
+  <article
+    className="venues-container"
+  >
+    <h4>
+      Failed to fetch
+    </h4>
+    <article
+      className="venue-card"
+      key="1"
+    >
+      <h3>
+        Venue One
+      </h3>
+      <p>
+        Here be Dragons
+      </p>
+    </article>
+  </article>
+</section>
+`;

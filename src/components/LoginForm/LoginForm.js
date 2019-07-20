@@ -9,9 +9,7 @@ export class LoginForm extends Component {
   state = {
     username: '',
     password: '',
-    success: false,
-    error: '',
-    loading: false
+    success: false
   }
 
   handleChange = (e) => {
@@ -28,7 +26,6 @@ export class LoginForm extends Component {
       username,
       password
     };
-    this.setState({ error: '', loading: true });
     
     e.preventDefault();
     this.signIn(user);
@@ -36,23 +33,19 @@ export class LoginForm extends Component {
 
   signIn = async (user) => {
     const { addUser } = this.props;
-
-    try {
-      const result = await requests.signIn(user);
+    const result = await requests.signIn(user);
+    if (result) {
       const { user: validUser, token } = result.signIn;
-      if (token && validUser) {
-        localStorage.setItem('token', JSON.stringify(token));
-        addUser(validUser);
-        this.setState({ success: true, loading: false });
-      }
-    } catch (error) {
-      const { message } = error.graphQLErrors[0];
-      this.setState({ error: message, loading: false });
-    }    
+      localStorage.setItem('token', JSON.stringify(token));
+      addUser(validUser);
+      this.setState({ success: true });
+    }
   }
 
   render() {
-    const { success, error, loading } = this.state;
+    const { success } = this.state;
+    const { error, isFetching } = this.props;
+
     if (success) return <Redirect to="/" />;
 
     return (
@@ -80,7 +73,7 @@ export class LoginForm extends Component {
           />
         </label>
         { error && <p className="error-msg">{ error }</p>}
-        { loading && <p>Loading...</p>}
+        { isFetching && <p>Loggin in, please wait...</p>}
         <button type="submit" className="signin-btn">LOGIN</button>
         <p className="register-link">
           Don&#39;t have an account?&nbsp;&nbsp;
@@ -95,12 +88,21 @@ export const mapDispatchToProps = dispatch => ({
   addUser: user => dispatch(actions.addUser(user))
 });
 
-export default connect(undefined, mapDispatchToProps)(LoginForm);
+export const mapStateToProps = ({ isFetching, error }) => ({
+  error,
+  isFetching
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
 
 LoginForm.propTypes = {
-  addUser: PropTypes.func
+  addUser: PropTypes.func,
+  error: PropTypes.string,
+  isFetching: PropTypes.bool
 };
 
 LoginForm.defaultProps = {
-  addUser: () => {}
+  addUser: () => {},
+  error: '',
+  isFetching: false
 };

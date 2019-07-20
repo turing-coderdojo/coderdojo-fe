@@ -1,5 +1,7 @@
 .Splash {
-  padding: 0 125px;
+  width: 80%;
+  margin: auto;
+  min-width: 350px; 
 }
 
 .Splash-container {
@@ -20,6 +22,7 @@
 
 .green-container {
   background: $primary-color;
-  height: 325px;
+  height: 300px;
   margin: 0 auto;
+  padding: 6%;
 }
