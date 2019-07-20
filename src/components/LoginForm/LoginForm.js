@@ -9,9 +9,7 @@ export class LoginForm extends Component {
   state = {
     username: '',
     password: '',
-    success: false,
-    error: '',
-    loading: false
+    success: false
   }
 
   handleChange = (e) => {
@@ -28,7 +26,6 @@ export class LoginForm extends Component {
       username,
       password
     };
-    this.setState({ error: '', loading: true });
     
     e.preventDefault();
     this.signIn(user);
@@ -39,16 +36,16 @@ export class LoginForm extends Component {
     const result = await requests.signIn(user);
     if (result) {
       const { user: validUser, token } = result.signIn;
-      if (token && validUser) {
-        localStorage.setItem('token', JSON.stringify(token));
-        addUser(validUser);
-        this.setState({ success: true, loading: false });
-      }
+      localStorage.setItem('token', JSON.stringify(token));
+      addUser(validUser);
+      this.setState({ success: true });
     }
   }
 
   render() {
-    const { success, error, loading } = this.state;
+    const { success } = this.state;
+    const { error, isFetching } = this.props;
+
     if (success) return <Redirect to="/" />;
 
     return (
@@ -76,7 +73,7 @@ export class LoginForm extends Component {
           />
         </label>
         { error && <p className="error-msg">{ error }</p>}
-        { loading && <p>Loading...</p>}
+        { isFetching && <p>Loggin in, please wait...</p>}
         <button type="submit" className="signin-btn">LOGIN</button>
         <p className="register-link">
           Don&#39;t have an account?&nbsp;&nbsp;
