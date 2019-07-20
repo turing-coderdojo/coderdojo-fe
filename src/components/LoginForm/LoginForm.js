@@ -36,19 +36,15 @@ export class LoginForm extends Component {
 
   signIn = async (user) => {
     const { addUser } = this.props;
-
-    try {
-      const result = await requests.signIn(user);
+    const result = await requests.signIn(user);
+    if (result) {
       const { user: validUser, token } = result.signIn;
       if (token && validUser) {
         localStorage.setItem('token', JSON.stringify(token));
         addUser(validUser);
         this.setState({ success: true, loading: false });
       }
-    } catch (error) {
-      const { message } = error.graphQLErrors[0];
-      this.setState({ error: message, loading: false });
-    }    
+    }
   }
 
   render() {

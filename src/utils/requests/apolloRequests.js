@@ -29,7 +29,7 @@ export async function apolloQuery(query) {
   } catch (error) {
     dispatchError(error);
   }
-  return result.data;
+  return result ? result.data : false;
 }
 
 export async function apolloMutate(mutation, variables) {
@@ -41,5 +41,5 @@ export async function apolloMutate(mutation, variables) {
   } catch (error) {
     dispatchError(error);
   }
-  return result.data;
+  return result ? result.data : false;
 }
