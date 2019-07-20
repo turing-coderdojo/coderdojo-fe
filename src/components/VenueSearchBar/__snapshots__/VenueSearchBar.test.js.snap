@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VenueSearchBar should match snapshot 1`] = `
+<form
+  className="VenueSearchBar"
+  onSubmit={[Function]}
+>
+  <h3>
+    Find a Dojo to Attend
+  </h3>
+  <p>
+    Learn technology in an informal, creative and social environment. Find a dojo near you.
+  </p>
+  <label
+    htmlFor="city-input"
+  >
+    <input
+      id="city-input"
+      onChange={[Function]}
+      type="text"
+    />
+  </label>
+  <button
+    className="city-search-btn"
+    type="submit"
+  >
+    Find a Dojo
+  </button>
+</form>
+`;
