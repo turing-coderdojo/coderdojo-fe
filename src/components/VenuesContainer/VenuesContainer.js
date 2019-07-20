@@ -2,32 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 import VenueSearchBar from '../VenueSearchBar/VenueSearchBar';
 
-function VenuesContainer({ venues }) {
+function VenuesContainer({ venues, isLoading, error }) {
   const generatedVenues = () => venues
     .map(venue => (
-      <article>
+      <article key={venue.id}>
         <h3>
-          CARD 
           {venue.name}
-          {venue.address}
         </h3>
+        <p>{venue.notes}</p>
       </article> 
     ));
   
   return (
     <section>
       <VenueSearchBar />
+      { isLoading && <h3>Loading dojos...</h3>}
+      { error && <h4>{error}</h4>}
       { generatedVenues() }
     </section>
   );
 }
 
 const mapStateToProps = state => ({
-  venues: [
-    { name: '1', address: '1234' },
-    { name: '1', address: '1234' },
-    { name: '1', address: '1234' }
-  ]
+  venues: state.searchResults,
+  isLoading: state.isFetching,
+  error: state.error
 });
 
 export default connect(mapStateToProps)(VenuesContainer);
