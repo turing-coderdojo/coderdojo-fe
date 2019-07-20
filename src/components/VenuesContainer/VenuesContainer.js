@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import requests from '../../utils/requests/requests';
 
 export class VenuesContainer extends Component {
   state = { 
@@ -8,24 +9,39 @@ export class VenuesContainer extends Component {
   };
 
   componentDidMount() {
-    this.searchVenues;
-  };
+    this.searchVenues();
+  }
 
   componentDidUpdate(prevProps) {
     const { setSearchResults } = this.props;
     if (setSearchResults !== prevProps) {
-      this.searchVenues();
+      // this.searchVenues();
+    }
+  }
+
+  searchVenues() {
+    const { setSearchResults } = this.props;
+    try {
+      const venues = [
+        { name: '1', address: '1234' },
+        { name: '1', address: '1234' },
+        { name: '1', address: '1234' }
+      ];
+      this.setState({ venues });
+    } catch (error) {
+      this.setState({ error });
     }
   }
 
   generateVenues() {
     const { venues } = this.state;
     
-    venues.map(venue => (
+    return venues.map(venue => (
       <article>
         <h3>
           CARD 
-          {venue}
+          {venue.name}
+          {venue.address}
         </h3>
       </article> 
     ));
@@ -36,7 +52,7 @@ export class VenuesContainer extends Component {
       <section>
         {this.generateVenues()}
       </section>
-    )
+    );
   }
 }
 
