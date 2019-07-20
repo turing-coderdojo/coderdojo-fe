@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
+import VenueSearchBar from '../VenueSearchBar/VenueSearchBar';
 
 function VenuesContainer({ venues }) {
   const generatedVenues = () => venues
@@ -16,6 +17,7 @@ function VenuesContainer({ venues }) {
   
   return (
     <section>
+      <VenueSearchBar />
       { generatedVenues() }
     </section>
   );
