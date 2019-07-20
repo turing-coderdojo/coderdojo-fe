@@ -7,11 +7,16 @@ exports[`VenuesContainer should match snapshot 1`] = `
   <article
     className="search-bar-container"
   >
-    <Connect(VenueSearchBar) />
+    <Connect(VenueSearchBar)
+      location="venues"
+    />
   </article>
   <article
     className="venues-container"
   >
+    <h3>
+      Found 1 venues in DENVER
+    </h3>
     <article
       className="venue-card"
       key="1"
@@ -34,11 +39,16 @@ exports[`VenuesContainer should match snapshot with error/loading 1`] = `
   <article
     className="search-bar-container"
   >
-    <Connect(VenueSearchBar) />
+    <Connect(VenueSearchBar)
+      location="venues"
+    />
   </article>
   <article
     className="venues-container"
   >
+    <h3>
+      Found 1 venues in DENVER
+    </h3>
     <h4>
       Failed to fetch
     </h4>

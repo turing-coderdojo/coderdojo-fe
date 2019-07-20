@@ -22,6 +22,7 @@ export function VenuesContainer({
         <VenueSearchBar location="venues" />
       </article>
       <article className="venues-container">
+        <h3>{`Found ${searchResults.venues.length} venues in ${searchResults.city.toUpperCase()}`}</h3>
         { isLoading && <h3>Loading dojos...</h3>}
         { error && <h4>{error}</h4>}
         { generatedVenues() }
