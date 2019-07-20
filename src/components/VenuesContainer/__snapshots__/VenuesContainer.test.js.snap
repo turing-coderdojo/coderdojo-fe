@@ -17,17 +17,15 @@ exports[`VenuesContainer should match snapshot 1`] = `
     <h3>
       Found 1 venues in DENVER
     </h3>
-    <article
-      className="venue-card"
-      key="1"
-    >
-      <h3>
-        Venue One
-      </h3>
-      <p>
-        Here be Dragons
-      </p>
-    </article>
+    <VenueCard
+      venue={
+        Object {
+          "id": 1,
+          "name": "Venue One",
+          "notes": "Here be Dragons",
+        }
+      }
+    />
   </article>
 </section>
 `;
@@ -52,17 +50,15 @@ exports[`VenuesContainer should match snapshot with error/loading 1`] = `
     <h4>
       Failed to fetch
     </h4>
-    <article
-      className="venue-card"
-      key="1"
-    >
-      <h3>
-        Venue One
-      </h3>
-      <p>
-        Here be Dragons
-      </p>
-    </article>
+    <VenueCard
+      venue={
+        Object {
+          "id": 1,
+          "name": "Venue One",
+          "notes": "Here be Dragons",
+        }
+      }
+    />
   </article>
 </section>
 `;

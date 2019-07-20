@@ -13,7 +13,7 @@ export function VenueSearchBar(props) {
   async function handleSubmit(e) {
     e.preventDefault();
     if (location === 'splash') setRedirect(true);
-    const venues = await requests.getAllVenues();
+    const venues = await requests.getVenuesByCity({ city });
     if (venues) {
       const searchResults = {
         city,
