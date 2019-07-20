@@ -2,8 +2,21 @@ import React, { Component } from 'react';
 
 export class VenuesContainer extends Component {
   state = { 
-    venues: []
+    venues: [],
+    loading: false,
+    error: ''
   };
+
+  componentDidMount() {
+    this.searchVenues;
+  };
+
+  componentDidUpdate(prevProps) {
+    const { setSearchResults } = this.props;
+    if (setSearchResults !== prevProps) {
+      this.searchVenues();
+    }
+  }
 
   generateVenues() {
     const { venues } = this.state;
