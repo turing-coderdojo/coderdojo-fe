@@ -91,7 +91,12 @@ export const mapDispatchToProps = dispatch => ({
   addUser: user => dispatch(actions.addUser(user))
 });
 
-export default connect(undefined, mapDispatchToProps)(LoginForm);
+export const mapStateToProps = ({ isFetching, error }) => ({
+  error,
+  isFetching
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
 
 LoginForm.propTypes = {
   addUser: PropTypes.func
