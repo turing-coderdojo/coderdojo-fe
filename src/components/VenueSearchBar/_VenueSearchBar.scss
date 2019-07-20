@@ -2,13 +2,14 @@
   text-align: left;
   
   h3 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #ffffff;
     font-weight: 400;
   }
 
   p {
     color: #ffffff;
+    letter-spacing: .5px;
     margin: 5px 0;
   }
 
@@ -34,6 +35,11 @@
   }
 
   input {
+    padding: 15px;
     width: 300px;
+
+    &::placeholder {
+      color: #CCCCCC;
+    }
   }
 }

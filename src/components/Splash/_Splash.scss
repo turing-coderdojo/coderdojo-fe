@@ -1,12 +1,12 @@
 .Splash {
-  width: 80%;
-  margin: auto;
+  margin: 0 auto;
   min-width: 350px; 
+  padding: 0 125px;
 }
 
 .Splash-container {
   text-align: center;
-  margin: 100px 0 0 0;
+  margin: 75px 0 0 0;
 }
 
 .main-splash-img {
@@ -17,7 +17,7 @@
 
 .green-container {
   background: $primary-color;
-  height: 325px;
+  height: 310px;
   margin: 0 auto;
-  padding: 6%;
+  padding: 7%;
 }
