@@ -100,6 +100,12 @@ export const GET_ALL_VENUES = gql`
       id
       name
       notes
+      addresses{
+        city
+        street1
+        street2
+        zip
+      }
     }
   }
 `;

@@ -2,19 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import VenueSearchBar from '../VenueSearchBar/VenueSearchBar';
+import VenueCard from '../VenueCard/VenueCard';
 
 export function VenuesContainer({
   searchResults, isLoading, error 
 }) {  
   const generatedVenues = () => searchResults.venues
-    .map(venue => (
-      <article className="venue-card" key={venue.id}>
-        <h3>
-          {venue.name}
-        </h3>
-        <p>{venue.notes}</p>
-      </article> 
-    ));
+    .map(venue => <VenueCard venue={venue} />);
   
   return (
     <section className="VenuesContainer">
