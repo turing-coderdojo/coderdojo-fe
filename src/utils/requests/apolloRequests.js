@@ -22,6 +22,7 @@ export function dispatchError(error) {
 
 export async function apolloQuery(query) {
   store.dispatch(setFetching(true));
+  store.dispatch(setError(''));
   let result;
   try {
     result = await client.query({ query });
@@ -34,6 +35,7 @@ export async function apolloQuery(query) {
 
 export async function apolloMutate(mutation, variables) {
   store.dispatch(setFetching(true));
+  store.dispatch(setError(''));
   let result;
   try {
     result = await client.mutate({ mutation, variables });
