@@ -1,8 +1,25 @@
 .venue-card {
+  background-color: #fff;
+  padding: 50px;
+  margin: 10px;
   display: flex;
 
   .dojo-logo {
     width: 40px;
     padding: 0;
+  }
+
+  h3 {
+    color: #298244;
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+
+  p {
+    color: #999999;
+  }
+
+  .info-container {
+    margin: 0 20px;
   }
 }

@@ -10,14 +10,14 @@ function VenueCard({ venue }) {
     const { 
       city, street1, street2, zip, state, id: addressId
     } = address;
-    const combined = `${street1} ${street2 || ''}, ${city} ${state}, ${zip}`;
+    const combined = `${street1}, ${street2 || ''} ${city}, ${state} ${zip}`;
     return <p key={addressId}>{combined}</p>;
   });
 
   return (
     <article className="venue-card" key={id}>
       <Logo className="dojo-logo" />
-      <div>
+      <div className="info-container">
         <h3>
           {name}
         </h3>
