@@ -19,7 +19,15 @@ export function VenueSearchBar(props) {
     }
   }
   
-  if (redirect) return <Redirect to="/venues" />;
+  if (redirect) {
+    return (
+      <Redirect to={{
+        pathname: '/venues',
+        city
+      }}
+      />
+    );
+  }
 
   return (
     <form 
