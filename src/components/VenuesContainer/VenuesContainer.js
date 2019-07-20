@@ -6,7 +6,7 @@ import VenueSearchBar from '../VenueSearchBar/VenueSearchBar';
 export function VenuesContainer({ venues, isLoading, error }) {
   const generatedVenues = () => venues
     .map(venue => (
-      <article key={venue.id}>
+      <article className="venue-card" key={venue.id}>
         <h3>
           {venue.name}
         </h3>
@@ -15,13 +15,15 @@ export function VenuesContainer({ venues, isLoading, error }) {
     ));
   
   return (
-    <section className="VenueSearchBar">
-      <div className="search-bar-container">
+    <section className="VenuesContainer">
+      <article className="search-bar-container">
         <VenueSearchBar />
-      </div>
-      { isLoading && <h3>Loading dojos...</h3>}
-      { error && <h4>{error}</h4>}
-      { generatedVenues() }
+      </article>
+      <article className="venues-container">
+        { isLoading && <h3>Loading dojos...</h3>}
+        { error && <h4>{error}</h4>}
+        { generatedVenues() }
+      </article>
     </section>
   );
 }

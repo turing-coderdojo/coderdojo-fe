@@ -1,7 +1,23 @@
-.VenueSearchBar {
+.VenuesContainer {
+  width: 80%;
+  margin: auto;
+  min-width: 350px;
+  height: 100vh;
+
   .search-bar-container {
     background: $primary-color;
     height: 200px;
-    padding: 2% 6%;
+    padding: 2%;
+  }
+
+  .venues-container {
+    background-color: #E5E5E5;
+    height: 100%;
+    padding: 20px;
+  }
+
+  .venue-card {
+    background-color: #fff;
+    padding: 40px;
   }
 }
