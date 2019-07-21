@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { ReactComponent as Logo } from '../../images/logo-black.svg';
+import { ReactComponent as Logo } from '../../images/CoderDojoColorado.svg';
 import { addUser } from '../../actions';
 
 export function Header(props) {
@@ -33,8 +33,7 @@ export function Header(props) {
   return (
     <header>
       <Link to="/" className="logo-a-tag">
-        <Logo className="logo" />
-        <h1>Colorado</h1>
+        <Logo className="logo" alt="Coder Dojo Colorado Logo" />
       </Link>
       <section>
         <NavLink className="nav-link" to="/">FIND A DOJO</NavLink>

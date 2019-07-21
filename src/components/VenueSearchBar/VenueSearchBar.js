@@ -26,6 +26,7 @@ export function VenueSearchBar(props) {
         <input 
           type="text" 
           id="city-input"
+          placeholder="Enter a city"
           onChange={(e) => {
             cityInput = e.target.value;
           }} 
