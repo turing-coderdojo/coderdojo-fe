@@ -13,7 +13,7 @@ export class ContactForm extends Component {
     street1: '',
     street2: '',
     city: '',
-    state:'',
+    state: '',
     zip: '',
     success: false
   }
@@ -48,6 +48,29 @@ export class ContactForm extends Component {
       username,
       password
     };
+
+    this.createGuardian(guardian, user)
+  }
+
+  createGuardian = async (guardian, user) => {
+    const { error } = this.props;
+    const result = await requests.createGuardian(guardian)
+    if (result) {
+      this.signIn(user);
+    } else {
+      console.log(error);
+    }
+  }
+
+  signIn = async (user) => {
+    const { addUser } = this.props;
+    const result = await requests.signIn(user);
+    if (result) {
+      const { user: validUser, token } = result.signIn;
+      localStorage.setItem('token', JSON.stringify(token));
+      addUser(validUser);
+      this.setState({ success: true });
+    }
   }
   
   render() {
