@@ -129,3 +129,12 @@ export const GET_VENUES_BY_CITY = gql`
     }
   }
 `;
+
+export const GET_EVENTS_BY_VENUE = gql`
+  query allEvents($venueId: String!) {
+    allEvents(venueId: $venueId) {
+      id
+      name
+    }
+  }
+`;
