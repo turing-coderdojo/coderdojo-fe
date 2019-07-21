@@ -10,6 +10,7 @@ function EventsContainer(props) {
     const result = await requests.getEventsByVenue({ venueId });
     setEvents(result.allEvents);
   };
+  getEvents(parseInt(params.id, 10));
 
   const generateEvents = () => events.map((event) => {
     const { name } = event;
@@ -20,26 +21,33 @@ function EventsContainer(props) {
     );
   });
 
-  if (params.id) {
-    // const { 
-    //   city, street1, street2, zip, state, id
-    // } = venue;
-    // address = `${street1}, ${street2 || ''} ${city}, ${state} ${zip}`;
-    getEvents(parseInt(params.id, 10));
-  }
+
+  const generateVenueInfo = (event = []) => {
+    const { 
+      city, street1, street2, zip, state
+    } = event.venue.addresses[0];
+    const address = `${street1}, ${street2 || ''} ${city}, ${state} ${zip}`;
+    return (
+      <section>
+        <p>
+          Address: 
+          {address}
+        </p>
+      </section>
+    );
+  };
+
+  if (!events.length) return <div />;
 
   return (
     <section className="EventsContainer">
-      <h2>EVENTSSSS</h2>
+      <h2>{events[0].venue.name}</h2>
       <div>
-        <section className="venue-details">
-          {/* {`Adress: ${address}`} */}
-        </section>
+        {generateVenueInfo(events[0])}
         <section className="events-container">
           {generateEvents()}
         </section>
       </div>
-
     </section>
   );
 }
