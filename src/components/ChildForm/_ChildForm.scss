@@ -18,12 +18,19 @@
   }
 
   input {
-    @include form-input-style
+    @include form-input-style;
   }
 
   button {
     @include form-submit
     background: $footer-color;
     border: $footer-color solid 2px;
+  }
+
+  .error-msg {
+    color: $footer-color;
+    height: 16px;
+    text-align: center;
+    text-transform: uppercase;
   }
 }

@@ -1,3 +1,72 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChildForm should match snapshot 1`] = `<div />`;
+exports[`ChildForm should match snapshot 1`] = `
+<form
+  className="ChildForm"
+  onSubmit={[Function]}
+>
+  <h2>
+    Register a Child
+  </h2>
+  <label
+    htmlFor="child-name-input"
+  >
+    Child's Name
+    <input
+      id="child-name-input"
+      name="name"
+      onChange={[Function]}
+      type="text"
+    />
+  </label>
+  <label
+    htmlFor="child-dob"
+  >
+    Child's Date of Birth
+    <input
+      id="child-dob"
+      name="dob"
+      onChange={[Function]}
+      type="text"
+    />
+  </label>
+  <label
+    htmlFor="child-username-input"
+  >
+    Child's Username
+    <input
+      id="child-username-input"
+      name="username"
+      onChange={[Function]}
+      type="text"
+    />
+  </label>
+  <label
+    htmlFor="child-password-input"
+  >
+    Child's Password
+    <input
+      id="child-password-input"
+      name="password"
+      onChange={[Function]}
+      type="text"
+    />
+  </label>
+  <label
+    htmlFor="child-password2-input"
+  >
+    Re-Enter Child's Password
+    <input
+      id="child-password2-input"
+      name="password2"
+      onChange={[Function]}
+      type="text"
+    />
+  </label>
+  <button
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
+`;

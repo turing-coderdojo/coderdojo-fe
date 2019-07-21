@@ -7,6 +7,8 @@ class ChildForm extends Component {
     password: '',
     password2: '',
     dob: '',
+    error: '',
+    loading: false
   }
 
   handleChange = (e) => {
@@ -19,16 +21,48 @@ class ChildForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
+    this.setState({ loading: true });
+    
+    this.checkAllFields();
+
+    this.checkPasswords();
+  }
+
+  checkPasswords() {
+    const { password, password2 } = this.state;
+
+    if (password !== password2) {
+      this.setState({
+        error: 'Passwords must match.',
+        password: '',
+        password2: ''
+      });
+    }
+  }
+
+  checkAllFields() {
+    const { name, username, password, password2, dob } = this.state;
+    const fields = [name, username, password, password2, dob];
+
+    for (let field of fields) {
+      if (!field) {
+        this.setState({ error: 'All fields must be filled.' });
+      }
+    } 
   }
 
   render() {
+    const { password, password2, error, loading } = this.state;
+
     return (
       <form 
         className="ChildForm"
-        onSubmit={this.handleSubmit}>
-        <h2>Register a Child</h2>
+        onSubmit={this.handleSubmit}
+      >
+        <h2>Register a Student</h2>
         <label htmlFor="child-name-input">
-          Child's Name
+          Student's Full Name
           <input
             type="text"
             id="child-name-input"
@@ -37,7 +71,7 @@ class ChildForm extends Component {
           />
         </label>
         <label htmlFor="child-dob">
-          Child's Date of Birth
+          Student's Date of Birth
           <input 
             type="text"
             id="child-dob"
@@ -46,7 +80,7 @@ class ChildForm extends Component {
           />
         </label>
         <label htmlFor="child-username-input">
-          Child's Username
+          Student's Username
           <input
             type="text"
             id="child-username-input"
@@ -55,25 +89,28 @@ class ChildForm extends Component {
           />
         </label>
         <label htmlFor="child-password-input">
-          Child's Password
+          Student's Password
           <input
-            type="text"
+            type="password"
             id="child-password-input"
             name="password"
+            value={password}
             onChange={this.handleChange}
           />
         </label>
         <label htmlFor="child-password2-input">
-          Re-Enter Child's Password
+          Re-Enter Student's Password
           <input
-            type="text"
+            type="password"
             id="child-password2-input"
             name="password2"
+            value={password2}
             onChange={this.handleChange}
           />
         </label>
+        <p className="error-msg">{error && error}</p>
         <button type="submit">
-          Submit
+          {loading ? 'Please wait...' : 'Submit'}
         </button>
       </form>
     );

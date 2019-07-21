@@ -23,7 +23,7 @@ function Controls() {
         <Route exact path="/myFamily" component={Family} />
         <Route exact path="/myFamily/registerChild" component={ChildForm} />
         <Route exact path="/register" component={RegisterForm} />
-        <Route render={() => <h1>404 Page</h1>} />
+        <Route render={() => <h1>404 Page Not Found</h1>} />
       </Switch>
     </div>
   );
