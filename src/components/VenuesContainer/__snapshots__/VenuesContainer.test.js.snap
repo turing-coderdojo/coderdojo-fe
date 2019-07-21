@@ -18,6 +18,7 @@ exports[`VenuesContainer should match snapshot 1`] = `
       Found 1 dojos in DENVER
     </h3>
     <VenueCard
+      key="1"
       venue={
         Object {
           "id": 1,
@@ -51,6 +52,7 @@ exports[`VenuesContainer should match snapshot with error/loading 1`] = `
       Failed to fetch
     </h4>
     <VenueCard
+      key="1"
       venue={
         Object {
           "id": 1,

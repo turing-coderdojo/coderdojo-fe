@@ -8,7 +8,7 @@ export function VenuesContainer({
   searchResults, isLoading, error 
 }) {  
   const generatedVenues = () => searchResults.venues
-    .map(venue => <VenueCard venue={venue} />);
+    .map(venue => <VenueCard venue={venue} key={venue.id} />);
   
   const resultLength = searchResults.venues.length;
   
@@ -39,6 +39,8 @@ export const mapStateToProps = state => ({
   error: state.error
 });
 
+export default connect(mapStateToProps)(VenuesContainer);
+
 VenuesContainer.propTypes = {
   searchResults: PropTypes.object,
   isLoading: PropTypes.bool,
@@ -50,5 +52,3 @@ VenuesContainer.defaultProps = {
   isLoading: false,
   error: ''
 };
-
-export default connect(mapStateToProps)(VenuesContainer);

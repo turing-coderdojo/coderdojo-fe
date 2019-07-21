@@ -1,3 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EventsContainer should match snapshot 1`] = `undefined`;
+exports[`EventsContainer should match snapshot 1`] = `
+<section
+  className="EventsContainer"
+>
+  <div
+    className="venue-header"
+  >
+    <h2 />
+  </div>
+  <div
+    className="details-container"
+  >
+    <section
+      className="events-container"
+    >
+      <h3>
+        Upcoming Events:
+      </h3>
+      <h3>
+        Recent Events:
+      </h3>
+    </section>
+  </div>
+</section>
+`;
