@@ -1,5 +1,6 @@
 import React from 'react';
 import { ReactComponent as Logo } from '../../images/yin-yang-logo.svg';
+import { Link } from 'react-router-dom';
 
 function VenueCard({ venue }) {
   const { 
@@ -14,6 +15,11 @@ function VenueCard({ venue }) {
     return <p key={addressId}>{combined}</p>;
   });
 
+  const linkToEvent = {
+    pathname: `/venues/${id}/events`,
+    venue
+  };
+
   return (
     <article className="venue-card" key={id}>
       <Logo className="dojo-logo" />
@@ -23,6 +29,10 @@ function VenueCard({ venue }) {
         </h3>
         {generateAdresses}
       </div>
+      <Link to={linkToEvent}>
+        SHOW EVENTS
+      </Link>
+      
     </article> 
   );
 }

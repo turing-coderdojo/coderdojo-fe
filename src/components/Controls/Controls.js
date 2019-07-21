@@ -8,6 +8,7 @@ import ContactInfo from '../ContactInfo/ContactInfo';
 import Family from '../Family/Family';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import VenuesContainer from '../VenuesContainer/VenuesContainer';
+import EventsContainer from '../EventsContainer/EventsContainer';
 
 function Controls() {
   return (
@@ -15,6 +16,7 @@ function Controls() {
       <Switch>
         <Route exact path="/" component={Splash} />
         <Route exact path="/venues" component={VenuesContainer} />
+        <Route exact path="/venues/:id/events" component={EventsContainer} />
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/student/:id" component={Profile} />
         <Route exact path="/students" component={CurrentStudents} />
