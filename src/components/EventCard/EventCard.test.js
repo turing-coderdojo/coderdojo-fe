@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EventListItem from './EventListItem';
+import EventCard from './EventCard';
 
-describe('EventListItem', () => {
+describe('EventCard', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<EventListItem />);
+    wrapper = shallow(<EventCard />);
   });
 
   it('should match snapshot', () => {

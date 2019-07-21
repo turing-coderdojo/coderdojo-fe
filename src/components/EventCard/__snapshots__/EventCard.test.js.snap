@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventCard should match snapshot 1`] = `
+<article>
+  <h3 />
+  <p>
+    When:
+    Invalid Date
+  </p>
+  <p>
+    Invalid Date
+    -
+    Invalid Date
+  </p>
+  <p />
+</article>
+`;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
+import EventCard from '../EventCard/EventCard';
 
 export function EventsContainer(props) {
   const { match, isLoading, error } = props;
@@ -22,29 +23,7 @@ export function EventsContainer(props) {
     getAllData(parseInt(match.params.id, 10));
   }, [match]);
 
-  const generateEvents = events => events.map((event) => {
-    const { 
-      name, notes, startTime, endTime, id 
-    } = event;
-    const startDate = new Date(startTime);
-    const endDate = new Date(endTime);
-    const timeSetting = { hour: 'numeric', hour12: true };
-    return (
-      <article key={id}>
-        <h3>{name}</h3>
-        <p>
-          When:
-          {startDate.toDateString()}
-        </p>
-        <p>
-          {startDate.toLocaleString('en-US', timeSetting)} 
-          - 
-          {endDate.toLocaleString('en-US', timeSetting)}
-        </p>
-        <p>{notes}</p>
-      </article>
-    );
-  });
+  const generateEvents = events => events.map(event => <EventCard key={event.id} event={event} />);
 
   const venueDetails = () => {
     const { 

@@ -15,7 +15,7 @@ exports[`VenuesContainer should match snapshot 1`] = `
     className="venues-container"
   >
     <h3>
-      Found 1 venues in DENVER
+      Found 1 dojos in DENVER
     </h3>
     <VenueCard
       venue={
@@ -45,7 +45,7 @@ exports[`VenuesContainer should match snapshot with error/loading 1`] = `
     className="venues-container"
   >
     <h3>
-      Found 1 venues in DENVER
+      Found 1 dojos in DENVER
     </h3>
     <h4>
       Failed to fetch
