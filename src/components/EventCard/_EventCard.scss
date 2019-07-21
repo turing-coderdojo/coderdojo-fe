@@ -1,0 +1,38 @@
+.EventCard {
+  padding: 5% 8% 10% 8%;
+  border: 2px solid #faa31a;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  position: relative;
+
+  .details {
+    display: flex;
+
+    h3 {
+      color: #298244;
+      flex: 2;
+    }
+    
+    .date-container {
+      flex: 1;
+
+      .hours {
+        font-size: .8rem;
+      }
+    }
+  }
+
+  .notes {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px 0;
+    text-indent: 20px;
+    font-size: .8rem;
+    width: 100%;
+    background-color: #f4f5f6;
+  }
+
+}

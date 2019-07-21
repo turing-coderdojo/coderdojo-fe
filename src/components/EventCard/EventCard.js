@@ -3,25 +3,28 @@ import PropTypes from 'prop-types';
 
 function EventCard({ event }) {
   const { 
-    name, notes, startTime, endTime, id 
+    name, notes, startTime, endTime 
   } = event;
   const startDate = new Date(startTime);
   const endDate = new Date(endTime);
   const timeSetting = { hour: 'numeric', hour12: true };
 
   return (
-    <article>
-      <h3>{name}</h3>
-      <p>
-        When:
-        {startDate.toDateString()}
-      </p>
-      <p>
-        {startDate.toLocaleString('en-US', timeSetting)} 
-        - 
-        {endDate.toLocaleString('en-US', timeSetting)}
-      </p>
-      <p>{notes}</p>
+    <article className="EventCard">
+      <div className="details">
+        <h3>{name}</h3>
+        <div className="date-container">
+          <p className="date">
+            {startDate.toDateString()}
+          </p>
+          <p className="hours">
+            {startDate.toLocaleString('en-US', timeSetting)} 
+            - 
+            {endDate.toLocaleString('en-US', timeSetting)}
+          </p>
+        </div>
+      </div>        
+      <p className="notes">{notes}</p>
     </article>
   );
 }
