@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import requests from '../../utils/requests/requests';
 import { Redirect } from 'react-router-dom';
-import * as actions from '../../actions';
 import { connect } from 'react-redux';
-
+import { PropTypes } from 'prop-types';
+import requests from '../../utils/requests/requests';
+import * as actions from '../../actions';
 
 export class ChildForm extends Component {
   state = {
@@ -12,8 +12,6 @@ export class ChildForm extends Component {
     password: '',
     password2: '',
     dob: '',
-    error: '',
-    loading: false,
     success: false
   }
 
@@ -28,16 +26,55 @@ export class ChildForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    this.setState({ loading: true });
+    const { error } = this.props;
+
     this.checkAllFields();
     this.checkPasswords();
 
-    if (!this.state.error) this.registerStudent();
+    if (error) {
+      console.log('error');
+    }
+
+    if (!error) {
+      console.log('no error');
+      // this.registerStudent();
+    }
+  }
+
+  checkAllFields() {
+    const { 
+      name, 
+      username, 
+      password, 
+      password2, 
+      dob 
+    } = this.state;
+    const { setError } = this.props;
+    const fields = [name, username, password, password2, dob];
+
+    for (const field of fields) {
+      if (!field) {
+        setError('All fields must be filled.');
+      }
+    } 
+  }
+
+  checkPasswords() {
+    const { password, password2 } = this.state;
+    const { setError } = this.props;
+
+    if (password !== password2) {
+      setError('Passwords must match.');
+
+      this.setState({
+        password: '',
+        password2: ''
+      });
+    }
   }
 
   registerStudent = async () => {
     const { name, username, password, dob } = this.state;
-    const { addUser } = this.props;
     const student = {
       name,
       username,
@@ -51,31 +88,9 @@ export class ChildForm extends Component {
     }
   }
 
-  checkPasswords() {
-    const { password, password2 } = this.state;
-
-    if (password !== password2) {
-      this.setState({
-        error: 'Passwords must match.',
-        password: '',
-        password2: ''
-      });
-    }
-  }
-
-  checkAllFields() {
-    const { name, username, password, password2, dob } = this.state;
-    const fields = [name, username, password, password2, dob];
-
-    for (let field of fields) {
-      if (!field) {
-        this.setState({ error: 'All fields must be filled.' });
-      }
-    } 
-  }
-
   render() {
-    const { password, password2, error, loading, success } = this.state;
+    const { password, password2, success } = this.state;
+    const { error, loading } = this.props;
 
     if (success) return <Redirect to="/" />;
 
@@ -142,7 +157,24 @@ export class ChildForm extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  addUser: user => dispatch(actions.addUser(user))
+  setError: error => dispatch(actions.setError(error))
 });
 
-export default connect(undefined, mapDispatchToProps)(ChildForm);
+export const mapStateToProps = state => ({
+  error: state.error,
+  loading: state.isFetching
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChildForm);
+
+ChildForm.propTypes = {
+  setError: PropTypes.func,
+  error: PropTypes.string,
+  loading: PropTypes.bool
+};
+
+ChildForm.defaultProps = {
+  setError: () => {},
+  error: '',
+  loading: false
+};
