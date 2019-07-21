@@ -136,8 +136,10 @@ export const GET_VENUE_DETAILS = gql`
       name
       addresses {
         street1
+        street2
         city
         state
+        zip
       }
     }
   }

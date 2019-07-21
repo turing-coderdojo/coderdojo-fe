@@ -33,8 +33,8 @@ export function EventsContainer(props) {
     return (
       <section className="venue-details">
         <p>{venue.notes}</p>
+        <h4>Address:</h4>
         <p>
-          Address: 
           {venueAdress}
         </p>
       </section>

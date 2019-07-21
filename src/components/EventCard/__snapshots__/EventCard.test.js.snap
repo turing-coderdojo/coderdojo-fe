@@ -1,17 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EventCard should match snapshot 1`] = `
-<article>
-  <h3 />
-  <p>
-    When:
-    Invalid Date
+<article
+  className="EventCard"
+>
+  <div
+    className="details"
+  >
+    <h3>
+      Test Event 2
+    </h3>
+    <div
+      className="date-container"
+    >
+      <p
+        className="date"
+      >
+        Wed Aug 21 2019
+      </p>
+      <p
+        className="hours"
+      >
+        11 AM
+        -
+        12 PM
+      </p>
+    </div>
+  </div>
+  <p
+    className="notes"
+  >
+    testing notes
   </p>
-  <p>
-    Invalid Date
-    -
-    Invalid Date
-  </p>
-  <p />
 </article>
 `;
