@@ -132,9 +132,19 @@ export const GET_VENUES_BY_CITY = gql`
 
 export const GET_EVENTS_BY_VENUE = gql`
   query allEvents($venueId: Int!) {
-    allEvents(venueId: $venueId) {
+    allEvents(venueId: $venueId){
       id
       name
+      venue {
+          name
+          addresses{
+              city
+              street1
+              street2
+              zip
+              state
+          }
+      }
     }
   }
 `;

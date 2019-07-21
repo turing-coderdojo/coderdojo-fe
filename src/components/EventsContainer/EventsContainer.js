@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
 
 function EventsContainer(props) {
-  const { venue } = props.location;
+  const { params } = props.match;
   const [events, setEvents] = useState([]);
 
   const getEvents = async (venueId) => {
@@ -12,7 +13,6 @@ function EventsContainer(props) {
 
   const generateEvents = () => events.map((event) => {
     const { name } = event;
-
     return (
       <article>
         <h3>{name}</h3>
@@ -20,15 +20,24 @@ function EventsContainer(props) {
     );
   });
 
-  if (venue) {
-    getEvents(venue.id);
+  if (params.id) {
+    // const { 
+    //   city, street1, street2, zip, state, id
+    // } = venue;
+    // address = `${street1}, ${street2 || ''} ${city}, ${state} ${zip}`;
+    getEvents(parseInt(params.id, 10));
   }
 
   return (
     <section className="EventsContainer">
-      <h1>EVENTSSSS</h1>
+      <h2>EVENTSSSS</h2>
       <div>
-        {generateEvents()}
+        <section className="venue-details">
+          {/* {`Adress: ${address}`} */}
+        </section>
+        <section className="events-container">
+          {generateEvents()}
+        </section>
       </div>
 
     </section>
@@ -36,26 +45,3 @@ function EventsContainer(props) {
 }
 
 export default EventsContainer;
-
-
-// id: 2
-// name: "Test Event 2"
-
-// city:
-// "Denver"
-// id:
-// 4
-// state:
-// "CO"
-// street1:
-// "567 Main St."
-// street2:
-// "Apt 678"
-// zip:
-// "80128"
-// id:
-// 1
-// name:
-// "Venue One"
-// notes:
-// "Here be Dragons"

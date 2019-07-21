@@ -15,11 +15,6 @@ function VenueCard({ venue }) {
     return <p key={addressId}>{combined}</p>;
   });
 
-  const linkToEvent = {
-    pathname: `/venues/${id}/events`,
-    venue
-  };
-
   return (
     <article className="venue-card" key={id}>
       <Logo className="dojo-logo" />
@@ -29,7 +24,7 @@ function VenueCard({ venue }) {
         </h3>
         {generateAdresses}
       </div>
-      <Link to={linkToEvent}>
+      <Link to={`/venues/${id}/events`}>
         SHOW EVENTS
       </Link>
       
