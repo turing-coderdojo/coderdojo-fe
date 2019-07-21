@@ -1,10 +1,10 @@
 import React from 'react';
-import { ReactComponent as Logo } from '../../images/yin-yang-logo.svg';
 import { Link } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../images/yin-yang-logo.svg';
 
 function VenueCard({ venue }) {
   const { 
-    id, name, notes, addresses 
+    id, name, addresses 
   } = venue;
 
   const generateAdresses = addresses.map((address) => {

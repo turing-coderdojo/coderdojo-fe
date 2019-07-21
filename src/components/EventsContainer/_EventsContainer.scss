@@ -1,0 +1,31 @@
+.EventsContainer {
+  width: 80%;
+  margin: auto;
+  
+  .venue-name-header {
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    background-color: #724695;
+    color: #ffffff;
+
+    h2 {
+      font-weight: 400;
+      margin: 0 40px;
+    }
+  }
+
+  .venue-container {
+    display: flex;
+
+    .venue-details {
+      flex: 1;
+      padding: 20px;
+    }
+    
+    .events-container {
+      flex: 2;
+    }
+  }
+}

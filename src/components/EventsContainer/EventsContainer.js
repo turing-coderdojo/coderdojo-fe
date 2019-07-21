@@ -28,7 +28,7 @@ function EventsContainer(props) {
     } = event.venue.addresses[0];
     const address = `${street1}, ${street2 || ''} ${city}, ${state} ${zip}`;
     return (
-      <section>
+      <section className="venue-details">
         <p>
           Address: 
           {address}
@@ -41,8 +41,10 @@ function EventsContainer(props) {
 
   return (
     <section className="EventsContainer">
-      <h2>{events[0].venue.name}</h2>
-      <div>
+      <div className="venue-name-header">
+        <h2>{events[0].venue.name}</h2>
+      </div>
+      <div className="venue-container">
         {generateVenueInfo(events[0])}
         <section className="events-container">
           {generateEvents()}
