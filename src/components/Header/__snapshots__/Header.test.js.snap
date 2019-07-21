@@ -6,12 +6,10 @@ exports[`Header should match snapshot 1`] = `
     className="logo-a-tag"
     to="/"
   >
-    <ForwardRef(SvgLogoBlack)
+    <ForwardRef(SvgCoderDojoColorado)
+      alt="Coder Dojo Colorado Logo"
       className="logo"
     />
-    <h1>
-      Colorado
-    </h1>
   </Link>
   <section>
     <NavLink
@@ -37,12 +35,10 @@ exports[`Header should match snapshot if there is no user 1`] = `
     className="logo-a-tag"
     to="/"
   >
-    <ForwardRef(SvgLogoBlack)
+    <ForwardRef(SvgCoderDojoColorado)
+      alt="Coder Dojo Colorado Logo"
       className="logo"
     />
-    <h1>
-      Colorado
-    </h1>
   </Link>
   <section>
     <NavLink

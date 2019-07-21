@@ -1,9 +1,13 @@
 .Footer {
+  display: flex;
   height: 200px;
+  justify-content: center;
   position: absolute;
   top: 120%;
-  display: flex;
-  justify-content: center;
+
+  h3 {
+    margin: 10px 10px 0;
+  }
 
   section.social-media {
     width: 100vw;
@@ -26,7 +30,7 @@
     img {
       width: 30px;
       margin: 5px;
-      opacity: .8;
+      opacity: .7;
     }
   }
 }
