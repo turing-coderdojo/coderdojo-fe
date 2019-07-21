@@ -11,12 +11,6 @@ header {
   }
 }
 
-header h1 {
-  color: $primary-color;
-  margin-right: auto;
-  align-self: center;
-}
-
 header a {
   text-decoration: none;
 
@@ -30,7 +24,8 @@ header a {
 }
 
 .logo {
-  width: 150px;
+  height: 50px;
+  width: 250px;
   margin-right: 2px;
 }
 
