@@ -8,15 +8,17 @@ export function EventsContainer(props) {
   const [recentEvents, setRecentEvents] = useState([]);
   const [venue, setVenue] = useState({});
   
-  const getEvents = async (venueId) => {
+  const getAllData = async (venueId) => {
     const upcoming = await requests.getUpcomingEvents({ venueId });
     const recent = await requests.getRecentEvents({ venueId });
+    const currentVenue = await requests.getVenueDetails({ venueId });
     setUpcomingEvents(upcoming.futureEvents);
     setRecentEvents(recent.pastEvents);
+    setVenue(currentVenue.allEvents[0].venue);
   };
 
   useEffect(() => {
-    getEvents(parseInt(params.id, 10));
+    getAllData(parseInt(params.id, 10));
   }, [params.id]);
 
   const generateEvents = events => events.map((event) => {
@@ -39,17 +41,34 @@ export function EventsContainer(props) {
     );
   });
 
-  if (!upcomingEvents.length || !recentEvents.length) return <div />;
+  const venueDetails = () => {
+    const { 
+      city, street1, street2, zip, state
+    } = venue.addresses[0];
+    const venueAdress = `${street1}, ${street2 || ''} ${city}, ${state} ${zip}`;
+    return (
+      <section className="venue-details">
+        <p>{venue.notes}</p>
+        <p>
+          Address: 
+          {venueAdress}
+        </p>
+      </section>
+    );
+  };
 
   return (
     <section className="EventsContainer">
-      <div className="venue-name-header">
+      <div className="venue-header">
+        <h2>{venue.name}</h2>
       </div>
-      <div className="venue-container">
+      <div className="details-container">
+        {venue.name && venueDetails()}
         <section className="events-container">
           <h3>Upcoming Events:</h3>
-          {generateEvents(upcomingEvents)}
-          {generateEvents(recentEvents)}
+          {upcomingEvents.length > 0 && generateEvents(upcomingEvents)}
+          <h3>Recent Events:</h3>
+          {recentEvents.length > 0 && generateEvents(recentEvents)}
         </section>
       </div>
     </section>
