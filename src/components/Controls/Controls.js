@@ -20,8 +20,8 @@ function Controls() {
         <Route exact path="/student/:id" component={Profile} />
         <Route exact path="/students" component={CurrentStudents} />
         <Route exact path="/contact/:id" component={ContactInfo} />
-        <Route exact path="/myFamily" component={Family} />
-        <Route exact path="/myFamily/registerChild" component={ChildForm} />
+        <Route exact path="/myfamily" component={Family} />
+        <Route exact path="/myfamily/registerchild" component={ChildForm} />
         <Route exact path="/register" component={RegisterForm} />
         <Route render={() => <h1>404 Page Not Found</h1>} />
       </Switch>

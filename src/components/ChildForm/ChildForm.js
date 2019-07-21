@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import requests from '../../utils/requests/requests';
+import { Redirect } from 'react-router-dom';
+import * as actions from '../../actions';
+import { connect } from 'react-redux';
 
-class ChildForm extends Component {
+
+export class ChildForm extends Component {
   state = {
     name: '',
     username: '',
@@ -8,7 +13,8 @@ class ChildForm extends Component {
     password2: '',
     dob: '',
     error: '',
-    loading: false
+    loading: false,
+    success: false
   }
 
   handleChange = (e) => {
@@ -23,10 +29,34 @@ class ChildForm extends Component {
     e.preventDefault();
 
     this.setState({ loading: true });
-    
     this.checkAllFields();
-
     this.checkPasswords();
+
+    if (!this.state.error) this.registerStudent();
+  }
+
+  registerStudent = async () => {
+    const { name, username, password, dob } = this.state;
+    const { addUser } = this.props;
+    const student = {
+      name,
+      username,
+      password,
+      birthdate: dob
+    };
+    const createResult = await requests.createStudent(student);
+
+    if (createResult) {
+      const signInResult = await requests.signIn({ username, password });
+
+      const { user, token } = signInResult.signIn;
+
+      localStorage.setItem('token', JSON.stringify(token));
+
+      addUser(user);
+
+      this.setState({ success: true });
+    }
   }
 
   checkPasswords() {
@@ -53,7 +83,9 @@ class ChildForm extends Component {
   }
 
   render() {
-    const { password, password2, error, loading } = this.state;
+    const { password, password2, error, loading, success } = this.state;
+
+    if (success) return <Redirect to="/" />;
 
     return (
       <form 
@@ -117,4 +149,8 @@ class ChildForm extends Component {
   }
 }
 
-export default ChildForm;
+export const mapDispatchToProps = dispatch => ({
+  addUser: user => dispatch(actions.addUser(user))
+});
+
+export default connect(undefined, mapDispatchToProps)(ChildForm);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ChildForm from './ChildForm';
+import { ChildForm } from './ChildForm';
 
 describe('ChildForm', () => {
   let wrapper;
