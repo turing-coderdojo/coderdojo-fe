@@ -16,7 +16,7 @@ function VenueCard({ venue }) {
   });
 
   return (
-    <Link to={`/venues/${id}/events`} style={{ 'text-decoration': 'none' }}>
+    <Link to={`/venues/${id}/events`} style={{ textDecoration: 'none' }}>
       <article className="venue-card" key={id}>
         <Logo className="dojo-logo" />
         <div className="info-container">

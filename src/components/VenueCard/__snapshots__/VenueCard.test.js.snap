@@ -4,7 +4,7 @@ exports[`VenueCard should match snapshot 1`] = `
 <Link
   style={
     Object {
-      "text-decoration": "none",
+      "textDecoration": "none",
     }
   }
   to="/venues/1/events"
