@@ -73,7 +73,7 @@ export class LoginForm extends Component {
           />
         </label>
         { error && <p className="error-msg">{ error }</p>}
-        { isFetching && <p>Loggin in, please wait...</p>}
+        { isFetching && <p>Logging in, please wait...</p>}
         <button type="submit" className="signin-btn">LOGIN</button>
         <p className="register-link">
           Don&#39;t have an account?&nbsp;&nbsp;

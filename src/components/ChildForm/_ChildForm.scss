@@ -1,0 +1,29 @@
+.ChildForm {
+  @include flex-column;
+  margin: 10% auto;
+  width: 500px;
+  min-width: 300px;
+  padding: 40px;
+  background-color: #FFFFFF;
+
+  h2 {
+    margin: 0 0 15px 0;
+    text-align: center;
+  }
+
+  label {
+    @include flex-column;
+    margin: 0 0 2px 0;
+    color: #333532;
+  }
+
+  input {
+    @include form-input-style
+  }
+
+  button {
+    @include form-submit
+    background: $footer-color;
+    border: $footer-color solid 2px;
+  }
+}
