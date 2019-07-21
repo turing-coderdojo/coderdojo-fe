@@ -9,31 +9,52 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 export class AgeVerifier extends Component {
   state = {
-    dob: ''
+    birthdate: '',
+    success: false
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
     const { fullName, username, password } = this.props;
-    const { dob } = this.state;
+    const { birthdate } = this.state;
     e.preventDefault();
     const student = {
       username,
       password,
-      fullName,
-      dob
+      name: fullName,
+      birthdate: birthdate.toDateString()
     };
-
-    const results = await this.createStudent(student);
-    // this.signIn()
+    const user = {
+      username,
+      password
+    };
+    
+    this.createStudent(student, user);
   } 
 
-  createStudent = async (student) => {
-    const { addUser } = this.props;
+  createStudent = async (student, user) => {
+    const { error } = this.props;
     const result = await requests.createStudent(student);
+    if (result) {
+      this.signIn(user);
+    } else {
+      console.log(error);
+    }
+  }
+
+  signIn = async (user) => {
+    const { addUser } = this.props;
+    const result = await requests.signIn(user);
+    if (result) {
+      const { user: validUser, token } = result.signIn;
+      localStorage.setItem('token', JSON.stringify(token));
+      addUser(validUser);
+      this.setState({ success: true });
+    }
   }
 
   hanldeDate = (date) => {
-    this.setState({ dob: date });
+    const stringedDate = new Date(date);
+    this.setState({ birthdate: stringedDate });
   }
 
   subYears = () => {
@@ -44,7 +65,10 @@ export class AgeVerifier extends Component {
   }
 
   render() {
-    const { dob } = this.state;
+    const { success } = this.state;
+    const { birthdate } = this.state;
+
+    if (success) return <Redirect to="/" />;
     return (
       <form className="AgeForm" onSubmit={this.handleSubmit}>
         <h2>Please Verify Your Age</h2>
@@ -53,7 +77,7 @@ export class AgeVerifier extends Component {
           <DatePicker 
             id="dob"
             onSelect={this.hanldeDate}
-            selected={dob}
+            selected={birthdate}
             showYearDropdown
             dateFormat="yyyy/MM/dd"
             dropdownMode="select"
@@ -81,3 +105,20 @@ export const mapStateToProps = ({ isFetching, error }) => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(AgeVerifier);
 
+AgeVerifier.propTypes = {
+  addUser: PropTypes.func,
+  error: PropTypes.string,
+  fullName: PropTypes.string,
+  password: PropTypes.string,
+  username: PropTypes.string,
+  isFetching: PropTypes.bool
+};
+
+AgeVerifier.defaultProps = {
+  addUser: () => {},
+  error: '',
+  fullName: '',
+  password: '',
+  username: '',
+  isFetching: false
+};
