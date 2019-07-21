@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
 
 export function EventsContainer(props) {
-  const { match } = props;
+  const { match, isLoading, error } = props;
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [recentEvents, setRecentEvents] = useState([]);
   const [venue, setVenue] = useState({});
@@ -26,16 +26,20 @@ export function EventsContainer(props) {
     const { 
       name, notes, startTime, endTime, id 
     } = event;
+    const startDate = new Date(startTime);
+    const endDate = new Date(endTime);
+    const timeSetting = { hour: 'numeric', hour12: true };
     return (
       <article key={id}>
         <h3>{name}</h3>
         <p>
-          Starts: 
-          {startTime}
+          When:
+          {startDate.toDateString()}
         </p>
         <p>
-          Ends: 
-          {endTime}
+          {startDate.toLocaleString('en-US', timeSetting)} 
+          - 
+          {endDate.toLocaleString('en-US', timeSetting)}
         </p>
         <p>{notes}</p>
       </article>
@@ -62,8 +66,10 @@ export function EventsContainer(props) {
     <section className="EventsContainer">
       <div className="venue-header">
         <h2>{venue.name}</h2>
+        { isLoading && <p>Loading events...</p> }
       </div>
       <div className="details-container">
+        {error && <p>{error}</p>}
         {venue.name && venueDetails()}
         <section className="events-container">
           <h3>Upcoming Events:</h3>
