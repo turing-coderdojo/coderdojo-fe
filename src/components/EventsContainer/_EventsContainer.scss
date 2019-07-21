@@ -1,6 +1,7 @@
 .EventsContainer {
   width: 80%;
   margin: auto;
+  height: 100%;
   
   .venue-name-header {
     width: 100%;
@@ -20,12 +21,14 @@
     display: flex;
 
     .venue-details {
-      flex: 1;
+      flex: 1.5;
       padding: 20px;
+      background-color: #E5E5E5;
     }
     
     .events-container {
-      flex: 2;
+      flex: 4;
+      padding: 15px;
     }
   }
 }
