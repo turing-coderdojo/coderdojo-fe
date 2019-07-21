@@ -1,13 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { EventsContainer } from './EventsContainer';
 
 describe('EventsContainer', () => {
   let wrapper;
   const mockError = '';
+  const mockMatch = {
+    params: {
+      id: 1
+    }
+  };
 
   beforeEach(() => {
-    wrapper = shallow(<EventsContainer isLoading={false} error={mockError} />);
+    wrapper = mount(<EventsContainer match={mockMatch} isLoading={false} error={mockError} />);
   });
 
   it('should match snapshot', () => {
