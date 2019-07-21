@@ -148,3 +148,27 @@ export const GET_EVENTS_BY_VENUE = gql`
     }
   }
 `;
+
+export const UPCOMING_EVENTS_BY_VENUE = gql`
+  query futureEvents($venueId: Int!) {
+    futureEvents(venueId: $venueId){
+      id
+      name
+      notes
+      startTime
+      endTime
+    }
+  }
+`;
+
+export const RECENT_EVENTS_BY_VENUE = gql`
+  query pastEvents($venueId: Int!) {
+    pastEvents(venueId: $venueId){
+      id
+      name
+      notes
+      startTime
+      endTime
+    }
+  }
+`;
