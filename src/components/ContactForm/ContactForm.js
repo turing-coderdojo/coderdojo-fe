@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
+import { Redirect, Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import requests from '../../utils/requests/requests';
+import * as actions from '../../actions';
+
 
 export class ContactForm extends Component {
-  state = {}
+  state = {
+    email: '',
+    phoneNumber: null,
+    street1: '',
+    street2: '',
+    city: '',
+    state:'',
+    zip: '',
+    success: false
+  }
 
   handleChange = ({ target }) => {
     const { name, value } = target;
@@ -9,7 +24,30 @@ export class ContactForm extends Component {
   }
 
   handleSubmit = (e) => {
+    const { fullName, username, password } = this.props;
+    const { email, 
+      phoneNumber,
+      street1,
+      street2,
+      city,
+      state,
+      zip } = this.state;
     e.preventDefault();
+    const guardian = {
+      name: fullName,
+      username,
+      password,
+      phoneNumber,
+      street1,
+      street2,
+      city,
+      state,
+      zip
+    };
+    const user = {
+      username,
+      password
+    };
   }
   
   render() {
@@ -91,4 +129,13 @@ export class ContactForm extends Component {
   }
 }
 
-export default ContactForm;
+export const mapDispatchToProps = dispatch => ({
+  addUser: user => dispatch(actions.addUser(user))
+});
+
+export const mapStateToProps = ({ isFetching, error }) => ({
+  error,
+  isFetching
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
