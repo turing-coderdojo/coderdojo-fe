@@ -50,6 +50,7 @@ export class RegisterForm extends Component {
   assignContactForm = () => {
     let assignContact;
     const { displayContactForm, displayAgeForm } = this.state;
+    
     if (displayContactForm) {
       assignContact = <ContactForm {...this.state} />;
     } else if (displayAgeForm) {

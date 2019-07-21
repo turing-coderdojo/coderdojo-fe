@@ -26,22 +26,18 @@ export class ChildForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { error } = this.props;
+    this.props.setError('');
 
-    this.checkAllFields();
-    this.checkPasswords();
-
-    if (error) {
-      console.log('error');
-    }
-
-    if (!error) {
-      console.log('no error');
-      // this.registerStudent();
-    }
+    const error1 = this.checkAllFields();
+    const error2 = this.checkPasswords();
+    
+    if (!error1 && !error2) {
+      console.log('there were no errors')
+    } 
   }
 
   checkAllFields() {
+    let error = false;
     const { 
       name, 
       username, 
@@ -50,16 +46,20 @@ export class ChildForm extends Component {
       dob 
     } = this.state;
     const { setError } = this.props;
-    const fields = [name, username, password, password2, dob];
+    const fields = [name, username, password, password2, dob]; 
 
-    for (const field of fields) {
+    fields.forEach((field) => {
       if (!field) {
         setError('All fields must be filled.');
-      }
-    } 
+        error = true;
+      } 
+    });
+
+    return error;
   }
 
   checkPasswords() {
+    let error = false;
     const { password, password2 } = this.state;
     const { setError } = this.props;
 
@@ -70,11 +70,20 @@ export class ChildForm extends Component {
         password: '',
         password2: ''
       });
-    }
+
+      error = true;
+    } 
+
+    return error;
   }
 
   registerStudent = async () => {
-    const { name, username, password, dob } = this.state;
+    const { 
+      name, 
+      username, 
+      password, 
+      dob 
+    } = this.state;
     const student = {
       name,
       username,
