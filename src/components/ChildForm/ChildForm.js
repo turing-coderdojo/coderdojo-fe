@@ -47,14 +47,6 @@ export class ChildForm extends Component {
     const createResult = await requests.createStudent(student);
 
     if (createResult) {
-      const signInResult = await requests.signIn({ username, password });
-
-      const { user, token } = signInResult.signIn;
-
-      localStorage.setItem('token', JSON.stringify(token));
-
-      addUser(user);
-
       this.setState({ success: true });
     }
   }
