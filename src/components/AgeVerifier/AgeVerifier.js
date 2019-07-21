@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+import { Redirect, Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
+import requests from '../../utils/requests/requests';
+import * as actions from '../../actions';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export class AgeVerifier extends Component {
@@ -7,9 +12,25 @@ export class AgeVerifier extends Component {
     dob: ''
   }
 
-  handleSubmit = (e) => {
-    
+  handleSubmit = async (e) => {
+    const { fullName, username, password } = this.props;
+    const { dob } = this.state;
+    e.preventDefault();
+    const student = {
+      username,
+      password,
+      fullName,
+      dob
+    };
+
+    const results = await this.createStudent(student);
+    // this.signIn()
   } 
+
+  createStudent = async (student) => {
+    const { addUser } = this.props;
+    const result = await requests.createStudent(student);
+  }
 
   hanldeDate = (date) => {
     this.setState({ dob: date });
@@ -32,6 +53,7 @@ export class AgeVerifier extends Component {
           <DatePicker 
             id="dob"
             onSelect={this.hanldeDate}
+            selected={dob}
             showYearDropdown
             dateFormat="yyyy/MM/dd"
             dropdownMode="select"
@@ -48,4 +70,14 @@ export class AgeVerifier extends Component {
   }
 }
 
-export default AgeVerifier;
+export const mapDispatchToProps = dispatch => ({
+  addUser: user => dispatch(actions.addUser(user))
+});
+
+export const mapStateToProps = ({ isFetching, error }) => ({
+  error,
+  isFetching
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AgeVerifier);
+
