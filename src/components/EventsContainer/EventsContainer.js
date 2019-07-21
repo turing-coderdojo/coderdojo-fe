@@ -15,7 +15,7 @@ export function EventsContainer(props) {
     const currentVenue = await requests.getVenueDetails({ venueId });
     setUpcomingEvents(upcoming.futureEvents);
     setRecentEvents(recent.pastEvents);
-    setVenue(currentVenue.allEvents[0].venue);
+    setVenue(currentVenue.allVenues[0]);
   };
 
   useEffect(() => {
