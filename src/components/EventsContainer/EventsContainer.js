@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
 
 export function EventsContainer(props) {
-  const { params } = props.match;
+  const { match } = props;
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [recentEvents, setRecentEvents] = useState([]);
   const [venue, setVenue] = useState({});
@@ -18,8 +19,8 @@ export function EventsContainer(props) {
   };
 
   useEffect(() => {
-    getAllData(parseInt(params.id, 10));
-  }, [params.id]);
+    getAllData(parseInt(match.params.id, 10));
+  }, [match]);
 
   const generateEvents = events => events.map((event) => {
     const { 
@@ -81,3 +82,15 @@ export const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(EventsContainer);
+
+EventsContainer.propTypes = {
+  match: PropTypes.object,
+  isLoading: PropTypes.bool,
+  error: PropTypes.string
+};
+
+EventsContainer.defaultProps = {
+  match: {},
+  isLoading: false,
+  error: ''
+};

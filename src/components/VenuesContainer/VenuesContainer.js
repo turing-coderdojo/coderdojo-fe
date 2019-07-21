@@ -10,13 +10,21 @@ export function VenuesContainer({
   const generatedVenues = () => searchResults.venues
     .map(venue => <VenueCard venue={venue} />);
   
+  const resultLength = searchResults.venues.length;
+  
   return (
     <section className="VenuesContainer">
       <article className="search-bar-container">
         <VenueSearchBar location="venues" />
       </article>
       <article className="venues-container">
-        <h3>{`Found ${searchResults.venues.length} venues in ${searchResults.city.toUpperCase()}`}</h3>
+        {searchResults.city.length > 0 && ''}
+        <h3>
+          {searchResults.city.length > 0 
+            ? `Found ${resultLength} dojos in ${searchResults.city.toUpperCase()}`
+            : 'Start by searching in you own city'
+          }
+        </h3>
         { isLoading && <h3>Loading dojos...</h3>}
         { error && <h4>{error}</h4>}
         { generatedVenues() }
