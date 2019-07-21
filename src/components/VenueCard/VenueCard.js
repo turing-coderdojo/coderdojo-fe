@@ -16,19 +16,17 @@ function VenueCard({ venue }) {
   });
 
   return (
-    <article className="venue-card" key={id}>
-      <Logo className="dojo-logo" />
-      <div className="info-container">
-        <h3>
-          {name}
-        </h3>
-        {generateAdresses}
-      </div>
-      <Link to={`/venues/${id}/events`}>
-        SHOW EVENTS
-      </Link>
-      
-    </article> 
+    <Link to={`/venues/${id}/events`} style={{ 'text-decoration': 'none' }}>
+      <article className="venue-card" key={id}>
+        <Logo className="dojo-logo" />
+        <div className="info-container">
+          <h3>
+            {name}
+          </h3>
+          {generateAdresses}
+        </div>
+      </article> 
+    </Link>
   );
 }
 
