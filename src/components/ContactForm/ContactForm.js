@@ -9,7 +9,7 @@ import * as actions from '../../actions';
 export class ContactForm extends Component {
   state = {
     email: '',
-    phoneNumber: null,
+    phoneNumber: '',
     street1: '',
     street2: '',
     city: '',
@@ -31,7 +31,9 @@ export class ContactForm extends Component {
       street2,
       city,
       state,
-      zip } = this.state;
+      zip 
+    } = this.state;
+
     e.preventDefault();
     const guardian = {
       name: fullName,
@@ -72,8 +74,21 @@ export class ContactForm extends Component {
       this.setState({ success: true });
     }
   }
+
+  cleanNumber = (e) => {
+    let number = e.target.value;
+    const { phoneNumber } = this.state;
+    if (phoneNumber[0] !== '(') {
+      number = `(${number[0]}${number[1]}${number[2]})${number[3]}${number[4]}${number[5]}-${number[6]}${number[7]}${number[8]}${number[9]}`;
+    }
+    this.setState({ phoneNumber: number });
+  }
   
   render() {
+    const { success, phoneNumber } = this.state;
+
+    if (success) return <Redirect to="/myfamily" />;
+
     return (
       <form
         className="ContactForm"
@@ -93,9 +108,14 @@ export class ContactForm extends Component {
           Phone Number:
           <input
             id="phoneNumber-input"
-            type="text"
+            type="tel"
             name="phoneNumber"
             onChange={this.handleChange}
+            maxLength="10"
+            contentEditable="true" 
+            onBlur={this.cleanNumber}
+            value={phoneNumber}
+            placeholder="(xxx) xxx-xxxx"
           />
         </label>
   
@@ -162,3 +182,30 @@ export const mapStateToProps = ({ isFetching, error }) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
+
+ContactForm.propTypes = {
+  addUser: PropTypes.func,
+  error: PropTypes.string,
+  fullName: PropTypes.string,
+  password: PropTypes.string,
+  username: PropTypes.string,
+  isFetching: PropTypes.bool,
+  email: PropTypes.string,
+  phoneNumber: PropTypes.string,
+  street1: PropTypes.string,
+  street2: PropTypes.string,
+  city: PropTypes.string,
+  state: PropTypes.string,
+  zip: PropTypes.string,
+  success: PropTypes.bool
+};
+
+ContactForm.defaultProps = {
+  addUser: () => {},
+  error: '',
+  fullName: '',
+  password: '',
+  username: '',
+  isFetching: false,
+  success: false
+};

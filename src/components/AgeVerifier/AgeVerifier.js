@@ -111,6 +111,7 @@ AgeVerifier.propTypes = {
   fullName: PropTypes.string,
   password: PropTypes.string,
   username: PropTypes.string,
+  success: PropTypes.bool,
   isFetching: PropTypes.bool
 };
 
@@ -120,5 +121,6 @@ AgeVerifier.defaultProps = {
   fullName: '',
   password: '',
   username: '',
-  isFetching: false
+  isFetching: false,
+  success: false
 };
