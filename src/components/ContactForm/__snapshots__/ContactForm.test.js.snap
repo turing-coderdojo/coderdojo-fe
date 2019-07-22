@@ -27,7 +27,7 @@ exports[`ContactForm should match snapshot 1`] = `
     <input
       contentEditable="true"
       id="phoneNumber-input"
-      maxLength="10"
+      maxLength="14"
       name="phoneNumber"
       onBlur={[Function]}
       onChange={[Function]}
@@ -101,6 +101,7 @@ exports[`ContactForm should match snapshot 1`] = `
       />
     </label>
   </div>
+  <p />
   <button
     className="signin-btn"
     type="submit"

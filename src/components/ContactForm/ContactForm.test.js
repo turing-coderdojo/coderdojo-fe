@@ -22,6 +22,20 @@ describe('ContactForm', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should have default state', () => {
+    const defaultState = {
+      email: '',
+      phoneNumber: '',
+      street1: '',
+      street2: '',
+      city: '',
+      state: '',
+      zip: '',
+      success: false
+    };
+    expect(wrapper.state()).toEqual(defaultState);
+  });
+
   it('should set state data on handleChange', () => {
     wrapper.instance().handleChange(mockInputChange);
     expect(wrapper.state().email).toEqual(mockInputChange.target.value);
