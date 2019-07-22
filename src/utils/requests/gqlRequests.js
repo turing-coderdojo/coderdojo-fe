@@ -134,6 +134,9 @@ export const GET_VENUE_DETAILS = gql`
   query allVenues($venueId: Int!) {
     allVenues(id: $venueId) {
       name
+      email
+      webUrl
+      notes
       addresses {
         street1
         street2
@@ -165,6 +168,27 @@ export const RECENT_EVENTS_BY_VENUE = gql`
       notes
       startTime
       endTime
+    }
+  }
+`;
+
+export const GET_ADMIN_VENUES = gql`
+  {
+    me {
+      venues {
+        id
+        name
+        notes
+        email
+        webUrl
+        events {
+            id
+            name
+            notes
+            startTime
+            endTime
+        }
+      }
     }
   }
 `;
