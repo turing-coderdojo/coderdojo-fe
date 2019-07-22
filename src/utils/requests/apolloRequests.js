@@ -41,7 +41,7 @@ export async function apolloMutate(mutation, variables) {
   store.dispatch(setError(''));
 
   let result;
-  
+
   try {
     result = await client.mutate({ mutation, variables });
     if (result) store.dispatch(setFetching(false));

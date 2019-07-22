@@ -17,7 +17,7 @@ function Controls() {
         <Route exact path="/" component={Splash} />
         <Route exact path="/venues" component={VenuesContainer} />
         <Route exact path="/login" component={LoginForm} />
-        <Route exact path="/student/:id" component={Profile} />
+        <Route exact path="/students/:id" component={Profile} />
         <Route exact path="/students" component={CurrentStudents} />
         <Route exact path="/contact/:id" component={ContactInfo} />
         <Route exact path="/myfamily" component={Family} />
