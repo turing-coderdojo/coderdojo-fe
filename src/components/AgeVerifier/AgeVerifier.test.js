@@ -8,7 +8,4 @@ describe('AgeVerifier', () => {
   beforeEach(() => {
     wrapper = shallow(<AgeVerifier />);
   });
-  it.skip('should match snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
 });

@@ -9,6 +9,7 @@ import Family from '../Family/Family';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import VenuesContainer from '../VenuesContainer/VenuesContainer';
 import ChildForm from '../ChildForm/ChildForm';
+import EventsContainer from '../EventsContainer/EventsContainer';
 
 function Controls() {
   return (
@@ -16,12 +17,15 @@ function Controls() {
       <Switch>
         <Route exact path="/" component={Splash} />
         <Route exact path="/venues" component={VenuesContainer} />
+        <Route exact path="/venues/:id/events" component={EventsContainer} />
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/students/:id" component={Profile} />
         <Route exact path="/students" component={CurrentStudents} />
         <Route exact path="/contact/:id" component={ContactInfo} />
         <Route exact path="/myfamily" component={Family} />
         <Route exact path="/myfamily/registerstudent" component={ChildForm} />
+        <Route exact path="/dashboard/student" component={Profile} />
+        <Route exact path="/dashboard/admin" component={Profile} />
         <Route exact path="/register" component={RegisterForm} />
         <Route render={() => <h1>404 Page Not Found</h1>} />
       </Switch>

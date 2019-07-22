@@ -9,7 +9,8 @@ export class LoginForm extends Component {
   state = {
     username: '',
     password: '',
-    success: false
+    success: false,
+    role: null
   }
 
   handleChange = (e) => {
@@ -40,15 +41,23 @@ export class LoginForm extends Component {
       
       localStorage.setItem('token', JSON.stringify(token));
       addUser(validUser);
-      this.setState({ success: true });
+      this.setState({ success: true, role: validUser.role });
     }
   }
 
   render() {
-    const { success } = this.state;
+    const { success, role } = this.state;
     const { error, isFetching } = this.props;
+    const roleAssign = () => {
+      if (role === 0) {
+        return '/dashboard/student';
+      } else if (role === 1) {
+        return '/myfamily';
+      } 
+      return '/dashboard/admin';
+    };
 
-    if (success) return <Redirect to="/" />;
+    if (success) return <Redirect to={`${roleAssign()}`} />;
 
     return (
       <form

@@ -2,24 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import VenueSearchBar from '../VenueSearchBar/VenueSearchBar';
+import VenueCard from '../VenueCard/VenueCard';
 
-export function VenuesContainer({ venues, isLoading, error }) {
-  const generatedVenues = () => venues
-    .map(venue => (
-      <article className="venue-card" key={venue.id}>
-        <h3>
-          {venue.name}
-        </h3>
-        <p>{venue.notes}</p>
-      </article> 
-    ));
+export function VenuesContainer({
+  searchResults, isLoading, error 
+}) {  
+  const generatedVenues = () => searchResults.venues
+    .map(venue => <VenueCard venue={venue} key={venue.id} />);
+  
+  const resultLength = searchResults.venues.length;
   
   return (
     <section className="VenuesContainer">
       <article className="search-bar-container">
-        <VenueSearchBar />
+        <VenueSearchBar location="venues" />
       </article>
       <article className="venues-container">
+        {searchResults.city.length > 0 && ''}
+        <h3>
+          {searchResults.city.length > 0 
+            ? `Found ${resultLength} dojos in ${searchResults.city.toUpperCase()}`
+            : 'Start by searching in you own city'
+          }
+        </h3>
         { isLoading && <h3>Loading dojos...</h3>}
         { error && <h4>{error}</h4>}
         { generatedVenues() }
@@ -29,21 +34,21 @@ export function VenuesContainer({ venues, isLoading, error }) {
 }
 
 export const mapStateToProps = state => ({
-  venues: state.searchResults,
+  searchResults: state.searchResults,
   isLoading: state.isFetching,
   error: state.error
 });
 
+export default connect(mapStateToProps)(VenuesContainer);
+
 VenuesContainer.propTypes = {
-  venues: PropTypes.array,
+  searchResults: PropTypes.object,
   isLoading: PropTypes.bool,
   error: PropTypes.string
 };
 
 VenuesContainer.defaultProps = {
-  venues: [],
+  searchResults: {},
   isLoading: false,
   error: ''
 };
-
-export default connect(mapStateToProps)(VenuesContainer);

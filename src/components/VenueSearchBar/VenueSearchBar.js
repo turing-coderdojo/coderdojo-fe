@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as actions from '../../actions';
 import requests from '../../utils/requests/requests';
 
 export function VenueSearchBar(props) {
-  let cityInput;
+  const { location } = props;
+  const [city, handleChange] = useState('');
+  const [redirect, setRedirect] = useState(false);
   
   async function handleSubmit(e) {
     e.preventDefault();
-    const venues = await requests.getAllVenues();
+    if (location === 'splash') setRedirect(true);
+    const venues = await requests.getVenuesByCity({ city });
     if (venues) {
-      props.setSearchResults(venues.allVenues);
+      const searchResults = {
+        city,
+        venues: venues.allVenues
+      };
+      props.setSearchResults(searchResults);
     }
   }
+  
+  if (redirect) return <Redirect to="/venues" />;
 
   return (
     <form 
@@ -26,10 +36,7 @@ export function VenueSearchBar(props) {
         <input 
           type="text" 
           id="city-input"
-          placeholder="Enter a city"
-          onChange={(e) => {
-            cityInput = e.target.value;
-          }} 
+          onChange={e => handleChange(e.target.value)} 
         />
       </label>
       <button type="submit" className="city-search-btn">
@@ -46,9 +53,11 @@ export const mapDispatchToProps = dispatch => ({
 export default connect(undefined, mapDispatchToProps)(VenueSearchBar);
 
 VenueSearchBar.propTypes = {
-  setSearchResults: PropTypes.func
+  setSearchResults: PropTypes.func,
+  location: PropTypes.string
 };
 
 VenueSearchBar.defaultProps = {
-  setSearchResults: () => {}
+  setSearchResults: () => {},
+  location: ''
 };

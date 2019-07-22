@@ -27,6 +27,19 @@ exports[`Controls should match snapshot 1`] = `
           "$$typeof": Symbol(react.memo),
           "WrappedComponent": [Function],
           "compare": null,
+          "displayName": "Connect(EventsContainer)",
+          "type": [Function],
+        }
+      }
+      exact={true}
+      path="/venues/:id/events"
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
           "displayName": "Connect(LoginForm)",
           "type": [Function],
         }
@@ -66,6 +79,16 @@ exports[`Controls should match snapshot 1`] = `
       }
       exact={true}
       path="/myfamily/registerstudent"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/dashboard/student"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/dashboard/admin"
     />
     <Route
       component={

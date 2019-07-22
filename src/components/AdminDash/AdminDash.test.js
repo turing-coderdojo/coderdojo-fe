@@ -1,14 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EventListItem from './EventListItem';
+import { AdminDash } from './AdminDash';
 
-describe('EventListItem', () => {
+describe('AdminDash', () => {
   let wrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<EventListItem />);
+    wrapper = shallow(<AdminDash />);
   });
-
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });

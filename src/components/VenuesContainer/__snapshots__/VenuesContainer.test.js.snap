@@ -7,22 +7,26 @@ exports[`VenuesContainer should match snapshot 1`] = `
   <article
     className="search-bar-container"
   >
-    <Connect(VenueSearchBar) />
+    <Connect(VenueSearchBar)
+      location="venues"
+    />
   </article>
   <article
     className="venues-container"
   >
-    <article
-      className="venue-card"
+    <h3>
+      Found 1 dojos in DENVER
+    </h3>
+    <VenueCard
       key="1"
-    >
-      <h3>
-        Venue One
-      </h3>
-      <p>
-        Here be Dragons
-      </p>
-    </article>
+      venue={
+        Object {
+          "id": 1,
+          "name": "Venue One",
+          "notes": "Here be Dragons",
+        }
+      }
+    />
   </article>
 </section>
 `;
@@ -34,25 +38,29 @@ exports[`VenuesContainer should match snapshot with error/loading 1`] = `
   <article
     className="search-bar-container"
   >
-    <Connect(VenueSearchBar) />
+    <Connect(VenueSearchBar)
+      location="venues"
+    />
   </article>
   <article
     className="venues-container"
   >
+    <h3>
+      Found 1 dojos in DENVER
+    </h3>
     <h4>
       Failed to fetch
     </h4>
-    <article
-      className="venue-card"
+    <VenueCard
       key="1"
-    >
-      <h3>
-        Venue One
-      </h3>
-      <p>
-        Here be Dragons
-      </p>
-    </article>
+      venue={
+        Object {
+          "id": 1,
+          "name": "Venue One",
+          "notes": "Here be Dragons",
+        }
+      }
+    />
   </article>
 </section>
 `;

@@ -3,7 +3,7 @@ import * as actions from '../actions';
 
 describe('searchResultsReducer', () => {
   it('should return an empty array as default', () => {
-    const expected = [];
+    const expected = { city: '', venues: [] };
     const result = searchResultsReducer(undefined, {});
 
     expect(result).toEqual(expected);

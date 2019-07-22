@@ -17,7 +17,6 @@ exports[`VenueSearchBar should match snapshot 1`] = `
     <input
       id="city-input"
       onChange={[Function]}
-      placeholder="Enter a city"
       type="text"
     />
   </label>

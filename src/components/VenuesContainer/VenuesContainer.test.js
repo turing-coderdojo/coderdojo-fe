@@ -6,20 +6,21 @@ describe('VenuesContainer', () => {
   let wrapper;
   const isLoading = false;
   const error = '';
-  const mockVenues = [
-    {
+  const mockResults = {
+    city: 'Denver',
+    venues: [{
       id: 1,
       name: 'Venue One',
       notes: 'Here be Dragons'
-    }
-  ];
+    }]
+  };
 
   beforeEach(() => {
     wrapper = shallow(
       <VenuesContainer 
         isloading={isLoading} 
         error={error}
-        venues={mockVenues}
+        searchResults={mockResults}
       />
     );
   });
@@ -30,6 +31,7 @@ describe('VenuesContainer', () => {
 
   it('should match snapshot with error/loading', () => {
     wrapper.setProps({ error: 'Failed to fetch', loading: true });
+    
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -43,6 +45,7 @@ describe('VenuesContainer', () => {
       error: 'Failed to fetch'
     };
     const mappedProps = mapStateToProps(mockState);
+
     expect(mappedProps).toEqual(expected);
   });
 });
