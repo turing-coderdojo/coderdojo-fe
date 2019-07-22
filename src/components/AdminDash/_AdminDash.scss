@@ -1,0 +1,33 @@
+.AdminDash {
+  width: 80%;
+  margin: auto;
+  height: 100vh;
+
+  .admin-header {
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    background-color: #724695;
+    color: #fff;
+
+    h2 {
+      margin: 0 20px;
+    }
+  }
+
+  .details-container {
+    display: flex;
+    background-color: #F4F5F6;
+    height: 100%;
+
+    .venue-section {
+      flex: 1;
+    }
+
+    .events-section {
+      flex: 2;
+      background-color: #fff;
+    }
+  }
+}
