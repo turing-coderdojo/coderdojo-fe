@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ContactForm from './ContactForm';
+import { ContactForm } from './ContactForm';
 
 describe('ContactForm', () => {
   let wrapper;
@@ -15,9 +15,7 @@ describe('ContactForm', () => {
   };
 
   beforeEach(() => {
-    wrapper = shallow(
-      <ContactForm />
-    );
+    wrapper = shallow(<ContactForm /> );
   });
 
   it('should match snapshot', () => {
@@ -25,7 +23,16 @@ describe('ContactForm', () => {
   });
 
   it('should have default state', () => {
-    const defaultState = {};
+    const defaultState = {
+      email: '',
+      phoneNumber: '',
+      street1: '',
+      street2: '',
+      city: '',
+      state: '',
+      zip: '',
+      success: false
+    }
     expect(wrapper.state()).toEqual(defaultState);
   });
 

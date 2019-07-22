@@ -25,7 +25,8 @@ export class ContactForm extends Component {
 
   handleSubmit = (e) => {
     const { fullName, username, password } = this.props;
-    const { email, 
+    const { 
+      email, 
       phoneNumber,
       street1,
       street2,
@@ -40,6 +41,7 @@ export class ContactForm extends Component {
       username,
       password,
       phoneNumber,
+      email,
       street1,
       street2,
       city,
@@ -51,12 +53,12 @@ export class ContactForm extends Component {
       password
     };
 
-    this.createGuardian(guardian, user)
+    this.createGuardian(guardian, user);
   }
 
   createGuardian = async (guardian, user) => {
     const { error } = this.props;
-    const result = await requests.createGuardian(guardian)
+    const result = await requests.createGuardian(guardian);
     if (result) {
       this.signIn(user);
     } else {
@@ -87,7 +89,7 @@ export class ContactForm extends Component {
   render() {
     const { success, phoneNumber } = this.state;
 
-    if (success) return <Redirect to="/myfamily" />;
+    if (success) return <Redirect to="/myFamily" />;
 
     return (
       <form
@@ -102,6 +104,7 @@ export class ContactForm extends Component {
             type="email"
             name="email"
             onChange={this.handleChange}
+            placeholder="example@example.com"
           />
         </label>
         <label htmlFor="phoneNumber-input">
@@ -127,6 +130,7 @@ export class ContactForm extends Component {
               type="text"
               name="street1"
               onChange={this.handleChange}
+              placeholder="Street 1"
             />
           </label>
           <label htmlFor="street2-input">
@@ -136,6 +140,7 @@ export class ContactForm extends Component {
               type="text"
               name="street2"
               onChange={this.handleChange}
+              placeholder="Additional Street Info"
             />
           </label>
           <label htmlFor="city-input">
@@ -145,6 +150,7 @@ export class ContactForm extends Component {
               type="text"
               name="city"
               onChange={this.handleChange}
+              placeholder="City"
             />
           </label>
           <label htmlFor="state-input">
@@ -154,6 +160,7 @@ export class ContactForm extends Component {
               type="text"
               name="state"
               onChange={this.handleChange}
+              placeholder="State"
             />
           </label>
           <label htmlFor="zip-input">
@@ -163,6 +170,8 @@ export class ContactForm extends Component {
               type="text"
               name="zip"
               onChange={this.handleChange}
+              maxLength="10"
+              placeholder="Zip Code"
             />
           </label>
         </div>
@@ -207,5 +216,12 @@ ContactForm.defaultProps = {
   password: '',
   username: '',
   isFetching: false,
-  success: false
+  success: false,
+  email: '',
+  phoneNumber: '',
+  street1: '',
+  street2: '',
+  city: '',
+  state: '',
+  zip: ''
 };

@@ -13,5 +13,7 @@ form.ContactForm {
 
   button {
     @include form-submit;
+    background-color: $footer-color;
+    border-color: $footer-color;
   }
 }

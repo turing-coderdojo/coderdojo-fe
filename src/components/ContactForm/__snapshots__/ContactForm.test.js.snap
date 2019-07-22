@@ -16,6 +16,7 @@ exports[`ContactForm should match snapshot 1`] = `
       id="email-input"
       name="email"
       onChange={[Function]}
+      placeholder="example@example.com"
       type="email"
     />
   </label>
@@ -24,10 +25,15 @@ exports[`ContactForm should match snapshot 1`] = `
   >
     Phone Number:
     <input
+      contentEditable="true"
       id="phoneNumber-input"
+      maxLength="10"
       name="phoneNumber"
+      onBlur={[Function]}
       onChange={[Function]}
-      type="text"
+      placeholder="(xxx) xxx-xxxx"
+      type="tel"
+      value=""
     />
   </label>
   <div
@@ -41,6 +47,7 @@ exports[`ContactForm should match snapshot 1`] = `
         id="street1-input"
         name="street1"
         onChange={[Function]}
+        placeholder="Street 1"
         type="text"
       />
     </label>
@@ -52,6 +59,7 @@ exports[`ContactForm should match snapshot 1`] = `
         id="street2-input"
         name="street2"
         onChange={[Function]}
+        placeholder="Additional Street Info"
         type="text"
       />
     </label>
@@ -63,6 +71,7 @@ exports[`ContactForm should match snapshot 1`] = `
         id="city-input"
         name="city"
         onChange={[Function]}
+        placeholder="City"
         type="text"
       />
     </label>
@@ -74,6 +83,7 @@ exports[`ContactForm should match snapshot 1`] = `
         id="state-input"
         name="state"
         onChange={[Function]}
+        placeholder="State"
         type="text"
       />
     </label>
@@ -83,8 +93,10 @@ exports[`ContactForm should match snapshot 1`] = `
       Zip Code:
       <input
         id="zip-input"
+        maxLength="10"
         name="zip"
         onChange={[Function]}
+        placeholder="Zip Code"
         type="text"
       />
     </label>
