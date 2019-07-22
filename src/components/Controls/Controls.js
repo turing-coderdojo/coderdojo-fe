@@ -9,6 +9,7 @@ import Family from '../Family/Family';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import VenuesContainer from '../VenuesContainer/VenuesContainer';
 import EventsContainer from '../EventsContainer/EventsContainer';
+import AdminDash from '../AdminDash/AdminDash';
 
 function Controls() {
   return (
@@ -20,7 +21,7 @@ function Controls() {
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/student/:id" component={Profile} />
         <Route exact path="/dashboard/student" component={Profile} />
-        <Route exact path="/dashboard/admin" component={Profile} />
+        <Route exact path="/dashboard/admin" component={AdminDash} />
         <Route exact path="/students" component={CurrentStudents} />
         <Route exact path="/contact/:id" component={ContactInfo} />
         <Route exact path="/myfamily" component={Family} />
