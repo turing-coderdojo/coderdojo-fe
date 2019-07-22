@@ -207,14 +207,6 @@ ContactForm.propTypes = {
   password: PropTypes.string,
   username: PropTypes.string,
   isFetching: PropTypes.bool,
-  email: PropTypes.string,
-  phoneNumber: PropTypes.string,
-  street1: PropTypes.string,
-  street2: PropTypes.string,
-  city: PropTypes.string,
-  state: PropTypes.string,
-  zip: PropTypes.string,
-  success: PropTypes.bool
 };
 
 ContactForm.defaultProps = {
@@ -223,13 +215,5 @@ ContactForm.defaultProps = {
   fullName: '',
   password: '',
   username: '',
-  isFetching: false,
-  success: false,
-  email: '',
-  phoneNumber: '',
-  street1: '',
-  street2: '',
-  city: '',
-  state: '',
-  zip: ''
+  isFetching: false
 };
