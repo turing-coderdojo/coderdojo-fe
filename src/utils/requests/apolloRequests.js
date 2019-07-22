@@ -20,12 +20,18 @@ export function dispatchError(error) {
   store.dispatch(setFetching(false));
 }
 
-export async function apolloQuery(query) {
-  store.dispatch(setFetching(true));
-  store.dispatch(setError(''));
+export function setFetchingAndError() {
+  const state = store.getState();
+  const { isFetching, error } = state;
+  if (!isFetching) store.dispatch(setFetching(true));
+  if (error.length) store.dispatch(setError(''));
+}
+
+export async function apolloQuery(query, variables) {
+  setFetchingAndError();
   let result;
   try {
-    result = await client.query({ query });
+    result = await client.query({ query, variables });
     if (result) store.dispatch(setFetching(false));
   } catch (error) {
     dispatchError(error);
@@ -34,8 +40,7 @@ export async function apolloQuery(query) {
 }
 
 export async function apolloMutate(mutation, variables) {
-  store.dispatch(setFetching(true));
-  store.dispatch(setError(''));
+  setFetchingAndError();
   let result;
   try {
     result = await client.mutate({ mutation, variables });

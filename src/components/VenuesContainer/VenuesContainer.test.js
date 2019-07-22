@@ -6,20 +6,21 @@ describe('VenuesContainer', () => {
   let wrapper;
   const isLoading = false;
   const error = '';
-  const mockVenues = [
-    {
+  const mockResults = {
+    city: 'Denver',
+    venues: [{
       id: 1,
       name: 'Venue One',
       notes: 'Here be Dragons'
-    }
-  ];
+    }]
+  };
 
   beforeEach(() => {
     wrapper = shallow(
       <VenuesContainer 
         isloading={isLoading} 
         error={error}
-        venues={mockVenues}
+        searchResults={mockResults}
       />
     );
   });

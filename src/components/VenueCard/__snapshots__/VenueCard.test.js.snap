@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VenueCard should match snapshot 1`] = `
+<Link
+  style={
+    Object {
+      "textDecoration": "none",
+    }
+  }
+  to="/venues/1/events"
+>
+  <article
+    className="venue-card"
+    key="1"
+  >
+    <ForwardRef(SvgYinYangLogo)
+      className="dojo-logo"
+    />
+    <div
+      className="info-container"
+    >
+      <h3>
+        Venue One
+      </h3>
+      <p
+        key="4"
+      >
+        567 Main St., Apt 678 Denver, CO 80128
+      </p>
+    </div>
+  </article>
+</Link>
+`;
