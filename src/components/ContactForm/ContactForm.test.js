@@ -15,7 +15,7 @@ describe('ContactForm', () => {
   };
 
   beforeEach(() => {
-    wrapper = shallow(<ContactForm /> );
+    wrapper = shallow(<ContactForm />);
   });
 
   it('should match snapshot', () => {

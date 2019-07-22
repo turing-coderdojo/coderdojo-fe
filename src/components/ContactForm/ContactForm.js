@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
@@ -202,15 +202,17 @@ export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
 
 ContactForm.propTypes = {
   addUser: PropTypes.func,
+  setError: PropTypes.func,
   error: PropTypes.string,
   fullName: PropTypes.string,
   password: PropTypes.string,
   username: PropTypes.string,
-  isFetching: PropTypes.bool,
+  isFetching: PropTypes.bool
 };
 
 ContactForm.defaultProps = {
   addUser: () => {},
+  setError: () => {},
   error: '',
   fullName: '',
   password: '',
