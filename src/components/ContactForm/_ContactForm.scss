@@ -1,7 +1,8 @@
 form.ContactForm {
+  @include form-style;
+
   margin: 0 auto;
   width: 50%;
-  @include flex-column;
 
   div.address-section, label {
     @include flex-column;
@@ -12,8 +13,6 @@ form.ContactForm {
   }
 
   button {
-    @include form-submit;
-    background-color: $footer-color;
-    border-color: $footer-color;
+    @include form-submit($footer-color);
   }
 }

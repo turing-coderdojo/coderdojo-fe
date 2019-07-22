@@ -158,9 +158,11 @@ export class ChildForm extends Component {
             onChange={this.handleChange}
           />
         </label>
-        <p className="error-msg">{error && error}</p>
+        <div className="error-msg">
+          {error && <p className="shake">{error}</p>}
+        </div>
         <button type="submit">
-          {loading ? 'Please wait...' : 'Submit'}
+          {loading ? 'PLEASE WAIT...' : 'SUBMIT'}
         </button>
       </form>
     );

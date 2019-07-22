@@ -1,10 +1,5 @@
 .AgeForm {
-  @include flex-column;
-  margin: 10% auto;
-  width:500px;
-  min-width: 300px;
-  padding: 40px;
-  background-color: #FFFFFF;
+  @include form-style;
 
   h2 {
      margin: 0 0 15px 0;
@@ -13,16 +8,15 @@
   
   label {
     @include flex-column;
-    margin: 0 0 2px 0;
   }
+
   .signin-btn {
-    @include form-submit;
-    background-color: #724695;
-    border: 2px solid #724695;
+    @include form-submit(#724695);
   }
 
   input.date-picker {
     @include form-input-style;
+
     width: 420px;
     margin-top: 25px;
   }

@@ -83,12 +83,14 @@ export class LoginForm extends Component {
             onChange={this.handleChange}
           />
         </label>
-        { error && <p className="error-msg">{ error }</p>}
-        { isFetching && <p>Logging in, please wait...</p>}
-        <button type="submit" className="signin-btn">LOGIN</button>
+        <div className="error-msg">
+          {error && <p className="shake">{error}</p>}
+        </div>
+        <button 
+          type="submit" className="signin-btn">{isFetching ? 'PLEASE WAIT...' : 'LOGIN'}</button>
         <p className="register-link">
-          Don&#39;t have an account?&nbsp;&nbsp;
-          <Link to="/register"><span>Register Here</span></Link>
+          Don't have an account?
+          <Link to="/register"><span> Register Here</span></Link>
         </p>
       </form>
     );
