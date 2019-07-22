@@ -19,9 +19,11 @@ function Controls() {
         <Route exact path="/venues/:id/events" component={EventsContainer} />
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/student/:id" component={Profile} />
+        <Route exact path="/dashboard/student" component={Profile} />
+        <Route exact path="/dashboard/admin" component={Profile} />
         <Route exact path="/students" component={CurrentStudents} />
         <Route exact path="/contact/:id" component={ContactInfo} />
-        <Route exact path="/myFamily" component={Family} />
+        <Route exact path="/myfamily" component={Family} />
         <Route exact path="/register" component={RegisterForm} />
         <Route render={() => <h1>404 Page</h1>} />
       </Switch>
