@@ -32,7 +32,7 @@ export class ChildForm extends Component {
     const error2 = this.checkPasswords();
     
     if (!error1 && !error2) {
-      console.log('there were no errors')
+      this.registerStudent();
     } 
   }
 
@@ -54,7 +54,7 @@ export class ChildForm extends Component {
         error = true;
       } 
     });
-
+    
     return error;
   }
 
@@ -101,7 +101,7 @@ export class ChildForm extends Component {
     const { password, password2, success } = this.state;
     const { error, loading } = this.props;
 
-    if (success) return <Redirect to="/" />;
+    if (success) return <Redirect to="/myfamily" />;
 
     return (
       <form 
