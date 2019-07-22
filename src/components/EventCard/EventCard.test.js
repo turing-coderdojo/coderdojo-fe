@@ -13,6 +13,10 @@ describe('EventCard', () => {
   };
 
   beforeEach(() => {
-    wrapper = shallow(<EventCard event={mockEvent} />);
+    wrapper = shallow(<EventCard />);
+  });
+
+  it('should match snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 });
