@@ -52,12 +52,20 @@ exports[`Controls should match snapshot 1`] = `
     <Route
       component={[Function]}
       exact={true}
-      path="/myFamily"
+      path="/myfamily"
     />
     <Route
-      component={[Function]}
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(ChildForm)",
+          "type": [Function],
+        }
+      }
       exact={true}
-      path="/myFamily/registerChild"
+      path="/myfamily/registerstudent"
     />
     <Route
       component={

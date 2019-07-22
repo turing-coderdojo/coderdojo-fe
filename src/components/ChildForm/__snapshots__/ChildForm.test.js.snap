@@ -6,12 +6,12 @@ exports[`ChildForm should match snapshot 1`] = `
   onSubmit={[Function]}
 >
   <h2>
-    Register a Child
+    Register a Student
   </h2>
   <label
     htmlFor="child-name-input"
   >
-    Child's Name
+    Student's Full Name
     <input
       id="child-name-input"
       name="name"
@@ -22,7 +22,7 @@ exports[`ChildForm should match snapshot 1`] = `
   <label
     htmlFor="child-dob"
   >
-    Child's Date of Birth
+    Student's Date of Birth
     <input
       id="child-dob"
       name="dob"
@@ -33,7 +33,7 @@ exports[`ChildForm should match snapshot 1`] = `
   <label
     htmlFor="child-username-input"
   >
-    Child's Username
+    Student's Username
     <input
       id="child-username-input"
       name="username"
@@ -44,25 +44,30 @@ exports[`ChildForm should match snapshot 1`] = `
   <label
     htmlFor="child-password-input"
   >
-    Child's Password
+    Student's Password
     <input
       id="child-password-input"
       name="password"
       onChange={[Function]}
-      type="text"
+      type="password"
+      value=""
     />
   </label>
   <label
     htmlFor="child-password2-input"
   >
-    Re-Enter Child's Password
+    Re-Enter Student's Password
     <input
       id="child-password2-input"
       name="password2"
       onChange={[Function]}
-      type="text"
+      type="password"
+      value=""
     />
   </label>
+  <p
+    className="error-msg"
+  />
   <button
     type="submit"
   >

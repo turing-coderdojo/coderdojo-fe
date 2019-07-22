@@ -26,7 +26,9 @@ export class ChildForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    this.props.setError('');
+    const { setError } = this.props;
+
+    setError('');
 
     const error1 = this.checkAllFields();
     const error2 = this.checkPasswords();
@@ -34,6 +36,26 @@ export class ChildForm extends Component {
     if (!error1 && !error2) {
       this.registerStudent();
     } 
+  }
+
+  registerStudent = async () => {
+    const { 
+      name, 
+      username, 
+      password, 
+      dob 
+    } = this.state;
+    const student = {
+      name,
+      username,
+      password,
+      birthdate: dob
+    };
+    const createResult = await requests.createStudent(student);
+
+    if (createResult) {
+      this.setState({ success: true });
+    }
   }
 
   checkAllFields() {
@@ -75,26 +97,6 @@ export class ChildForm extends Component {
     } 
 
     return error;
-  }
-
-  registerStudent = async () => {
-    const { 
-      name, 
-      username, 
-      password, 
-      dob 
-    } = this.state;
-    const student = {
-      name,
-      username,
-      password,
-      birthdate: dob
-    };
-    const createResult = await requests.createStudent(student);
-
-    if (createResult) {
-      this.setState({ success: true });
-    }
   }
 
   render() {
@@ -165,13 +167,13 @@ export class ChildForm extends Component {
   }
 }
 
-export const mapDispatchToProps = dispatch => ({
-  setError: error => dispatch(actions.setError(error))
-});
-
 export const mapStateToProps = state => ({
   error: state.error,
   loading: state.isFetching
+});
+
+export const mapDispatchToProps = dispatch => ({
+  setError: error => dispatch(actions.setError(error))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChildForm);
