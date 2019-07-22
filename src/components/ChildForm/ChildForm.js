@@ -67,8 +67,14 @@ export class ChildForm extends Component {
       password2, 
       dob 
     } = this.state;
+    const fields = [
+      name, 
+      username, 
+      password, 
+      password2, 
+      dob
+    ]; 
     const { setError } = this.props;
-    const fields = [name, username, password, password2, dob]; 
 
     fields.forEach((field) => {
       if (!field) {

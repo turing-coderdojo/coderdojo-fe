@@ -24,6 +24,8 @@ export class RegisterForm extends Component {
   }
 
   handleRegister = (e) => {
+    e.preventDefault();
+
     const { name } = e.target;
     const { 
       username, 
@@ -37,20 +39,70 @@ export class RegisterForm extends Component {
       password,
       fullName
     };
+    const { setError } = this.props;
 
-    e.preventDefault();
+    setError('');
 
-    if (name === 'student') {
+    const error1 = this.checkAllFields();
+    const error2 = this.checkPasswords();
+
+    if (name === 'student' && !error1 && !error2) {
       this.setState({ displayAgeForm: true });
-    } else {
+    } else if (!error1 && !error2) {
       this.setState({ displayContactForm: true });
     }
+  }
+
+  checkAllFields() {
+    let error = false;
+    const {
+      fullName,
+      username,
+      password,
+      reEnteredPassword
+    } = this.state;
+    const fields = [
+      fullName,
+      username,
+      password,
+      reEnteredPassword
+    ];
+    const { setError } = this.props;
+
+    fields.forEach(field => {
+      if (!field) {
+        setError('All fields must be filled.');
+        error = true;
+      }
+    });
+
+    return error;
+  }
+
+  checkPasswords = () => {
+    let error = false;
+    const { password, reEnteredPassword } = this.state;
+    const { setError } = this.props;
+
+    if (password !== reEnteredPassword) {
+      setError('Passwords must match.');
+
+      this.setState({
+        password: '',
+        reEnteredPassword: ''
+      });
+
+      error = true;
+    }
+
+    return error;
   }
 
   assignContactForm = () => {
     let assignContact;
     const { displayContactForm, displayAgeForm } = this.state;
-    
+    const { error } = this.props;
+
     if (displayContactForm) {
       assignContact = <ContactForm {...this.state} />;
     } else if (displayAgeForm) {
@@ -95,6 +147,9 @@ export class RegisterForm extends Component {
               onChange={this.handleChange}
             />
           </label>
+          <div className="error-msg">
+            {error && <p className="shake">{error}</p>}
+          </div>
           <button type="button" className="signin-btn" value="submit" name="student" onClick={this.handleRegister}>I am a student over 13</button>
           <button type="button" className="signin-btn guardian-btn" name="guardian" onClick={this.handleRegister}>I am a guardian</button>
         </form>
@@ -102,7 +157,6 @@ export class RegisterForm extends Component {
     }
     return assignContact;
   }
-
 
   render() { 
     const displayForms = this.assignContactForm();
@@ -114,16 +168,25 @@ export class RegisterForm extends Component {
   }
 }
 
-export const mapDispatchToProps = dispatch => ({
-  addUser: user => dispatch(actions.addUser(user))
+export const mapStateToProps = state => ({
+  error: state.error
 });
 
-export default connect(null, mapDispatchToProps)(RegisterForm);
+export const mapDispatchToProps = dispatch => ({
+  addUser: user => dispatch(actions.addUser(user)),
+  setError: error => dispatch(actions.setError(error))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
 
 RegisterForm.propTypes = {
-  addUser: PropTypes.func
+  addUser: PropTypes.func,
+  setError: PropTypes.func,
+  error: PropTypes.bool
 };
 
 RegisterForm.defaultProps = {
-  addUser: () => {}
+  addUser: () => {},
+  setError: () => {},
+  error: ''
 };

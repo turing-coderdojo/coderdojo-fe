@@ -14,10 +14,6 @@
     @include form-input-style;
   }
 
-  .error-msg {
-    @include form-error-msg;
-  }
-
   button {
     @include form-submit($footer-color);
   }
