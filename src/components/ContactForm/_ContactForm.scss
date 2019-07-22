@@ -1,11 +1,13 @@
 form.ContactForm {
   @include form-style;
 
-  margin: 0 auto;
-  width: 50%;
+  h2 {
+    margin: 0 0 15px 0;
+    text-align: center;
+  }
 
   div.address-section, label {
-    @include flex-column;
+    @include form-label-style;
   }
 
   input {

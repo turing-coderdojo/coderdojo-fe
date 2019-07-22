@@ -7,7 +7,7 @@
   }
   
   label {
-    @include flex-column;
+    @include form-label-style;
   }
 
   .signin-btn {

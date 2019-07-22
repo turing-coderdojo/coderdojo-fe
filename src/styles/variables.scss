@@ -23,14 +23,14 @@ $primary-color: #49B749;
 @mixin form-label-style {
   @include flex-column;
 
-  margin: 0 0 2px 0;
+  margin: 0 0 3px 0;
   color: #333532;
 }
 
 @mixin form-input-style {
   border: 2px solid #999999;
   font-size: 1em;
-  margin: 0 0 10px 0;
+  margin: 3px 0 10px 0;
   padding: 10px;
 }
 
