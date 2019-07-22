@@ -57,12 +57,12 @@ export class ContactForm extends Component {
   }
 
   createGuardian = async (guardian, user) => {
-    const { error } = this.props;
+    const { error, setError } = this.props;
     const result = await requests.createGuardian(guardian);
     if (result) {
       this.signIn(user);
     } else {
-      console.log(error);
+      setError(error);
     }
   }
 
@@ -77,21 +77,27 @@ export class ContactForm extends Component {
     }
   }
 
-  cleanNumber = (e) => {
-    let number = e.target.value;
+  cleanNumber = () => {
     const { phoneNumber } = this.state;
-    if (phoneNumber[0] !== '(') {
-      number = `(${number[0]}${number[1]}${number[2]})${number[3]}${number[4]}${number[5]}-${number[6]}${number[7]}${number[8]}${number[9]}`;
+    const { setError } = this.props;
+    let number = phoneNumber.replace(/\D+/g, '');
+    if (number.length === 10) {
+      number = number.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+    } else {
+      number = '';
+      setError('Please enter a valid US phone number.');
     }
     this.setState({ phoneNumber: number });
   }
   
   render() {
     const { success, phoneNumber } = this.state;
+    const { error } = this.props;
 
     if (success) return <Redirect to="/myFamily" />;
 
     return (
+
       <form
         className="ContactForm"
         onSubmit={this.handleSubmit}
@@ -114,7 +120,7 @@ export class ContactForm extends Component {
             type="tel"
             name="phoneNumber"
             onChange={this.handleChange}
-            maxLength="10"
+            maxLength="14"
             contentEditable="true" 
             onBlur={this.cleanNumber}
             value={phoneNumber}
@@ -175,6 +181,7 @@ export class ContactForm extends Component {
             />
           </label>
         </div>
+        <p>{error && error}</p>
         <button type="submit" className="signin-btn">Submit</button>
       </form>
     );
@@ -182,7 +189,8 @@ export class ContactForm extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  addUser: user => dispatch(actions.addUser(user))
+  addUser: user => dispatch(actions.addUser(user)),
+  setError: error => dispatch(actions.setError(error))
 });
 
 export const mapStateToProps = ({ isFetching, error }) => ({
