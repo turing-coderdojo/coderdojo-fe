@@ -1,4 +1,14 @@
 .EventForm {
   position: absolute;
-  
+  margin: auto;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  top: 20%;
+  z-index: 2;
+
+  form {
+    width: 50%;
+    background-color: #fff;
+  }
 }
