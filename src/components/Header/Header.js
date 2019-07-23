@@ -13,10 +13,10 @@ export function Header(props) {
   };
 
   const createMenuOptions = () => {
-    const { user } = props;
+    const token = JSON.parse(localStorage.getItem('token'));
     let menuOptions;
     
-    if (user.username) {
+    if (token) {
       menuOptions = <NavLink to="/" className="nav-link logout" onClick={logOutUser}>LOGOUT</NavLink>;
     } else {
       menuOptions = (
@@ -43,22 +43,16 @@ export function Header(props) {
   );
 }
 
-export const mapStateToProps = ({ user }) => ({
-  user
-});
-
 export const mapDispatchToProps = dispatch => ({
   resetUser: () => dispatch(addUser({}))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Header);
 
 Header.propTypes = {
-  user: PropTypes.object,
   resetUser: PropTypes.func
 };
 
 Header.defaultProps = {
-  user: {},
   resetUser: () => {}
 };
