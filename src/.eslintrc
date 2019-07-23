@@ -4,7 +4,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/forbid-prop-types": "disabled",
     "comma-dangle": ["error", "never"],
-    "max-lines-per-function": ["error", 100],
+    "max-lines-per-function": ["error", "off"],
     "no-trailing-spaces": 0,
     "import/no-named-as-default": 0,
     "react/self-closing-comp": "off"

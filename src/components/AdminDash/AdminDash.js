@@ -14,15 +14,19 @@ export function AdminDash(props) {
     showEventForm(bool);
   };
 
+  const sortEvents = (arr) => arr.sort((a,b) => new Date(b.startTime) - new Date(a.endTime));
+
   const getEventsAndVenues = async () => {
     const result = await requests.getAdminDetails();
     const { me } = result;
+    me.venues[0].events = sortEvents(me.venues[0].events);
     setAdminData(me);
   };
   
   useEffect(() => {
     getEventsAndVenues();
   }, []);
+
 
   const generateAdminDetails = () => {
     const {
