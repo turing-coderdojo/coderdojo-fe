@@ -30,16 +30,22 @@ export function AdminDash(props) {
       <div className="admin">
         <h4>My Contact Info:</h4>
         <p>
-          Phone: 
-          {phoneNumber}
+          Phone:&nbsp; 
+          <span>
+            {phoneNumber}
+          </span>
         </p>
         <p>
-          Email: 
-          {email}
+          Email:&nbsp; 
+          <span>
+            {email}
+          </span>
         </p>
         <p>
-          Address:
-          {address}
+          Address:&nbsp;
+          <span>
+            {address}
+          </span>
         </p>
       </div>
     );
@@ -50,14 +56,16 @@ export function AdminDash(props) {
 
   const generateVenueDetails = () => {
     const { 
-      name, notes, email, webUrl 
+      name, email, webUrl 
     } = adminData.venues[0];
     return (
       <div className="venue">
-        <p>{notes}</p>
         <h3>{name}</h3>
-        <p>{webUrl}</p>
-        <p>{email}</p>
+        <a href={webUrl}>Home Page</a>
+        <p>
+          Email: &nbsp;
+          <span>{email}</span>
+        </p>
       </div>
     );
   };
@@ -71,7 +79,7 @@ export function AdminDash(props) {
         </h2>
       </div>
       <div className="details-container">
-        <section className="venue-section">
+        <section className="details-section">
           {adminData.venues && generateVenueDetails()}
           {adminData.venues && generateAdminDetails()}
         </section>
