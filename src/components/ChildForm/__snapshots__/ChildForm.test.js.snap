@@ -65,13 +65,13 @@ exports[`ChildForm should match snapshot 1`] = `
       value=""
     />
   </label>
-  <p
+  <div
     className="error-msg"
   />
   <button
     type="submit"
   >
-    Submit
+    SUBMIT
   </button>
 </form>
 `;

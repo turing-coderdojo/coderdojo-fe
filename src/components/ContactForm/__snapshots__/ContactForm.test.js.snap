@@ -101,12 +101,14 @@ exports[`ContactForm should match snapshot 1`] = `
       />
     </label>
   </div>
-  <p />
+  <div
+    className="error-msg"
+  />
   <button
     className="signin-btn"
     type="submit"
   >
-    Submit
+    SUBMIT
   </button>
 </form>
 `;

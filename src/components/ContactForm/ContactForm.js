@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
 import * as actions from '../../actions';
 
-
 export class ContactForm extends Component {
   state = {
     email: '',
@@ -20,6 +19,7 @@ export class ContactForm extends Component {
 
   handleChange = ({ target }) => {
     const { name, value } = target;
+
     this.setState({ [name]: value });
   }
 
@@ -34,7 +34,10 @@ export class ContactForm extends Component {
       state,
       zip 
     } = this.state;
-    const contactInfo = {
+    const guardian = {
+      name: fullName,
+      username,
+      password,
       email,
       phoneNumber,
       street1,
@@ -42,12 +45,6 @@ export class ContactForm extends Component {
       city,
       state,
       zip
-    }
-    const guardian = {
-      name: fullName,
-      username,
-      password,
-      ...contactInfo
     };
     const user = {
       username,
@@ -56,24 +53,33 @@ export class ContactForm extends Component {
 
     e.preventDefault();
 
-    const error = this.checkAllFields(contactInfo);
+    const error = this.checkAllFields();
     
     if (!error) {
       this.createGuardian(guardian, user);
     }
   }
 
-  checkAllFields = ({ email, phoneNumber, street1, street2, city, state, zip }) => {
+  checkAllFields = () => {
     const { setError } = this.props;
-    let error = false;
-    let fields = [
+    const { 
+      email,
+      phoneNumber,
+      street1,
+      city,
+      state,
+      zip 
+    } = this.state;
+    const fields = [
       email,
       phoneNumber,
       street1,
       city,
       state,
       zip
-    ]
+    ];
+
+    let error = false;
 
     fields.forEach(field => {
       if (!field) {
@@ -100,6 +106,7 @@ export class ContactForm extends Component {
   signIn = async (user) => {
     const { addUser } = this.props;
     const result = await requests.signIn(user);
+
     if (result) {
       const { user: validUser, token } = result.signIn;
       localStorage.setItem('token', JSON.stringify(token));
@@ -111,13 +118,16 @@ export class ContactForm extends Component {
   cleanNumber = () => {
     const { phoneNumber } = this.state;
     const { setError } = this.props;
+
     let number = phoneNumber.replace(/\D+/g, '');
+
     if (number.length === 10) {
       number = number.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
     } else {
       number = '';
       setError('Please enter a valid US phone number.');
     }
+
     this.setState({ phoneNumber: number });
   }
   
@@ -128,7 +138,6 @@ export class ContactForm extends Component {
     if (success) return <Redirect to="/myFamily" />;
 
     return (
-
       <form
         className="ContactForm"
         onSubmit={this.handleSubmit}
@@ -158,7 +167,6 @@ export class ContactForm extends Component {
             placeholder="(xxx) xxx-xxxx"
           />
         </label>
-  
         <div className="address-section">
           <label htmlFor="street1-input">
             Street 1:
