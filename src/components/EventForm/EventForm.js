@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 
-function EventForm(props) {
+function EventForm({venueId}) {
   const [eventDetails, setEventDetails] = useState({});
   const [startEndDate, setStartEndDate] = useState({});
   const [invalidField, setInvalidField] = useState('');
@@ -15,10 +15,10 @@ function EventForm(props) {
     const startTime = new Date(date).toUTCString();
     const endTime = new Date(date).toUTCString();
     if (isEndTime) {
-      setEventDetails({ ...eventDetails, end_time: endTime });
+      setEventDetails({ ...eventDetails, endTime });
       setStartEndDate({ ...startEndDate, end: date });
     } else {
-      setEventDetails({ ...eventDetails, start_time: startTime });
+      setEventDetails({ ...eventDetails, startTime });
       setStartEndDate({ ...startEndDate, start: date });
     }
   };
@@ -26,10 +26,11 @@ function EventForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setInvalidField('');
-    if (!eventDetails.name || !eventDetails.start_time || !eventDetails.end_time) {
+    if (!eventDetails.name || !eventDetails.startTime || !eventDetails.endTime) {
       setInvalidField('Please fill out required fields');
     } else {
-      console.log('hi')
+      const newEvent = { ...eventDetails, venueId };
+      console.log(newEvent);
     }
   };
 
@@ -64,14 +65,14 @@ function EventForm(props) {
         />
         <label htmlFor="event-notes">
           Notes(Optional):
-          <textarea
+          <input
             id="event-notes"
             type="text"
             name="notes"
             onChange={handleChange}
           />
         </label>
-        {invalidField && <p className="error">{invalidField}</p>}
+        {invalidField && <p className="event-form-error">{invalidField}</p>}
         <button type="submit" className="create-event-btn" onClick={handleSubmit}>Create</button>
       </form>
     </div>
