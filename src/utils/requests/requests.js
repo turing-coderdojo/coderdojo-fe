@@ -5,6 +5,7 @@ const requests = {
   signIn: user => apolloMutate(gql.SIGN_IN, user),
   createStudent: student => apolloMutate(gql.CREATE_STUDENT, student),
   createGuardian: guardian => apolloMutate(gql.CREATE_GUARDIAN, guardian),
+  createNewEvent: event => apolloMutate(gql.CREATE_NEW_EVENT, event),
   getAllUsers: () => apolloQuery(gql.GET_ALL_USERS),
   getUserByToken: () => apolloQuery(gql.GET_USER_BY_TOKEN),
   getAllVenues: () => apolloQuery(gql.GET_ALL_VENUES),

@@ -74,6 +74,26 @@ export const CREATE_GUARDIAN = gql`
   }
 `;
 
+export const CREATE_NEW_EVENT = gql`
+  mutation createEvent(
+    $name: String!,
+    $venueId: Int!,
+    $notes: String,
+    $startTime: String!,
+    $endTime: String!
+    ) {
+    createEvent(
+      name: $name,
+      venueId: $venueId,
+      notes: $notes,
+      startTime: $startTime,
+      endTime: $endTime
+    ) {
+      id
+    }
+  }
+`;
+
 export const SIGN_IN = gql`
   mutation signIn(
     $username: String!,
