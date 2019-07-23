@@ -16,7 +16,7 @@ exports[`ContactForm should match snapshot 1`] = `
       id="email-input"
       name="email"
       onChange={[Function]}
-      placeholder="example@example.com"
+      placeholder="example@email.com"
       type="email"
     />
   </label>
@@ -59,7 +59,7 @@ exports[`ContactForm should match snapshot 1`] = `
         id="street2-input"
         name="street2"
         onChange={[Function]}
-        placeholder="Additional Street Info"
+        placeholder="Street 2"
         type="text"
       />
     </label>

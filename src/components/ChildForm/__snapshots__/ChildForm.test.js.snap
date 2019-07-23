@@ -23,11 +23,50 @@ exports[`ChildForm should match snapshot 1`] = `
     htmlFor="child-dob"
   >
     Student's Date of Birth
-    <input
+    <DatePicker
+      allowSameDay={false}
+      className="date-picker"
+      dateFormat="MM/dd/yyyy"
+      dateFormatCalendar="LLLL yyyy"
+      disabled={false}
+      disabledKeyboardNavigation={false}
+      dropdownMode="select"
       id="child-dob"
-      name="dob"
+      inlineFocusSelectedMonth={false}
+      maxDate={2019-07-23T04:13:47.658Z}
+      minDate={932703227658}
+      monthsShown={1}
+      nextMonthButtonLabel="Next month"
+      onBlur={[Function]}
       onChange={[Function]}
-      type="text"
+      onClickOutside={[Function]}
+      onFocus={[Function]}
+      onInputClick={[Function]}
+      onInputError={[Function]}
+      onKeyDown={[Function]}
+      onMonthChange={[Function]}
+      onSelect={[Function]}
+      onYearChange={[Function]}
+      placeholderText="mm/dd/yyyy"
+      preventOpenOnFocus={false}
+      previousMonthButtonLabel="Previous Month"
+      readOnly={false}
+      renderDayContents={[Function]}
+      scrollableMonthDropdown={true}
+      scrollableYearDropdown={true}
+      selected=""
+      shouldCloseOnSelect={true}
+      showMonthDropdown={true}
+      showMonthYearPicker={false}
+      showTimeInput={false}
+      showTimeSelect={false}
+      showYearDropdown={true}
+      strictParsing={false}
+      timeCaption="Time"
+      timeInputLabel="Time"
+      timeIntervals={30}
+      useShortMonthInDropdown={true}
+      withPortal={false}
     />
   </label>
   <label

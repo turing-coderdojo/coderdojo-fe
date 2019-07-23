@@ -15,14 +15,14 @@ exports[`AgeVerifier should match snapshot 1`] = `
     <DatePicker
       allowSameDay={false}
       className="date-picker"
-      dateFormat="yyyy/MM/dd"
+      dateFormat="MM/dd/yyyy"
       dateFormatCalendar="LLLL yyyy"
       disabled={false}
       disabledKeyboardNavigation={false}
       dropdownMode="select"
       id="dob"
       inlineFocusSelectedMonth={false}
-      maxDate={2006-07-23T02:26:38.677Z}
+      maxDate={2006-07-23T04:13:47.598Z}
       monthsShown={1}
       nextMonthButtonLabel="Next month"
       onBlur={[Function]}
@@ -59,7 +59,7 @@ exports[`AgeVerifier should match snapshot 1`] = `
     className="signin-btn"
     type="submit"
   >
-    Submit
+    SUBMIT
   </button>
 </form>
 `;
