@@ -27,18 +27,6 @@ export class RegisterForm extends Component {
     e.preventDefault();
 
     const { name } = e.target;
-    const { 
-      username, 
-      password, 
-      fullName, 
-      reEnteredPassword 
-    } = this.state;
-    const { addUser } = this.props;
-    const newUser = {
-      username,
-      password,
-      fullName
-    };
     const { setError } = this.props;
 
     setError('');
@@ -51,51 +39,6 @@ export class RegisterForm extends Component {
     } else if (!error1 && !error2) {
       this.setState({ displayContactForm: true });
     }
-  }
-
-  checkAllFields() {
-    let error = false;
-    const {
-      fullName,
-      username,
-      password,
-      reEnteredPassword
-    } = this.state;
-    const fields = [
-      fullName,
-      username,
-      password,
-      reEnteredPassword
-    ];
-    const { setError } = this.props;
-
-    fields.forEach(field => {
-      if (!field) {
-        setError('All fields must be filled.');
-        error = true;
-      }
-    });
-
-    return error;
-  }
-
-  checkPasswords = () => {
-    let error = false;
-    const { password, reEnteredPassword } = this.state;
-    const { setError } = this.props;
-
-    if (password !== reEnteredPassword) {
-      setError('Passwords must match.');
-
-      this.setState({
-        password: '',
-        reEnteredPassword: ''
-      });
-
-      error = true;
-    }
-
-    return error;
   }
 
   assignContactForm = () => {
@@ -156,6 +99,51 @@ export class RegisterForm extends Component {
       );
     }
     return assignContact;
+  }
+
+  checkPasswords = () => {
+    let error = false;
+    const { password, reEnteredPassword } = this.state;
+    const { setError } = this.props;
+
+    if (password !== reEnteredPassword) {
+      setError('Passwords must match.');
+
+      this.setState({
+        password: '',
+        reEnteredPassword: ''
+      });
+
+      error = true;
+    }
+
+    return error;
+  }
+
+  checkAllFields() {
+    let error = false;
+    const {
+      fullName,
+      username,
+      password,
+      reEnteredPassword
+    } = this.state;
+    const fields = [
+      fullName,
+      username,
+      password,
+      reEnteredPassword
+    ];
+    const { setError } = this.props;
+
+    fields.forEach((field) => {
+      if (!field) {
+        setError('All fields must be filled.');
+        error = true;
+      }
+    });
+
+    return error;
   }
 
   render() { 
