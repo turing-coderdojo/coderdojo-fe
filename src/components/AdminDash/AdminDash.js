@@ -14,8 +14,19 @@ export function AdminDash(props) {
     setVenuesAndEvents(venues[0]);
   };
 
-  const generateEventCard = () => {
-    return venuesAndEvents.events.map(event => <EventCard event={event} key={event.id} />);
+  const generateEventCards = () => venuesAndEvents
+    .events.map(event => <EventCard event={event} key={event.id} />);
+
+  const generateVenueDetails = () => {
+    const { name, notes, email, webUrl } = venuesAndEvents;
+    return (
+      <section className="venue-section">
+        <h3>{name}</h3>
+        <p>{webUrl}</p>
+        <p>{email}</p>
+        <p>{notes}</p>
+      </section>
+    );
   };
   
   useEffect(() => {
@@ -32,13 +43,14 @@ export function AdminDash(props) {
       </div>
       <div className="details-container">
         <section className="venue-section">
+          {venuesAndEvents.events && generateVenueDetails()}
         </section>
         <section className="events-section">
           <div className="events-header">
             <p>Your Upcoming Events:</p>
             <button type="button">+ Create New Event</button>
           </div>
-          {venuesAndEvents.events && generateEventCard()}
+          {venuesAndEvents.events && generateEventCards()}
         </section>
       </div>
     </section>

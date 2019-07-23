@@ -175,6 +175,15 @@ export const RECENT_EVENTS_BY_VENUE = gql`
 export const GET_ADMIN_VENUES = gql`
   {
     me {
+      email
+      phoneNumber
+      addresses{
+          street1
+          street2
+          city
+          state
+          zip
+      }
       venues {
         id
         name
