@@ -9,13 +9,13 @@ jest.mock('../../utils/requests/requests');
 
 describe('ChildForm', () => {
   let wrapper;
-  let mockSetError = jest.fn();
+  const mockSetError = jest.fn();
 
   beforeEach(() => {
     wrapper = shallow(
       <ChildForm 
         setError={mockSetError}
-        error={''}
+        error=""
         loading={false}
       />
     );
@@ -42,8 +42,8 @@ describe('ChildForm', () => {
 
   describe('handleSubmit', () => {
     const mockEvent = {
-        preventDefault: jest.fn()
-      };
+      preventDefault: jest.fn()
+    };
 
     it('should prevent default on submit', () => {
       wrapper.instance().handleSubmit(mockEvent);
@@ -135,9 +135,9 @@ describe('ChildForm', () => {
     const state = {
       error: '',
       loading: false
-    }
+    };
     
-    const error = mapStateToProps(state).error;
+    const { error } = mapStateToProps(state);
 
     expect(error).toEqual(state.error);
   });

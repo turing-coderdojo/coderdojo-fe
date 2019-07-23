@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import requests from '../../utils/requests/requests';
-import * as actions from '../../actions';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import requests from '../../utils/requests/requests';
+import * as actions from '../../actions';
 
 export class ChildForm extends Component {
   state = {
@@ -60,6 +60,18 @@ export class ChildForm extends Component {
     }
   }
 
+  handleDate = (date) => {
+    const stringedDate = new Date(date);
+
+    this.setState({ dob: stringedDate });
+  }
+
+  minDate = () => {
+    const date = new Date();
+
+    return date.setFullYear(date.getFullYear() - 20);
+  }
+
   checkAllFields() {
     let error = false;
     const { 
@@ -107,20 +119,13 @@ export class ChildForm extends Component {
     return error;
   }
 
-  handleDate = (date) => {
-    const stringedDate = new Date(date);
-
-    this.setState({ dob: stringedDate });
-  }
-
-  minDate = () => {
-    const date = new Date();
-
-    return date.setFullYear(date.getFullYear() - 20);
-  }
-
   render() {
-    const { password, password2, dob, success } = this.state;
+    const {
+      password,
+      password2,
+      dob,
+      success
+    } = this.state;
     const { error, loading } = this.props;
 
     if (success) return <Redirect to="/myfamily" />;
@@ -132,7 +137,7 @@ export class ChildForm extends Component {
       >
         <h2>Register a Student</h2>
         <label htmlFor="child-name-input">
-          Student's Full Name
+          Student&apos;s Full Name
           <input
             type="text"
             id="child-name-input"
@@ -141,7 +146,7 @@ export class ChildForm extends Component {
           />
         </label>
         <label htmlFor="child-dob">
-          Student's Date of Birth
+          Student&apos;s Date of Birth
           <DatePicker 
             placeholderText="mm/dd/yyyy"
             id="child-dob"
@@ -160,7 +165,7 @@ export class ChildForm extends Component {
           />
         </label>
         <label htmlFor="child-username-input">
-          Student's Username
+          Student&apos;s Username
           <input
             type="text"
             id="child-username-input"
@@ -169,7 +174,7 @@ export class ChildForm extends Component {
           />
         </label>
         <label htmlFor="child-password-input">
-          Student's Password
+          Student&apos;s Password
           <input
             type="password"
             id="child-password-input"
@@ -179,7 +184,7 @@ export class ChildForm extends Component {
           />
         </label>
         <label htmlFor="child-password2-input">
-          Re-Enter Student's Password
+          Re-Enter Student&apos;s Password
           <input
             type="password"
             id="child-password2-input"

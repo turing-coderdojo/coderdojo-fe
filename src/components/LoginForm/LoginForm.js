@@ -95,7 +95,7 @@ export class LoginForm extends Component {
           {isFetching ? 'PLEASE WAIT...' : 'LOGIN'}
         </button>
         <p className="register-link">
-          Don't have an account?
+          Don&apos;t have an account?
           <Link to="/register"><span> Register Here</span></Link>
         </p>
       </form>

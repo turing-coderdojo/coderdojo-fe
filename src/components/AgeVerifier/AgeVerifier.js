@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
@@ -40,7 +40,7 @@ export class AgeVerifier extends Component {
     if (result) {
       this.signIn(user);
     } else {
-      setError('There was an error.')
+      setError('There was an error.');
     }
   }
 
@@ -72,8 +72,8 @@ export class AgeVerifier extends Component {
   }
 
   render() {
-    const { success } = this.state;
-    const { birthdate } = this.state;
+    const { success, birthdate } = this.state;
+    const { isFetching } = this.props;
 
     if (success) return <Redirect to="/" />;
 
@@ -96,7 +96,9 @@ export class AgeVerifier extends Component {
             className="date-picker"
           />
         </label>
-        <button type="submit" className="signin-btn">Submit</button>
+        <button type="submit" className="signin-btn">
+          {isFetching ? 'PLEASE WAIT...' : 'SUBMIT'}
+        </button>
       </form>
     );
   }
@@ -117,21 +119,17 @@ export default connect(mapStateToProps, mapDispatchToProps)(AgeVerifier);
 AgeVerifier.propTypes = {
   addUser: PropTypes.func,
   setError: PropTypes.func,
-  error: PropTypes.string,
   fullName: PropTypes.string,
   password: PropTypes.string,
   username: PropTypes.string,
-  success: PropTypes.bool,
   isFetching: PropTypes.bool
 };
 
 AgeVerifier.defaultProps = {
   addUser: () => {},
   setError: () => {},
-  error: '',
   fullName: '',
   password: '',
   username: '',
-  isFetching: false,
-  success: false
+  isFetching: false
 };

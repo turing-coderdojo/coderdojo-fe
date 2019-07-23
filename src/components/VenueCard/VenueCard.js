@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 import { ReactComponent as Logo } from '../../images/yin-yang-logo.svg';
 
 function VenueCard({ venue }) {
@@ -31,3 +32,11 @@ function VenueCard({ venue }) {
 }
 
 export default VenueCard;
+
+VenueCard.propTypes = {
+  venue: PropTypes.object
+};
+
+VenueCard.defaultProps = {
+  venue: {}
+};
