@@ -32,10 +32,10 @@ export function Header(props) {
     if (user.username) {
       menuOptions = (
         <div>
-          <NavLink to={redirectPath()} className="nav-link" onClick={() => console.log('hihi')}>DASHBOARD</NavLink>
-          <NavLink to="/" className="nav-link logout" onClick={logOutUser}>LOGOUT</NavLink>
+          <NavLink to={redirectPath()} className="nav-link logout">DASHBOARD</NavLink>
+          <NavLink to="/" className="nav-link" onClick={logOutUser}>LOGOUT</NavLink>
         </div>
-        );
+      );
     } else {
       menuOptions = (
         <div>
