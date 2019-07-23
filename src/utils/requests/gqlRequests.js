@@ -168,3 +168,15 @@ export const RECENT_EVENTS_BY_VENUE = gql`
     }
   }
 `;
+
+export const GET_FAMILY = gql`
+  {
+    me {
+      students {
+        name
+        username
+        id
+      }
+    }
+  }
+`;

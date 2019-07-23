@@ -13,7 +13,7 @@ $primary-color: #49B749;
 @mixin form-style {
   @include flex-column;
 
-  margin: 10% auto;
+  margin: 5% auto;
   width: 500px;
   min-width: 300px;
   padding: 40px;
