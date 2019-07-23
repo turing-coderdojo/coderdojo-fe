@@ -217,6 +217,7 @@ export const GET_ADMIN_DATA = gql`
             notes
             startTime
             endTime
+            eventCode
         }
       }
     }
