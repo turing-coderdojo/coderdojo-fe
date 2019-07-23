@@ -31,6 +31,7 @@ describe('VenuesContainer', () => {
 
   it('should match snapshot with error/loading', () => {
     wrapper.setProps({ error: 'Failed to fetch', loading: true });
+    
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -44,6 +45,7 @@ describe('VenuesContainer', () => {
       error: 'Failed to fetch'
     };
     const mappedProps = mapStateToProps(mockState);
+
     expect(mappedProps).toEqual(expected);
   });
 });

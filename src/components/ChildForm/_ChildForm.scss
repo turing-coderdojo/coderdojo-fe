@@ -1,0 +1,24 @@
+.ChildForm {
+  @include form-style;
+
+  h2 {
+    margin: 0 0 15px 0;
+    text-align: center;
+  }
+
+  label {
+    @include flex-column;
+  }
+
+  input {
+    @include form-input-style;
+  }
+
+  .date-picker {
+    width: 420px;
+  }
+
+  button {
+    @include form-submit($footer-color);
+  }
+}
