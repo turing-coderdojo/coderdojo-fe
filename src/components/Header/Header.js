@@ -13,13 +13,27 @@ export function Header(props) {
     localStorage.setItem('token', JSON.stringify(''));
   };
 
+  const redirectPath = () => {
+    const { role } = user;
+    let route;
+    if (role === 0) {
+      route = '/dashboard/student';
+    } else if (role === 1) {
+      route = '/myfamily';
+    } else if (role === 2) {
+      route = '/dashboard/admin';
+    }
+    return route;
+  }
+
+
   const createMenuOptions = () => {
     let menuOptions;
-    if (user.role) {
+    if (user.username) {
       menuOptions = (
         <div>
+          <NavLink to={redirectPath()} className="nav-link logout" onClick={() => console.log('hihi')}>DASHBOARD</NavLink>
           <NavLink to="/" className="nav-link logout" onClick={logOutUser}>LOGOUT</NavLink>
-          <NavLink to="/" className="nav-link logout" onClick={() => console.log('hihi')}>LOGOUT</NavLink>
         </div>
         );
     } else {
