@@ -74,7 +74,7 @@ export function AdminDash(props) {
 
   return (
     <section className="AdminDash">
-      {!eventFormVisible && <EventForm />}
+      {!eventFormVisible && <EventForm venueId={1} />}
       <div className="admin-header">
         <h2>
           Admin:&nbsp;&nbsp;

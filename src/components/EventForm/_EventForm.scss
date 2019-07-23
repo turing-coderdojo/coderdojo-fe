@@ -9,6 +9,9 @@
 
   form {
     width: 50%;
-    background-color: #fff;
+    background-color: red;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
   }
 }

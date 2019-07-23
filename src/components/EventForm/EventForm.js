@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 
-function EventForm() {
+function EventForm(props) {
   const [eventDetails, setEventDetails] = useState({});
   const [startEndDate, setStartEndDate] = useState({});
+  const [invalidField, setInvalidField] = useState('');
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -22,9 +23,19 @@ function EventForm() {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setInvalidField('');
+    if (!eventDetails.name || !eventDetails.start_time || !eventDetails.end_time) {
+      setInvalidField('Please fill out required fields');
+    } else {
+      console.log('hi')
+    }
+  };
+
   return (
     <div className="EventForm">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>Create New Event:</h2>
         <label htmlFor="event-name">
           Event Name:
@@ -41,7 +52,7 @@ function EventForm() {
           minDate={new Date()}
           showTimeSelect
           dateFormat="MMMM d, yyyy h:mm aa"
-          placeholderText="Start Date & Time"
+          placeholderText="Starts"
         />
         <DatePicker
           selected={startEndDate.end}
@@ -49,7 +60,7 @@ function EventForm() {
           minDate={new Date()}
           showTimeSelect
           dateFormat="MMMM d, yyyy h:mm aa"
-          placeholderText="Start Date & Time"
+          placeholderText="Ends"
         />
         <label htmlFor="event-notes">
           Notes(Optional):
@@ -60,7 +71,8 @@ function EventForm() {
             onChange={handleChange}
           />
         </label>
-        <button type="button" className="create-event-btn" name="student" onClick={() => {}}>Create</button>
+        {invalidField && <p className="error">{invalidField}</p>}
+        <button type="submit" className="create-event-btn" onClick={handleSubmit}>Create</button>
       </form>
     </div>
   );
