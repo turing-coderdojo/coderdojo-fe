@@ -38,7 +38,7 @@ function EventForm({venueId, toggleView}) {
   return (
     <div className="EventForm">
       <form onSubmit={handleSubmit}>
-        <button type="button" className="cancel-event-btn" onClick={() => toggleView(false)}>X</button>
+        <button type="button" className="cancel-event-btn" onClick={() => toggleView(false)}>&times;</button>
         <h2>Create New Event:</h2>
         <label htmlFor="event-name">
           Event Name:
