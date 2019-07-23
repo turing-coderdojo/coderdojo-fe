@@ -5,7 +5,7 @@ exports[`StudentDash should match snapshot 1`] = `
   className="StudentDashContainer"
 >
   <div
-    className="StudentDashHeader"
+    className="studentDashHeader"
   >
     <h2>
       Welcome, 
@@ -15,13 +15,13 @@ exports[`StudentDash should match snapshot 1`] = `
     Current Event
   </h3>
   <div
-    className="EventWrapper"
+    className="eventWrapper"
   >
     <form
       onSubmit={[Function]}
     >
       <input
-        className="EventCode"
+        className="eventCode"
         onChange={[Function]}
         placeholder="Enter Event Code"
         type="text"
@@ -33,5 +33,8 @@ exports[`StudentDash should match snapshot 1`] = `
       </button>
     </form>
   </div>
+  <section
+    className="pastEvents"
+  />
 </section>
 `;

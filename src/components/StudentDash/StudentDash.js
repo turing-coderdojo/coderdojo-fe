@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import requests from '../../utils/requests/requests';
-
+import EventCard from '../EventCard/EventCard';
 
 export function StudentDash(props) {
   const [pastEvents, setAttendedEvents] = useState({});
@@ -19,7 +19,8 @@ export function StudentDash(props) {
     getEventsAttended(user.id);
   }, [user.id]);
 
-  const generateEvents = events => events.map(event => <p>{event.name}</p>);
+  const generateEvents = events => events.map(event => <EventCard key={event.id} event={event} />);
+
 
   const submitAttendance = async (e) => {
     e.preventDefault();
