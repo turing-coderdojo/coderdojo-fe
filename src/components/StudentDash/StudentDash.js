@@ -5,8 +5,20 @@ import requests from '../../utils/requests/requests';
 
 
 export function StudentDash(props) {
-  // const [user, setUser] = useState({});
+  const [pastEvents, setAttendedEvents] = useState({});
   const { user } = props;
+
+  const getEventsAttended = async () => {
+    const attendedEvents = await requests.getEventsAttended();
+    setAttendedEvents(attendedEvents.me.eventsAttended);
+    console.log(attendedEvents.me.eventsAttended);
+  };
+
+  useEffect(() => {
+    getEventsAttended(user.id);
+  }, [user.id]);
+
+  const generateEvents = events => events.map(event => <p>{event.name}</p>);
 
   return (
     <section className="StudentDashContainer">
@@ -23,6 +35,7 @@ export function StudentDash(props) {
         />
         <button type="submit">Submit</button>
       </form>
+      {pastEvents.length > 0 && generateEvents(pastEvents)}
     </section>
   );
 }

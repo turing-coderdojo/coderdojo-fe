@@ -168,3 +168,15 @@ export const RECENT_EVENTS_BY_VENUE = gql`
     }
   }
 `;
+
+export const GET_EVENTS_ATTENDED = gql`
+ {
+    me{
+        eventsAttended{
+            name
+            startTime
+            id
+        }
+    }
+}
+`;

@@ -11,7 +11,8 @@ const requests = {
   getVenuesByCity: city => apolloQuery(gql.GET_VENUES_BY_CITY, city),
   getVenueDetails: venueId => apolloQuery(gql.GET_VENUE_DETAILS, venueId),
   getUpcomingEvents: venueId => apolloQuery(gql.UPCOMING_EVENTS_BY_VENUE, venueId),
-  getRecentEvents: venueId => apolloQuery(gql.RECENT_EVENTS_BY_VENUE, venueId)
+  getRecentEvents: venueId => apolloQuery(gql.RECENT_EVENTS_BY_VENUE, venueId),
+  getEventsAttended: () => apolloQuery(gql.GET_EVENTS_ATTENDED)
 };
 
 export default requests;
