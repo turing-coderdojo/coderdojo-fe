@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
+import requests from '../../utils/requests/requests';
 
-function EventForm({venueId}) {
+function EventForm({venueId, toggleView}) {
   const [eventDetails, setEventDetails] = useState({});
   const [startEndDate, setStartEndDate] = useState({});
   const [invalidField, setInvalidField] = useState('');
@@ -30,13 +31,14 @@ function EventForm({venueId}) {
       setInvalidField('Please fill out required fields');
     } else {
       const newEvent = { ...eventDetails, venueId };
-      console.log(newEvent);
+      requests.createNewEvent(newEvent);
     }
   };
 
   return (
     <div className="EventForm">
       <form onSubmit={handleSubmit}>
+        <button type="button" className="cancel-event-btn" onClick={() => toggleView(false)}>Cancel</button>
         <h2>Create New Event:</h2>
         <label htmlFor="event-name">
           Event Name:

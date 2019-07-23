@@ -10,6 +10,10 @@ export function AdminDash(props) {
   const [eventFormVisible, showEventForm] = useState(false);
   const { error, isLoading } = props;
 
+  const toggleEventForm = (bool) => {
+    showEventForm(bool);
+  };
+
   const getEventsAndVenues = async () => {
     const result = await requests.getAdminDetails();
     const { me } = result;
@@ -74,7 +78,7 @@ export function AdminDash(props) {
 
   return (
     <section className="AdminDash">
-      {!eventFormVisible && <EventForm venueId={1} />}
+      {eventFormVisible && <EventForm venueId={1} toggleView={toggleEventForm} />}
       <div className="admin-header">
         <h2>
           Admin:&nbsp;&nbsp;
@@ -91,7 +95,7 @@ export function AdminDash(props) {
         <section className="events-section">
           <div className="events-header">
             <p>Your Upcoming Events:</p>
-            <button type="button" onClick={() => showEventForm(true)}>+ Create New Event</button>
+            <button type="button" onClick={() => toggleEventForm(true)}>+ Create New Event</button>
           </div>
           {adminData.venues && generateEventCards()}
         </section>
