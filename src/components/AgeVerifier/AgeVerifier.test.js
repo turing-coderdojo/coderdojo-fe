@@ -8,8 +8,11 @@ describe('AgeVerifier', () => {
   beforeEach(() => {
     wrapper = shallow(<AgeVerifier />);
   });
-
-  it('should match snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
+  
+  it('should have default state', () => {
+    expect(wrapper.state()).toEqual({
+      birthdate: '',
+      success: false
+    });
   });
 });

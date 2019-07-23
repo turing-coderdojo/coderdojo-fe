@@ -21,8 +21,15 @@ describe('ChildForm', () => {
     );
   });
 
-  it('should match snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
+  it('should have default state', () => {
+    expect(wrapper.state()).toEqual({
+      name: '',
+      username: '',
+      password: '',
+      password2: '',
+      dob: '',
+      success: false
+    });
   });
 
   describe('handleChange', () => {
