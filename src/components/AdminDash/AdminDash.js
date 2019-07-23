@@ -6,8 +6,7 @@ import EventCard from '../EventCard/EventCard';
 
 export function AdminDash(props) {
   const [adminData, setAdminData] = useState({});
-  const { user } = props;
-  
+  const { error, isLoading } = props;
   const getEventsAndVenues = async () => {
     const result = await requests.getAdminDetails();
     const { me } = result;
@@ -74,10 +73,12 @@ export function AdminDash(props) {
     <section className="AdminDash">
       <div className="admin-header">
         <h2>
-          Admin:&nbsp;
+          Admin:&nbsp;&nbsp;
           {adminData.username}
+          {isLoading && 'Loading your information...'}
         </h2>
       </div>
+      {error && <p className="error">{error}</p>}
       <div className="details-container">
         <section className="details-section">
           {adminData.venues && generateVenueDetails()}
@@ -97,20 +98,17 @@ export function AdminDash(props) {
 
 const mapStateToProps = state => ({
   isLoading: state.isFetching,
-  error: state.error,
-  user: state.user
+  error: state.error
 });
 
 export default connect(mapStateToProps)(AdminDash);
 
 AdminDash.propTypes = {
   isLoading: PropTypes.bool,
-  error: PropTypes.string,
-  user: PropTypes.object
+  error: PropTypes.string
 };
 
 AdminDash.defaultProps = {
   isLoading: false,
-  error: '',
-  user: {}
+  error: ''
 };
