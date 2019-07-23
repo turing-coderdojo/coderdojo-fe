@@ -13,7 +13,7 @@ const requests = {
   getUpcomingEvents: venueId => apolloQuery(gql.UPCOMING_EVENTS_BY_VENUE, venueId),
   getRecentEvents: venueId => apolloQuery(gql.RECENT_EVENTS_BY_VENUE, venueId),
   getEventsAttended: () => apolloQuery(gql.GET_EVENTS_ATTENDED),
-  logAttendance: eventCode => apolloQuery(gql.LOG_ATTENDANCE, eventCode)
+  logAttendance: eventInfo => apolloQuery(gql.LOG_ATTENDANCE, eventInfo)
 };
 
 export default requests;

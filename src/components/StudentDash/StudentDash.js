@@ -7,7 +7,8 @@ import requests from '../../utils/requests/requests';
 export function StudentDash(props) {
   const [pastEvents, setAttendedEvents] = useState({});
   const [eventCode, setEventCode] = useState({});
-  const { user } = props;
+  const [success, setSuccess] = useState(false);
+  const { user, error, isFetching } = props;
 
   const getEventsAttended = async () => {
     const attendedEvents = await requests.getEventsAttended();
@@ -20,6 +21,41 @@ export function StudentDash(props) {
 
   const generateEvents = events => events.map(event => <p>{event.name}</p>);
 
+  const submitAttendance = async (e) => {
+    e.preventDefault();
+    const results = await requests.logAttendance(eventCode);
+    if (results) {
+      setSuccess(true);
+    } else {
+      setSuccess(false);
+    }
+  };
+
+  const handleChange = (e) => {
+    setEventCode({ eventCode: e.target.value });
+  };
+
+  const assignForm = () => {
+    let generateForm;
+    if (!success) {
+      generateForm = (
+        <form onSubmit={submitAttendance}>
+          <input
+            type="text"
+            placeholder="Enter Event Code"
+            className="EventCode"
+            onChange={e => handleChange(e)}
+          />
+          <button type="submit">Submit</button>
+          {error && <p>{error}</p>}
+        </form>
+      );
+    } else {
+      generateForm = <p>Your attendance has been successfully logged!</p>;
+    }
+    return generateForm;
+  };
+
   return (
     <section className="StudentDashContainer">
       <div className="StudentDashHeader">
@@ -29,15 +65,7 @@ export function StudentDash(props) {
       </div>
       <h3>Current Event</h3>
       <div className="EventWrapper">
-        <form>
-          <input 
-            type="text" 
-            placeholder="Enter Event Code"
-            className="EventCode"
-            onChange={e => setEventCode(e)}
-          />
-          <button type="submit">Submit</button>
-        </form>
+        {assignForm()}
       </div>
       {pastEvents.length > 0 && generateEvents(pastEvents)}
     </section>

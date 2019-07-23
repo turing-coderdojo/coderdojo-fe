@@ -1,3 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StudentDash should match snapshot 1`] = `<section />`;
+exports[`StudentDash should match snapshot 1`] = `
+<section
+  className="StudentDashContainer"
+>
+  <div
+    className="StudentDashHeader"
+  >
+    <h2>
+      Welcome, 
+    </h2>
+  </div>
+  <h3>
+    Current Event
+  </h3>
+  <div
+    className="EventWrapper"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        className="EventCode"
+        onChange={[Function]}
+        placeholder="Enter Event Code"
+        type="text"
+      />
+      <button
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</section>
+`;
