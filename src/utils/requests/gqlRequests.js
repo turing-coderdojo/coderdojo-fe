@@ -21,6 +21,7 @@ export const GET_USER_BY_TOKEN = gql`
   {
     me{
         username
+        name
         role
     }
   }
