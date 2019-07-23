@@ -170,7 +170,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
 RegisterForm.propTypes = {
   addUser: PropTypes.func,
   setError: PropTypes.func,
-  error: PropTypes.bool
+  error: PropTypes.string
 };
 
 RegisterForm.defaultProps = {

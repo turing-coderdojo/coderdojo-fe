@@ -175,6 +175,7 @@ export const GET_FAMILY = gql`
       students {
         name
         username
+        birthdate
         id
       }
     }

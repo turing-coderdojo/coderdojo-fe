@@ -3,6 +3,11 @@ export const addUser = user => ({
   user
 });
 
+export const addStudents = students => ({
+  type: 'ADD_STUDENTS',
+  students
+});
+
 export const setFetching = bool => ({
   type: 'SET_FETCHING',
   isFetching: bool

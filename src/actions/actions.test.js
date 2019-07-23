@@ -16,6 +16,24 @@ describe('actions', () => {
     expect(result).toEqual(expected);
   });
 
+  it('should return a type of ADD_STUDENTS and an array of students', () => {
+    const students = [
+      {
+        id: 1,
+        name: 'Jude Bacher',
+        username: 'judebacher',
+        birthdate: '01/23/18'
+      }
+    ];
+    const expected = {
+      type: 'ADD_STUDENTS',
+      students
+    };
+    const result = actions.addStudents(students);
+
+    expect(result).toEqual(expected);
+  });
+
   it('should return a type of setFetching  with a boolean', () => {
     const bool = true;
     const expected = {
