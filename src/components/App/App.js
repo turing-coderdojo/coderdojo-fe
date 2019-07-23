@@ -6,7 +6,7 @@ import { addUser } from '../../actions';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-function App(props) {
+export function App(props) {
   const { setUser } = props;
 
   const setUserData = async () => {

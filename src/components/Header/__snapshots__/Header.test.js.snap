@@ -21,15 +21,17 @@ exports[`Header should match snapshot 1`] = `
     <div>
       <NavLink
         className="nav-link"
-        to="/login"
+        onClick={[Function]}
+        to="/dashboard/student"
       >
-        LOGIN
+        DASHBOARD
       </NavLink>
       <NavLink
-        className="nav-link"
-        to="/register"
+        className="nav-link logout"
+        onClick={[Function]}
+        to="/"
       >
-        REGISTER
+        LOGOUT
       </NavLink>
     </div>
   </section>
