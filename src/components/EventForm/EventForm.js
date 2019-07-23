@@ -38,7 +38,7 @@ function EventForm({venueId, toggleView}) {
   return (
     <div className="EventForm">
       <form onSubmit={handleSubmit}>
-        <button type="button" className="cancel-event-btn" onClick={() => toggleView(false)}>Cancel</button>
+        <button type="button" className="cancel-event-btn" onClick={() => toggleView(false)}>X</button>
         <h2>Create New Event:</h2>
         <label htmlFor="event-name">
           Event Name:
@@ -56,6 +56,7 @@ function EventForm({venueId, toggleView}) {
           showTimeSelect
           dateFormat="MMMM d, yyyy h:mm aa"
           placeholderText="Starts"
+          className="event-range"
         />
         <DatePicker
           selected={startEndDate.end}
@@ -64,6 +65,7 @@ function EventForm({venueId, toggleView}) {
           showTimeSelect
           dateFormat="MMMM d, yyyy h:mm aa"
           placeholderText="Ends"
+          className="event-range"
         />
         <label htmlFor="event-notes">
           Notes(Optional):
