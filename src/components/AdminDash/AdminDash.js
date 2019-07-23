@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
 import EventCard from '../EventCard/EventCard';
+import EventForm from '../EventForm/EventForm';
 
 export function AdminDash(props) {
   const [adminData, setAdminData] = useState({});
+  const [eventFormVisible, showEventForm] = useState(false);
   const { error, isLoading } = props;
+
   const getEventsAndVenues = async () => {
     const result = await requests.getAdminDetails();
     const { me } = result;
@@ -71,6 +74,7 @@ export function AdminDash(props) {
 
   return (
     <section className="AdminDash">
+      {!eventFormVisible && <EventForm />}
       <div className="admin-header">
         <h2>
           Admin:&nbsp;&nbsp;
@@ -87,7 +91,7 @@ export function AdminDash(props) {
         <section className="events-section">
           <div className="events-header">
             <p>Your Upcoming Events:</p>
-            <button type="button">+ Create New Event</button>
+            <button type="button" onClick={() => showEventForm(true)}>+ Create New Event</button>
           </div>
           {adminData.venues && generateEventCards()}
         </section>

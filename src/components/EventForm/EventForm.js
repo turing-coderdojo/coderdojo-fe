@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function EventForm() {
   return (
-    <div>
-
-    </div>
+    <form className="EventForm">
+      Event Form
+    </form>
   );
 }
 
