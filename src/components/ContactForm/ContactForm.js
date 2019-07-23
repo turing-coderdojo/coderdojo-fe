@@ -34,31 +34,62 @@ export class ContactForm extends Component {
       state,
       zip 
     } = this.state;
-
-    e.preventDefault();
-    const guardian = {
-      name: fullName,
-      username,
-      password,
-      phoneNumber,
+    const contactInfo = {
       email,
+      phoneNumber,
       street1,
       street2,
       city,
       state,
       zip
+    }
+    const guardian = {
+      name: fullName,
+      username,
+      password,
+      ...contactInfo
     };
     const user = {
       username,
       password
     };
 
-    this.createGuardian(guardian, user);
+    e.preventDefault();
+
+    const error = this.checkAllFields(contactInfo);
+    
+    if (!error) {
+      this.createGuardian(guardian, user);
+    }
+  }
+
+  checkAllFields = ({ email, phoneNumber, street1, street2, city, state, zip }) => {
+    const { setError } = this.props;
+    let error = false;
+    let fields = [
+      email,
+      phoneNumber,
+      street1,
+      city,
+      state,
+      zip
+    ]
+
+    fields.forEach(field => {
+      if (!field) {
+        setError('All fields must be filled.');
+
+        error = true;
+      }
+    });
+
+    return error;
   }
 
   createGuardian = async (guardian, user) => {
     const { error, setError } = this.props;
     const result = await requests.createGuardian(guardian);
+
     if (result) {
       this.signIn(user);
     } else {
@@ -92,7 +123,7 @@ export class ContactForm extends Component {
   
   render() {
     const { success, phoneNumber } = this.state;
-    const { error } = this.props;
+    const { error, isFetching } = this.props;
 
     if (success) return <Redirect to="/myFamily" />;
 
@@ -181,8 +212,12 @@ export class ContactForm extends Component {
             />
           </label>
         </div>
-        <p>{error && error}</p>
-        <button type="submit" className="signin-btn">Submit</button>
+        <div className="error-msg">
+          {error && <p className="shake">{error}</p>}
+        </div>
+        <button type="submit" className="signin-btn">
+          {isFetching ? 'PLEASE WAIT...' : 'SUBMIT'}
+        </button>
       </form>
     );
   }

@@ -24,9 +24,9 @@ export class ChildForm extends Component {
   }
 
   handleSubmit = (e) => {
-    e.preventDefault();
-
     const { setError } = this.props;
+
+    e.preventDefault();
 
     setError('');
 

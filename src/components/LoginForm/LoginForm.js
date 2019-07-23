@@ -33,7 +33,7 @@ export class LoginForm extends Component {
   }
 
   signIn = async (user) => {
-    const { addUser } = this.props;
+    const { addUser, } = this.props;
     const result = await requests.signIn(user);
 
     if (result) {
@@ -41,6 +41,7 @@ export class LoginForm extends Component {
       
       localStorage.setItem('token', JSON.stringify(token));
       addUser(validUser);
+
       this.setState({ success: true, role: validUser.role });
     }
   }
@@ -86,8 +87,12 @@ export class LoginForm extends Component {
         <div className="error-msg">
           {error && <p className="shake">{error}</p>}
         </div>
-        <button 
-          type="submit" className="signin-btn">{isFetching ? 'PLEASE WAIT...' : 'LOGIN'}</button>
+        <button
+          type="submit" 
+          className="signin-btn"
+        >
+          {isFetching ? 'PLEASE WAIT...' : 'LOGIN'}
+        </button>
         <p className="register-link">
           Don't have an account?
           <Link to="/register"><span> Register Here</span></Link>
@@ -98,7 +103,7 @@ export class LoginForm extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  addUser: user => dispatch(actions.addUser(user))
+  addUser: user => dispatch(actions.addUser(user)),
 });
 
 export const mapStateToProps = ({ isFetching, error }) => ({
