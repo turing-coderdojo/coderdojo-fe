@@ -28,6 +28,27 @@
     .events-section {
       flex: 2;
       background-color: #fff;
+
+      .events-header {
+        background-color: #E5E5E5;
+        display: flex;
+        align-items: center;
+        height: 50px;
+
+        p {
+          font-size: 1.2rem;
+          margin: 0 10px;
+        }
+
+        button {
+          background-color: $primary-color;
+          color: #fff;
+          font-size: 1rem;
+          padding: 5px 10px;
+          border: 2px solid $primary-color;
+          margin: 10px;
+        }
+      }
     }
   }
 }
