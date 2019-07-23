@@ -1,9 +1,12 @@
 import React from 'react';
-import Controls from '../Controls/Controls';
+import Controls, { useEffect } from '../Controls/Controls';
+import { connect } from 'react-redux';
+import { addUser } from '../../actions';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 function App() {
+
   return (
     <div className="App">
       <Header />
@@ -13,4 +16,8 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  setUser: user => dispatch(addUser(user))
+});
+
+export default connect(null, mapDispatchToProps)(App);
