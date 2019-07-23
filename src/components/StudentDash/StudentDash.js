@@ -43,7 +43,7 @@ export function StudentDash(props) {
           <input
             type="text"
             placeholder="Enter Event Code"
-            className="EventCode"
+            className="eventCode"
             onChange={e => handleChange(e)}
           />
           <button type="submit">Submit</button>
@@ -58,16 +58,18 @@ export function StudentDash(props) {
 
   return (
     <section className="StudentDashContainer">
-      <div className="StudentDashHeader">
+      <div className="studentDashHeader">
         <h2>
           Welcome, {user.name}
         </h2>
       </div>
       <h3>Current Event</h3>
-      <div className="EventWrapper">
+      <div className="eventWrapper">
         {assignForm()}
       </div>
-      {pastEvents.length > 0 && generateEvents(pastEvents)}
+      <section className="pastEvents">
+        {pastEvents.length > 0 && generateEvents(pastEvents)}
+      </section>
     </section>
   );
 }

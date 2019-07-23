@@ -3,28 +3,51 @@
   margin: auto;
   height:100vh;
 
-  .StudentDashHeader {
+  .studentDashHeader {
     background-color: #724695;
     width: 100%;
     padding: 30px 0;
     display: flex;
     align-items: center;
+    color:#FFFFFF;
   }
+
   h2 {
     font-weight: 400;
     margin: 0 40px;
   }
-  .EventWrapper {
+
+  .eventWrapper {
     @include flex-column;
     margin: 5% auto;
-    width: 500px;
+    width: 600px;
     min-width: 300px;
     padding: 40px;
     background-color: #FFFFFF;
   }
-  .EventCode {
+
+  .eventCode {
     @include form-input-style;
-    width:200px;
+    width:300px;
+  }
+
+  .eventCode::placeholder {
+    text-align: center;
+  }
+
+  button {
+    @include form-submit;
+    background-color: $footer-color;
+    border-color:  $footer-color;
+    margin-left: 60px;
+    width: 125px;
+  }
+  .pastEvents {
+    @include flex-column;
+     padding: 5% 8% 10% 8%;
+     border: 2px solid #faa31a;
+     margin: 10px;
+
   }
 }
 

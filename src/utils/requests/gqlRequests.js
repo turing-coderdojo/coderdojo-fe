@@ -183,11 +183,9 @@ export const GET_EVENTS_ATTENDED = gql`
 
 export const LOG_ATTENDANCE = gql`
   mutation logAttendance( 
-    $eventId: String!,
-    $eventCode: String!,
+    $eventCode: String!
     ) {
     logAttendance(
-      eventId: $eventId,
       eventCode: $eventCode
     ) {
       id
