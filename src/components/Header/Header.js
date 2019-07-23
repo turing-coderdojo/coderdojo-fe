@@ -47,12 +47,18 @@ export const mapDispatchToProps = dispatch => ({
   resetUser: () => dispatch(addUser({}))
 });
 
-export default connect(null, mapDispatchToProps)(Header);
+export const mapStateToProps = state => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
 Header.propTypes = {
-  resetUser: PropTypes.func
+  resetUser: PropTypes.func,
+  user: PropTypes.object
 };
 
 Header.defaultProps = {
-  resetUser: () => {}
+  resetUser: () => {},
+  user: {}
 };

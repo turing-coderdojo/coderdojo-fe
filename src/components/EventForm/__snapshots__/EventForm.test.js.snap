@@ -1,3 +1,125 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EventForm should match snapshot 1`] = `<div />`;
+exports[`EventForm should match snapshot 1`] = `
+<div
+  className="EventForm"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <button
+      className="cancel-event-btn"
+      onClick={[Function]}
+      type="button"
+    >
+      ×
+    </button>
+    <h2>
+      Create New Event:
+    </h2>
+    <label
+      htmlFor="event-name"
+    >
+      Event Name:
+      <input
+        id="event-name"
+        name="name"
+        onChange={[Function]}
+        type="text"
+      />
+    </label>
+    <DatePicker
+      allowSameDay={false}
+      className="event-range"
+      dateFormat="MMMM d, yyyy h:mm aa"
+      dateFormatCalendar="LLLL yyyy"
+      disabled={false}
+      disabledKeyboardNavigation={false}
+      dropdownMode="scroll"
+      inlineFocusSelectedMonth={false}
+      minDate={2019-07-23T21:11:04.457Z}
+      monthsShown={1}
+      nextMonthButtonLabel="Next month"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClickOutside={[Function]}
+      onFocus={[Function]}
+      onInputClick={[Function]}
+      onInputError={[Function]}
+      onKeyDown={[Function]}
+      onMonthChange={[Function]}
+      onSelect={[Function]}
+      onYearChange={[Function]}
+      placeholderText="Starts"
+      preventOpenOnFocus={false}
+      previousMonthButtonLabel="Previous Month"
+      readOnly={false}
+      renderDayContents={[Function]}
+      shouldCloseOnSelect={true}
+      showMonthYearPicker={false}
+      showTimeInput={false}
+      showTimeSelect={true}
+      strictParsing={false}
+      timeCaption="Time"
+      timeInputLabel="Time"
+      timeIntervals={30}
+      withPortal={false}
+    />
+    <DatePicker
+      allowSameDay={false}
+      className="event-range"
+      dateFormat="MMMM d, yyyy h:mm aa"
+      dateFormatCalendar="LLLL yyyy"
+      disabled={false}
+      disabledKeyboardNavigation={false}
+      dropdownMode="scroll"
+      inlineFocusSelectedMonth={false}
+      minDate={2019-07-23T21:11:04.457Z}
+      monthsShown={1}
+      nextMonthButtonLabel="Next month"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClickOutside={[Function]}
+      onFocus={[Function]}
+      onInputClick={[Function]}
+      onInputError={[Function]}
+      onKeyDown={[Function]}
+      onMonthChange={[Function]}
+      onSelect={[Function]}
+      onYearChange={[Function]}
+      placeholderText="Ends"
+      preventOpenOnFocus={false}
+      previousMonthButtonLabel="Previous Month"
+      readOnly={false}
+      renderDayContents={[Function]}
+      shouldCloseOnSelect={true}
+      showMonthYearPicker={false}
+      showTimeInput={false}
+      showTimeSelect={true}
+      strictParsing={false}
+      timeCaption="Time"
+      timeInputLabel="Time"
+      timeIntervals={30}
+      withPortal={false}
+    />
+    <label
+      htmlFor="event-notes"
+    >
+      Notes(Optional):
+      <input
+        id="event-notes"
+        name="notes"
+        onChange={[Function]}
+        type="text"
+      />
+    </label>
+    <button
+      className="create-event-btn"
+      onClick={[Function]}
+      type="submit"
+    >
+      Create
+    </button>
+  </form>
+</div>
+`;

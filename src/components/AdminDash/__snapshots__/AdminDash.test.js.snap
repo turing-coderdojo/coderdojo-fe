@@ -1,9 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AdminDash should match snapshot 1`] = `
-<section>
-  <h1>
-    Admin
-  </h1>
+<section
+  className="AdminDash"
+>
+  <div
+    className="admin-header"
+  >
+    <h2>
+      Admin:  
+    </h2>
+  </div>
+  <div
+    className="details-container"
+  >
+    <section
+      className="details-section"
+    />
+    <section
+      className="events-section"
+    >
+      <div
+        className="events-header"
+      >
+        <p>
+          Your Upcoming Events:
+        </p>
+        <button
+          onClick={[Function]}
+          type="button"
+        >
+          + Create New Event
+        </button>
+      </div>
+    </section>
+  </div>
 </section>
 `;
