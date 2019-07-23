@@ -30,6 +30,9 @@ exports[`LoginForm should match snapshot 1`] = `
       type="password"
     />
   </label>
+  <div
+    className="error-msg"
+  />
   <button
     className="signin-btn"
     type="submit"
@@ -39,12 +42,12 @@ exports[`LoginForm should match snapshot 1`] = `
   <p
     className="register-link"
   >
-    Don't have an account?  
+    Don't have an account?
     <Link
       to="/register"
     >
       <span>
-        Register Here
+         Register Here
       </span>
     </Link>
   </p>

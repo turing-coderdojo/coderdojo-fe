@@ -1,3 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Family should match snapshot 1`] = `<div />`;
+exports[`Family should match snapshot 1`] = `
+<div>
+  <h2>
+    My Family
+  </h2>
+  <Link
+    to="/myfamily/registerstudent"
+  >
+    Add a Student
+  </Link>
+</div>
+`;

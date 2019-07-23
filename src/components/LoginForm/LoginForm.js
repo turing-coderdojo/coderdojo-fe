@@ -35,10 +35,13 @@ export class LoginForm extends Component {
   signIn = async (user) => {
     const { addUser } = this.props;
     const result = await requests.signIn(user);
+
     if (result) {
       const { user: validUser, token } = result.signIn;
+      
       localStorage.setItem('token', JSON.stringify(token));
       addUser(validUser);
+
       this.setState({ success: true, role: validUser.role });
     }
   }
@@ -46,16 +49,17 @@ export class LoginForm extends Component {
   render() {
     const { success, role } = this.state;
     const { error, isFetching } = this.props;
-    const roleAssign = () => {
-      if (role === 0) {
-        return '/dashboard/student';
-      } else if (role === 1) {
-        return '/myfamily';
-      } 
-      return '/dashboard/admin';
-    };
+    let path;
+    
+    if (role === 0) {
+      path = '/dashboard/student';
+    } else if (role === 1) {
+      path = '/myfamily';
+    } else {
+      path = '/dashboard/admin';
+    }
 
-    if (success) return <Redirect to={`${roleAssign()}`} />;
+    if (success) return <Redirect to={path} />;
 
     return (
       <form
@@ -81,12 +85,18 @@ export class LoginForm extends Component {
             onChange={this.handleChange}
           />
         </label>
-        { error && <p className="error-msg">{ error }</p>}
-        { isFetching && <p>Loggin in, please wait...</p>}
-        <button type="submit" className="signin-btn">LOGIN</button>
+        <div className="error-msg">
+          {error && <p className="shake">{error}</p>}
+        </div>
+        <button
+          type="submit" 
+          className="signin-btn"
+        >
+          {isFetching ? 'PLEASE WAIT...' : 'LOGIN'}
+        </button>
         <p className="register-link">
-          Don&#39;t have an account?&nbsp;&nbsp;
-          <Link to="/register"><span>Register Here</span></Link>
+          Don&apos;t have an account?
+          <Link to="/register"><span> Register Here</span></Link>
         </p>
       </form>
     );

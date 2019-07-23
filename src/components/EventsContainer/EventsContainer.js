@@ -29,14 +29,17 @@ export function EventsContainer(props) {
     const { 
       city, street1, street2, zip, state
     } = venue.addresses[0];
-    const venueAdress = `${street1}, ${street2 || ''} ${city}, ${state} ${zip}`;
+    const venueAddress1 = street1;
+    const venueAddress2 = street2 || '';
+    const venueAddress3 = `${city}, ${state} ${zip}`;
+
     return (
       <section className="venue-details">
         <p>{venue.notes}</p>
         <h4>Address:</h4>
-        <p>
-          {venueAdress}
-        </p>
+        <p>{venueAddress1}</p>
+        <p>{venueAddress2}</p>
+        <p>{venueAddress3}</p>
       </section>
     );
   };

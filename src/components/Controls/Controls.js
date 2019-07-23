@@ -8,6 +8,7 @@ import ContactInfo from '../ContactInfo/ContactInfo';
 import Family from '../Family/Family';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import VenuesContainer from '../VenuesContainer/VenuesContainer';
+import ChildForm from '../ChildForm/ChildForm';
 import EventsContainer from '../EventsContainer/EventsContainer';
 import AdminDash from '../AdminDash/AdminDash';
 
@@ -25,8 +26,11 @@ function Controls() {
         <Route exact path="/students" component={CurrentStudents} />
         <Route exact path="/contact/:id" component={ContactInfo} />
         <Route exact path="/myfamily" component={Family} />
+        <Route exact path="/myfamily/registerstudent" component={ChildForm} />
+        <Route exact path="/dashboard/student" component={Profile} />
+        <Route exact path="/dashboard/admin" component={Profile} />
         <Route exact path="/register" component={RegisterForm} />
-        <Route render={() => <h1>404 Page</h1>} />
+        <Route render={() => <h1>404 Page Not Found</h1>} />
       </Switch>
     </div>
   );

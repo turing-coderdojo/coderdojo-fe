@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
 import * as actions from '../../actions';
 
-
 export class ContactForm extends Component {
   state = {
     email: '',
@@ -20,6 +19,7 @@ export class ContactForm extends Component {
 
   handleChange = ({ target }) => {
     const { name, value } = target;
+
     this.setState({ [name]: value });
   }
 
@@ -34,14 +34,12 @@ export class ContactForm extends Component {
       state,
       zip 
     } = this.state;
-
-    e.preventDefault();
     const guardian = {
       name: fullName,
       username,
       password,
-      phoneNumber,
       email,
+      phoneNumber,
       street1,
       street2,
       city,
@@ -53,12 +51,51 @@ export class ContactForm extends Component {
       password
     };
 
-    this.createGuardian(guardian, user);
+    e.preventDefault();
+
+    const error = this.checkAllFields();
+    
+    if (!error) {
+      this.createGuardian(guardian, user);
+    }
+  }
+
+  checkAllFields = () => {
+    const { setError } = this.props;
+    const { 
+      email,
+      phoneNumber,
+      street1,
+      city,
+      state,
+      zip 
+    } = this.state;
+    const fields = [
+      email,
+      phoneNumber,
+      street1,
+      city,
+      state,
+      zip
+    ];
+
+    let error = false;
+
+    fields.forEach((field) => {
+      if (!field) {
+        setError('All fields must be filled.');
+
+        error = true;
+      }
+    });
+
+    return error;
   }
 
   createGuardian = async (guardian, user) => {
     const { error, setError } = this.props;
     const result = await requests.createGuardian(guardian);
+
     if (result) {
       this.signIn(user);
     } else {
@@ -69,6 +106,7 @@ export class ContactForm extends Component {
   signIn = async (user) => {
     const { addUser } = this.props;
     const result = await requests.signIn(user);
+
     if (result) {
       const { user: validUser, token } = result.signIn;
       localStorage.setItem('token', JSON.stringify(token));
@@ -80,24 +118,26 @@ export class ContactForm extends Component {
   cleanNumber = () => {
     const { phoneNumber } = this.state;
     const { setError } = this.props;
+
     let number = phoneNumber.replace(/\D+/g, '');
+
     if (number.length === 10) {
       number = number.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
     } else {
       number = '';
       setError('Please enter a valid US phone number.');
     }
+
     this.setState({ phoneNumber: number });
   }
   
   render() {
     const { success, phoneNumber } = this.state;
-    const { error } = this.props;
+    const { error, isFetching } = this.props;
 
     if (success) return <Redirect to="/myFamily" />;
 
     return (
-
       <form
         className="ContactForm"
         onSubmit={this.handleSubmit}
@@ -110,7 +150,7 @@ export class ContactForm extends Component {
             type="email"
             name="email"
             onChange={this.handleChange}
-            placeholder="example@example.com"
+            placeholder="example@email.com"
           />
         </label>
         <label htmlFor="phoneNumber-input">
@@ -127,7 +167,6 @@ export class ContactForm extends Component {
             placeholder="(xxx) xxx-xxxx"
           />
         </label>
-  
         <div className="address-section">
           <label htmlFor="street1-input">
             Street 1:
@@ -146,7 +185,7 @@ export class ContactForm extends Component {
               type="text"
               name="street2"
               onChange={this.handleChange}
-              placeholder="Additional Street Info"
+              placeholder="Street 2"
             />
           </label>
           <label htmlFor="city-input">
@@ -181,8 +220,12 @@ export class ContactForm extends Component {
             />
           </label>
         </div>
-        <p>{error && error}</p>
-        <button type="submit" className="signin-btn">Submit</button>
+        <div className="error-msg">
+          {error && <p className="shake">{error}</p>}
+        </div>
+        <button type="submit" className="signin-btn">
+          {isFetching ? 'PLEASE WAIT...' : 'SUBMIT'}
+        </button>
       </form>
     );
   }
