@@ -7,30 +7,26 @@ exports[`EventCard should match snapshot 1`] = `
   <div
     className="details"
   >
-    <h3>
-      Test Event 2
-    </h3>
+    <h3 />
     <div
       className="date-container"
     >
       <p
         className="date"
       >
-        Wed Aug 21 2019
+        Invalid Date
       </p>
       <p
         className="hours"
       >
-        11 AM
+        Invalid Date
         -
-        12 PM
+        Invalid Date
       </p>
     </div>
   </div>
   <p
     className="notes"
-  >
-    testing notes
-  </p>
+  />
 </article>
 `;

@@ -1,10 +1,5 @@
 .LoginForm {
-  @include flex-column;
-  margin: 10% auto;
-  width: 500px;
-  min-width: 300px;
-  padding: 40px;
-  background-color: #FFFFFF;
+  @include form-style;
 
   h2 {
     margin: 0 0 15px 0;
@@ -12,9 +7,7 @@
   }
 
   label {
-    @include flex-column;
-    margin: 0 0 2px 0;
-    color: #333532;
+    @include form-label-style
   }
 
   #username-input,
@@ -23,8 +16,7 @@
   }
 
   .signin-btn {
-    @include form-submit;
-    background-color: $primary-color;
+    @include form-submit($primary-color);
   }
 
   .register-link {
@@ -35,4 +27,12 @@
       color: #000000;
     }
   }
+}
+
+.error-msg {
+  @include form-error-msg;
+}
+
+.shake {
+  animation: shake 0.1s;
 }
