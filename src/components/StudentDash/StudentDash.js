@@ -6,12 +6,12 @@ import requests from '../../utils/requests/requests';
 
 export function StudentDash(props) {
   const [pastEvents, setAttendedEvents] = useState({});
+  const [eventCode, setEventCode] = useState({});
   const { user } = props;
 
   const getEventsAttended = async () => {
     const attendedEvents = await requests.getEventsAttended();
     setAttendedEvents(attendedEvents.me.eventsAttended);
-    console.log(attendedEvents.me.eventsAttended);
   };
 
   useEffect(() => {
@@ -26,15 +26,19 @@ export function StudentDash(props) {
         <h2>
           Welcome, {user.name}
         </h2>
-        
       </div>
-      <form>
-        <input 
-          type="text" 
-          placeholder="Enter Event Code"
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <h3>Current Event</h3>
+      <div className="EventWrapper">
+        <form>
+          <input 
+            type="text" 
+            placeholder="Enter Event Code"
+            className="EventCode"
+            onChange={e => setEventCode(e)}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
       {pastEvents.length > 0 && generateEvents(pastEvents)}
     </section>
   );

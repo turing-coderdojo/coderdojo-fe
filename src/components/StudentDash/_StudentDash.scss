@@ -1,3 +1,30 @@
-.StudentDashHeader {
-  background-color: #724695;
+.StudentDashContainer {
+  width:80%;
+  margin: auto;
+  height:100vh;
+
+  .StudentDashHeader {
+    background-color: #724695;
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+  }
+  h2 {
+    font-weight: 400;
+    margin: 0 40px;
+  }
+  .EventWrapper {
+    @include flex-column;
+    margin: 5% auto;
+    width: 500px;
+    min-width: 300px;
+    padding: 40px;
+    background-color: #FFFFFF;
+  }
+  .EventCode {
+    @include form-input-style;
+    width:200px;
+  }
 }
+
