@@ -5,52 +5,82 @@ import requests from '../../utils/requests/requests';
 import EventCard from '../EventCard/EventCard';
 
 export function AdminDash(props) {
-  const [venuesAndEvents, setVenuesAndEvents] = useState({});
+  const [adminData, setAdminData] = useState({});
   const { user } = props;
   
   const getEventsAndVenues = async () => {
     const result = await requests.getAdminDetails();
-    const { venues } = result.me;
-    setVenuesAndEvents(venues[0]);
-  };
-
-  const generateEventCards = () => venuesAndEvents
-    .events.map(event => <EventCard event={event} key={event.id} />);
-
-  const generateVenueDetails = () => {
-    const { name, notes, email, webUrl } = venuesAndEvents;
-    return (
-      <section className="venue-section">
-        <h3>{name}</h3>
-        <p>{webUrl}</p>
-        <p>{email}</p>
-        <p>{notes}</p>
-      </section>
-    );
+    const { me } = result;
+    setAdminData(me);
   };
   
   useEffect(() => {
     getEventsAndVenues();
   }, []);
 
+  const generateAdminDetails = () => {
+    const {
+      email, phoneNumber, addresses
+    } = adminData;
+    const { 
+      city, street1, street2, zip, state
+    } = addresses[0];
+    const address = `${street1}, ${street2 || ''} ${city}, ${state} ${zip}`;
+    return (
+      <div className="admin">
+        <h4>My Contact Info:</h4>
+        <p>
+          Phone: 
+          {phoneNumber}
+        </p>
+        <p>
+          Email: 
+          {email}
+        </p>
+        <p>
+          Address:
+          {address}
+        </p>
+      </div>
+    );
+  };
+
+  const generateEventCards = () => adminData.venues[0]
+    .events.map(event => <EventCard event={event} key={event.id} />);
+
+  const generateVenueDetails = () => {
+    const { 
+      name, notes, email, webUrl 
+    } = adminData.venues[0];
+    return (
+      <div className="venue">
+        <p>{notes}</p>
+        <h3>{name}</h3>
+        <p>{webUrl}</p>
+        <p>{email}</p>
+      </div>
+    );
+  };
+
   return (
     <section className="AdminDash">
       <div className="admin-header">
         <h2>
-          Admin: 
-          {user.username}
+          Admin:&nbsp;
+          {adminData.username}
         </h2>
       </div>
       <div className="details-container">
         <section className="venue-section">
-          {venuesAndEvents.events && generateVenueDetails()}
+          {adminData.venues && generateVenueDetails()}
+          {adminData.venues && generateAdminDetails()}
         </section>
         <section className="events-section">
           <div className="events-header">
             <p>Your Upcoming Events:</p>
             <button type="button">+ Create New Event</button>
           </div>
-          {venuesAndEvents.events && generateEventCards()}
+          {adminData.venues && generateEventCards()}
         </section>
       </div>
     </section>

@@ -172,11 +172,12 @@ export const RECENT_EVENTS_BY_VENUE = gql`
   }
 `;
 
-export const GET_ADMIN_VENUES = gql`
+export const GET_ADMIN_DATA = gql`
   {
     me {
       email
       phoneNumber
+      username
       addresses{
           street1
           street2
