@@ -18,8 +18,7 @@ export function AdminDash(props) {
 
   const getEventsAndVenues = async () => {
     const result = await requests.getAdminDetails();
-    const { me } = result;
-    me.venues[0].events = sortEvents(me.venues[0].events);
+    const { me } = await result;
     setAdminData(me);
   };
   
@@ -61,8 +60,10 @@ export function AdminDash(props) {
     );
   };
 
-  const generateEventCards = () => adminData.venues[0]
-    .events.map(event => <EventCard event={event} key={event.id} />);
+  const generateEventCards = () => {
+    return sortEvents(adminData.venues[0].events)
+    .map(event => <EventCard event={event} key={event.id} />);
+  };
 
   const generateVenueDetails = () => {
     const { 
