@@ -150,7 +150,7 @@ export class ContactForm extends Component {
             type="email"
             name="email"
             onChange={this.handleChange}
-            placeholder="example@example.com"
+            placeholder="example@email.com"
           />
         </label>
         <label htmlFor="phoneNumber-input">
@@ -185,7 +185,7 @@ export class ContactForm extends Component {
               type="text"
               name="street2"
               onChange={this.handleChange}
-              placeholder="Additional Street Info"
+              placeholder="Street 2"
             />
           </label>
           <label htmlFor="city-input">

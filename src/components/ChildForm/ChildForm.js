@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import requests from '../../utils/requests/requests';
 import * as actions from '../../actions';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export class ChildForm extends Component {
   state = {
@@ -105,8 +107,20 @@ export class ChildForm extends Component {
     return error;
   }
 
+  handleDate = (date) => {
+    const stringedDate = new Date(date);
+
+    this.setState({ dob: stringedDate });
+  }
+
+  minDate = () => {
+    const date = new Date();
+
+    return date.setFullYear(date.getFullYear() - 20);
+  }
+
   render() {
-    const { password, password2, success } = this.state;
+    const { password, password2, dob, success } = this.state;
     const { error, loading } = this.props;
 
     if (success) return <Redirect to="/myfamily" />;
@@ -128,11 +142,21 @@ export class ChildForm extends Component {
         </label>
         <label htmlFor="child-dob">
           Student's Date of Birth
-          <input 
-            type="text"
+          <DatePicker 
+            placeholderText="mm/dd/yyyy"
             id="child-dob"
-            name="dob"
-            onChange={this.handleChange}
+            onSelect={this.handleDate}
+            selected={dob}
+            showYearDropdown
+            showMonthDropdown
+            useShortMonthInDropdown
+            scrollableYearDropdown
+            scrollableMonthDropdown
+            dateFormat="MM/dd/yyyy"
+            dropdownMode="select"
+            minDate={this.minDate()}
+            maxDate={new Date()}
+            className="date-picker"
           />
         </label>
         <label htmlFor="child-username-input">
