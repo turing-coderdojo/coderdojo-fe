@@ -11,7 +11,7 @@ function App(props) {
 
   const setUserData = async () => {
     const userInfo = await requests.getUserByToken();
-    if (userInfo) setUser(userInfo.me);
+    if (userInfo) setUser(userInfo.me || {});
   };
 
   useEffect(() => {

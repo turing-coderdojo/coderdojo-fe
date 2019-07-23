@@ -6,6 +6,7 @@ import { ReactComponent as Logo } from '../../images/CoderDojoColorado.svg';
 import { addUser } from '../../actions';
 
 export function Header(props) {
+  const { user } = props;
   const logOutUser = () => {
     const { resetUser } = props;
     resetUser();
@@ -13,11 +14,14 @@ export function Header(props) {
   };
 
   const createMenuOptions = () => {
-    const token = JSON.parse(localStorage.getItem('token'));
     let menuOptions;
-    
-    if (token) {
-      menuOptions = <NavLink to="/" className="nav-link logout" onClick={logOutUser}>LOGOUT</NavLink>;
+    if (user.role) {
+      menuOptions = (
+        <div>
+          <NavLink to="/" className="nav-link logout" onClick={logOutUser}>LOGOUT</NavLink>
+          <NavLink to="/" className="nav-link logout" onClick={() => console.log('hihi')}>LOGOUT</NavLink>
+        </div>
+        );
     } else {
       menuOptions = (
         <div>
