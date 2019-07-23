@@ -33,7 +33,7 @@ export class LoginForm extends Component {
   }
 
   signIn = async (user) => {
-    const { addUser, } = this.props;
+    const { addUser } = this.props;
     const result = await requests.signIn(user);
 
     if (result) {
@@ -49,16 +49,17 @@ export class LoginForm extends Component {
   render() {
     const { success, role } = this.state;
     const { error, isFetching } = this.props;
-    const roleAssign = () => {
-      if (role === 0) {
-        return '/dashboard/student';
-      } else if (role === 1) {
-        return '/myfamily';
-      } 
-      return '/dashboard/admin';
-    };
+    let path;
+    
+    if (role === 0) {
+      path = '/dashboard/student';
+    } else if (role === 1) {
+      path = '/myfamily';
+    } else {
+      path = '/dashboard/admin';
+    }
 
-    if (success) return <Redirect to={`${roleAssign()}`} />;
+    if (success) return <Redirect to={path} />;
 
     return (
       <form
@@ -103,7 +104,7 @@ export class LoginForm extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  addUser: user => dispatch(actions.addUser(user)),
+  addUser: user => dispatch(actions.addUser(user))
 });
 
 export const mapStateToProps = ({ isFetching, error }) => ({

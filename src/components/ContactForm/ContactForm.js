@@ -81,7 +81,7 @@ export class ContactForm extends Component {
 
     let error = false;
 
-    fields.forEach(field => {
+    fields.forEach((field) => {
       if (!field) {
         setError('All fields must be filled.');
 
