@@ -50,12 +50,12 @@ exports[`Controls should match snapshot 1`] = `
     <Route
       component={[Function]}
       exact={true}
-      path="/students/:id"
+      path="/student/:id"
     />
     <Route
       component={[Function]}
       exact={true}
-      path="/students"
+      path="/dashboard/student"
     />
     <Route
       component={
@@ -67,6 +67,16 @@ exports[`Controls should match snapshot 1`] = `
           "type": [Function],
         }
       }
+      exact={true}
+      path="/dashboard/admin"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/students"
+    />
+    <Route
+      component={[Function]}
       exact={true}
       path="/contact/:id"
     />

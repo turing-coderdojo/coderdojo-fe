@@ -54,7 +54,7 @@
     }
 
     .create-event-btn {
-      @include form-submit;
+      @include form-submit($primary-color);
       background-color: #724695;
       border: 2px solid #724695;
     }
