@@ -8,6 +8,7 @@ import StudentPreview from '../StudentPreview/StudentPreview';
 export const Family = ({ user, loading }) => {
   const { username } = user;
   const [students, setStudents] = useState([]);
+  const [contactInfo, setContactInfo] = useState([]);
 
   useEffect(() => {
     const getFamily = async () => {
@@ -15,29 +16,91 @@ export const Family = ({ user, loading }) => {
 
       setStudents(response.me.students);
     };
+
+    const getContactInfo = async () => {
+      const response = await requests.getGuardianData();
+      const { addresses, email, phoneNumber } = response.me;
+      const { 
+        street1,
+        street2,
+        city,
+        state,
+        zip,
+      } = addresses[0];
+      const info = {
+        email,
+        phoneNumber,
+        street1,
+        street2,
+        zip,
+        city,
+        state
+      };
+
+      setContactInfo(info);
+    }
     
     getFamily();
+
+    getContactInfo();
   }, []);
 
-  const createStudents = () => students
-    .map(student => <StudentPreview student={student} />);
+  const generateStudents = () => students
+    .map(student => <StudentPreview key={student.id} student={student} />);
+
+  const generateContactInfo = () => {
+    const { phoneNumber, email, street1, street2, city, state, zip } = contactInfo;
+    const address1 = `${street1}, ${street2 || ''}`;
+    const address2 = `${city}, ${state} ${zip}`;
+
+    return (
+      <div className="family-sidebar">
+        <h3>My Contact Info</h3>
+        <h4>
+          Phone:&nbsp;
+        </h4>
+        <p>
+          {phoneNumber}
+        </p>
+        <h4>
+          Email:&nbsp;
+        </h4>
+        <p>
+          {email}
+        </p>
+        <h4>
+          Address:&nbsp;
+        </h4>
+        <p>
+          {address1}
+        </p>
+        <p>
+          {address2}
+        </p>
+      </div>
+    );
+  };
 
   return (
     <section className="Family">
-      <div className="family-header"><h2>{`Welcome, ${username}`}</h2></div>
+      <div className="family-header">
+        <h2>{`Welcome, ${username}`}</h2>
+      </div>
       <div className="family-main">
-        <div className="family-sidebar">
-        </div>
+        {generateContactInfo()}
         <div className="family-details">
-          <h3>My Students</h3>
+          <h3 className="students-header">My Students
+            <Link to="/myfamily/registerstudent">
+              <button>Add a Student</button>
+            </Link>
+          </h3>
           <div className="students-container">
             {
               loading 
               ? <p className="loading">Loading...</p>
-              : createStudents()
+              : generateStudents()
             }
           </div>
-          <Link to="/myfamily/registerstudent">Add a Student</Link>
         </div>
       </div>
     </section>

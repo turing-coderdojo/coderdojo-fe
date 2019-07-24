@@ -261,3 +261,19 @@ export const LOG_ATTENDANCE = gql`
     }
   }
 `;
+
+export const GET_GUARDIAN_DATA = gql`
+  {
+    me {
+      email
+      phoneNumber
+      addresses {
+        street1
+        street2
+        city
+        state
+        zip
+      }
+    }
+  }
+`;

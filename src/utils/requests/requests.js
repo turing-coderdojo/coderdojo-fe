@@ -16,7 +16,8 @@ const requests = {
   getFamily: () => apolloQuery(gql.GET_FAMILY),
   getAdminDetails: () => apolloQuery(gql.GET_ADMIN_DATA),
   getEventsAttended: () => apolloQuery(gql.GET_EVENTS_ATTENDED),
-  logAttendance: eventCode => apolloMutate(gql.LOG_ATTENDANCE, eventCode)
+  logAttendance: eventCode => apolloMutate(gql.LOG_ATTENDANCE, eventCode),
+  getGuardianData: () => apolloQuery(gql.GET_GUARDIAN_DATA)
 };
 
 export default requests;
