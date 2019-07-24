@@ -1,0 +1,66 @@
+.Family {
+  width: 80%;
+  margin: auto;
+  height: 100vh;
+
+  h2 {
+    margin: 0 20px;
+  }
+
+  h3 {
+    margin: 0 0 10px 0;
+  }
+
+  .family-header {
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    background-color: #724695;
+    color: #fff;
+  }
+
+  .family-main {
+    display: flex;
+    background-color: #E5E5E5;
+    height: 100%;
+
+    .family-sidebar {
+      flex: 1;
+      padding: 30px 20px;
+
+      h4 {
+        margin: 10px 0 0 0;
+      }
+    }
+
+    .family-details {
+      background: #FFFFFF;
+      flex: 2;
+      padding: 20px;
+
+      .students-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      button {
+        background: $footer-color;
+        border: none;
+        color: white;
+        font-size: .8em;
+        padding: 10px;
+      }
+    }
+
+    .students-container {
+      min-height: 1.5em;
+
+      .loading {
+        font-size: 1.5em;
+        font-weight: 800;
+      }
+    }
+  }
+}

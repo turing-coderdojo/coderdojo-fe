@@ -3,10 +3,18 @@ import { shallow } from 'enzyme';
 import StudentPreview from './StudentPreview';
 
 describe('StudentPreview', () => {
+  let student;
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<StudentPreview />);
+    student = {
+      name: 'Jude Bacher',
+      username: 'judebacher',
+      id: 1
+    };
+    wrapper = shallow(
+      <StudentPreview student={student} />
+    );
   });
 
   it('should match snapshot', () => {

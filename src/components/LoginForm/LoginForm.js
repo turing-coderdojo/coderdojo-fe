@@ -29,6 +29,7 @@ export class LoginForm extends Component {
     };
     
     e.preventDefault();
+
     this.signIn(user);
   }
 
@@ -40,6 +41,7 @@ export class LoginForm extends Component {
       const { user: validUser, token } = result.signIn;
       
       localStorage.setItem('token', JSON.stringify(token));
+      
       addUser(validUser);
 
       this.setState({ success: true, role: validUser.role });

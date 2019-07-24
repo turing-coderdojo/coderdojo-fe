@@ -193,6 +193,19 @@ export const RECENT_EVENTS_BY_VENUE = gql`
   }
 `;
 
+export const GET_FAMILY = gql`
+  {
+    me {
+      students {
+        name
+        username
+        birthdate
+        id
+      }
+    }
+  }
+`;
+
 export const GET_ADMIN_DATA = gql`
   {
     me {
@@ -213,12 +226,12 @@ export const GET_ADMIN_DATA = gql`
         email
         webUrl
         events {
-            id
-            name
-            notes
-            startTime
-            endTime
-            eventCode
+          id
+          name
+          notes
+          startTime
+          endTime
+          eventCode
         }
       }
     }
@@ -245,6 +258,22 @@ export const LOG_ATTENDANCE = gql`
       eventCode: $eventCode
     ) {
       id
+    }
+  }
+`;
+
+export const GET_GUARDIAN_DATA = gql`
+  {
+    me {
+      email
+      phoneNumber
+      addresses {
+        street1
+        street2
+        city
+        state
+        zip
+      }
     }
   }
 `;
