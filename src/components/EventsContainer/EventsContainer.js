@@ -5,7 +5,7 @@ import requests from '../../utils/requests/requests';
 import EventCard from '../EventCard/EventCard';
 
 export function EventsContainer(props) {
-  const { match, isLoading, error } = props;
+  const { match, isLoading } = props;
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [recentEvents, setRecentEvents] = useState([]);
   const [venue, setVenue] = useState({});
@@ -51,7 +51,6 @@ export function EventsContainer(props) {
         { isLoading && <p>Loading events...</p> }
       </div>
       <div className="details-container">
-        {error && <p>{error}</p>}
         {venue.name && venueDetails()}
         <section className="events-container">
           <h3>Upcoming Events:</h3>
@@ -65,20 +64,17 @@ export function EventsContainer(props) {
 }
 
 export const mapStateToProps = state => ({
-  isLoading: state.isFetching,
-  error: state.error
+  isLoading: state.isFetching
 });
 
 export default connect(mapStateToProps)(EventsContainer);
 
 EventsContainer.propTypes = {
   match: PropTypes.object,
-  isLoading: PropTypes.bool,
-  error: PropTypes.string
+  isLoading: PropTypes.bool
 };
 
 EventsContainer.defaultProps = {
   match: {},
-  isLoading: false,
-  error: ''
+  isLoading: false
 };
