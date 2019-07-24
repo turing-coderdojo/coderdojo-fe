@@ -11,4 +11,5 @@ describe('StudentDash', () => {
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
+  
 });
