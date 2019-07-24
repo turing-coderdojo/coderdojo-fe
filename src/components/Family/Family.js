@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import requests from '../../utils/requests/requests';
@@ -9,41 +9,50 @@ export const Family = ({ user, loading }) => {
   const { username } = user;
   const [students, setStudents] = useState([]);
   const [contactInfo, setContactInfo] = useState([]);
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    const getFamily = async () => {
-      const response = await requests.getFamily();
+    if (user.role === 1) {
+      const getFamily = async () => {
+        const response = await requests.getFamily();
 
-      setStudents(response.me.students);
-    };
-
-    const getContactInfo = async () => {
-      const response = await requests.getGuardianData();
-      const { addresses, email, phoneNumber } = response.me;
-      const { 
-        street1,
-        street2,
-        city,
-        state,
-        zip
-      } = addresses[0];
-      const info = {
-        email,
-        phoneNumber,
-        street1,
-        street2,
-        zip,
-        city,
-        state
+        setStudents(response.me.students);
       };
 
-      setContactInfo(info);
-    };
-    
-    getFamily();
+      const getContactInfo = async () => {
+        const response = await requests.getGuardianData();
+        const { addresses, email, phoneNumber } = response.me;
+        const { 
+          street1,
+          street2,
+          city,
+          state,
+          zip
+        } = addresses[0];
+        const info = {
+          email,
+          phoneNumber,
+          street1,
+          street2,
+          zip,
+          city,
+          state
+        };
 
-    getContactInfo();
-  }, []);
+        setContactInfo(info);
+      };
+      
+      getFamily();
+
+      getContactInfo();
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (user.role !== 1) {
+      setRedirect(true);
+    }
+  }, [user]);
 
   const generateStudents = () => {
     if (students) {
@@ -91,6 +100,10 @@ export const Family = ({ user, loading }) => {
       </div>
     );
   };
+
+  if (redirect) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <section className="Family">
