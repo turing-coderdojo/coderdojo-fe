@@ -19,21 +19,7 @@ exports[`AdminDash should match snapshot 1`] = `
     />
     <section
       className="events-section"
-    >
-      <div
-        className="events-header"
-      >
-        <p>
-          Your Upcoming Events:
-        </p>
-        <button
-          onClick={[Function]}
-          type="button"
-        >
-          + Create New Event
-        </button>
-      </div>
-    </section>
+    />
   </div>
 </section>
 `;
