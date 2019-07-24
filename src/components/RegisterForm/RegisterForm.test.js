@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { RegisterForm, mapDispatchToProps } from './RegisterForm';
+import { RegisterForm, mapDispatchToProps, mapStateToProps } from './RegisterForm';
 import * as actions from '../../actions';
 
 jest.mock('../../actions');
@@ -43,4 +43,16 @@ describe('RegisterForm', () => {
 
     expect(mockDispatch).toHaveBeenCalledWith(mockAction);  
   });
+  describe('mapStateToProps', () => {
+    it('should MSTP', () => {
+      const state = {
+        error: '',
+        loading: false
+      };
+
+      const { error } = mapStateToProps(state);
+
+      expect(error).toEqual(state.error);
+    });
+  }); 
 });

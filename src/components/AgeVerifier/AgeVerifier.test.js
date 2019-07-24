@@ -84,6 +84,5 @@ describe('AgeVerifier', () => {
 
       expect(error).toEqual(state.error);
     });
-
   }); 
 });
