@@ -20,7 +20,7 @@ describe('Family', () => {
       state = {
         user: { id: 1 },
         isFetching: false
-      }
+      };
     });
 
     it('should map user from state to props', () => {

@@ -25,7 +25,7 @@ export const Family = ({ user, loading }) => {
         street2,
         city,
         state,
-        zip,
+        zip
       } = addresses[0];
       const info = {
         email,
@@ -38,18 +38,29 @@ export const Family = ({ user, loading }) => {
       };
 
       setContactInfo(info);
-    }
+    };
     
     getFamily();
 
     getContactInfo();
   }, []);
 
-  const generateStudents = () => students
-    .map(student => <StudentPreview key={student.id} student={student} />);
+  const generateStudents = () => {
+    if (students) {
+      students.map(student => <StudentPreview key={student.id} student={student} />);
+    }
+  };
 
   const generateContactInfo = () => {
-    const { phoneNumber, email, street1, street2, city, state, zip } = contactInfo;
+    const { 
+      phoneNumber,
+      email,
+      street1,
+      street2,
+      city,
+      state,
+      zip 
+    } = contactInfo;
     const address1 = `${street1}, ${street2 || ''}`;
     const address2 = `${city}, ${state} ${zip}`;
 
@@ -84,22 +95,19 @@ export const Family = ({ user, loading }) => {
   return (
     <section className="Family">
       <div className="family-header">
-        <h2>{`Welcome, ${username}`}</h2>
+        <h2>{`Welcome, ${username}!`}</h2>
       </div>
       <div className="family-main">
         {generateContactInfo()}
         <div className="family-details">
-          <h3 className="students-header">My Students
+          <h3 className="students-header">
+            {loading ? 'Loading...' : 'My Family'}
             <Link to="/myfamily/registerstudent">
-              <button>Add a Student</button>
+              <button type="button">Add a Student</button>
             </Link>
           </h3>
           <div className="students-container">
-            {
-              loading 
-              ? <p className="loading">Loading...</p>
-              : generateStudents()
-            }
+            {generateStudents()}
           </div>
         </div>
       </div>
@@ -115,9 +123,11 @@ export const mapStateToProps = state => ({
 export default connect(mapStateToProps)(Family);
 
 Family.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
+  loading: PropTypes.bool
 };
 
 Family.defaultProps = {
-  user: {}
+  user: {},
+  loading: false
 };

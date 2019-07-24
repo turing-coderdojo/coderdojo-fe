@@ -14,6 +14,8 @@ exports[`StudentPreview should match snapshot 1`] = `
   </p>
   <p
     className="student-dob"
-  />
+  >
+    dob: undefined
+  </p>
 </article>
 `;

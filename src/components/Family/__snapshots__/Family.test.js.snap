@@ -8,7 +8,7 @@ exports[`Family should match snapshot 1`] = `
     className="family-header"
   >
     <h2>
-      Welcome, undefined
+      Welcome, undefined!
     </h2>
   </div>
   <div
@@ -16,21 +16,48 @@ exports[`Family should match snapshot 1`] = `
   >
     <div
       className="family-sidebar"
-    />
+    >
+      <h3>
+        My Contact Info
+      </h3>
+      <h4>
+        Phone: 
+      </h4>
+      <p />
+      <h4>
+        Email: 
+      </h4>
+      <p />
+      <h4>
+        Address: 
+      </h4>
+      <p>
+        undefined, 
+      </p>
+      <p>
+        undefined, undefined undefined
+      </p>
+    </div>
     <div
       className="family-details"
     >
-      <h3>
-        My Students
+      <h3
+        className="students-header"
+      >
+        My Family
+        <Link
+          to="/myfamily/registerstudent"
+        >
+          <button
+            type="button"
+          >
+            Add a Student
+          </button>
+        </Link>
       </h3>
       <div
         className="students-container"
       />
-      <Link
-        to="/myfamily/registerstudent"
-      >
-        Add a Student
-      </Link>
     </div>
   </div>
 </section>
