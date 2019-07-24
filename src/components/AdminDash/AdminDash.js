@@ -24,7 +24,6 @@ export function AdminDash(props) {
   };
 
   const setUpCurrentEvent = (event) => {
-    console.log(event);
     setCurrentEvent(event);
   };
   
