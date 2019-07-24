@@ -139,7 +139,6 @@ export const Family = ({ user, loading, addStudents, students }) => {
   }
 };
 
-
 export const mapStateToProps = state => ({
   user: state.user,
   loading: state.isFetching,
