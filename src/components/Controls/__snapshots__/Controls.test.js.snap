@@ -63,10 +63,15 @@ exports[`Controls should match snapshot 1`] = `
           "$$typeof": Symbol(react.memo),
           "WrappedComponent": [Function],
           "compare": null,
-          "displayName": "Connect(AdminDash)",
+          "displayName": "Connect(StudentDash)",
           "type": [Function],
         }
       }
+      exact={true}
+      path="/dashboard/student"
+    />
+    <Route
+      component={[Function]}
       exact={true}
       path="/dashboard/admin"
     />
