@@ -241,6 +241,7 @@ export const GET_ADMIN_DATA = gql`
 export const GET_EVENTS_ATTENDED = gql`
  {
     me{
+      username
         eventsAttended{
             name
             startTime
