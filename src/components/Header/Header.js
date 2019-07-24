@@ -24,7 +24,7 @@ export function Header(props) {
       route = '/dashboard/admin';
     }
     return route;
-  }
+  };
 
 
   const createMenuOptions = () => {

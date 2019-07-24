@@ -8,13 +8,14 @@ import EventForm from '../EventForm/EventForm';
 export function AdminDash(props) {
   const [adminData, setAdminData] = useState({});
   const [eventFormVisible, showEventForm] = useState(false);
+  const [currentEvent, setCurrentEvent] = useState({});
   const { error, isLoading } = props;
 
   const toggleEventForm = (bool) => {
     showEventForm(bool);
   };
 
-  const sortEvents = (arr) => arr.sort((a,b) => new Date(b.startTime) - new Date(a.endTime));
+  const sortEvents = arr => arr.sort((a, b) => new Date(a.startTime) - new Date(b.endTime));
 
   const getEventsAndVenues = async () => {
     const result = await requests.getAdminDetails();
@@ -61,9 +62,31 @@ export function AdminDash(props) {
   };
 
   const generateEventCards = () => {
-    return sortEvents(adminData.venues[0].events)
-    .map(event => <EventCard event={event} key={event.id} />);
+    const today = new Date();
+    const sorted = sortEvents(adminData.venues[0].events);
+    const pastEvents = [];
+    const futureEvents = [];
+    sorted.forEach((venue) => {
+      if (new Date(venue.startTime) > today) {
+        futureEvents.push(venue);
+      } else if (today.toDateString() === new Date(venue.startTime).toDateString()) {
+        console.log(venue);
+      } else pastEvents.push(venue);
+    });
+
+    // .map(event => <EventCard event={event} key={event.id} />)
+    return (
+      <div>
+        <section className="future-events">
+          {futureEvents.map(event => <EventCard event={event} key={event.id} />)}
+        </section>
+        <section className="past-events">
+          {pastEvents.reverse().map(event => <EventCard event={event} key={event.id} />)}
+        </section>
+      </div>
+    );
   };
+  
 
   const generateVenueDetails = () => {
     const { 

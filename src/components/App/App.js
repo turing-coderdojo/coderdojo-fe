@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import Controls from '../Controls/Controls';
 import { connect } from 'react-redux';
+import Controls from '../Controls/Controls';
 import requests from '../../utils/requests/requests';
 import { addUser } from '../../actions';
 import Header from '../Header/Header';
