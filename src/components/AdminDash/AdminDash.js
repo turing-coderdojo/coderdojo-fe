@@ -24,7 +24,8 @@ export function AdminDash(props) {
     if (result.me) {
       const currEvent = result.me.venues[0].events
         .find(event => today.toDateString() === new Date(event.startTime).toDateString());
-      setCurrentEvent(currEvent);
+      const attendance = await requests.getEventAttendance({ eventId: 1 });
+      setCurrentEvent({ ...currEvent, ...attendance });
     }
     setAdminData(me);
   };
@@ -32,7 +33,6 @@ export function AdminDash(props) {
   useEffect(() => {
     getEventsAndVenues();
   }, []);
-
 
   const generateAdminDetails = () => {
     const {
@@ -95,7 +95,26 @@ export function AdminDash(props) {
       </div>
     );
   };
-  
+
+  const generateCurrentEvent = () => {
+    const timeSetting = { hour: 'numeric', hour12: true };
+    const { 
+      name, notes, startTime, endTime, attendance 
+    } = currentEvent;
+    const readableStart = new Date(startTime).toLocaleString('en-US', timeSetting);
+    const readableEnd = new Date(endTime).toLocaleString('en-US', timeSetting);
+    return (
+      <div>
+        <h3>{name}</h3>
+        <p>
+          {readableStart} 
+          - 
+          {readableEnd}
+        </p>
+        <p>{notes}</p>
+      </div>
+    );
+  };
 
   const generateVenueDetails = () => {
     const { 
@@ -112,7 +131,7 @@ export function AdminDash(props) {
       </div>
     );
   };
-  
+  console.log(currentEvent);
   return (
     <section className="AdminDash">
       {eventFormVisible && <EventForm venueId={1} toggleView={toggleEventForm} />}
@@ -130,6 +149,7 @@ export function AdminDash(props) {
           {adminData.venues && generateAdminDetails()}
         </section>
         <section className="events-section">
+          {currentEvent.id && generateCurrentEvent()}
           {adminData.venues && generateEventCards()}
         </section>
       </div>
