@@ -19,11 +19,12 @@ export class AgeVerifier extends Component {
 
     e.preventDefault();
 
+
     const student = {
       username,
       password,
       name: fullName,
-      birthdate: birthdate.toDateString()
+      birthdate
     };
     const user = {
       username,
@@ -60,7 +61,7 @@ export class AgeVerifier extends Component {
   handleDate = (date) => {
     const stringedDate = new Date(date);
 
-    this.setState({ birthdate: stringedDate });
+    this.setState({ birthdate: stringedDate.toDateString() });
   }
 
   subYears = () => {
