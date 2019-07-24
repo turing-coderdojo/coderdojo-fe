@@ -11,15 +11,18 @@ export function StudentDash(props) {
   const { user, error, isFetching } = props;
 
   useEffect(() => {
-    const getEventsAttended = async () => {
-      const attendedEvents = await requests.getEventsAttended();
-      if (attendedEvents.me) {
-        setAttendedEvents(attendedEvents.me.eventsAttended);
-      }
-    };
+    if (user.role === 0) {
+      const getEventsAttended = async () => {
+        const attendedEvents = await requests.getEventsAttended();
 
-    getEventsAttended();
-  }, [user]);
+        if (attendedEvents.me) {
+          setAttendedEvents(attendedEvents.me.eventsAttended);
+        }
+      };
+
+      getEventsAttended();
+    }
+  }, [user.role]);
 
   const generateEvents = events => events.map(event => <EventCard key={event.id} event={event} />);
 
