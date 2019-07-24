@@ -1,10 +1,13 @@
 import React from 'react';
 
-function StudentPreview() {
+function StudentPreview({ student }) {
+  console.log(student)
   return (
-    <div>
-
-    </div>
+    <article className="StudentPreview">
+      <h3>{student.name}</h3>
+      <p className="student-username">{student.username}</p>
+      <p className="student-dob">{student.birthdate}</p>
+    </article>
   );
 }
 
