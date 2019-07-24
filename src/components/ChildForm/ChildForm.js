@@ -196,7 +196,7 @@ export class ChildForm extends Component {
         <div className="error-msg">
           {error && <p className="shake">{error}</p>}
         </div>
-        <button type="submit">
+        <button className="child-submit-btn" type="submit">
           {loading ? 'PLEASE WAIT...' : 'SUBMIT'}
         </button>
       </form>

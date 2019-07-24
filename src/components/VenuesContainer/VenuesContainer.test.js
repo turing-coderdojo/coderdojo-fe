@@ -38,11 +38,11 @@ describe('VenuesContainer', () => {
   describe('mapStateToProps', () => {
     const mockState = {
       isFetching: false,
-      error: 'Failed to fetch'
+      searchResults: []
     };
     const expected = {
       isLoading: false,
-      error: 'Failed to fetch'
+      searchResults: []
     };
     const mappedProps = mapStateToProps(mockState);
 
