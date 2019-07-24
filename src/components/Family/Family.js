@@ -65,7 +65,7 @@ export const Family = ({ user, loading }) => {
 
   const generateStudents = () => {
     if (students) {
-      students.map(student => <StudentPreview key={student.id} student={student} />);
+      return students.map(student => <StudentPreview key={student.id} student={student} />);
     }
   };
 
