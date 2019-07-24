@@ -22,6 +22,11 @@ export function AdminDash(props) {
     const { me } = await result;
     setAdminData(me);
   };
+
+  const setUpCurrentEvent = (event) => {
+    console.log(event);
+    setCurrentEvent(event);
+  };
   
   useEffect(() => {
     getEventsAndVenues();
@@ -66,12 +71,13 @@ export function AdminDash(props) {
     const sorted = sortEvents(adminData.venues[0].events);
     const pastEvents = [];
     const futureEvents = [];
-    sorted.forEach((venue) => {
-      if (new Date(venue.startTime) > today) {
-        futureEvents.push(venue);
-      } else if (today.toDateString() === new Date(venue.startTime).toDateString()) {
-        console.log(venue);
-      } else pastEvents.push(venue);
+    sorted.forEach((event) => {
+      if (new Date(event.startTime) > today) {
+        futureEvents.push(event);
+      } else if (today.toDateString() === new Date(event.startTime).toDateString() 
+      && !currentEvent.name) {
+        setUpCurrentEvent(event);
+      } else pastEvents.push(event);
     });
 
     // .map(event => <EventCard event={event} key={event.id} />)
