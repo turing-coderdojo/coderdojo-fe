@@ -73,5 +73,17 @@ describe('AgeVerifier', () => {
       expect(dispatch).toHaveBeenCalledWith(action);
     });
   });
-  
+  describe('mapStateToProps', () => {
+    it('should MSTP', () => {
+      const state = {
+        error: '',
+        loading: false
+      };
+
+      const { error } = mapStateToProps(state);
+
+      expect(error).toEqual(state.error);
+    });
+
+  }); 
 });
