@@ -123,13 +123,13 @@ export function AdminDash(props) {
             </p>
           </div>
         </article>
-      )
-    })
+      );
+    });
   
   const generateCurrentEvent = () => {
     const timeSetting = { hour: 'numeric', hour12: true };
     const { 
-      name, notes, startTime, endTime, attendance 
+      name, notes, startTime, endTime, attendance, eventCode
     } = currentEvent;
     const readableStart = new Date(startTime).toLocaleString('en-US', timeSetting);
     const readableEnd = new Date(endTime).toLocaleString('en-US', timeSetting);
@@ -142,7 +142,10 @@ export function AdminDash(props) {
           {readableEnd}
         </p>
         <p>{notes}</p>
-        {generateStudentCards(attendance)}
+        <h4>{eventCode}</h4>
+        <section>
+          {generateStudentCards(attendance)}
+        </section>
       </div>
     );
   };
@@ -162,10 +165,10 @@ export function AdminDash(props) {
       </div>
     );
   };
-  console.log(currentEvent);
+
   return (
     <section className="AdminDash">
-      {eventFormVisible && <EventForm venueId={1} toggleView={toggleEventForm} />}
+      {eventFormVisible && <EventForm venueId={adminData.venues[0].id} toggleView={toggleEventForm} />}
       <div className="admin-header">
         <h2>
           Admin:&nbsp;&nbsp;
@@ -190,17 +193,20 @@ export function AdminDash(props) {
 
 const mapStateToProps = state => ({
   isLoading: state.isFetching,
-  error: state.error
+  error: state.error,
+  user: state.user
 });
 
 export default connect(mapStateToProps)(AdminDash);
 
 AdminDash.propTypes = {
   isLoading: PropTypes.bool,
-  error: PropTypes.string
+  error: PropTypes.string,
+  user: PropTypes.object
 };
 
 AdminDash.defaultProps = {
   isLoading: false,
-  error: ''
+  error: '',
+  user: {}
 };
