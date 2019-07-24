@@ -54,6 +54,15 @@ export const Family = ({ user, loading }) => {
     }
   }, [user]);
 
+
+  if (redirect && user.role === 0) {
+    return <Redirect to="/dashboard/student" />;
+  } else if (redirect && user.role === 2) {
+    return <Redirect to="/dashboard/admin" />;
+  } else if (redirect) {
+    return <Redirect to="/" />;
+  }
+
   const generateStudents = () => {
     if (students) {
       students.map(student => <StudentPreview key={student.id} student={student} />);
@@ -101,31 +110,31 @@ export const Family = ({ user, loading }) => {
     );
   };
 
-  if (redirect) {
-    return <Redirect to="/" />;
-  }
-
-  return (
-    <section className="Family">
-      <div className="family-header">
-        <h2>{`Welcome, ${username}!`}</h2>
-      </div>
-      <div className="family-main">
-        {generateContactInfo()}
-        <div className="family-details">
-          <h3 className="students-header">
-            {loading ? 'Loading...' : 'My Family'}
-            <Link to="/myfamily/registerstudent">
-              <button type="button">Add a Student</button>
-            </Link>
-          </h3>
-          <div className="students-container">
-            {generateStudents()}
+  if (user.role === 1) {
+    return (
+      <section className="Family">
+        <div className="family-header">
+          <h2>{`Welcome, ${username}!`}</h2>
+        </div>
+        <div className="family-main">
+          {generateContactInfo()}
+          <div className="family-details">
+            <h3 className="students-header">
+              {loading ? 'Loading...' : 'My Family'}
+              <Link to="/myfamily/registerstudent">
+                <button type="button">Add a Student</button>
+              </Link>
+            </h3>
+            <div className="students-container">
+              {generateStudents()}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  } else {
+    return <div />;
+  }
 };
 
 export const mapStateToProps = state => ({
