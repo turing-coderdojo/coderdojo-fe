@@ -43,5 +43,35 @@ describe('AgeVerifier', () => {
     expect(mockSubmitEvent.preventDefault).toHaveBeenCalled();
   });
 
-  it('should create ')
+  it('should create a student in the db ', async () => {
+    wrapper.setState({
+      birthdate: '08/17/19',
+      successs: false
+    });
+
+    await wrapper.instance().createStudent();
+
+    expect(requests.createStudent).toHaveBeenCalled();
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch with setError', () => {
+      const error = 'Something went wrong';
+      const action = actions.setError(error);
+      const dispatch = jest.fn();
+
+      mapDispatchToProps(dispatch).setError(error);
+
+      expect(dispatch).toHaveBeenCalledWith(action)
+    });
+    it('should call addUser with a student', () => {
+      const action = actions.addUser(mockStudent);
+      const dispatch = jest.fn();
+
+      mapDispatchToProps(dispatch).addUser(mockStudent);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+  
 });
