@@ -2,7 +2,6 @@ import queries from '../requests';
 import * as queryTypes from '../gqlRequests';
 import * as apollo from '../apolloRequests';
 
-
 jest.mock('../apolloRequests.js');
 apollo.apolloQuery.mockImplementation(() => {});
 apollo.apolloMutate.mockImplementation(() => {});

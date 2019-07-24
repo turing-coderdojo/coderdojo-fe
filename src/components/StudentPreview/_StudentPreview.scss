@@ -1,0 +1,11 @@
+.StudentPreview {
+  border: #CCCCCC solid 1px;
+  margin: 20px 0;
+  padding: 20px;
+
+  .student-username,
+  .student-dob {
+    color: #CCCCCC;
+    font-style: italic;
+  }
+}

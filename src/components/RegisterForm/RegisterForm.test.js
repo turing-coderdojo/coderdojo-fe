@@ -5,11 +5,9 @@ import * as actions from '../../actions';
 
 jest.mock('../../actions');
 
-
 describe('RegisterForm', () => {
   let wrapper;
   const mockDispatch = jest.fn();
-
 
   beforeEach(() => {
     wrapper = shallow(<RegisterForm />);
