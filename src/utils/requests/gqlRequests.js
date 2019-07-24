@@ -248,3 +248,21 @@ export const LOG_ATTENDANCE = gql`
     }
   }
 `;
+
+export const GET_EVENT_ATTENDANCE = gql`
+  query attendance($eventId: Int!) {
+    attendance(eventId: $eventId) {
+        user {
+            id
+            username
+            name
+            guardianId{
+                name
+                username
+                email
+                phoneNumber
+            }
+        }
+    }
+  }
+`;

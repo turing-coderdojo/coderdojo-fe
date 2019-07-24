@@ -15,7 +15,8 @@ const requests = {
   getRecentEvents: venueId => apolloQuery(gql.RECENT_EVENTS_BY_VENUE, venueId),
   getAdminDetails: () => apolloQuery(gql.GET_ADMIN_DATA),
   getEventsAttended: () => apolloQuery(gql.GET_EVENTS_ATTENDED),
-  logAttendance: eventCode => apolloMutate(gql.LOG_ATTENDANCE, eventCode)
+  logAttendance: eventCode => apolloMutate(gql.LOG_ATTENDANCE, eventCode),
+  getEventAttendance: eventId => apolloQuery(gql.GET_EVENT_ATTENDANCE, eventId)
 };
 
 export default requests;
