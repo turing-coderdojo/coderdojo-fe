@@ -1,0 +1,51 @@
+.StudentDashContainer {
+  width:80%;
+  margin: auto;
+  height:100vh;
+
+  .studentDashHeader {
+    background-color: #724695;
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    color:#FFFFFF;
+  }
+
+  h2 {
+    font-weight: 400;
+    margin: 0 40px;
+  }
+
+  .eventWrapper {
+    @include flex-column;
+    margin: 5% auto;
+    width: 600px;
+    min-width: 300px;
+    padding: 40px;
+    background-color: #FFFFFF;
+  }
+
+  .eventCode {
+    @include form-input-style;
+    width:300px;
+  }
+
+  .eventCode::placeholder {
+    text-align: center;
+  }
+
+  button {
+    @include form-submit;
+    background-color: $footer-color;
+    border-color:  $footer-color;
+    margin-left: 60px;
+    width: 125px;
+  }
+  .pastEvents {
+    @include flex-column;
+    max-height: 500px;
+    overflow: scroll;
+  }
+}
+

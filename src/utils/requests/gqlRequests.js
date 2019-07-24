@@ -221,6 +221,27 @@ export const GET_ADMIN_DATA = gql`
             eventCode
         }
       }
+
+export const GET_EVENTS_ATTENDED = gql`
+ {
+    me{
+        eventsAttended{
+            name
+            startTime
+            id
+        }
+    }
+}
+`;
+
+export const LOG_ATTENDANCE = gql`
+  mutation logAttendance( 
+    $eventCode: String!
+    ) {
+    logAttendance(
+      eventCode: $eventCode
+    ) {
+      id
     }
   }
 `;
