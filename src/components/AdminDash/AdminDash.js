@@ -10,6 +10,7 @@ export function AdminDash(props) {
   const [eventFormVisible, showEventForm] = useState(false);
   const [currentEvent, setCurrentEvent] = useState({});
   const { error, isLoading } = props;
+  const today = new Date();
 
   const toggleEventForm = (bool) => {
     showEventForm(bool);
@@ -20,12 +21,12 @@ export function AdminDash(props) {
   const getEventsAndVenues = async () => {
     const result = await requests.getAdminDetails();
     const { me } = await result;
+    if (result.me) {
+      const currEvent = result.me.venues[0].events
+        .find(event => today.toDateString() === new Date(event.startTime).toDateString());
+      setCurrentEvent(currEvent);
+    }
     setAdminData(me);
-  };
-
-  const setUpCurrentEvent = (event) => {
-    console.log(event);
-    setCurrentEvent(event);
   };
   
   useEffect(() => {
@@ -67,16 +68,12 @@ export function AdminDash(props) {
   };
 
   const generateEventCards = () => {
-    const today = new Date();
     const sorted = sortEvents(adminData.venues[0].events);
     const pastEvents = [];
     const futureEvents = [];
     sorted.forEach((event) => {
       if (new Date(event.startTime) > today) {
         futureEvents.push(event);
-      } else if (today.toDateString() === new Date(event.startTime).toDateString() 
-      && !currentEvent.name) {
-        setUpCurrentEvent(event);
       } else pastEvents.push(event);
     });
 
@@ -115,7 +112,7 @@ export function AdminDash(props) {
       </div>
     );
   };
-
+  
   return (
     <section className="AdminDash">
       {eventFormVisible && <EventForm venueId={1} toggleView={toggleEventForm} />}
