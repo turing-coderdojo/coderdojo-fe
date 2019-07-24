@@ -18,12 +18,12 @@ export function AdminDash(props) {
     showEventForm(bool);
   };
 
-  const sortEvents = arr => arr.sort((a, b) => new Date(a.startTime) - new Date(b.endTime));
+  const sortEvents = arr => arr.sort((a, b) => new Date(b.startTime) - new Date(a.endTime));
 
   const getEventsAndVenues = async () => {
     const result = await requests.getAdminDetails();
     const { me } = await result;
-    if (result.me.venues.length) {
+    if (result.me) {
       const currEvent = result.me.venues[0].events
         .find(event => today.toDateString() === new Date(event.startTime).toDateString());
       const attendance = await requests.getEventAttendance({ eventId: 1 });
@@ -96,7 +96,7 @@ export function AdminDash(props) {
           <button type="button" onClick={() => toggleEventForm(true)}>+ Create New Event</button>
         </div>
         <section className="future-events">
-          {futureEvents.map(event => <EventCard event={event} key={event.id} />)}
+          {futureEvents.reverse().map(event => <EventCard event={event} key={event.id} />)}
         </section>
         <div className="events-header">
           <p>Your Past Events:</p>
@@ -110,28 +110,28 @@ export function AdminDash(props) {
 
   const generateStudentCards = students => students
     .map((student) => {
-      const { user } = student;
+      const { user: attendee } = student;
       return (
         <article>
           <h4>
-            {user.name}
+            {attendee.name}
             :
-            {user.username}
+            {attendee.username}
           </h4>
           <div className="guardian-details">
             <h4>Guardian Details:</h4>
             <p>
-              {user.guardianId.name}
+              {attendee.guardianId.name}
               :
-              {user.guardianId.username}
+              {attendee.guardianId.username}
             </p>
             <p>
               Phone:
-              {user.guardianId.phoneNumber}
+              {attendee.guardianId.phoneNumber}
             </p>
             <p>
               Email:
-              {user.guardianId.email}
+              {attendee.guardianId.email}
             </p>
           </div>
         </article>
