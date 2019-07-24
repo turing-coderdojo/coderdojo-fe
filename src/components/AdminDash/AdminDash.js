@@ -80,12 +80,18 @@ export function AdminDash(props) {
       } else pastEvents.push(event);
     });
 
-    // .map(event => <EventCard event={event} key={event.id} />)
     return (
       <div>
+        <div className="events-header">
+          <p>Your Upcoming Events:</p>
+          <button type="button" onClick={() => toggleEventForm(true)}>+ Create New Event</button>
+        </div>
         <section className="future-events">
           {futureEvents.map(event => <EventCard event={event} key={event.id} />)}
         </section>
+        <div className="events-header">
+          <p>Your Past Events:</p>
+        </div>
         <section className="past-events">
           {pastEvents.reverse().map(event => <EventCard event={event} key={event.id} />)}
         </section>
@@ -127,10 +133,6 @@ export function AdminDash(props) {
           {adminData.venues && generateAdminDetails()}
         </section>
         <section className="events-section">
-          <div className="events-header">
-            <p>Your Upcoming Events:</p>
-            <button type="button" onClick={() => toggleEventForm(true)}>+ Create New Event</button>
-          </div>
           {adminData.venues && generateEventCards()}
         </section>
       </div>
