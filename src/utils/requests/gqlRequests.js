@@ -21,6 +21,7 @@ export const GET_USER_BY_TOKEN = gql`
   {
     me{
         username
+        name
         role
     }
   }
@@ -68,6 +69,26 @@ export const CREATE_GUARDIAN = gql`
       city: $city,
       state: $state,
       zip: $zip
+    ) {
+      id
+    }
+  }
+`;
+
+export const CREATE_NEW_EVENT = gql`
+  mutation createEvent(
+    $name: String!,
+    $venueId: Int!,
+    $notes: String,
+    $startTime: String!,
+    $endTime: String!
+    ) {
+    createEvent(
+      name: $name,
+      venueId: $venueId,
+      notes: $notes,
+      startTime: $startTime,
+      endTime: $endTime
     ) {
       id
     }
@@ -134,6 +155,9 @@ export const GET_VENUE_DETAILS = gql`
   query allVenues($venueId: Int!) {
     allVenues(id: $venueId) {
       name
+      email
+      webUrl
+      notes
       addresses {
         street1
         street2
@@ -178,6 +202,62 @@ export const GET_FAMILY = gql`
         birthdate
         id
       }
+    }
+  }
+`;
+
+export const GET_ADMIN_DATA = gql`
+  {
+    me {
+      email
+      phoneNumber
+      username
+      addresses{
+          street1
+          street2
+          city
+          state
+          zip
+      }
+      venues {
+        id
+        name
+        notes
+        email
+        webUrl
+        events {
+          id
+          name
+          notes
+          startTime
+          endTime
+          eventCode
+        }
+      }
+    }
+  }
+`;
+
+export const GET_EVENTS_ATTENDED = gql`
+ {
+    me{
+        eventsAttended{
+            name
+            startTime
+            id
+        }
+    }
+}
+`;
+
+export const LOG_ATTENDANCE = gql`
+  mutation logAttendance( 
+    $eventCode: String!
+    ) {
+    logAttendance(
+      eventCode: $eventCode
+    ) {
+      id
     }
   }
 `;

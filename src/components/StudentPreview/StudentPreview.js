@@ -1,14 +1,20 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 
-function StudentPreview({ student }) {
-  console.log(student)
-  return (
-    <article className="StudentPreview">
-      <h3>{student.name}</h3>
-      <p className="student-username">{student.username}</p>
-      <p className="student-dob">{student.birthdate}</p>
-    </article>
-  );
-}
+const StudentPreview = ({ student }) => (
+  <article className="StudentPreview">
+    <h3>{student.name}</h3>
+    <p className="student-username">{student.username}</p>
+    <p className="student-dob">{student.birthdate}</p>
+  </article>
+);
 
 export default StudentPreview;
+
+StudentPreview.propTypes = {
+  student: PropTypes.object
+};
+
+StudentPreview.defaultProps = {
+  student: {}
+};

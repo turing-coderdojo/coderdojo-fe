@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Family from './Family';
+import { Family } from './Family';
 
 describe('Family', () => {
   let wrapper;

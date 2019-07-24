@@ -5,8 +5,8 @@ import { PropTypes } from 'prop-types';
 import requests from '../../utils/requests/requests';
 import StudentPreview from '../StudentPreview/StudentPreview';
 
-export const Family = (props) => {
-  const { username } = props.user;
+export const Family = ({ user }) => {
+  const { username } = user;
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
@@ -19,15 +19,12 @@ export const Family = (props) => {
     getFamily();
   }, []);
 
-  const createStudents = () => {
-    return students.map(student => {
-      return <StudentPreview student={student} />
-    });
-  }
+  const createStudents = () => students
+    .map(student => <StudentPreview student={student} />);
 
   return (
     <section className="Family">
-      <div className="family-header"><h2>Welcome, {username}</h2></div>
+      <div className="family-header"><h2>{`Welcome, ${username}`}</h2></div>
       <div className="family-main">
         <div className="family-sidebar">
         </div>
@@ -38,7 +35,7 @@ export const Family = (props) => {
       </div>
     </section>
   );
-}
+};
 
 export const mapStateToProps = state => ({
   user: state.user

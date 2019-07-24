@@ -1,10 +1,10 @@
-const studentsReducer(state = [], action) {
+const studentsReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_STUDENTS':
-      return students;
+      return action.students;
     default:
       return state;
   }
-}
+};
 
 export default studentsReducer;

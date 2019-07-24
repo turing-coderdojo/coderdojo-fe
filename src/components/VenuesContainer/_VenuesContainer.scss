@@ -4,6 +4,10 @@
   min-width: 350px;
   height: 100vh;
 
+  .container-message {
+    opacity: .5;
+  }
+
   .search-bar-container {
     background: $primary-color;
     height: 200px;

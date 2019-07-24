@@ -14,7 +14,9 @@ exports[`VenuesContainer should match snapshot 1`] = `
   <article
     className="venues-container"
   >
-    <h3>
+    <h3
+      className="container-message"
+    >
       Found 1 dojos in DENVER
     </h3>
     <VenueCard
@@ -45,7 +47,9 @@ exports[`VenuesContainer should match snapshot with error/loading 1`] = `
   <article
     className="venues-container"
   >
-    <h3>
+    <h3
+      className="container-message"
+    >
       Found 1 dojos in DENVER
     </h3>
     <h4>

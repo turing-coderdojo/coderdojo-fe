@@ -19,10 +19,10 @@ export function VenuesContainer({
       </article>
       <article className="venues-container">
         {searchResults.city.length > 0 && ''}
-        <h3>
+        <h3 className="container-message">
           {searchResults.city.length > 0 
             ? `Found ${resultLength} dojos in ${searchResults.city.toUpperCase()}`
-            : 'Start by searching in you own city'
+            : 'Start by searching in your own city'
           }
         </h3>
         { isLoading && <h3>Loading dojos...</h3>}

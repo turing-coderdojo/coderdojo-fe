@@ -1,3 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StudentPreview should match snapshot 1`] = `<div />`;
+exports[`StudentPreview should match snapshot 1`] = `
+<article
+  className="StudentPreview"
+>
+  <h3>
+    Jude Bacher
+  </h3>
+  <p
+    className="student-username"
+  >
+    judebacher
+  </p>
+  <p
+    className="student-dob"
+  />
+</article>
+`;

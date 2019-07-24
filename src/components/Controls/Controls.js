@@ -10,6 +10,8 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 import VenuesContainer from '../VenuesContainer/VenuesContainer';
 import ChildForm from '../ChildForm/ChildForm';
 import EventsContainer from '../EventsContainer/EventsContainer';
+import AdminDash from '../AdminDash/AdminDash';
+import StudentDash from '../StudentDash/StudentDash';
 
 function Controls() {
   return (
@@ -19,7 +21,9 @@ function Controls() {
         <Route exact path="/venues" component={VenuesContainer} />
         <Route exact path="/venues/:id/events" component={EventsContainer} />
         <Route exact path="/login" component={LoginForm} />
-        <Route exact path="/students/:id" component={Profile} />
+        <Route exact path="/student/:id" component={Profile} />
+        <Route exact path="/dashboard/student" component={StudentDash} />
+        <Route exact path="/dashboard/admin" component={AdminDash} />
         <Route exact path="/students" component={CurrentStudents} />
         <Route exact path="/contact/:id" component={ContactInfo} />
         <Route exact path="/myfamily" component={Family} />
