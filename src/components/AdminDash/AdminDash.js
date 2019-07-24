@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
 import EventCard from '../EventCard/EventCard';
 import EventForm from '../EventForm/EventForm';
 
+
 export function AdminDash(props) {
   const [adminData, setAdminData] = useState({});
   const [eventFormVisible, showEventForm] = useState(false);
   const [currentEvent, setCurrentEvent] = useState({});
-  const { error, isLoading } = props;
+  const { error, isLoading, user } = props;
   const today = new Date();
 
   const toggleEventForm = (bool) => {
@@ -21,7 +23,7 @@ export function AdminDash(props) {
   const getEventsAndVenues = async () => {
     const result = await requests.getAdminDetails();
     const { me } = await result;
-    if (result.me) {
+    if (result.me.venues.length) {
       const currEvent = result.me.venues[0].events
         .find(event => today.toDateString() === new Date(event.startTime).toDateString());
       const attendance = await requests.getEventAttendance({ eventId: 1 });
@@ -34,6 +36,16 @@ export function AdminDash(props) {
     getEventsAndVenues();
   }, []);
 
+  if (user.role !== 2) {
+    let route;
+    if (user.role === 0) {
+      route = '/dashboard/student';
+    } else if (user.role === 1) {
+      route = '/myfamily';
+    } else route = '/';
+    return <Redirect to={route} />;
+  }
+  
   const generateAdminDetails = () => {
     const {
       email, phoneNumber, addresses
