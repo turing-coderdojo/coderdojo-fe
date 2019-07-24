@@ -1,0 +1,62 @@
+.EventForm {
+  position: absolute;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: hsla(0%, 0%, 0%, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+
+  form {
+    width: 40%;
+    background-color: #fff;
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    h2 {
+      text-align: center;
+    }
+
+    label {
+      @include flex-column;
+      margin: 10px 0;
+    }
+
+    .react-datepicker__input-container,
+    .event-range {
+      width: 100%;
+    }
+
+    .react-datepicker__time-container {
+      font-size: .7rem;
+      font-weight: bolder;
+    }
+    
+    input {
+      @include form-input-style;
+    }
+
+    .cancel-event-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin: 0 15px;
+      text-decoration: underline;
+      font-size: 2rem;
+      background-color: #fff;
+      border: 0;
+    }
+
+    .create-event-btn {
+      @include form-submit($primary-color);
+      background-color: #724695;
+      border: 2px solid #724695;
+    }
+  }
+}

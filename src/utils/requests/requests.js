@@ -5,6 +5,7 @@ const requests = {
   signIn: user => apolloMutate(gql.SIGN_IN, user),
   createStudent: student => apolloMutate(gql.CREATE_STUDENT, student),
   createGuardian: guardian => apolloMutate(gql.CREATE_GUARDIAN, guardian),
+  createNewEvent: event => apolloMutate(gql.CREATE_NEW_EVENT, event),
   getAllUsers: () => apolloQuery(gql.GET_ALL_USERS),
   getUserByToken: () => apolloQuery(gql.GET_USER_BY_TOKEN),
   getAllVenues: () => apolloQuery(gql.GET_ALL_VENUES),
@@ -12,6 +13,7 @@ const requests = {
   getVenueDetails: venueId => apolloQuery(gql.GET_VENUE_DETAILS, venueId),
   getUpcomingEvents: venueId => apolloQuery(gql.UPCOMING_EVENTS_BY_VENUE, venueId),
   getRecentEvents: venueId => apolloQuery(gql.RECENT_EVENTS_BY_VENUE, venueId),
+  getAdminDetails: () => apolloQuery(gql.GET_ADMIN_DATA),
   getEventsAttended: () => apolloQuery(gql.GET_EVENTS_ATTENDED),
   logAttendance: eventCode => apolloMutate(gql.LOG_ATTENDANCE, eventCode)
 };

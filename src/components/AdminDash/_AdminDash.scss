@@ -1,0 +1,82 @@
+.AdminDash {
+  width: 80%;
+  margin: auto;
+  height: 100vh;
+
+  .admin-header {
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    background-color: #724695;
+    color: #fff;
+
+    h2 {
+      margin: 0 20px;
+    }
+  }
+
+  .error {
+    color: red;
+    font-size: 1.5rem; 
+    text-align: center;
+  }
+
+  .details-container {
+    display: flex;
+    background-color: #F4F5F6;
+    height: 100%;
+
+    .details-section {
+      flex: 1;
+
+      .venue,
+      .admin {
+        padding: 10px;
+
+        p, a {
+          margin: 15px;
+          text-decoration: none;
+          font-weight: 600;
+
+          span {
+            font-weight: 400;
+            display: block;
+            margin: 5px;
+          }
+        }
+      }
+
+      h4, h3 {
+        margin: 10px 0;
+      }
+
+    }
+
+    .events-section {
+      flex: 2;
+      background-color: #fff;
+
+      .events-header {
+        background-color: #E5E5E5;
+        display: flex;
+        align-items: center;
+        height: 50px;
+
+        p {
+          font-size: 1.2rem;
+          margin: 0 10px;
+        }
+
+        button {
+          background-color: $primary-color;
+          color: #fff;
+          font-size: 1rem;
+          padding: 5px 10px;
+          border: 2px solid $primary-color;
+          margin: 10px;
+        }
+      }
+    }
+  }
+}

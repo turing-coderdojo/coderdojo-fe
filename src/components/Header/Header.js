@@ -6,18 +6,36 @@ import { ReactComponent as Logo } from '../../images/CoderDojoColorado.svg';
 import { addUser } from '../../actions';
 
 export function Header(props) {
+  const { user } = props;
   const logOutUser = () => {
     const { resetUser } = props;
     resetUser();
     localStorage.setItem('token', JSON.stringify(''));
   };
 
+  const redirectPath = () => {
+    const { role } = user;
+    let route;
+    if (role === 0) {
+      route = '/dashboard/student';
+    } else if (role === 1) {
+      route = '/myfamily';
+    } else if (role === 2) {
+      route = '/dashboard/admin';
+    }
+    return route;
+  };
+
+
   const createMenuOptions = () => {
-    const { user } = props;
     let menuOptions;
-    
     if (user.username) {
-      menuOptions = <NavLink to="/" className="nav-link logout" onClick={logOutUser}>LOGOUT</NavLink>;
+      menuOptions = (
+        <div>
+          <NavLink to={redirectPath()} className="nav-link">DASHBOARD</NavLink>
+          <NavLink to="/" className="nav-link logout" onClick={logOutUser}>LOGOUT</NavLink>
+        </div>
+      );
     } else {
       menuOptions = (
         <div>
@@ -43,22 +61,22 @@ export function Header(props) {
   );
 }
 
-export const mapStateToProps = ({ user }) => ({
-  user
-});
-
 export const mapDispatchToProps = dispatch => ({
   resetUser: () => dispatch(addUser({}))
+});
+
+export const mapStateToProps = state => ({
+  user: state.user
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
 Header.propTypes = {
-  user: PropTypes.object,
-  resetUser: PropTypes.func
+  resetUser: PropTypes.func,
+  user: PropTypes.object
 };
 
 Header.defaultProps = {
-  user: {},
-  resetUser: () => {}
+  resetUser: () => {},
+  user: {}
 };
