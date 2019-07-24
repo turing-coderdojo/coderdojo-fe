@@ -5,7 +5,7 @@ import VenueSearchBar from '../VenueSearchBar/VenueSearchBar';
 import VenueCard from '../VenueCard/VenueCard';
 
 export function VenuesContainer({
-  searchResults, isLoading, error 
+  searchResults, isLoading
 }) {  
   const generatedVenues = () => searchResults.venues
     .map(venue => <VenueCard venue={venue} key={venue.id} />);
@@ -26,7 +26,6 @@ export function VenuesContainer({
           }
         </h3>
         { isLoading && <h3>Loading dojos...</h3>}
-        { error && <h4>{error}</h4>}
         { generatedVenues() }
       </article>
     </section>
@@ -35,20 +34,17 @@ export function VenuesContainer({
 
 export const mapStateToProps = state => ({
   searchResults: state.searchResults,
-  isLoading: state.isFetching,
-  error: state.error
+  isLoading: state.isFetching
 });
 
 export default connect(mapStateToProps)(VenuesContainer);
 
 VenuesContainer.propTypes = {
   searchResults: PropTypes.object,
-  isLoading: PropTypes.bool,
-  error: PropTypes.string
+  isLoading: PropTypes.bool
 };
 
 VenuesContainer.defaultProps = {
   searchResults: {},
-  isLoading: false,
-  error: ''
+  isLoading: false
 };

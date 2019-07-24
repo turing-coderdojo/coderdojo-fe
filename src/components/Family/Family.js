@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import requests from '../../utils/requests/requests';
 import StudentPreview from '../StudentPreview/StudentPreview';
+import * as actions from '../../actions';
 
-export const Family = ({ user, loading }) => {
+export const Family = ({ user, loading, addStudents, students }) => {
   const { username } = user;
-  const [students, setStudents] = useState([]);
   const [contactInfo, setContactInfo] = useState([]);
   const [redirect, setRedirect] = useState(false);
 
@@ -15,8 +15,10 @@ export const Family = ({ user, loading }) => {
     if (user.role === 1) {
       const getFamily = async () => {
         const response = await requests.getFamily();
-
-        setStudents(response.me.students);
+        
+        if (response) {
+          addStudents(response.me.students);
+        }
       };
 
       const getContactInfo = async () => {
@@ -46,7 +48,7 @@ export const Family = ({ user, loading }) => {
 
       getContactInfo();
     }
-  }, [user]);
+  }, [user.role]);
 
   useEffect(() => {
     if (user.role !== 1) {
@@ -137,12 +139,18 @@ export const Family = ({ user, loading }) => {
   }
 };
 
+
 export const mapStateToProps = state => ({
   user: state.user,
-  loading: state.isFetching
+  loading: state.isFetching,
+  students: state.students
 });
 
-export default connect(mapStateToProps)(Family);
+export const mapDispatchToProps = dispatch => ({
+  addStudents: students => dispatch(actions.addStudents(students))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Family);
 
 Family.propTypes = {
   user: PropTypes.object,
