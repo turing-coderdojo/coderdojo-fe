@@ -14,11 +14,11 @@
     @include form-input-style;
   }
 
-  .date-picker {
-    width: 420px;
+  .child-submit-btn {
+    @include form-submit($footer-color);
   }
 
-  button {
-    @include form-submit($footer-color);
+  .date-picker {
+    width: 420px;
   }
 }

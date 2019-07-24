@@ -9,18 +9,22 @@ export function StudentDash(props) {
   const [eventCode, setEventCode] = useState({});
   const [success, setSuccess] = useState(false);
   const { user, error, isFetching } = props;
-
-  const getEventsAttended = async () => {
-    const attendedEvents = await requests.getEventsAttended();
-    setAttendedEvents(attendedEvents.me.eventsAttended);
-  };
-
+ 
   useEffect(() => {
-    getEventsAttended(user.id);
-  }, [user.id]);
+    if (user.role === 0) {
+      const getEventsAttended = async () => {
+        const attendedEvents = await requests.getEventsAttended();
+        
+        if (attendedEvents.me) {
+          setAttendedEvents(attendedEvents.me.eventsAttended);
+        }
+      };
+
+      getEventsAttended();
+    }
+  }, [user.role]);
 
   const generateEvents = events => events.map(event => <EventCard key={event.id} event={event} />);
-
 
   const submitAttendance = async (e) => {
     e.preventDefault();
@@ -61,7 +65,7 @@ export function StudentDash(props) {
     <section className="StudentDashContainer">
       <div className="studentDashHeader">
         <h2>
-          Welcome, {user.name}
+          Welcome, {user.username}
         </h2>
       </div>
       <h3>Current Event</h3>

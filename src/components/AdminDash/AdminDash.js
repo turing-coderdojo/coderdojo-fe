@@ -31,6 +31,10 @@ export function AdminDash(props) {
     }
     setAdminData(me);
   };
+
+  const setUpCurrentEvent = (event) => {
+    setCurrentEvent(event);
+  };
   
   useEffect(() => {
     getEventsAndVenues();
