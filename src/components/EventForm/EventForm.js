@@ -25,14 +25,15 @@ function EventForm({ venueId, toggleView }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setInvalidField('');
     if (!eventDetails.name || !eventDetails.startTime || !eventDetails.endTime) {
       setInvalidField('Please fill out required fields');
     } else {
       const newEvent = { ...eventDetails, venueId };
-      requests.createNewEvent(newEvent);
+      const result = await requests.createNewEvent(newEvent);
+      if (result) toggleView(false);
     }
   };
 

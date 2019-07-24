@@ -241,6 +241,7 @@ export const GET_ADMIN_DATA = gql`
 export const GET_EVENTS_ATTENDED = gql`
  {
     me{
+      username
         eventsAttended{
             name
             startTime
@@ -274,6 +275,24 @@ export const GET_GUARDIAN_DATA = gql`
         state
         zip
       }
+    }
+  }
+`;
+
+export const GET_EVENT_ATTENDANCE = gql`
+  query attendance($eventId: Int!) {
+    attendance(eventId: $eventId) {
+        user {
+            id
+            username
+            name
+            guardianId{
+                name
+                username
+                email
+                phoneNumber
+            }
+        }
     }
   }
 `;

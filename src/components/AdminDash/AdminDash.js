@@ -1,38 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
 import EventCard from '../EventCard/EventCard';
 import EventForm from '../EventForm/EventForm';
 
+
 export function AdminDash(props) {
   const [adminData, setAdminData] = useState({});
   const [eventFormVisible, showEventForm] = useState(false);
   const [currentEvent, setCurrentEvent] = useState({});
-  const { error, isLoading } = props;
+  const { error, isLoading, user } = props;
+  const today = new Date();
 
   const toggleEventForm = (bool) => {
     showEventForm(bool);
   };
 
-  const sortEvents = arr => arr.sort((a, b) => new Date(a.startTime) - new Date(b.endTime));
+  const sortEvents = arr => arr.sort((a, b) => new Date(b.startTime) - new Date(a.endTime));
 
   const getEventsAndVenues = async () => {
     const result = await requests.getAdminDetails();
     const { me } = await result;
+    if (result.me) {
+      const currEvent = result.me.venues[0].events
+        .find(event => today.toDateString() === new Date(event.startTime).toDateString());
+      const attendance = await requests.getEventAttendance({ eventId: 1 });
+      setCurrentEvent({ ...currEvent, ...attendance });
+    }
     setAdminData(me);
-  };
-
-  const setUpCurrentEvent = (event) => {
-    console.log(event);
-    setCurrentEvent(event);
   };
   
   useEffect(() => {
     getEventsAndVenues();
   }, []);
 
-
+  if (user.role !== 2) {
+    let route;
+    if (user.role === 0) {
+      route = '/dashboard/student';
+    } else if (user.role === 1) {
+      route = '/myfamily';
+    } else route = '/';
+    return <Redirect to={route} />;
+  }
+  
   const generateAdminDetails = () => {
     const {
       email, phoneNumber, addresses
@@ -67,16 +80,12 @@ export function AdminDash(props) {
   };
 
   const generateEventCards = () => {
-    const today = new Date();
     const sorted = sortEvents(adminData.venues[0].events);
     const pastEvents = [];
     const futureEvents = [];
     sorted.forEach((event) => {
       if (new Date(event.startTime) > today) {
         futureEvents.push(event);
-      } else if (today.toDateString() === new Date(event.startTime).toDateString() 
-      && !currentEvent.name) {
-        setUpCurrentEvent(event);
       } else pastEvents.push(event);
     });
 
@@ -87,7 +96,7 @@ export function AdminDash(props) {
           <button type="button" onClick={() => toggleEventForm(true)}>+ Create New Event</button>
         </div>
         <section className="future-events">
-          {futureEvents.map(event => <EventCard event={event} key={event.id} />)}
+          {futureEvents.reverse().map(event => <EventCard event={event} key={event.id} />)}
         </section>
         <div className="events-header">
           <p>Your Past Events:</p>
@@ -98,7 +107,60 @@ export function AdminDash(props) {
       </div>
     );
   };
+
+  const generateStudentCards = students => students
+    .map((student) => {
+      const { user: attendee } = student;
+      return (
+        <article>
+          <h4>
+            {attendee.name}
+            :
+            {attendee.username}
+          </h4>
+          <div className="guardian-details">
+            <h4>Guardian Details:</h4>
+            <p>
+              {attendee.guardianId.name}
+              :
+              {attendee.guardianId.username}
+            </p>
+            <p>
+              Phone:
+              {attendee.guardianId.phoneNumber}
+            </p>
+            <p>
+              Email:
+              {attendee.guardianId.email}
+            </p>
+          </div>
+        </article>
+      );
+    });
   
+  const generateCurrentEvent = () => {
+    const timeSetting = { hour: 'numeric', hour12: true };
+    const { 
+      name, notes, startTime, endTime, attendance, eventCode
+    } = currentEvent;
+    const readableStart = new Date(startTime).toLocaleString('en-US', timeSetting);
+    const readableEnd = new Date(endTime).toLocaleString('en-US', timeSetting);
+    return (
+      <div>
+        <h3>{name}</h3>
+        <p>
+          {readableStart} 
+          - 
+          {readableEnd}
+        </p>
+        <p>{notes}</p>
+        <h4>{eventCode}</h4>
+        <section>
+          {generateStudentCards(attendance)}
+        </section>
+      </div>
+    );
+  };
 
   const generateVenueDetails = () => {
     const { 
@@ -118,7 +180,7 @@ export function AdminDash(props) {
 
   return (
     <section className="AdminDash">
-      {eventFormVisible && <EventForm venueId={1} toggleView={toggleEventForm} />}
+      {eventFormVisible && <EventForm venueId={adminData.venues[0].id} toggleView={toggleEventForm} />}
       <div className="admin-header">
         <h2>
           Admin:&nbsp;&nbsp;
@@ -133,6 +195,7 @@ export function AdminDash(props) {
           {adminData.venues && generateAdminDetails()}
         </section>
         <section className="events-section">
+          {currentEvent.id && generateCurrentEvent()}
           {adminData.venues && generateEventCards()}
         </section>
       </div>
@@ -142,17 +205,20 @@ export function AdminDash(props) {
 
 const mapStateToProps = state => ({
   isLoading: state.isFetching,
-  error: state.error
+  error: state.error,
+  user: state.user
 });
 
 export default connect(mapStateToProps)(AdminDash);
 
 AdminDash.propTypes = {
   isLoading: PropTypes.bool,
-  error: PropTypes.string
+  error: PropTypes.string,
+  user: PropTypes.object
 };
 
 AdminDash.defaultProps = {
   isLoading: false,
-  error: ''
+  error: '',
+  user: {}
 };
