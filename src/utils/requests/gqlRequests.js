@@ -221,6 +221,9 @@ export const GET_ADMIN_DATA = gql`
             eventCode
         }
       }
+    }
+  }
+`;
 
 export const GET_EVENTS_ATTENDED = gql`
  {

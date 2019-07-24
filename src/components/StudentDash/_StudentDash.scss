@@ -36,7 +36,7 @@
   }
 
   button {
-    @include form-submit;
+    @include form-submit($primary-color);
     background-color: $footer-color;
     border-color:  $footer-color;
     margin-left: 60px;
