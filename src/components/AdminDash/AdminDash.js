@@ -96,6 +96,36 @@ export function AdminDash(props) {
     );
   };
 
+  const generateStudentCards = students => students
+    .map((student) => {
+      const { user } = student;
+      return (
+        <article>
+          <h4>
+            {user.name}
+            :
+            {user.username}
+          </h4>
+          <div className="guardian-details">
+            <h4>Guardian Details:</h4>
+            <p>
+              {user.guardianId.name}
+              :
+              {user.guardianId.username}
+            </p>
+            <p>
+              Phone:
+              {user.guardianId.phoneNumber}
+            </p>
+            <p>
+              Email:
+              {user.guardianId.email}
+            </p>
+          </div>
+        </article>
+      )
+    })
+  
   const generateCurrentEvent = () => {
     const timeSetting = { hour: 'numeric', hour12: true };
     const { 
@@ -112,6 +142,7 @@ export function AdminDash(props) {
           {readableEnd}
         </p>
         <p>{notes}</p>
+        {generateStudentCards(attendance)}
       </div>
     );
   };
