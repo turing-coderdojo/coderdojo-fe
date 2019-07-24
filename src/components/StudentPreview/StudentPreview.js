@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 
 const StudentPreview = ({ student }) => (
   <article className="StudentPreview">
-    <h3>{student.name}</h3>
+    <h4>{student.name}</h4>
     <p className="student-username">{student.username}</p>
     <p className="student-dob">{student.birthdate}</p>
   </article>

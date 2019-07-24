@@ -5,7 +5,7 @@ import { PropTypes } from 'prop-types';
 import requests from '../../utils/requests/requests';
 import StudentPreview from '../StudentPreview/StudentPreview';
 
-export const Family = ({ user }) => {
+export const Family = ({ user, loading }) => {
   const { username } = user;
   const [students, setStudents] = useState([]);
 
@@ -29,7 +29,14 @@ export const Family = ({ user }) => {
         <div className="family-sidebar">
         </div>
         <div className="family-details">
-          {createStudents()}
+          <h3>My Students</h3>
+          <div className="students-container">
+            {
+              loading 
+              ? <p className="loading">Loading...</p>
+              : createStudents()
+            }
+          </div>
           <Link to="/myfamily/registerstudent">Add a Student</Link>
         </div>
       </div>
@@ -38,7 +45,8 @@ export const Family = ({ user }) => {
 };
 
 export const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  loading: state.isFetching
 });
 
 export default connect(mapStateToProps)(Family);

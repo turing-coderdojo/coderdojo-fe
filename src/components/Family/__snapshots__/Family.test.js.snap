@@ -20,6 +20,12 @@ exports[`Family should match snapshot 1`] = `
     <div
       className="family-details"
     >
+      <h3>
+        My Students
+      </h3>
+      <div
+        className="students-container"
+      />
       <Link
         to="/myfamily/registerstudent"
       >

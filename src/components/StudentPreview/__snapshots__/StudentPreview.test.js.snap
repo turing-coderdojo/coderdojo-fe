@@ -4,9 +4,9 @@ exports[`StudentPreview should match snapshot 1`] = `
 <article
   className="StudentPreview"
 >
-  <h3>
+  <h4>
     Jude Bacher
-  </h3>
+  </h4>
   <p
     className="student-username"
   >
