@@ -1,25 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AdminDash should match snapshot 1`] = `
-<section
-  className="AdminDash"
->
-  <div
-    className="admin-header"
-  >
-    <h2>
-      Admin:  
-    </h2>
-  </div>
-  <div
-    className="details-container"
-  >
-    <section
-      className="details-section"
-    />
-    <section
-      className="events-section"
-    />
-  </div>
-</section>
+<Redirect
+  to="/"
+/>
 `;
