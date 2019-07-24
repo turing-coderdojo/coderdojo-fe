@@ -14,7 +14,7 @@ exports[`Header should match snapshot 1`] = `
   <section>
     <NavLink
       className="nav-link"
-      to="/"
+      to="/venues"
     >
       FIND A DOJO
     </NavLink>
@@ -51,7 +51,7 @@ exports[`Header should match snapshot if there is no user 1`] = `
   <section>
     <NavLink
       className="nav-link"
-      to="/"
+      to="/venues"
     >
       FIND A DOJO
     </NavLink>

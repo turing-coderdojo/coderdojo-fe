@@ -54,7 +54,7 @@ export function Header(props) {
         <Logo className="logo" alt="Coder Dojo Colorado Logo" />
       </Link>
       <section>
-        <NavLink className="nav-link" to="/">FIND A DOJO</NavLink>
+        <NavLink className="nav-link" to="/venues">FIND A DOJO</NavLink>
         { createMenuOptions() }
       </section>
     </header>
