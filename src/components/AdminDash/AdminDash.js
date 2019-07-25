@@ -102,7 +102,7 @@ export function AdminDash(props) {
           <p>Your Past Events:</p>
         </div>
         <section className="past-events">
-          {pastEvents.reverse().map(event => <EventCard event={event} key={event.id} />)}
+          {pastEvents.map(event => <EventCard event={event} key={event.id} />)}
         </section>
       </div>
     );
@@ -119,16 +119,18 @@ export function AdminDash(props) {
     const readableStart = new Date(startTime).toLocaleString('en-US', timeSetting);
     const readableEnd = new Date(endTime).toLocaleString('en-US', timeSetting);
     return (
-      <div>
-        <h3>{name}</h3>
-        <p>
-          {readableStart} 
-          - 
-          {readableEnd}
-        </p>
+      <div className="current-event">
+        <section className="current-event-details">
+          <h3>{name}</h3>
+          <p>
+            {readableStart} 
+            - 
+            {readableEnd}
+          </p>
+        </section>
         <p>{notes}</p>
         <h4>{eventCode}</h4>
-        <section>
+        <section className="attendance-container">
           {generateStudentCards(attendance)}
         </section>
       </div>
