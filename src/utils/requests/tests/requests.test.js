@@ -64,4 +64,107 @@ describe('Queries', () => {
     queries.getUserByToken();
     expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
   });
+
+  it('getAllVenues: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_ALL_VENUES;
+
+    queries.getAllVenues();
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
+  });
+
+  it('getVenuesByCity: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_VENUES_BY_CITY;
+
+    const expectedCity = {
+      city: 'Denver'
+    };
+
+    queries.getVenuesByCity(expectedCity);
+
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery, expectedCity);
+  });
+
+  it('getVenueDetails: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_VENUE_DETAILS;
+
+    const expectedId = {
+      venueId: 2
+    };
+
+    queries.getVenueDetails(expectedId);
+
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery, expectedId);
+  });
+
+  it('getUpcomingEvents: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.UPCOMING_EVENTS_BY_VENUE;
+
+    const expectedId = {
+      venueId: 2
+    };
+
+    queries.getUpcomingEvents(expectedId);
+
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery, expectedId);
+  });
+
+  it('getRecentEvents: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.RECENT_EVENTS_BY_VENUE;
+
+    const expectedId = {
+      venueId: 2
+    };
+
+    queries.getRecentEvents(expectedId);
+
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery, expectedId);
+  });
+
+  it('getFamily: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_FAMILY;
+
+    queries.getFamily();
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
+  });
+
+  it('getAdminDetails: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_ADMIN_DATA;
+
+    queries.getAdminDetails();
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
+  });
+
+  it('getEventsAttended: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_EVENTS_ATTENDED;
+
+    queries.getEventsAttended();
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
+  });
+
+  it('logAttendance: should invoke apollo mutation with  correct args', () => {
+    const expectedQuery = queryTypes.LOG_ATTENDANCE;
+    const expectedEventCode = {
+      eventCode: 123456
+    };
+
+    queries.logAttendance(expectedEventCode);
+    expect(apollo.apolloMutate).toHaveBeenCalledWith(expectedQuery, expectedEventCode);
+  });
+
+  it('getEventAttendance: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_EVENT_ATTENDANCE;
+    const expectedEventId = {
+      eventId: 1
+    };
+
+    queries.getEventAttendance(expectedEventId);
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery, expectedEventId);
+  });
+
+  it('getGuardianData: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_GUARDIAN_DATA;
+
+    queries.getGuardianData();
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
+  });
 });
