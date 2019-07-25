@@ -5,7 +5,6 @@ const StudentPreview = ({ student }) => (
   <article className="StudentPreview">
     <h4>{student.name}</h4>
     <p className="student-username">{student.username}</p>
-    <p className="student-dob">{`dob: ${student.birthdate}`}</p>
   </article>
 );
 

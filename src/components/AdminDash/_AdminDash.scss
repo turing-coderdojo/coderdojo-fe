@@ -35,6 +35,7 @@
         padding: 10px;
 
         p, a {
+          color: #000000;
           margin: 15px;
           text-decoration: none;
           font-weight: 600;
@@ -43,6 +44,14 @@
             font-weight: 400;
             display: block;
             margin: 5px;
+          }
+        }
+
+        .venue-site {
+          font-weight: 400;
+
+          &:hover {
+            text-decoration: underline;
           }
         }
       }
@@ -101,6 +110,7 @@
         background-color: #E5E5E5;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         height: 50px;
 
         p {
