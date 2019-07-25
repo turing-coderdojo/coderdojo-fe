@@ -27,7 +27,7 @@ export function App(props) {
   );
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   setUser: user => dispatch(addUser(user))
 });
 
