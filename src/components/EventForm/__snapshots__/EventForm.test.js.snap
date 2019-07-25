@@ -1,0 +1,266 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventForm should match snapshot when mounted 1`] = `
+<EventForm
+  event={Object {}}
+  toggleView={[Function]}
+  updateAdminDash={[Function]}
+  venueId={0}
+>
+  <div
+    className="EventForm"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <button
+        className="cancel-event-btn"
+        onClick={[Function]}
+        type="button"
+      >
+        ×
+      </button>
+      <h2>
+        Edit Event:
+      </h2>
+      <label
+        htmlFor="event-name"
+      >
+        Event Name:
+        <input
+          id="event-name"
+          name="name"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </label>
+      <DatePicker
+        allowSameDay={false}
+        className="event-range start"
+        dateFormat="MMMM d, yyyy h:mm aa"
+        dateFormatCalendar="LLLL yyyy"
+        disabled={false}
+        disabledKeyboardNavigation={false}
+        dropdownMode="scroll"
+        inlineFocusSelectedMonth={false}
+        minDate={2019-08-24T06:00:00.000Z}
+        monthsShown={1}
+        nextMonthButtonLabel="Next month"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClickOutside={[Function]}
+        onFocus={[Function]}
+        onInputClick={[Function]}
+        onInputError={[Function]}
+        onKeyDown={[Function]}
+        onMonthChange={[Function]}
+        onSelect={[Function]}
+        onYearChange={[Function]}
+        placeholderText="Starts"
+        preventOpenOnFocus={false}
+        previousMonthButtonLabel="Previous Month"
+        readOnly={false}
+        renderDayContents={[Function]}
+        selected={2019-08-24T06:00:00.000Z}
+        shouldCloseOnSelect={true}
+        showMonthYearPicker={false}
+        showTimeInput={false}
+        showTimeSelect={true}
+        strictParsing={false}
+        timeCaption="Time"
+        timeInputLabel="Time"
+        timeIntervals={30}
+        withPortal={false}
+      >
+        <PopperComponent
+          hidePopper={true}
+          popperComponent={null}
+          popperModifiers={
+            Object {
+              "preventOverflow": Object {
+                "boundariesElement": "viewport",
+                "enabled": true,
+                "escapeWithReference": true,
+              },
+            }
+          }
+          popperPlacement="bottom-start"
+          popperProps={Object {}}
+          targetComponent={
+            <div
+              className="react-datepicker__input-container"
+            >
+              <input
+                className="event-range start"
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                placeholder="Starts"
+                readOnly={false}
+                type="text"
+                value="August 24, 2019 6:00 AM"
+              />
+            </div>
+          }
+        >
+          <Manager>
+            <Reference>
+              <InnerReference
+                setReferenceNode={[Function]}
+              >
+                <div
+                  className="react-datepicker-wrapper"
+                >
+                  <div
+                    className="react-datepicker__input-container"
+                  >
+                    <input
+                      className="event-range start"
+                      disabled={false}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="Starts"
+                      readOnly={false}
+                      type="text"
+                      value="August 24, 2019 6:00 AM"
+                    />
+                  </div>
+                </div>
+              </InnerReference>
+            </Reference>
+          </Manager>
+        </PopperComponent>
+      </DatePicker>
+      <DatePicker
+        allowSameDay={false}
+        className="event-range end"
+        dateFormat="MMMM d, yyyy h:mm aa"
+        dateFormatCalendar="LLLL yyyy"
+        disabled={false}
+        disabledKeyboardNavigation={false}
+        dropdownMode="scroll"
+        inlineFocusSelectedMonth={false}
+        minDate={2019-08-24T06:00:00.000Z}
+        monthsShown={1}
+        nextMonthButtonLabel="Next month"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClickOutside={[Function]}
+        onFocus={[Function]}
+        onInputClick={[Function]}
+        onInputError={[Function]}
+        onKeyDown={[Function]}
+        onMonthChange={[Function]}
+        onSelect={[Function]}
+        onYearChange={[Function]}
+        placeholderText="Ends"
+        preventOpenOnFocus={false}
+        previousMonthButtonLabel="Previous Month"
+        readOnly={false}
+        renderDayContents={[Function]}
+        selected={2019-08-24T06:00:00.000Z}
+        shouldCloseOnSelect={true}
+        showMonthYearPicker={false}
+        showTimeInput={false}
+        showTimeSelect={true}
+        strictParsing={false}
+        timeCaption="Time"
+        timeInputLabel="Time"
+        timeIntervals={30}
+        withPortal={false}
+      >
+        <PopperComponent
+          hidePopper={true}
+          popperComponent={null}
+          popperModifiers={
+            Object {
+              "preventOverflow": Object {
+                "boundariesElement": "viewport",
+                "enabled": true,
+                "escapeWithReference": true,
+              },
+            }
+          }
+          popperPlacement="bottom-start"
+          popperProps={Object {}}
+          targetComponent={
+            <div
+              className="react-datepicker__input-container"
+            >
+              <input
+                className="event-range end"
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                placeholder="Ends"
+                readOnly={false}
+                type="text"
+                value="August 24, 2019 6:00 AM"
+              />
+            </div>
+          }
+        >
+          <Manager>
+            <Reference>
+              <InnerReference
+                setReferenceNode={[Function]}
+              >
+                <div
+                  className="react-datepicker-wrapper"
+                >
+                  <div
+                    className="react-datepicker__input-container"
+                  >
+                    <input
+                      className="event-range end"
+                      disabled={false}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="Ends"
+                      readOnly={false}
+                      type="text"
+                      value="August 24, 2019 6:00 AM"
+                    />
+                  </div>
+                </div>
+              </InnerReference>
+            </Reference>
+          </Manager>
+        </PopperComponent>
+      </DatePicker>
+      <label
+        htmlFor="event-notes"
+      >
+        Notes(Optional):
+        <input
+          id="event-notes"
+          name="notes"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </label>
+      <button
+        className="create-event-btn"
+        onClick={[Function]}
+        type="submit"
+      >
+        Update
+      </button>
+    </form>
+  </div>
+</EventForm>
+`;

@@ -85,7 +85,7 @@ function EventForm({
           showTimeSelect
           dateFormat="MMMM d, yyyy h:mm aa"
           placeholderText="Starts"
-          className="event-range"
+          className="event-range start"
         />
         <DatePicker
           selected={startEndDate.end}
@@ -94,7 +94,7 @@ function EventForm({
           showTimeSelect
           dateFormat="MMMM d, yyyy h:mm aa"
           placeholderText="Ends"
-          className="event-range"
+          className="event-range end"
         />
         <label htmlFor="event-notes">
           Notes(Optional):

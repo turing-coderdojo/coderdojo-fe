@@ -1,6 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { BrowserRouter } from 'react-router-dom';
+import { shallow, mount } from 'enzyme';
 import { AdminDash, mapStateToProps } from './AdminDash';
+import requests from '../../utils/requests/requests';
+import mockData from '../../utils/mockData';
+
+jest.mock('../../utils/requests/requests');
+requests.getAdminDetails.mockImplementation(() => Promise.resolve(mockData.mockAdminData));
 
 describe('AdminDash', () => {
   let wrapper;
@@ -20,9 +26,13 @@ describe('AdminDash', () => {
   });
 
   it('should redirect if there is no user/invalid role', () => {
-    wrapper = shallow(<AdminDash />);
+    wrapper = mount(
+      <BrowserRouter>
+        <AdminDash user={mockUser} />
+      </BrowserRouter>
+    );
     expect(wrapper).toMatchSnapshot();
-  })
+  });
 
   it('should match snapshot if loading', () => {
     wrapper = shallow(<AdminDash user={mockUser} isLoading />);
