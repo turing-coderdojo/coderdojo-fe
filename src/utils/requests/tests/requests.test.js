@@ -126,5 +126,21 @@ describe('Queries', () => {
     queries.getFamily();
     expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
   });
-  
+
+  it('getAdminDetails: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_ADMIN_DATA;
+
+    queries.getAdminDetails();
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
+  });
+
+  it('getEventsAttended: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_EVENTS_ATTENDED;
+
+    queries.getEventsAttended();
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
+  });
+
+
+
 });
