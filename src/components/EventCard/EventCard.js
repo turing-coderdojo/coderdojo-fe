@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import EventForm from '../EventForm/EventForm';
+import requests from '../../utils/requests/requests';
 
-function EventCard({ event, editable }) {
+function EventCard({ event, editable, updateAdminDash }) {
   const { 
-    name, notes, startTime, endTime, venueId
+    name, notes, startTime, endTime, venueId, id
   } = event;
   const startDate = new Date(startTime);
   const endDate = new Date(endTime);
@@ -15,8 +16,9 @@ function EventCard({ event, editable }) {
     setEditEvent(bool);
   };
 
-  const cancelEvent = () => {
-    
+  const cancelEvent = async () => {
+    const response = await requests.cancelEvent({ id });
+    if (response) updateAdminDash();
   };
 
   return (
@@ -37,7 +39,7 @@ function EventCard({ event, editable }) {
       </div>        
       <p className="notes">{notes}</p>
       {editable && <button type="button" onClick={() => showEventForm(true)}>Edit Event</button>}
-      {editEvent && <EventForm event={event} venueId={venueId} toggleView={showEventForm} /> }
+      {editEvent && <EventForm event={event} venueId={venueId} toggleView={showEventForm} updateAdminDash={updateAdminDash} /> }
     </article>
   );
 }

@@ -96,7 +96,7 @@ export function AdminDash(props) {
           <button type="button" onClick={() => toggleEventForm(true)}>+ Create New Event</button>
         </div>
         <section className="future-events">
-          {futureEvents.reverse().map(event => <EventCard event={event} key={event.id} editable />)}
+          {futureEvents.reverse().map(event => <EventCard event={event} key={event.id} editable updateAdminDash={getEventsAndVenues} />)}
         </section>
         <div className="events-header">
           <p>Your Past Events:</p>
@@ -180,7 +180,7 @@ export function AdminDash(props) {
 
   return (
     <section className="AdminDash">
-      {eventFormVisible && <EventForm venueId={adminData.venues[0].id} toggleView={toggleEventForm} />}
+      {eventFormVisible && <EventForm updateAdminDash={getEventsAndVenues} venueId={adminData.venues[0].id} toggleView={toggleEventForm} />}
       <div className="admin-header">
         <h2>
           Admin:&nbsp;&nbsp;

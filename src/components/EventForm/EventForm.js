@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import requests from '../../utils/requests/requests';
 
-function EventForm({ venueId, toggleView, event }) {
+function EventForm({ 
+  venueId, toggleView, event, updateAdminDash 
+}) {
   const [eventDetails, setEventDetails] = useState({});
   const [startEndDate, setStartEndDate] = useState({});
   const [invalidField, setInvalidField] = useState('');
@@ -54,7 +56,10 @@ function EventForm({ venueId, toggleView, event }) {
       if (event) {
         result = await requests.editEvent(newEvent);
       } else result = await requests.createNewEvent(newEvent);
-      if (result) toggleView(false);
+      if (result) {
+        toggleView(false);
+        updateAdminDash();
+      }
     }
   };
 
