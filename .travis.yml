@@ -4,7 +4,7 @@ node_js:
 notifications:
   email: false
 before_install:
-- export TZ=MST
+- export TZ=America/Denver
 deploy:
   provider: heroku
   api_key:
