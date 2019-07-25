@@ -11,31 +11,39 @@ exports[`StudentDash should match snapshot 1`] = `
       Welcome, undefined!
     </h2>
   </div>
-  <h3>
-    Current Event
-  </h3>
   <div
-    className="eventWrapper"
+    className="student-dash-main"
   >
-    <form
-      onSubmit={[Function]}
+    <h3>
+      Current Event
+    </h3>
+    <div
+      className="eventWrapper"
     >
-      <input
-        className="eventCode"
-        onChange={[Function]}
-        placeholder="Enter Event Code"
-        type="text"
-      />
-      <button
-        type="submit"
+      <form
+        onSubmit={[Function]}
       >
-        Submit
-      </button>
-    </form>
+        <input
+          className="eventCode"
+          onChange={[Function]}
+          placeholder="Enter Event Code"
+          type="text"
+        />
+        <button
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+    <section
+      className="pastEvents"
+    >
+      <h3>
+        Attended Events
+      </h3>
+    </section>
   </div>
-  <section
-    className="pastEvents"
-  />
 </section>
 `;
 
@@ -78,31 +86,39 @@ exports[`StudentDash should match snapshot when mounted 1`] = `
             Welcome, undefined!
           </h2>
         </div>
-        <h3>
-          Current Event
-        </h3>
         <div
-          className="eventWrapper"
+          className="student-dash-main"
         >
-          <form
-            onSubmit={[Function]}
+          <h3>
+            Current Event
+          </h3>
+          <div
+            className="eventWrapper"
           >
-            <input
-              className="eventCode"
-              onChange={[Function]}
-              placeholder="Enter Event Code"
-              type="text"
-            />
-            <button
-              type="submit"
+            <form
+              onSubmit={[Function]}
             >
-              Submit
-            </button>
-          </form>
+              <input
+                className="eventCode"
+                onChange={[Function]}
+                placeholder="Enter Event Code"
+                type="text"
+              />
+              <button
+                type="submit"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+          <section
+            className="pastEvents"
+          >
+            <h3>
+              Attended Events
+            </h3>
+          </section>
         </div>
-        <section
-          className="pastEvents"
-        />
       </section>
     </StudentDash>
   </Router>

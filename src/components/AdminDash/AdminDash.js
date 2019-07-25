@@ -56,7 +56,7 @@ export function AdminDash(props) {
     const address = `${street1}, ${street2 || ''} ${city}, ${state} ${zip}`;
     return (
       <div className="admin">
-        <h4>My Contact Info:</h4>
+        <h3>My Contact Info:</h3>
         <p>
           Phone:&nbsp; 
           <span>
@@ -151,7 +151,8 @@ export function AdminDash(props) {
     return (
       <div className="venue">
         <h3>{name}</h3>
-        <a href={webUrl}>Home Page</a>
+        <p>Website:</p>
+        <a className="venue-site" href={webUrl}>{webUrl}</a>
         <p>
           Email: &nbsp;
           <span>{email}</span>

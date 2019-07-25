@@ -80,14 +80,18 @@ export function StudentDash(props) {
       <div className="studentDashHeader">
         <h2>{`Welcome, ${user.username}!`}</h2>
       </div>
-      <h3>Current Event</h3>
-      <div className="eventWrapper">
-        {isFetching ? 'Loading...' : null }
-        {assignForm()}
+      <div className="student-dash-main">
+        <h3>Current Event</h3>
+        <div className="eventWrapper">
+          {isFetching ? 'Loading...' : null }
+          {assignForm()}
+        </div>
+        <section className="pastEvents">
+          <h3>Attended Events</h3>
+          {pastEvents.length > 0 && generateEvents(pastEvents)}
+          {pastEvents.length === 0 && <p className="no-events">You have not attended any events!</p>}
+        </section>
       </div>
-      <section className="pastEvents">
-        {pastEvents.length > 0 && generateEvents(pastEvents)}
-      </section>
     </section>
   );
 }
