@@ -1,13 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { Family, mapStateToProps, mapDispatchToProps } from './Family';
 import * as actions from '../../actions';
+import { BrowserRouter } from 'react-router-dom';
 
 jest.mock('../../actions');
 
 describe('Family', () => {
   let mockUser;
   let wrapper;
+  let mountedWrapper;
 
   beforeEach(() => {
     mockUser = { 
@@ -16,10 +18,19 @@ describe('Family', () => {
       role: 1
     };
     wrapper = shallow(<Family user={mockUser} />);
+    mountedWrapper = mount(
+      <BrowserRouter>
+        <Family user={mockUser} />
+      </BrowserRouter>
+    );
   });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should match mounted snapshot', () => {
+    expect(mountedWrapper).toMatchSnapshot();
   });
 
   it('should match snapshot if the user is not an admin', () => {
