@@ -35,4 +35,21 @@ describe('AdminDash', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+
+  describe('mapStateToProps', () => {
+    const mockState = {
+      user: mockUser,
+      isFetching: false,
+      error: ''
+    };
+    const expected = {
+      isLoading: false,
+      error: '',
+      user: mockUser
+    };
+    it('should map state to props with correct values', () => {
+      const result = mapStateToProps(mockState);
+      expect(result).toEqual(expected);
+    });
+  });
 });

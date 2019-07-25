@@ -185,7 +185,7 @@ export function AdminDash(props) {
   );
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   isLoading: state.isFetching,
   error: state.error,
   user: state.user
