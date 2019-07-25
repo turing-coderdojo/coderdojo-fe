@@ -3,8 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import Splash from '../Splash/Splash';
 import LoginForm from '../LoginForm/LoginForm';
 import Profile from '../Profile/Profile';
-import CurrentStudents from '../CurrentStudents/CurrentStudents';
-import ContactInfo from '../ContactInfo/ContactInfo';
 import Family from '../Family/Family';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import VenuesContainer from '../VenuesContainer/VenuesContainer';
@@ -24,8 +22,6 @@ function Controls() {
         <Route exact path="/student/:id" component={Profile} />
         <Route exact path="/dashboard/student" component={StudentDash} />
         <Route exact path="/dashboard/admin" component={AdminDash} />
-        <Route exact path="/students" component={CurrentStudents} />
-        <Route exact path="/contact/:id" component={ContactInfo} />
         <Route exact path="/myfamily" component={Family} />
         <Route exact path="/myfamily/registerstudent" component={ChildForm} />
         <Route exact path="/dashboard/student" component={Profile} />

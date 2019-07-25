@@ -8,6 +8,14 @@ jest.mock('../../actions');
 describe('RegisterForm', () => {
   let wrapper;
   const mockDispatch = jest.fn();
+  const defaultState = {
+    fullName: '',
+    username: '',
+    password: '',
+    reEnteredPassword: '',
+    displayContactForm: false,
+    displayAgeForm: false
+  };
 
   beforeEach(() => {
     wrapper = shallow(<RegisterForm />);
@@ -17,15 +25,8 @@ describe('RegisterForm', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should update state on input change', () => {
-    expect(wrapper.state()).toEqual({
-      fullName: '',
-      username: '',
-      password: '',
-      reEnteredPassword: '',
-      displayContactForm: false,
-      displayAgeForm: false
-    }); 
+  it('should update userName state on input change', () => {
+    expect(wrapper.state()).toEqual(defaultState); 
 
     const mockEvent = {
       target: { value: 'ehk', name: 'username' }
@@ -33,6 +34,39 @@ describe('RegisterForm', () => {
 
     wrapper.instance().handleChange(mockEvent);
     expect(wrapper.state('username')).toEqual('ehk');
+  });
+
+  it('should update fullName state on input change', () => {
+    expect(wrapper.state()).toEqual(defaultState);
+
+    const mockEvent = {
+      target: { value: 'erik k.', name: 'fullName' }
+    };
+
+    wrapper.instance().handleChange(mockEvent);
+    expect(wrapper.state('fullName')).toEqual('erik k.');
+  });
+
+  it('should update password state on input change', () => {
+    expect(wrapper.state()).toEqual(defaultState);
+
+    const mockEvent = {
+      target: { value: 'password1', name: 'password' }
+    };
+
+    wrapper.instance().handleChange(mockEvent);
+    expect(wrapper.state('password')).toEqual('password1');
+  });
+
+  it('should update reEnteredPassword state on input change', () => {
+    expect(wrapper.state()).toEqual(defaultState);
+
+    const mockEvent = {
+      target: { value: 'password1', name: 'reEnteredPassword' }
+    };
+
+    wrapper.instance().handleChange(mockEvent);
+    expect(wrapper.state('reEnteredPassword')).toEqual('password1');
   });
 
   it('should dispatch addUser', () => {
