@@ -124,12 +124,18 @@ export function AdminDash(props) {
           <h3>{name}</h3>
           <p>
             {readableStart} 
-            - 
+            &nbsp; - &nbsp; 
             {readableEnd}
           </p>
+          <h4>
+            Event Code: &nbsp;&nbsp;
+            {eventCode}
+          </h4>
+          <p>
+            Notes: &nbsp;
+            {notes}
+          </p>
         </section>
-        <p>{notes}</p>
-        <h4>{eventCode}</h4>
         <section className="attendance-container">
           {generateStudentCards(attendance)}
         </section>

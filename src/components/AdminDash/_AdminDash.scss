@@ -57,6 +57,36 @@
       flex: 2;
       background-color: #fff;
 
+      .current-event {
+        display: flex;
+        height: 15%;
+        align-items: center;
+        padding: 15px;
+
+        .current-event-details {
+          flex: 2;
+          text-align: center;
+          justify-content: center;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          
+          h3 {
+            color: $primary-color;
+            margin: 5px;
+          }
+
+          h4 {
+            padding: 5px 10px;
+            background-color: #faa31a;
+            color: #fff;
+          }
+        }
+        .attendance-container {
+          flex: 3;
+        }
+      }
+
       .events-header {
         background-color: #E5E5E5;
         display: flex;
