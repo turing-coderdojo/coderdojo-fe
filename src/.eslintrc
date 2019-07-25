@@ -8,6 +8,9 @@
     "no-trailing-spaces": 0,
     "import/no-named-as-default": 0,
     "react/self-closing-comp": "off",
-    "no-else-return": "off"
+    "no-else-return": "off",
+    "object-curly-newline": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "consistent-return": "off"
   }
 }
