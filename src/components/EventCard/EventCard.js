@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import EventForm from '../EventForm/EventForm';
 
-function EventCard({ event }) {
+function EventCard({ event, editable }) {
   const { 
     name, notes, startTime, endTime 
   } = event;
@@ -25,6 +26,7 @@ function EventCard({ event }) {
         </div>
       </div>        
       <p className="notes">{notes}</p>
+      {editable && <button type="button">Edit Event</button>}
     </article>
   );
 }
@@ -32,9 +34,11 @@ function EventCard({ event }) {
 export default EventCard;
 
 EventCard.propTypes = {
-  event: PropTypes.object
+  event: PropTypes.object,
+  editable: PropTypes.bool  
 };
 
 EventCard.defaultProps = {
-  event: {}
+  event: {},
+  editable: false
 };

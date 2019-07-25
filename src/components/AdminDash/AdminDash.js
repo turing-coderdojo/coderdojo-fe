@@ -31,10 +31,6 @@ export function AdminDash(props) {
     }
     setAdminData(me);
   };
-
-  const setUpCurrentEvent = (event) => {
-    setCurrentEvent(event);
-  };
   
   useEffect(() => {
     getEventsAndVenues();
@@ -100,7 +96,7 @@ export function AdminDash(props) {
           <button type="button" onClick={() => toggleEventForm(true)}>+ Create New Event</button>
         </div>
         <section className="future-events">
-          {futureEvents.reverse().map(event => <EventCard event={event} key={event.id} />)}
+          {futureEvents.reverse().map(event => <EventCard event={event} key={event.id} editable />)}
         </section>
         <div className="events-header">
           <p>Your Past Events:</p>
