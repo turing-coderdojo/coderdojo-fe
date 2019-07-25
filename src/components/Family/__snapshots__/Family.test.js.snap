@@ -1,3 +1,231 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Family should match snapshot 1`] = `<div />`;
+exports[`Family should match mounted snapshot 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Family
+      loading={false}
+      user={
+        Object {
+          "id": 1,
+          "role": 1,
+          "username": "tiff",
+        }
+      }
+    >
+      <section
+        className="Family"
+      >
+        <div
+          className="family-header"
+        >
+          <h2>
+            Welcome, tiff!
+          </h2>
+        </div>
+        <div
+          className="family-main"
+        >
+          <div
+            className="family-sidebar"
+          >
+            <h3>
+              My Contact Info
+            </h3>
+            <h4>
+              Phone: 
+            </h4>
+            <p />
+            <h4>
+              Email: 
+            </h4>
+            <p />
+            <h4>
+              Address: 
+            </h4>
+            <p>
+              undefined, 
+            </p>
+            <p>
+              undefined, undefined undefined
+            </p>
+          </div>
+          <div
+            className="family-details"
+          >
+            <h3
+              className="students-header"
+            >
+              My Family
+              <Link
+                to="/myfamily/registerstudent"
+              >
+                <a
+                  href="/myfamily/registerstudent"
+                  onClick={[Function]}
+                >
+                  <button
+                    type="button"
+                  >
+                    Add a Student
+                  </button>
+                </a>
+              </Link>
+            </h3>
+            <div
+              className="students-container"
+            />
+          </div>
+        </div>
+      </section>
+    </Family>
+  </Router>
+</BrowserRouter>
+`;
+
+exports[`Family should match snapshot 1`] = `
+<section
+  className="Family"
+>
+  <div
+    className="family-header"
+  >
+    <h2>
+      Welcome, tiff!
+    </h2>
+  </div>
+  <div
+    className="family-main"
+  >
+    <div
+      className="family-sidebar"
+    >
+      <h3>
+        My Contact Info
+      </h3>
+      <h4>
+        Phone: 
+      </h4>
+      <p />
+      <h4>
+        Email: 
+      </h4>
+      <p />
+      <h4>
+        Address: 
+      </h4>
+      <p>
+        undefined, 
+      </p>
+      <p>
+        undefined, undefined undefined
+      </p>
+    </div>
+    <div
+      className="family-details"
+    >
+      <h3
+        className="students-header"
+      >
+        My Family
+        <Link
+          to="/myfamily/registerstudent"
+        >
+          <button
+            type="button"
+          >
+            Add a Student
+          </button>
+        </Link>
+      </h3>
+      <div
+        className="students-container"
+      />
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Family should match snapshot if the user is not an admin 1`] = `
+<section
+  className="Family"
+>
+  <div
+    className="family-header"
+  >
+    <h2>
+      Welcome, tiff!
+    </h2>
+  </div>
+  <div
+    className="family-main"
+  >
+    <div
+      className="family-sidebar"
+    >
+      <h3>
+        My Contact Info
+      </h3>
+      <h4>
+        Phone: 
+      </h4>
+      <p />
+      <h4>
+        Email: 
+      </h4>
+      <p />
+      <h4>
+        Address: 
+      </h4>
+      <p>
+        undefined, 
+      </p>
+      <p>
+        undefined, undefined undefined
+      </p>
+    </div>
+    <div
+      className="family-details"
+    >
+      <h3
+        className="students-header"
+      >
+        My Family
+        <Link
+          to="/myfamily/registerstudent"
+        >
+          <button
+            type="button"
+          >
+            Add a Student
+          </button>
+        </Link>
+      </h3>
+      <div
+        className="students-container"
+      />
+    </div>
+  </div>
+</section>
+`;

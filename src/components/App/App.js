@@ -1,22 +1,23 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Controls from '../Controls/Controls';
+import { PropTypes } from 'prop-types';
 import requests from '../../utils/requests/requests';
 import { addUser } from '../../actions';
+import Controls from '../Controls/Controls';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 export function App(props) {
   const { setUser } = props;
 
-  const setUserData = async () => {
-    const userInfo = await requests.getUserByToken();
-    if (userInfo) setUser(userInfo.me || {});
-  };
-
   useEffect(() => {
+    const setUserData = async () => {
+      const userInfo = await requests.getUserByToken();
+      if (userInfo) setUser(userInfo.me || {});
+    };
+
     setUserData();
-  }, [])
+  }, [setUser]);
 
   return (
     <div className="App">
@@ -27,8 +28,16 @@ export function App(props) {
   );
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   setUser: user => dispatch(addUser(user))
 });
 
 export default connect(null, mapDispatchToProps)(App);
+
+App.propTypes = {
+  setUser: PropTypes.func
+};
+
+App.defaultProps = {
+  setUser: () => {}
+};

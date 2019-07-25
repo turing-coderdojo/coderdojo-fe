@@ -10,6 +10,8 @@
     "react/self-closing-comp": "off",
     "no-else-return": "off",
     "no-alert": "off",
-    "react-hooks/exhaustive-deps": "off"
+    "object-curly-newline": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "consistent-return": "off"
   }
 }

@@ -1,5 +1,128 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ContactForm should match mounted snapshot 1`] = `
+<ContactForm
+  addUser={[Function]}
+  error=""
+  fullName="Tiffany Bacher"
+  isFetching={false}
+  password="password"
+  setError={[Function]}
+  username="tiffanybacher"
+>
+  <form
+    className="ContactForm"
+    onSubmit={[Function]}
+  >
+    <h2>
+      Guardian Details
+    </h2>
+    <label
+      htmlFor="email-input"
+    >
+      Email:
+      <input
+        id="email-input"
+        name="email"
+        onChange={[Function]}
+        placeholder="example@email.com"
+        type="email"
+      />
+    </label>
+    <label
+      htmlFor="phoneNumber-input"
+    >
+      Phone Number:
+      <input
+        contentEditable="true"
+        id="phoneNumber-input"
+        maxLength="14"
+        name="phoneNumber"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="(xxx) xxx-xxxx"
+        type="tel"
+        value=""
+      />
+    </label>
+    <div
+      className="address-section"
+    >
+      <label
+        htmlFor="street1-input"
+      >
+        Street 1:
+        <input
+          id="street1-input"
+          name="street1"
+          onChange={[Function]}
+          placeholder="Street 1"
+          type="text"
+        />
+      </label>
+      <label
+        htmlFor="street2-input"
+      >
+        Street 2:
+        <input
+          id="street2-input"
+          name="street2"
+          onChange={[Function]}
+          placeholder="Street 2"
+          type="text"
+        />
+      </label>
+      <label
+        htmlFor="city-input"
+      >
+        City:
+        <input
+          id="city-input"
+          name="city"
+          onChange={[Function]}
+          placeholder="City"
+          type="text"
+        />
+      </label>
+      <label
+        htmlFor="state-input"
+      >
+        State:
+        <input
+          id="state-input"
+          name="state"
+          onChange={[Function]}
+          placeholder="State"
+          type="text"
+        />
+      </label>
+      <label
+        htmlFor="zip-input"
+      >
+        Zip Code:
+        <input
+          id="zip-input"
+          maxLength="10"
+          name="zip"
+          onChange={[Function]}
+          placeholder="Zip Code"
+          type="text"
+        />
+      </label>
+    </div>
+    <div
+      className="error-msg"
+    />
+    <button
+      className="signin-btn"
+      type="submit"
+    >
+      SUBMIT
+    </button>
+  </form>
+</ContactForm>
+`;
+
 exports[`ContactForm should match snapshot 1`] = `
 <form
   className="ContactForm"
