@@ -1,18 +1,22 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { StudentDash, mapStateToProps } from './StudentDash';
-
-
 
 describe('StudentDash', () => {
   let wrapper;
+  let mounted;
 
   beforeEach(() => {
     wrapper = shallow(<StudentDash />);
+    mounted = mount(<StudentDash />);
   });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should match snapshot when mounted', () => {
+    expect(mounted).toMatchSnapshot();
   });
 
   it('should MSTP', () => {
@@ -24,6 +28,7 @@ describe('StudentDash', () => {
 
     expect(error).toEqual(state.error);
   });
+
   it('should MSTP with user', () => {
     const state = {
       user: {

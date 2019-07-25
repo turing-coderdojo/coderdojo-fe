@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { RegisterForm, mapDispatchToProps, mapStateToProps } from './RegisterForm';
 import * as actions from '../../actions';
 
@@ -7,6 +7,7 @@ jest.mock('../../actions');
 
 describe('RegisterForm', () => {
   let wrapper;
+  let mounted;
   const mockDispatch = jest.fn();
   const defaultState = {
     fullName: '',
@@ -35,10 +36,18 @@ describe('RegisterForm', () => {
       mockStudent={mockStudent}
       setError={mockSetError}
     />);
+    mounted = mount(<RegisterForm
+      mockStudent={mockStudent}
+      setError={mockSetError}
+    />);
   });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should match snapshot when mounted', () => {
+    expect(mounted).toMatchSnapshot();
   });
 
   it('should update userName state on input change', () => {
