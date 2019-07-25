@@ -44,7 +44,7 @@ exports[`StudentDash should match snapshot when mounted 1`] = `
   <Router
     history={
       Object {
-        "action": "REPLACE",
+        "action": "POP",
         "block": [Function],
         "createHref": [Function],
         "go": [Function],
@@ -54,7 +54,6 @@ exports[`StudentDash should match snapshot when mounted 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "p4k28m",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -69,15 +68,42 @@ exports[`StudentDash should match snapshot when mounted 1`] = `
       isFetching={false}
       user={Object {}}
     >
-      <Redirect
-        to="/"
+      <section
+        className="StudentDashContainer"
       >
-        <Lifecycle
-          onMount={[Function]}
-          onUpdate={[Function]}
-          to="/"
+        <div
+          className="studentDashHeader"
+        >
+          <h2>
+            Welcome, undefined!
+          </h2>
+        </div>
+        <h3>
+          Current Event
+        </h3>
+        <div
+          className="eventWrapper"
+        >
+          <form
+            onSubmit={[Function]}
+          >
+            <input
+              className="eventCode"
+              onChange={[Function]}
+              placeholder="Enter Event Code"
+              type="text"
+            />
+            <button
+              type="submit"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+        <section
+          className="pastEvents"
         />
-      </Redirect>
+      </section>
     </StudentDash>
   </Router>
 </BrowserRouter>

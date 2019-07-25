@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AgeVerifier should match snapshot when mounted 1`] = `
+<AgeVerifier
+  addUser={[Function]}
+  error=""
+  fullName=""
+  isFetching={false}
+  loading={false}
+  mockStudent={
+    Object {
+      "fullName": "Finn",
+      "password": "password",
+      "username": "finn1",
+    }
+  }
+  password=""
+  setError={[MockFunction]}
+  username=""
+>
+  <form
+    className="AgeForm"
+    onSubmit={[Function]}
+  >
+    <h2>
+      Please Verify Your Age
+    </h2>
+    <label
+      htmlFor="dob"
+    >
+      Enter your date of birth
+      <DatePicker
+        allowSameDay={false}
+        className="date-picker"
+        dateFormat="MM/dd/yyyy"
+        dateFormatCalendar="LLLL yyyy"
+        disabled={false}
+        disabledKeyboardNavigation={false}
+        dropdownMode="select"
+        id="dob"
+        inlineFocusSelectedMonth={false}
+        maxDate={1967-08-24T06:00:00.000Z}
+        monthsShown={1}
+        nextMonthButtonLabel="Next month"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClickOutside={[Function]}
+        onFocus={[Function]}
+        onInputClick={[Function]}
+        onInputError={[Function]}
+        onKeyDown={[Function]}
+        onMonthChange={[Function]}
+        onSelect={[Function]}
+        onYearChange={[Function]}
+        preventOpenOnFocus={false}
+        previousMonthButtonLabel="Previous Month"
+        readOnly={false}
+        renderDayContents={[Function]}
+        scrollableYearDropdown={true}
+        selected=""
+        shouldCloseOnSelect={true}
+        showMonthDropdown={true}
+        showMonthYearPicker={false}
+        showTimeInput={false}
+        showTimeSelect={false}
+        showYearDropdown={true}
+        strictParsing={false}
+        timeCaption="Time"
+        timeInputLabel="Time"
+        timeIntervals={30}
+        useShortMonthInDropdown={true}
+        withPortal={false}
+      >
+        <PopperComponent
+          hidePopper={true}
+          popperComponent={null}
+          popperModifiers={
+            Object {
+              "preventOverflow": Object {
+                "boundariesElement": "viewport",
+                "enabled": true,
+                "escapeWithReference": true,
+              },
+            }
+          }
+          popperPlacement="bottom-start"
+          popperProps={Object {}}
+          targetComponent={
+            <div
+              className="react-datepicker__input-container"
+            >
+              <input
+                className="date-picker"
+                disabled={false}
+                id="dob"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                readOnly={false}
+                type="text"
+                value=""
+              />
+            </div>
+          }
+        >
+          <Manager>
+            <Reference>
+              <InnerReference
+                setReferenceNode={[Function]}
+              >
+                <div
+                  className="react-datepicker-wrapper"
+                >
+                  <div
+                    className="react-datepicker__input-container"
+                  >
+                    <input
+                      className="date-picker"
+                      disabled={false}
+                      id="dob"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      readOnly={false}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </InnerReference>
+            </Reference>
+          </Manager>
+        </PopperComponent>
+      </DatePicker>
+    </label>
+    <button
+      className="signin-btn"
+      type="submit"
+    >
+      SUBMIT
+    </button>
+  </form>
+</AgeVerifier>
+`;

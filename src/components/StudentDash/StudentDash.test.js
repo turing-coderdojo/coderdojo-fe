@@ -6,6 +6,12 @@ import { StudentDash, mapStateToProps } from './StudentDash';
 describe('StudentDash', () => {
   let wrapper;
   let mounted;
+  
+  const mockedDate = new Date(2019, 7, 24);
+  const originalDate = Date;
+
+  global.Date = jest.fn(() => mockedDate);
+  global.Date.setDate = originalDate.setDate;
 
   beforeEach(() => {
     wrapper = shallow(<StudentDash />);

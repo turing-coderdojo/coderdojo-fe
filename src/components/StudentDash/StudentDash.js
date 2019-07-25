@@ -21,16 +21,14 @@ export function StudentDash(props) {
           setAttendedEvents(attendedEvents.me.eventsAttended);
         }
       };
+      if (user.role !== 0) {
+        setRedirect(true);
+      }
 
       getEventsAttended();
     }
   }, [user.role]);
 
-  useEffect(() => {
-    if (user.role !== 0) {
-      setRedirect(true);
-    }
-  }, [user]);
 
   if (redirect && user.role === 1) {
     return <Redirect to="/myfamily" />;
