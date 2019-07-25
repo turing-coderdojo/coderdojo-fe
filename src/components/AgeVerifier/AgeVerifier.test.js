@@ -10,17 +10,14 @@ jest.mock('../../utils/requests/requests');
 describe('AgeVerifier', () => {
   let wrapper;
   let mounted;
-  const mockSubmitEvent = {
-    preventDefault: jest.fn()
-  };
-  const mockedDate = new Date(2019, 7, 24);
-  const originalDate = Date;
   const mockSetError = jest.fn();
   const mockStudent = {
     fullName: 'Finn',
     username: 'finn1',
     password: 'password'
   };
+  const mockedDate = new Date(2019, 7, 24);
+  const originalDate = Date;
   
   global.Date = jest.fn(() => mockedDate);
   global.Date.setDate = originalDate.setDate;
@@ -54,11 +51,6 @@ describe('AgeVerifier', () => {
   it('should match snapshot when mounted', () => {
     expect(mounted).toMatchSnapshot();
   });
-
-  // it('should be able to handle submit', () => {
-  //   wrapper.instance().handleSubmit(mockSubmitEvent);
-  //   expect(mockSubmitEvent.preventDefault).toHaveBeenCalled();
-  // });
 
   it('createstudent should add a student in the DB ', async () => {
     await wrapper.instance().createStudent();
