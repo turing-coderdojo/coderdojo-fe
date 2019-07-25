@@ -18,7 +18,7 @@ describe('AgeVerifier', () => {
 
   const mockSubmitEvent = {
     preventDefault: jest.fn()
-  }
+  };
 
   beforeEach(() => {
     wrapper = shallow(
@@ -53,7 +53,7 @@ describe('AgeVerifier', () => {
     await wrapper.instance().signIn();
 
     expect(requests.signIn).toHaveBeenCalled();
-  })
+  });
 
   it('should create a student in the db ', async () => {
     wrapper.setState({
@@ -74,7 +74,7 @@ describe('AgeVerifier', () => {
 
       mapDispatchToProps(dispatch).setError(error);
 
-      expect(dispatch).toHaveBeenCalledWith(action)
+      expect(dispatch).toHaveBeenCalledWith(action);
     });
     it('should call addUser with a student', () => {
       const action = actions.addUser(mockStudent);
