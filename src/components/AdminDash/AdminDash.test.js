@@ -35,7 +35,6 @@ describe('AdminDash', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-
   describe('mapStateToProps', () => {
     const mockState = {
       user: mockUser,
