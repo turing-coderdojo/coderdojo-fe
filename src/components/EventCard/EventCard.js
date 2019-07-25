@@ -17,8 +17,10 @@ function EventCard({ event, editable, updateAdminDash }) {
   };
 
   const cancelEvent = async () => {
-    const response = await requests.cancelEvent({ id });
-    if (response) updateAdminDash();
+    if (window.confirm('Please confirm event cancellation.')) {
+      const response = await requests.cancelEvent({ id });
+      if (response) updateAdminDash();
+    }
   };
 
   return (
