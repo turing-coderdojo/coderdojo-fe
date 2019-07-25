@@ -64,4 +64,24 @@ describe('Queries', () => {
     queries.getUserByToken();
     expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
   });
+
+  it('getAllVenues: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_ALL_VENUES;
+
+    queries.getAllVenues();
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
+  });
+
+  it('getVenuesByCity: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_VENUES_BY_CITY;
+
+    const expectedCity = {
+      city: 'Denver'
+    };
+
+    queries.getVenuesByCity(expectedCity);
+
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery, expectedCity);
+  });
+  
 });
