@@ -54,7 +54,7 @@ exports[`StudentDash should match snapshot when mounted 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "7x7fgn",
+          "key": "p4k28m",
           "pathname": "/",
           "search": "",
           "state": undefined,

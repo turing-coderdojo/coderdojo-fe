@@ -6,7 +6,6 @@ import requests from '../../utils/requests/requests';
 import EventCard from '../EventCard/EventCard';
 
 export function StudentDash(props) {
-  const { username } = props.user;
   const [pastEvents, setAttendedEvents] = useState({});
   const [eventCode, setEventCode] = useState({});
   const [success, setSuccess] = useState(false);
@@ -81,7 +80,7 @@ export function StudentDash(props) {
   return (
     <section className="StudentDashContainer">
       <div className="studentDashHeader">
-        <h2>{`Welcome, ${username}!`}</h2>
+        <h2>{`Welcome, ${user.username}!`}</h2>
       </div>
       <h3>Current Event</h3>
       <div className="eventWrapper">
