@@ -12,10 +12,5 @@ exports[`StudentPreview should match snapshot 1`] = `
   >
     judebacher
   </p>
-  <p
-    className="student-dob"
-  >
-    dob: undefined
-  </p>
 </article>
 `;
