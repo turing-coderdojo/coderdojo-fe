@@ -37,8 +37,6 @@ npm start
 ## Screenshots
 ![Main Splash Page of CoderDojo Colorado](https://user-images.githubusercontent.com/46252038/61875080-1d8c0d80-aea7-11e9-910a-5a5517285333.png)
 
-
-
 ## Learning Goals
 * Client side GraphQL
 * Collaboration between a Frontend and Backend team
@@ -66,5 +64,5 @@ npm start
 ### Backend:
 * Matt Weiss: [GitHub](https://github.com/Matt-Weiss) & [LinkedIn](https://www.linkedin.com/in/mweiss-117)
 
-## Future Improvements 
+## Project Board & Future Improvements
 https://github.com/orgs/turing-coderdojo/projects/1
