@@ -4,11 +4,16 @@ import EventForm from '../EventForm/EventForm';
 
 function EventCard({ event, editable }) {
   const { 
-    name, notes, startTime, endTime 
+    name, notes, startTime, endTime
   } = event;
   const startDate = new Date(startTime);
   const endDate = new Date(endTime);
   const timeSetting = { hour: 'numeric', hour12: true };
+  const [editEvent, setEditEvent] = useState(false);
+
+  const showEventForm = (bool) => {
+    setEditEvent(bool);
+  };
 
   return (
     <article className="EventCard">
@@ -26,7 +31,8 @@ function EventCard({ event, editable }) {
         </div>
       </div>        
       <p className="notes">{notes}</p>
-      {editable && <button type="button">Edit Event</button>}
+      {editable && <button type="button" onClick={() => showEventForm(true)}>Edit Event</button>}
+      {editEvent && <EventForm event={event} toggleView={showEventForm} /> }
     </article>
   );
 }

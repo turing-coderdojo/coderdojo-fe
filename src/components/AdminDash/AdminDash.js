@@ -85,7 +85,7 @@ export function AdminDash(props) {
     const futureEvents = [];
     sorted.forEach((event) => {
       if (new Date(event.startTime) > today) {
-        futureEvents.push(event);
+        futureEvents.push({ ...event, venueId: adminData.venues[0].id });
       } else pastEvents.push(event);
     });
 
