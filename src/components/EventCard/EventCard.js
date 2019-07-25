@@ -48,10 +48,12 @@ export default EventCard;
 
 EventCard.propTypes = {
   event: PropTypes.object,
-  editable: PropTypes.bool  
+  editable: PropTypes.bool,
+  updateAdminDash: PropTypes.func 
 };
 
 EventCard.defaultProps = {
   event: {},
-  editable: false
+  editable: false,
+  updateAdminDash: () => {}
 };

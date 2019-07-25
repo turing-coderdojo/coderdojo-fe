@@ -115,12 +115,16 @@ function EventForm({
 
 EventForm.propTypes = {
   venueId: PropTypes.number,
-  toggleView: PropTypes.func
+  toggleView: PropTypes.func,
+  updateAdminDash: PropTypes.func,
+  event: PropTypes.object
 };
 
 EventForm.defaultProps = {
   venueId: 0,
-  toggleView: () => {}
+  toggleView: () => {},
+  updateAdminDash: () => {},
+  event: {}
 };
 
 
