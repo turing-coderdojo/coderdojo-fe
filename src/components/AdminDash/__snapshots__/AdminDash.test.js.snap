@@ -1,7 +1,141 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AdminDash should match snapshot 1`] = `
-<Redirect
-  to="/"
-/>
+<section
+  className="AdminDash"
+>
+  <div
+    className="admin-header"
+  >
+    <h2>
+      Admin:  
+    </h2>
+  </div>
+  <div
+    className="details-container"
+  >
+    <section
+      className="details-section"
+    />
+    <section
+      className="events-section"
+    />
+  </div>
+</section>
+`;
+
+exports[`AdminDash should match snapshot if errored 1`] = `
+<section
+  className="AdminDash"
+>
+  <div
+    className="admin-header"
+  >
+    <h2>
+      Admin:  
+    </h2>
+  </div>
+  <p
+    className="error"
+  >
+    Failed to get admin data
+  </p>
+  <div
+    className="details-container"
+  >
+    <section
+      className="details-section"
+    />
+    <section
+      className="events-section"
+    />
+  </div>
+</section>
+`;
+
+exports[`AdminDash should match snapshot if loading 1`] = `
+<section
+  className="AdminDash"
+>
+  <div
+    className="admin-header"
+  >
+    <h2>
+      Admin:  
+      Loading your information...
+    </h2>
+  </div>
+  <div
+    className="details-container"
+  >
+    <section
+      className="details-section"
+    />
+    <section
+      className="events-section"
+    />
+  </div>
+</section>
+`;
+
+exports[`AdminDash should redirect if there is no user/invalid role 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <AdminDash
+      error=""
+      isLoading={false}
+      user={
+        Object {
+          "id": 2,
+          "name": "Admin One",
+          "role": 2,
+          "username": "admin1",
+        }
+      }
+    >
+      <section
+        className="AdminDash"
+      >
+        <div
+          className="admin-header"
+        >
+          <h2>
+            Admin:  
+          </h2>
+        </div>
+        <div
+          className="details-container"
+        >
+          <section
+            className="details-section"
+          />
+          <section
+            className="events-section"
+          />
+        </div>
+      </section>
+    </AdminDash>
+  </Router>
+</BrowserRouter>
 `;

@@ -3,6 +3,8 @@ node_js:
 - node
 notifications:
   email: false
+before_install:
+- export TZ=America/Denver
 deploy:
   provider: heroku
   api_key:

@@ -52,6 +52,7 @@ describe('StudentDash', () => {
 
     expect(username).toEqual(state.username);
   });
+  
   it('should MSTP with isFetching', () => {
     const state = {
       isFetching: true

@@ -2,6 +2,7 @@
   width: 80%;
   margin: auto;
   height: 100vh;
+  overflow: scroll;
 
   .admin-header {
     width: 100%;
@@ -25,7 +26,6 @@
   .details-container {
     display: flex;
     background-color: #F4F5F6;
-    height: 100%;
 
     .details-section {
       flex: 1;
@@ -56,6 +56,46 @@
     .events-section {
       flex: 2;
       background-color: #fff;
+
+      .current-event {
+        display: flex;
+        height: 15%;
+        align-items: center;
+        padding: 15px;
+
+        .current-event-details {
+          flex: 1;
+          text-align: center;
+          justify-content: center;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          
+          h3 {
+            color: $primary-color;
+            margin: 5px;
+          }
+
+          h4 {
+            padding: 5px 10px;
+            background-color: #faa31a;
+            color: #fff;
+          }
+
+          p {
+            margin: 5px;
+          }
+        }
+        .attendance-container {
+          flex: 1;
+          height: 100%;
+          overflow: scroll;
+
+          h3 {
+            color: $footer-color;
+          }
+        }
+      }
 
       .events-header {
         background-color: #E5E5E5;

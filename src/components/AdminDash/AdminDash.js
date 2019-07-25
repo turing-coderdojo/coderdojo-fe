@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
 import EventCard from '../EventCard/EventCard';
 import EventForm from '../EventForm/EventForm';
-
+import StudentAttendanceCard from '../StudentAttendanceCard/StudentAttendanceCard';
 
 export function AdminDash(props) {
   const [adminData, setAdminData] = useState({});
@@ -30,10 +30,6 @@ export function AdminDash(props) {
       setCurrentEvent({ ...currEvent, ...attendance });
     }
     setAdminData(me);
-  };
-
-  const setUpCurrentEvent = (event) => {
-    setCurrentEvent(event);
   };
   
   useEffect(() => {
@@ -89,7 +85,7 @@ export function AdminDash(props) {
     const futureEvents = [];
     sorted.forEach((event) => {
       if (new Date(event.startTime) > today) {
-        futureEvents.push(event);
+        futureEvents.push({ ...event, venueId: adminData.venues[0].id });
       } else pastEvents.push(event);
     });
 
@@ -100,47 +96,20 @@ export function AdminDash(props) {
           <button type="button" onClick={() => toggleEventForm(true)}>+ Create New Event</button>
         </div>
         <section className="future-events">
-          {futureEvents.reverse().map(event => <EventCard event={event} key={event.id} />)}
+          {futureEvents.reverse().map(event => <EventCard event={event} key={event.id} editable updateAdminDash={getEventsAndVenues} />)}
         </section>
         <div className="events-header">
           <p>Your Past Events:</p>
         </div>
         <section className="past-events">
-          {pastEvents.reverse().map(event => <EventCard event={event} key={event.id} />)}
+          {pastEvents.slice(0, 3).map(event => <EventCard event={event} key={event.id} />)}
         </section>
       </div>
     );
   };
 
   const generateStudentCards = students => students
-    .map((student) => {
-      const { user: attendee } = student;
-      return (
-        <article>
-          <h4>
-            {attendee.name}
-            :
-            {attendee.username}
-          </h4>
-          <div className="guardian-details">
-            <h4>Guardian Details:</h4>
-            <p>
-              {attendee.guardianId.name}
-              :
-              {attendee.guardianId.username}
-            </p>
-            <p>
-              Phone:
-              {attendee.guardianId.phoneNumber}
-            </p>
-            <p>
-              Email:
-              {attendee.guardianId.email}
-            </p>
-          </div>
-        </article>
-      );
-    });
+    .map(student => <StudentAttendanceCard key={student.user.id} student={student.user} />);
   
   const generateCurrentEvent = () => {
     const timeSetting = { hour: 'numeric', hour12: true };
@@ -150,16 +119,25 @@ export function AdminDash(props) {
     const readableStart = new Date(startTime).toLocaleString('en-US', timeSetting);
     const readableEnd = new Date(endTime).toLocaleString('en-US', timeSetting);
     return (
-      <div>
-        <h3>{name}</h3>
-        <p>
-          {readableStart} 
-          - 
-          {readableEnd}
-        </p>
-        <p>{notes}</p>
-        <h4>{eventCode}</h4>
-        <section>
+      <div className="current-event">
+        <section className="current-event-details">
+          <h3>{name}</h3>
+          <p>
+            {readableStart} 
+            &nbsp; - &nbsp; 
+            {readableEnd}
+          </p>
+          <h4>
+            Event Code: &nbsp;&nbsp;
+            {eventCode}
+          </h4>
+          <p>
+            Notes: &nbsp;
+            {notes}
+          </p>
+        </section>
+        <section className="attendance-container">
+          <h3>Attendance: </h3>
           {generateStudentCards(attendance)}
         </section>
       </div>
@@ -184,7 +162,7 @@ export function AdminDash(props) {
 
   return (
     <section className="AdminDash">
-      {eventFormVisible && <EventForm venueId={adminData.venues[0].id} toggleView={toggleEventForm} />}
+      {eventFormVisible && <EventForm updateAdminDash={getEventsAndVenues} venueId={adminData.venues[0].id} toggleView={toggleEventForm} event={false} />}
       <div className="admin-header">
         <h2>
           Admin:&nbsp;&nbsp;
@@ -207,7 +185,7 @@ export function AdminDash(props) {
   );
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   isLoading: state.isFetching,
   error: state.error,
   user: state.user

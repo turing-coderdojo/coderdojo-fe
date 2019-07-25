@@ -9,8 +9,13 @@
     "import/no-named-as-default": 0,
     "react/self-closing-comp": "off",
     "no-else-return": "off",
+    "no-alert": "off",
     "object-curly-newline": "off",
     "react-hooks/exhaustive-deps": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "max-len": 0,
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/label-has-associated-control": "off"
+
   }
 }

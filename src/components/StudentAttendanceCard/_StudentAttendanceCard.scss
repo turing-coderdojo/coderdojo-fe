@@ -1,0 +1,13 @@
+.StudentAttendanceCard {
+  margin: 10px;
+  position: relative;
+
+  .guardian-details {
+    position: absolute;
+    background-color: #F4F5F6;
+    color: #724695;
+    font-size: .8rem;
+    z-index: 2;
+    padding: 10px;
+  }
+}

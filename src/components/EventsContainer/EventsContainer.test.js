@@ -1,9 +1,15 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { EventsContainer } from './EventsContainer';
+import { EventsContainer, mapStateToProps } from './EventsContainer';
+import requests from '../../utils/requests/requests';
+import mockData from '../../utils/mockData';
+
+jest.mock('../../utils/requests/requests');
 
 describe('EventsContainer', () => {
-  let wrapper;
+  let mounted;
+  const mockUpcoming = mockData.mockFutureEvents;
+  const mockRecent = mockData.mockPastEvents;
   const mockError = '';
   const mockMatch = {
     params: {
@@ -11,11 +17,28 @@ describe('EventsContainer', () => {
     }
   };
 
+  requests.getUpcomingEvents.mockImplementation(() => Promise.resolve(mockUpcoming));
+  requests.getRecentEvents.mockImplementation(() => Promise.resolve(mockRecent));
+  requests.getVenueDetails.mockImplementation(() => Promise.resolve(mockData.mockVenue));
+
   beforeEach(() => {
-    wrapper = mount(<EventsContainer match={mockMatch} isLoading={false} error={mockError} />);
+    mounted = mount(<EventsContainer match={mockMatch} isLoading={false} error={mockError} />);
   });
 
   it('should match snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(mounted).toMatchSnapshot();
+  });
+
+  describe('mapStateToProps', () => {
+    it('should map state to props with correct values', () => {
+      const mockState = {
+        isFetching: false
+      };
+      const expected = {
+        isLoading: false
+      };
+      const result = mapStateToProps(mockState);
+      expect(result).toEqual(expected);
+    });
   });
 });
