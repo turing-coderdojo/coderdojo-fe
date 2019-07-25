@@ -83,5 +83,28 @@ describe('Queries', () => {
 
     expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery, expectedCity);
   });
-  
+
+  it('getVenueDetails: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_VENUE_DETAILS;
+
+    const expectedId = {
+      venueId: 2
+    };
+
+    queries.getVenueDetails(expectedId);
+
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery, expectedId);
+  });
+
+  it('getUpcomingEvents: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.UPCOMING_EVENTS_BY_VENUE;
+
+    const expectedId = {
+      venueId: 2
+    };
+
+    queries.getUpcomingEvents(expectedId);
+
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery, expectedId);
+  });
 });
