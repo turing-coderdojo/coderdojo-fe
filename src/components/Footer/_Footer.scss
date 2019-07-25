@@ -1,15 +1,9 @@
 .Footer {
-  background: $footer-color;
+  background: #000000;
   bottom: 0;
-  margin: 100px 0 0 0;
-  padding: 20px;
-  position: relative;
+  padding: 10px 0;
+  position: fixed;
   width: 100%;
-
-  h3 {
-    color: rgba(white, .7);
-    margin: 10px 10px 0;
-  }
 
   .icon-container {
     width: 100%;
@@ -17,7 +11,7 @@
         
     img {
       width: 30px;
-      margin: 10px 5px;
+      margin: 0 10px;
       opacity: .7;
     }
   }

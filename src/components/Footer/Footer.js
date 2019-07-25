@@ -8,7 +8,6 @@ function Footer() {
   return (
     <footer className="Footer">
       <div className="icon-container">
-        <h3>Talk to our community</h3>
         <a href="https://www.facebook.com/CoderDojo">
           <img src={fbIcon} alt="facebook" />
         </a>

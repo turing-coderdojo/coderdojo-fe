@@ -7,9 +7,6 @@ exports[`Footer should match snapshot 1`] = `
   <div
     className="icon-container"
   >
-    <h3>
-      Talk to our community
-    </h3>
     <a
       href="https://www.facebook.com/CoderDojo"
     >

@@ -12,8 +12,8 @@ body {
 div.App {
   @include lato-font;
   width: 100vw;
-  min-height: 100vh;
   background-color: #EEEEEE;
+  margin-bottom: 250px;
 }
 
 a,
