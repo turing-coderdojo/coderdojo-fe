@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import requests from '../../utils/requests/requests';
 import EventCard from '../EventCard/EventCard';
 
 export function StudentDash(props) {
+  const { username } = props.user;
   const [pastEvents, setAttendedEvents] = useState({});
   const [eventCode, setEventCode] = useState({});
   const [success, setSuccess] = useState(false);
+  const [redirect, setRedirect] = useState(false);
   const { user, error, isFetching } = props;
  
   useEffect(() => {
@@ -23,6 +26,20 @@ export function StudentDash(props) {
       getEventsAttended();
     }
   }, [user.role]);
+
+  useEffect(() => {
+    if (user.role !== 0) {
+      setRedirect(true);
+    }
+  }, [user]);
+
+  if (redirect && user.role === 1) {
+    return <Redirect to="/myfamily" />;
+  } else if (redirect && user.role === 2) {
+    return <Redirect to="/dashboard/admin" />;
+  } else if (redirect) {
+    return <Redirect to="/" />;
+  }
 
   const generateEvents = events => events.map(event => <EventCard key={event.id} event={event} />);
 
@@ -64,12 +81,11 @@ export function StudentDash(props) {
   return (
     <section className="StudentDashContainer">
       <div className="studentDashHeader">
-        <h2>
-          Welcome, {user.username}
-        </h2>
+        <h2>{`Welcome, ${username}!`}</h2>
       </div>
       <h3>Current Event</h3>
       <div className="eventWrapper">
+        {isFetching ? 'Loading...' : null }
         {assignForm()}
       </div>
       <section className="pastEvents">

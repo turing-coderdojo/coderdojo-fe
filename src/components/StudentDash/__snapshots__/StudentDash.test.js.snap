@@ -8,7 +8,7 @@ exports[`StudentDash should match snapshot 1`] = `
     className="studentDashHeader"
   >
     <h2>
-      Welcome, 
+      Welcome, undefined!
     </h2>
   </div>
   <h3>
@@ -40,46 +40,45 @@ exports[`StudentDash should match snapshot 1`] = `
 `;
 
 exports[`StudentDash should match snapshot when mounted 1`] = `
-<StudentDash
-  error=""
-  isFetching={false}
-  user={Object {}}
->
-  <section
-    className="StudentDashContainer"
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "REPLACE",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "7x7fgn",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
   >
-    <div
-      className="studentDashHeader"
+    <StudentDash
+      error=""
+      isFetching={false}
+      user={Object {}}
     >
-      <h2>
-        Welcome, 
-      </h2>
-    </div>
-    <h3>
-      Current Event
-    </h3>
-    <div
-      className="eventWrapper"
-    >
-      <form
-        onSubmit={[Function]}
+      <Redirect
+        to="/"
       >
-        <input
-          className="eventCode"
-          onChange={[Function]}
-          placeholder="Enter Event Code"
-          type="text"
+        <Lifecycle
+          onMount={[Function]}
+          onUpdate={[Function]}
+          to="/"
         />
-        <button
-          type="submit"
-        >
-          Submit
-        </button>
-      </form>
-    </div>
-    <section
-      className="pastEvents"
-    />
-  </section>
-</StudentDash>
+      </Redirect>
+    </StudentDash>
+  </Router>
+</BrowserRouter>
 `;

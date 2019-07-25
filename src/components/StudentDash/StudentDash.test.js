@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import { BrowserRouter } from 'react-router-dom';
 import { StudentDash, mapStateToProps } from './StudentDash';
 
 describe('StudentDash', () => {
@@ -8,7 +9,11 @@ describe('StudentDash', () => {
 
   beforeEach(() => {
     wrapper = shallow(<StudentDash />);
-    mounted = mount(<StudentDash />);
+    mounted = mount(
+      <BrowserRouter>
+        <StudentDash />
+      </BrowserRouter>
+    );
   });
 
   it('should match snapshot', () => {
