@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import requests from '../../utils/requests/requests';
 
-function EventForm({ venueId, toggleView }) {
+function EventForm({ venueId, toggleView, event }) {
   const [eventDetails, setEventDetails] = useState({});
   const [startEndDate, setStartEndDate] = useState({});
   const [invalidField, setInvalidField] = useState('');
@@ -24,6 +24,20 @@ function EventForm({ venueId, toggleView }) {
       setStartEndDate({ ...startEndDate, start: date });
     }
   };
+
+  const preFillInputs = () => {
+    const { 
+      startTime, endTime, name, notes 
+    } = event;
+    const start = new Date(startTime);
+    const end = new Date(endTime);
+    setStartEndDate({ start, end });
+    setEventDetails({ name, notes });
+  };
+
+  useEffect(() => {
+    preFillInputs();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,6 +62,7 @@ function EventForm({ venueId, toggleView }) {
             id="event-name"
             type="text"
             name="name"
+            value={eventDetails.name || ''}
             onChange={handleChange}
           />
         </label>
@@ -74,6 +89,7 @@ function EventForm({ venueId, toggleView }) {
           <input
             id="event-notes"
             type="text"
+            value={eventDetails.notes || ''}
             name="notes"
             onChange={handleChange}
           />
@@ -87,12 +103,12 @@ function EventForm({ venueId, toggleView }) {
 
 EventForm.propTypes = {
   venueId: PropTypes.number,
-  toggleView: PropTypes.bool
+  toggleView: PropTypes.func
 };
 
 EventForm.defaultProps = {
   venueId: 0,
-  toggleView: false
+  toggleView: () => {}
 };
 
 

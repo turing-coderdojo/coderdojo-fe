@@ -4,7 +4,7 @@ import EventForm from '../EventForm/EventForm';
 
 function EventCard({ event, editable }) {
   const { 
-    name, notes, startTime, endTime
+    name, notes, startTime, endTime, venueId
   } = event;
   const startDate = new Date(startTime);
   const endDate = new Date(endTime);
@@ -32,7 +32,7 @@ function EventCard({ event, editable }) {
       </div>        
       <p className="notes">{notes}</p>
       {editable && <button type="button" onClick={() => showEventForm(true)}>Edit Event</button>}
-      {editEvent && <EventForm event={event} toggleView={showEventForm} /> }
+      {editEvent && <EventForm event={event} venueId={venueId} toggleView={showEventForm} /> }
     </article>
   );
 }

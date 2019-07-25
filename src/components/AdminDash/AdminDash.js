@@ -112,7 +112,7 @@ export function AdminDash(props) {
     .map((student) => {
       const { user: attendee } = student;
       return (
-        <article>
+        <article key={attendee.id}>
           <h4>
             {attendee.name}
             :
