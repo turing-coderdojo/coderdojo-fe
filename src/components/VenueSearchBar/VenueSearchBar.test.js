@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { VenueSearchBar, mapDispatchToProps } from './VenueSearchBar';
 import * as actions from '../../actions';
+import requests from '../../utils/requests/requests';
 
 jest.mock('../../actions');
 

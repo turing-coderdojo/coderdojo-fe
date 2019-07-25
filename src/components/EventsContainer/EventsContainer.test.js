@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { EventsContainer } from './EventsContainer';
+import { EventsContainer, mapStateToProps } from './EventsContainer';
 import requests from '../../utils/requests/requests';
 import mockData from '../../utils/mockData';
 
@@ -27,5 +27,18 @@ describe('EventsContainer', () => {
 
   it('should match snapshot', () => {
     expect(mounted).toMatchSnapshot();
+  });
+
+  describe('mapStateToProps', () => {
+    it('should map state to props with correct values', () => {
+      const mockState = {
+        isFetching: false
+      };
+      const expected = {
+        isLoading: false
+      };
+      const result = mapStateToProps(mockState);
+      expect(result).toEqual(expected);
+    });
   });
 });
