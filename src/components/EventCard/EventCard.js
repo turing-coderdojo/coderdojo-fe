@@ -23,9 +23,16 @@ function EventCard({ event, editable, updateAdminDash }) {
     }
   };
 
+  const editButtons = (
+    <div className="event-edit-btns">
+      <button className="edit" type="button" onClick={() => showEventForm(true)}>Edit</button>
+      <button className="cancel" type="button" onClick={cancelEvent}>Cancel</button>
+    </div>
+  );
+
   return (
     <article className="EventCard">
-      {editable && <button type="button" onClick={cancelEvent}>Cancel Event</button>}
+      {editable && editButtons}
       <div className="details">
         <h3>{name}</h3>
         <div className="date-container">
@@ -40,7 +47,6 @@ function EventCard({ event, editable, updateAdminDash }) {
         </div>
       </div>        
       <p className="notes">{notes}</p>
-      {editable && <button type="button" onClick={() => showEventForm(true)}>Edit Event</button>}
       {editEvent && <EventForm event={event} venueId={venueId} toggleView={showEventForm} updateAdminDash={updateAdminDash} /> }
     </article>
   );
