@@ -15,8 +15,13 @@ function EventCard({ event, editable }) {
     setEditEvent(bool);
   };
 
+  const cancelEvent = () => {
+    
+  };
+
   return (
     <article className="EventCard">
+      {editable && <button type="button" onClick={cancelEvent}>Cancel Event</button>}
       <div className="details">
         <h3>{name}</h3>
         <div className="date-container">

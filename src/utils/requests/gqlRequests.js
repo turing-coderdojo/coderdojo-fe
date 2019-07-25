@@ -318,3 +318,11 @@ export const EDIT_EVENT_DETAILS = gql`
     }
   }
 `;
+
+export const DELETE_EVENT = gql`
+  mutation deleteEvent($id: Int!) {
+    deleteEvent(id: $id) {
+      id
+    }
+  }
+`;

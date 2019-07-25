@@ -16,7 +16,6 @@ function EventForm({ venueId, toggleView, event }) {
   const handleDateChange = (date, isEndTime) => {
     const startTime = new Date(date).toUTCString();
     const endTime = new Date(date).toUTCString();
-    console.log(startTime)
     if (isEndTime) {
       setEventDetails({ ...eventDetails, endTime });
       setStartEndDate({ ...startEndDate, end: date });
