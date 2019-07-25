@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import requests from '../../utils/requests/requests';
 import EventCard from '../EventCard/EventCard';
 import EventForm from '../EventForm/EventForm';
-
+import StudentAttendanceCard from '../StudentAttendanceCard/StudentAttendanceCard';
 
 export function AdminDash(props) {
   const [adminData, setAdminData] = useState({});
@@ -109,34 +109,7 @@ export function AdminDash(props) {
   };
 
   const generateStudentCards = students => students
-    .map((student) => {
-      const { user: attendee } = student;
-      return (
-        <article key={attendee.id}>
-          <h4>
-            {attendee.name}
-            :
-            {attendee.username}
-          </h4>
-          <div className="guardian-details">
-            <h4>Guardian Details:</h4>
-            <p>
-              {attendee.guardianId.name}
-              :
-              {attendee.guardianId.username}
-            </p>
-            <p>
-              Phone:
-              {attendee.guardianId.phoneNumber}
-            </p>
-            <p>
-              Email:
-              {attendee.guardianId.email}
-            </p>
-          </div>
-        </article>
-      );
-    });
+    .map(student => <StudentAttendanceCard student={student.user} />);
   
   const generateCurrentEvent = () => {
     const timeSetting = { hour: 'numeric', hour12: true };
