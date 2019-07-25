@@ -296,3 +296,25 @@ export const GET_EVENT_ATTENDANCE = gql`
     }
   }
 `;
+
+export const EDIT_EVENT_DETAILS = gql`
+  mutation updateEvent(
+    $id: Int!,
+    $name: String!,
+    $notes: String,
+    $startTime: String!
+    $endTime: String!,
+    $venueId: Int!
+  ) {
+    updateEvent (
+      id: $id, 
+      name: $name,
+      notes: $notes,
+      startTime: $startTime,
+      endTime: $endTime,
+      venueId: $venueId
+    ) {
+      id
+    }
+  }
+`;

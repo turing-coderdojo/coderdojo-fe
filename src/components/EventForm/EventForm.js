@@ -16,6 +16,7 @@ function EventForm({ venueId, toggleView, event }) {
   const handleDateChange = (date, isEndTime) => {
     const startTime = new Date(date).toUTCString();
     const endTime = new Date(date).toUTCString();
+    console.log(startTime)
     if (isEndTime) {
       setEventDetails({ ...eventDetails, endTime });
       setStartEndDate({ ...startEndDate, end: date });
@@ -26,13 +27,17 @@ function EventForm({ venueId, toggleView, event }) {
   };
 
   const preFillInputs = () => {
-    const { 
-      startTime, endTime, name, notes 
-    } = event;
-    const start = new Date(startTime);
-    const end = new Date(endTime);
-    setStartEndDate({ start, end });
-    setEventDetails({ name, notes });
+    if (event) {
+      const { 
+        startTime, endTime, name, notes, id
+      } = event;
+      const start = new Date(startTime);
+      const end = new Date(endTime);
+      setStartEndDate({ start, end });
+      setEventDetails({ 
+        name, notes, id, startTime, endTime
+      });
+    }
   };
 
   useEffect(() => {
@@ -46,7 +51,10 @@ function EventForm({ venueId, toggleView, event }) {
       setInvalidField('Please fill out required fields');
     } else {
       const newEvent = { ...eventDetails, venueId };
-      const result = await requests.createNewEvent(newEvent);
+      let result;
+      if (event) {
+        result = await requests.editEvent(newEvent);
+      } else result = await requests.createNewEvent(newEvent);
       if (result) toggleView(false);
     }
   };
