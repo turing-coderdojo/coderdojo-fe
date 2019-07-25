@@ -1,4 +1,4 @@
-## CoderDojo Colorado 
+# CoderDojo Colorado 
 [![Build Status](https://travis-ci.org/turing-coderdojo/coderdojo-fe.svg?branch=master)](https://travis-ci.org/turing-coderdojo/coderdojo-fe)
 
 ## Description
@@ -16,32 +16,55 @@ Clone the front-end repo here:
 git clone https://github.com/turing-coderdojo/coderdojo-fe.git
 ```
 
-Once you have cloned the repo, to install the library dependencies cd into the folder created and run:
+Once you have cloned the repo, change into the directory:
+
+```bash
+cd coderdojo-fe
+```
+
+Once you have changed into the directory, install the library dependencies:
 
 ```bash
 npm install
 ```
 
-then:
+Then:
 
 ```bash
 npm start
 ```
 
-
 ## Screenshots
-[![Screen-Shot-2019-07-23-at-10-04-00-PM.png](https://i.postimg.cc/LsVFtznp/Screen-Shot-2019-07-23-at-10-04-00-PM.png)](https://postimg.cc/B8tzsPTY)
+![Main Splash Page of CoderDojo Colorado](https://user-images.githubusercontent.com/46252038/61875080-1d8c0d80-aea7-11e9-910a-5a5517285333.png)
+
+
 
 ## Learning Goals
 * Client side GraphQL
 * Collaboration between a Frontend and Backend team
 * Conditionally creating three user experiences depending on if the user is a student, admin, or a guardian
+* Creating a secure user experience by making use of tokens
+
+## Tech
+* Apollo GraphQL
+* HTML
+* CSS
+* JavaScript
+* React
+* Redux
+* Router
+* Jest & Enzyme
+* Travis CI
+* Heroku
 
 ## Contributors 
-* [Nimrod Garcia](https://github.com/NimSum)
-* [Tiffany Bacher](https://github.com/tiffanybacher)
-* [Erik Konner](https://github.com/ehk9000)
-* [Matt Weiss](https://github.com/Matt-Weiss)
+### Frontend:
+* Nimrod Garcia: [GitHub](https://github.com/NimSum) & [LinkedIn](https://www.linkedin.com/in/tiffanybacher/)
+* Tiffany Bacher: [GitHub](https://github.com/tiffanybacher) & [LinkedIn](https://www.linkedin.com/in/nimrod-garcia/)
+* Erik Konner: [GitHub](https://github.com/ehk9000) & [LinkedIn](https://www.linkedin.com/in/erikkonner/)
 
-## Improvements 
+### Backend:
+* Matt Weiss: [GitHub](https://github.com/Matt-Weiss) & [LinkedIn](https://www.linkedin.com/in/mweiss-117)
+
+## Future Improvements 
 https://github.com/orgs/turing-coderdojo/projects/1
