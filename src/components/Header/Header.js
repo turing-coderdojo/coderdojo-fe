@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink, Link, Redirect } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ReactComponent as Logo } from '../../images/CoderDojoColorado.svg';
 import { addUser } from '../../actions';
 
 export function Header(props) {
-  const [redirect, setRedirect] = useState(false);
-
   const { user } = props;
+  
   const logOutUser = () => {
     const { resetUser } = props;
     resetUser();

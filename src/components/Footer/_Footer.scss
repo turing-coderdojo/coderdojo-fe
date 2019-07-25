@@ -1,35 +1,17 @@
 .Footer {
-  display: flex;
-  height: 200px;
-  justify-content: center;
-  position: absolute;
-  top: 120%;
-
-  h3 {
-    margin: 10px 10px 0;
-  }
-
-  section.social-media {
-    width: 100vw;
-    background-color: $footer-color;
-  }
-
-  .globe {
-    position: absolute;
-    bottom: 40%;
-    min-width: 200px;
-    max-width: 20%;
-  }
+  background: #000000;
+  bottom: 0;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
 
   .icon-container {
-    position: absolute;
-    top: 60%;
     width: 100%;
     text-align: center;
         
     img {
       width: 30px;
-      margin: 5px;
+      margin: 0 10px;
       opacity: .7;
     }
   }

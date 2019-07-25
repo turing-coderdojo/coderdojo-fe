@@ -48,7 +48,7 @@ export const Family = ({ user, loading, addStudents, students }) => {
 
       getContactInfo();
     }
-  }, [user.role]);
+  }, [user.role, addStudents]);
 
   useEffect(() => {
     if (user.role !== 1) {
