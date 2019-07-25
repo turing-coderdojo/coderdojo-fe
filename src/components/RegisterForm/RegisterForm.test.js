@@ -16,9 +16,25 @@ describe('RegisterForm', () => {
     displayContactForm: false,
     displayAgeForm: false
   };
+  const mockSubmitEvent = {
+    preventDefault: jest.fn(),
+    target: { name: 'student' }
+  };
+  const mockStudent = {
+    fullName: 'erik k',
+    username: 'ehk90000',
+    password: 'password',
+    reEnteredPassword: 'reEnteredPassword',
+    displayContactForm: false,
+    displayAgeForm: false
+  };
+  const mockSetError = jest.fn();
 
   beforeEach(() => {
-    wrapper = shallow(<RegisterForm />);
+    wrapper = shallow(<RegisterForm 
+      mockStudent={mockStudent}
+      setError={mockSetError}
+    />);
   });
 
   it('should match snapshot', () => {
@@ -77,6 +93,7 @@ describe('RegisterForm', () => {
 
     expect(mockDispatch).toHaveBeenCalledWith(mockAction);  
   });
+
   describe('mapStateToProps', () => {
     it('should MSTP', () => {
       const state = {
@@ -89,4 +106,25 @@ describe('RegisterForm', () => {
       expect(error).toEqual(state.error);
     });
   }); 
+
+  it('should be able to preventdefault on submit', () => {
+    wrapper.instance().handleRegister(mockSubmitEvent);
+    expect(mockSubmitEvent.preventDefault).toHaveBeenCalled();
+  });
+
+  it('should set an error if the passwords do not match', () => {
+    wrapper.setState({
+      name: 'Jude Bacher',
+      username: 'judebacher',
+      password: 'password',
+      reEnteredPassword: 'cats',
+      dob: '1/23/18'
+    });
+
+    const error = wrapper.instance().checkPasswords();
+
+    expect(mockSetError).toHaveBeenCalledWith('Passwords must match.');
+
+    expect(error).toEqual(true);
+  });
 });
