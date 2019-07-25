@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { AgeVerifier, mapStateToProps, mapDispatchToProps } from './AgeVerifier';
 import * as actions from '../../actions';
 import requests from '../../utils/requests/requests';
@@ -9,7 +9,6 @@ jest.mock('../../utils/requests/requests');
 
 describe('AgeVerifier', () => {
   let wrapper;
-  let mounted;
   const mockSetError = jest.fn();
   const mockStudent = {
     fullName: 'Finn',
@@ -31,14 +30,6 @@ describe('AgeVerifier', () => {
         mockStudent={mockStudent}
       />
     );
-    mounted = mount(
-      <AgeVerifier
-        setError={mockSetError}
-        error=""
-        loading={false}
-        mockStudent={mockStudent}
-      />
-    );
   });
   
   it('should have default state', () => {
@@ -46,10 +37,6 @@ describe('AgeVerifier', () => {
       birthdate: '',
       success: false
     });
-  });
-
-  it('should match snapshot when mounted', () => {
-    expect(mounted).toMatchSnapshot();
   });
 
   it('createstudent should add a student in the DB ', async () => {
