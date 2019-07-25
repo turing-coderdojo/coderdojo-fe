@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import { BrowserRouter } from 'react-router-dom';
 import { Family, mapStateToProps, mapDispatchToProps } from './Family';
 import * as actions from '../../actions';
-import { BrowserRouter } from 'react-router-dom';
 
 jest.mock('../../actions');
 

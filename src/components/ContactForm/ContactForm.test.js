@@ -1,10 +1,14 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { ContactForm, mapStateToProps, mapDispatchToProps } from './ContactForm';
 import * as actions from '../../actions';
 
 describe('ContactForm', () => {
+  let fullName;
+  let username;
+  let password;
   let wrapper;
+  let mounted; 
   const mockInputChange = {
     target: {
       name: 'email',
@@ -16,11 +20,31 @@ describe('ContactForm', () => {
   };
 
   beforeEach(() => {
-    wrapper = shallow(<ContactForm />);
+    fullName = 'Tiffany Bacher';
+    username = 'tiffanybacher';
+    password = 'password';
+    wrapper = shallow(
+      <ContactForm 
+        fullName={fullName}
+        username={username}
+        password={password}
+      />
+    );
+    mounted = mount(
+      <ContactForm 
+        fullName={fullName}
+        username={username}
+        password={password}
+      />
+    );
   });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should match mounted snapshot', () => {
+    expect(mounted).toMatchSnapshot();
   });
 
   it('should have default state', () => {
