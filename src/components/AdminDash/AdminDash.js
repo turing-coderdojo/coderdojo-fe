@@ -102,7 +102,7 @@ export function AdminDash(props) {
           <p>Your Past Events:</p>
         </div>
         <section className="past-events">
-          {pastEvents.map(event => <EventCard event={event} key={event.id} />)}
+          {pastEvents.slice(0, 3).map(event => <EventCard event={event} key={event.id} />)}
         </section>
       </div>
     );
