@@ -67,7 +67,7 @@ function EventForm({
     <div className="EventForm">
       <form onSubmit={handleSubmit}>
         <button type="button" className="cancel-event-btn" onClick={() => toggleView(false)}>&times;</button>
-        <h2>Create New Event:</h2>
+        {event ? <h2>Edit Event:</h2> : <h2>Create New Event:</h2>}
         <label htmlFor="event-name">
           Event Name:
           <input
@@ -107,7 +107,7 @@ function EventForm({
           />
         </label>
         {invalidField && <p className="event-form-error">{invalidField}</p>}
-        <button type="submit" className="create-event-btn" onClick={handleSubmit}>Create</button>
+        <button type="submit" className="create-event-btn" onClick={handleSubmit}>{event ? 'Update' : 'Create'}</button>
       </form>
     </div>
   );
