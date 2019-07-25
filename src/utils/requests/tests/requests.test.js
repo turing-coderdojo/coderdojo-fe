@@ -107,4 +107,24 @@ describe('Queries', () => {
 
     expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery, expectedId);
   });
+
+  it('getRecentEvents: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.RECENT_EVENTS_BY_VENUE;
+
+    const expectedId = {
+      venueId: 2
+    };
+
+    queries.getRecentEvents(expectedId);
+
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery, expectedId);
+  });
+
+  it('getFamily: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_FAMILY;
+
+    queries.getFamily();
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
+  });
+  
 });
