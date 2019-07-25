@@ -9,7 +9,7 @@ describe('App', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<App setUser={actions.addUser}/>);
+    wrapper = shallow(<App setUser={actions.addUser} />);
   });
 
   it('should match snapshot', () => {
