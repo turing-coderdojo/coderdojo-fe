@@ -98,8 +98,64 @@ const mockData = {
             }
         ]
     }
+  },
+  mockFutureEvents: {
+    "futureEvents": [
+      {
+          "id": 2,
+          "name": "Test Event 2",
+          "notes": "testing notes",
+          "startTime": "2019-08-21 17:00:00 UTC",
+          "endTime": "2019-08-21 18:00:00 UTC"
+      },
+      {
+          "id": 3,
+          "name": "Test Event 3",
+          "notes": "testing notes",
+          "startTime": "2019-08-22 17:00:00 UTC",
+          "endTime": "2019-08-22 18:00:00 UTC"
+      }
+    ]
+  },
+  mockPastEvents: {
+    "pastEvents": [
+        {
+            "id": 11,
+            "name": "TODAYS EVENT",
+            "notes": "yayyy",
+            "startTime": "2019-07-24 19:00:00 UTC",
+            "endTime": "2019-07-24 20:00:00 UTC"
+        },
+        {
+            "id": 10,
+            "name": "Test Response",
+            "notes": "Testing Response",
+            "startTime": "2019-07-24 03:00:00 UTC",
+            "endTime": "2019-07-24 03:00:00 UTC"
+        }
+      ]
+  },
+  mockVenue: {
+    allVenues: [
+      {
+        "id": 1,
+        "name": "Venue One",
+        "notes": "Here be Dragons",
+        "email": "example@venue.com",
+        "webUrl": "www.venueone.com",
+        "addresses": [
+          {
+              "street1": "234 Main St.",
+              "street2": "Apt 456",
+              "city": "denver",
+              "state": "CO",
+              "zip": "80128"
+          }
+        ],
+      }
+    ]
   }
-  
+
 };
 
 export default mockData;
