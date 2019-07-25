@@ -141,6 +141,30 @@ describe('Queries', () => {
     expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
   });
 
+  it('logAttendance: should invoke apollo mutation with  correct args', () => {
+    const expectedQuery = queryTypes.LOG_ATTENDANCE;
+    const expectedEventCode = {
+      eventCode: 123456
+    };
 
+    queries.logAttendance(expectedEventCode);
+    expect(apollo.apolloMutate).toHaveBeenCalledWith(expectedQuery, expectedEventCode);
+  });
 
+  it('getEventAttendance: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_EVENT_ATTENDANCE;
+    const expectedEventId = {
+      eventId: 1
+    };
+
+    queries.getEventAttendance(expectedEventId);
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery, expectedEventId);
+  });
+
+  it('getGuardianData: should invoke apollo query with  correct args', () => {
+    const expectedQuery = queryTypes.GET_GUARDIAN_DATA;
+
+    queries.getGuardianData();
+    expect(apollo.apolloQuery).toHaveBeenCalledWith(expectedQuery);
+  });
 });
