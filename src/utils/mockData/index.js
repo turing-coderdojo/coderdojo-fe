@@ -154,6 +154,17 @@ const mockData = {
         ],
       }
     ]
+  },
+  mockStudentAttendance: {
+      "id": 6,
+      "username": "student1",
+      "name": "Student One",
+      "guardianId": {
+          "name": "Matt Weiss",
+          "username": "Duce",
+          "email": "weiss.matt@outlook.com",
+          "phoneNumber": "5555555555"
+      }
   }
 
 };

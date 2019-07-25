@@ -1,3 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StudentAttendanceCard should match snapshot 1`] = `undefined`;
+exports[`StudentAttendanceCard should match snapshot 1`] = `
+<StudentAttendanceCard
+  student={
+    Object {
+      "guardianId": Object {
+        "email": "weiss.matt@outlook.com",
+        "name": "Matt Weiss",
+        "phoneNumber": "5555555555",
+        "username": "Duce",
+      },
+      "id": 6,
+      "name": "Student One",
+      "username": "student1",
+    }
+  }
+>
+  <article
+    className="StudentAttendanceCard"
+  >
+    <div
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <h4>
+        Student One
+         : 
+        student1
+      </h4>
+    </div>
+  </article>
+</StudentAttendanceCard>
+`;
