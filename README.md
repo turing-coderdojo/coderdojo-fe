@@ -42,3 +42,6 @@ npm start
 * [Tiffany Bacher](https://github.com/tiffanybacher)
 * [Erik Konner](https://github.com/ehk9000)
 * [Matt Weiss](https://github.com/Matt-Weiss)
+
+## Improvements 
+https://github.com/orgs/turing-coderdojo/projects/1
