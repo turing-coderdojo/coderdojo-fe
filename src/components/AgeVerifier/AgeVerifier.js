@@ -76,7 +76,7 @@ export class AgeVerifier extends Component {
     const { success, birthdate } = this.state;
     const { isFetching } = this.props;
 
-    if (success) return <Redirect to="/" />;
+    if (success) return <Redirect to="/dashboard/student" />;
 
     return (
       <form className="AgeForm" onSubmit={this.handleSubmit}>
