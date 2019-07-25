@@ -1,48 +1,52 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function StudentAttendanceCard({ student }) {
-  const [guardianInfo, showGuardianInfo] = useState(true);
+  const [guardianInfo, showGuardianInfo] = useState(false);
   const { 
     name, username, email, phoneNumber 
   } = student.guardianId;
   const guardianInfoBox = (
     <div className="guardian-details">
-      <p className="guardian-header">Guardian Details:</p>
+      <p className="guardian-header"><b>Guardian Details:</b></p>
       <p>
         {name}
         &nbsp;:&nbsp;
         {username}
       </p>
       <p>
-        Phone:
+        Phone:&nbsp;&nbsp;
         {phoneNumber}
       </p>
       <p>
-        Email:
+        Email:&nbsp;&nbsp;
         {email}
       </p>
     </div>
   );
   return (
-    <article 
-      className="StudentAttendanceCard"
-      key={student.id}
-    >
-      <h4>
-        {student.name}
-        &nbsp;:&nbsp;
-        {student.username}
-      </h4>
-      <button 
-        type="button"
+    <article className="StudentAttendanceCard"> 
+      <div
         onMouseEnter={() => showGuardianInfo(true)} 
-        onMouseLeave={() => showGuardianInfo(false)} 
+        onMouseLeave={() => showGuardianInfo(false)}  
       >
-        Guardian Details
-      </button>
+        <h4>
+          {student.name}
+          &nbsp;:&nbsp;
+          {student.username}
+        </h4>
+      </div>
       {guardianInfo && guardianInfoBox}
     </article>
   );
 }
 
 export default StudentAttendanceCard;
+
+StudentAttendanceCard.propTypes = {
+  student: PropTypes.object
+};
+
+StudentAttendanceCard.defaultProps = {
+  student: {}
+};

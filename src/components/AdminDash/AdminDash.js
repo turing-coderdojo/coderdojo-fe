@@ -109,7 +109,7 @@ export function AdminDash(props) {
   };
 
   const generateStudentCards = students => students
-    .map(student => <StudentAttendanceCard student={student.user} />);
+    .map(student => <StudentAttendanceCard key={student.user.id} student={student.user} />);
   
   const generateCurrentEvent = () => {
     const timeSetting = { hour: 'numeric', hour12: true };
@@ -137,6 +137,7 @@ export function AdminDash(props) {
           </p>
         </section>
         <section className="attendance-container">
+          <h3>Attendance: </h3>
           {generateStudentCards(attendance)}
         </section>
       </div>

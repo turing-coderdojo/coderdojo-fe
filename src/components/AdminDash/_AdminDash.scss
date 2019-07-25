@@ -81,9 +81,19 @@
             background-color: #faa31a;
             color: #fff;
           }
+
+          p {
+            margin: 5px;
+          }
         }
         .attendance-container {
           flex: 3;
+          height: 100%;
+          overflow: scroll;
+
+          h3 {
+            color: $footer-color;
+          }
         }
       }
 
