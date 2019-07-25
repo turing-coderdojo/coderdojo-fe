@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import { BrowserRouter } from 'react-router-dom';
 import { LoginForm, mapDispatchToProps } from './LoginForm';
 import * as actions from '../../actions';
 
@@ -7,13 +8,23 @@ jest.mock('../../actions');
 
 describe('LoginForm', () => {
   let wrapper;
+  let mounted;
 
   beforeEach(() => {
     wrapper = shallow(<LoginForm />);
+    mounted = mount(
+      <BrowserRouter>
+        <LoginForm />
+      </BrowserRouter>
+    );
   });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should match snapshot when mounted', () => {
+    expect(mounted).toMatchSnapshot();
   });
 
   it('should update state on input change', () => {

@@ -8,7 +8,7 @@ exports[`StudentDash should match snapshot 1`] = `
     className="studentDashHeader"
   >
     <h2>
-      Welcome, 
+      Welcome, undefined!
     </h2>
   </div>
   <h3>
@@ -37,4 +37,74 @@ exports[`StudentDash should match snapshot 1`] = `
     className="pastEvents"
   />
 </section>
+`;
+
+exports[`StudentDash should match snapshot when mounted 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <StudentDash
+      error=""
+      isFetching={false}
+      user={Object {}}
+    >
+      <section
+        className="StudentDashContainer"
+      >
+        <div
+          className="studentDashHeader"
+        >
+          <h2>
+            Welcome, undefined!
+          </h2>
+        </div>
+        <h3>
+          Current Event
+        </h3>
+        <div
+          className="eventWrapper"
+        >
+          <form
+            onSubmit={[Function]}
+          >
+            <input
+              className="eventCode"
+              onChange={[Function]}
+              placeholder="Enter Event Code"
+              type="text"
+            />
+            <button
+              type="submit"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+        <section
+          className="pastEvents"
+        />
+      </section>
+    </StudentDash>
+  </Router>
+</BrowserRouter>
 `;

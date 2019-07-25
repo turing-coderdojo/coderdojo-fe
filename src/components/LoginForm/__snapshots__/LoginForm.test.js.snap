@@ -53,3 +53,93 @@ exports[`LoginForm should match snapshot 1`] = `
   </p>
 </form>
 `;
+
+exports[`LoginForm should match snapshot when mounted 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <LoginForm
+      addUser={[Function]}
+      error=""
+      isFetching={false}
+    >
+      <form
+        className="LoginForm"
+        onSubmit={[Function]}
+      >
+        <h2>
+          Login
+        </h2>
+        <label
+          htmlFor="username-input"
+        >
+          Username:
+          <input
+            id="username-input"
+            name="username"
+            onChange={[Function]}
+            type="text"
+          />
+        </label>
+        <label
+          htmlFor="password-input"
+        >
+          Password:
+          <input
+            id="password-input"
+            name="password"
+            onChange={[Function]}
+            type="password"
+          />
+        </label>
+        <div
+          className="error-msg"
+        />
+        <button
+          className="signin-btn"
+          type="submit"
+        >
+          LOGIN
+        </button>
+        <p
+          className="register-link"
+        >
+          Don't have an account?
+          <Link
+            to="/register"
+          >
+            <a
+              href="/register"
+              onClick={[Function]}
+            >
+              <span>
+                 Register Here
+              </span>
+            </a>
+          </Link>
+        </p>
+      </form>
+    </LoginForm>
+  </Router>
+</BrowserRouter>
+`;

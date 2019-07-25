@@ -76,3 +76,96 @@ exports[`RegisterForm should match snapshot 1`] = `
   </form>
 </section>
 `;
+
+exports[`RegisterForm should match snapshot when mounted 1`] = `
+<RegisterForm
+  addUser={[Function]}
+  error=""
+  mockStudent={
+    Object {
+      "displayAgeForm": false,
+      "displayContactForm": false,
+      "fullName": "erik k",
+      "password": "password",
+      "reEnteredPassword": "reEnteredPassword",
+      "username": "ehk90000",
+    }
+  }
+  setError={[MockFunction]}
+>
+  <section>
+    <form
+      className="RegisterForm"
+      onSubmit={[Function]}
+    >
+      <h2>
+        Register an Account
+      </h2>
+      <label
+        htmlFor="full-name-input"
+      >
+        Full Name
+        <input
+          id="full-name-input"
+          name="fullName"
+          onChange={[Function]}
+          type="text"
+        />
+      </label>
+      <label
+        htmlFor="username-input"
+      >
+        Username
+        <input
+          id="username-input"
+          name="username"
+          onChange={[Function]}
+          type="text"
+        />
+      </label>
+      <label
+        htmlFor="password-input"
+      >
+        Password
+        <input
+          id="password-input"
+          name="password"
+          onChange={[Function]}
+          type="password"
+        />
+      </label>
+      <label
+        htmlFor="reentered-password-input"
+      >
+        Re-enter Password
+        <input
+          id="reentered-password-input"
+          name="reEnteredPassword"
+          onChange={[Function]}
+          type="password"
+        />
+      </label>
+      <div
+        className="error-msg"
+      />
+      <button
+        className="signin-btn"
+        name="student"
+        onClick={[Function]}
+        type="button"
+        value="submit"
+      >
+        I am a student over 13
+      </button>
+      <button
+        className="signin-btn guardian-btn"
+        name="guardian"
+        onClick={[Function]}
+        type="button"
+      >
+        I am a guardian
+      </button>
+    </form>
+  </section>
+</RegisterForm>
+`;
