@@ -9,12 +9,12 @@ exports[`LoginForm should match snapshot 1`] = `
     Login
   </h2>
   <label
-    htmlFor="username-input"
+    htmlFor="usernameOrEmail-input"
   >
-    Username:
+    Email/Username:
     <input
-      id="username-input"
-      name="username"
+      id="usernameOrEmail-input"
+      name="usernameOrEmail"
       onChange={[Function]}
       type="text"
     />
@@ -91,12 +91,12 @@ exports[`LoginForm should match snapshot when mounted 1`] = `
           Login
         </h2>
         <label
-          htmlFor="username-input"
+          htmlFor="usernameOrEmail-input"
         >
-          Username:
+          Email/Username:
           <input
-            id="username-input"
-            name="username"
+            id="usernameOrEmail-input"
+            name="usernameOrEmail"
             onChange={[Function]}
             type="text"
           />
