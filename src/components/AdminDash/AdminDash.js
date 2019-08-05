@@ -21,16 +21,21 @@ export function AdminDash(props) {
 
   const sortEvents = arr => arr.sort((a, b) => new Date(b.startTime) - new Date(a.endTime));
 
+  const getCurrentEvent = async (venue) => {
+    const currEvent = venue.events
+      .find(event => today.toDateString() === new Date(event.startTime).toDateString());
+    const attendance = await requests.getEventAttendance({ eventId: 1 });
+    setCurrentEvent({ ...currEvent, ...attendance });
+  };
+
   const getEventsAndVenues = async () => {
     const result = await requests.getAdminDetails();
     const { me } = await result;
     if (result.me) {
-      const currEvent = result.me.venues[0].events
-        .find(event => today.toDateString() === new Date(event.startTime).toDateString());
-      const attendance = await requests.getEventAttendance({ eventId: 1 });
-      setCurrentEvent({ ...currEvent, ...attendance });
+      getCurrentEvent(result.me.venues[0]);
     }
     setAdminData(me);
+    setCurrentVenue(me.venues[0]);
   };
   
   useEffect(() => {
@@ -146,25 +151,32 @@ export function AdminDash(props) {
   };
 
   const generateVenueDetails = () => {
-    const { 
-      name, email, webUrl 
-    } = adminData.venues[0];
+    const venues = adminData.venues.map((venue) => {
+      const { 
+        name, email, webUrl 
+      } = venue;
+      return (
+        <li className="venue">
+          <h3>{name}</h3>
+          <p>Website:</p>
+          <a className="venue-site" href={webUrl}>{webUrl}</a>
+          <p>
+            Email: &nbsp;
+            <span>{email}</span>
+          </p>
+        </li>
+      );
+    });
     return (
-      <div className="venue">
-        <h3>{name}</h3>
-        <p>Website:</p>
-        <a className="venue-site" href={webUrl}>{webUrl}</a>
-        <p>
-          Email: &nbsp;
-          <span>{email}</span>
-        </p>
-      </div>
+      <ul>
+        {venues}
+      </ul>
     );
   };
 
   return (
     <section className="AdminDash">
-      {eventFormVisible && <EventForm updateAdminDash={getEventsAndVenues} venueId={adminData.venues[0].id} toggleView={toggleEventForm} event={false} />}
+      {eventFormVisible && <EventForm updateAdminDash={getEventsAndVenues} venueId={currentVenue.id} toggleView={toggleEventForm} event={false} />}
       <div className="admin-header">
         <h2>
           Admin:&nbsp;&nbsp;
