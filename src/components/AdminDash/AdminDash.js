@@ -10,6 +10,7 @@ import StudentAttendanceCard from '../StudentAttendanceCard/StudentAttendanceCar
 export function AdminDash(props) {
   const [adminData, setAdminData] = useState({});
   const [eventFormVisible, showEventForm] = useState(false);
+  const [currentVenue, setCurrentVenue] = useState({});
   const [currentEvent, setCurrentEvent] = useState({});
   const { error, isLoading, user } = props;
   const today = new Date();
@@ -80,12 +81,12 @@ export function AdminDash(props) {
   };
 
   const generateEventCards = () => {
-    const sorted = sortEvents(adminData.venues[0].events);
+    const sorted = sortEvents(currentVenue.events || []);
     const pastEvents = [];
     const futureEvents = [];
     sorted.forEach((event) => {
       if (new Date(event.startTime) > today) {
-        futureEvents.push({ ...event, venueId: adminData.venues[0].id });
+        futureEvents.push({ ...event, venueId: currentVenue.id || [] });
       } else pastEvents.push(event);
     });
 
