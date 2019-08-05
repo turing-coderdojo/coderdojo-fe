@@ -29,7 +29,7 @@ describe('LoginForm', () => {
 
   it('should update state on input change', () => {
     expect(wrapper.state()).toEqual({
-      username: '',
+      usernameOrEmail: '',
       password: '',
       success: false,
       role: null
