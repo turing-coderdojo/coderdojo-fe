@@ -150,13 +150,19 @@ export function AdminDash(props) {
     );
   };
 
+  const selectVenue = (venueId) => {
+    const foundVenue = adminData.venues.find(venue => venue.id === venueId);
+    setCurrentVenue(foundVenue);
+  };
+
   const generateVenueDetails = () => {
     const venues = adminData.venues.map((venue) => {
       const { 
         name, email, webUrl 
       } = venue;
       return (
-        <li className="venue">
+        <li className="venue" key={venue.id}>
+          <button type="button" onClick={() => selectVenue(venue.id)}>Select</button>
           <h3>{name}</h3>
           <p>Website:</p>
           <a className="venue-site" href={webUrl}>{webUrl}</a>
