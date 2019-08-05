@@ -97,11 +97,11 @@ export const CREATE_NEW_EVENT = gql`
 
 export const SIGN_IN = gql`
   mutation signIn(
-    $username: String!,
+    $nameOrEmail: String!,
     $password: String!    
     ) {
     signIn(
-      username: $username,
+      nameOrEmail: $nameOrEmail,
       password: $password
     ) {
       token

@@ -10,7 +10,7 @@
     @include form-label-style
   }
 
-  #username-input,
+  #usernameOrEmail-input,
   #password-input {
     @include form-input-style
   }

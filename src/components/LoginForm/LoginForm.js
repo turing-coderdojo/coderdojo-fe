@@ -7,7 +7,7 @@ import requests from '../../utils/requests/requests';
 
 export class LoginForm extends Component {
   state = {
-    username: '',
+    usernameOrEmail: '',
     password: '',
     success: false,
     role: null
@@ -22,12 +22,11 @@ export class LoginForm extends Component {
   }
 
   handleLogin = (e) => {
-    const { username, password } = this.state;
+    const { usernameOrEmail, password } = this.state;
     const user = {
-      username,
+      nameOrEmail: usernameOrEmail,
       password
     };
-    
     e.preventDefault();
 
     this.signIn(user);
@@ -69,12 +68,12 @@ export class LoginForm extends Component {
         onSubmit={this.handleLogin}
       >
         <h2>Login</h2>
-        <label htmlFor="username-input">
-          Username:
+        <label htmlFor="usernameOrEmail-input">
+          Email/Username:
           <input
-            id="username-input"
+            id="usernameOrEmail-input"
             type="text"
-            name="username"
+            name="usernameOrEmail"
             onChange={this.handleChange}
           />
         </label>
