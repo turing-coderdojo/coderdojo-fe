@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+.travis.yml
 
 # testing
 /coverage
