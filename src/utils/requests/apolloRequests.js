@@ -19,7 +19,7 @@ export function setFetchingAndError() {
 
 export async function apolloQuery(query, variables) {
   const client = new ApolloClient({
-    uri: 'https://cryptic-stream-22818.herokuapp.com/graphql',
+    uri: 'https://pure-castle-14648.herokuapp.com/graphql',
     request: (operation) => {
       operation.setContext({
         headers: {
@@ -45,7 +45,7 @@ export async function apolloQuery(query, variables) {
 
 export async function apolloMutate(mutation, variables) {
   const client = new ApolloClient({
-    uri: 'https://cryptic-stream-22818.herokuapp.com/graphql',
+    uri: 'https://pure-castle-14648.herokuapp.com/graphql',
     request: (operation) => {
       operation.setContext({
         headers: {
