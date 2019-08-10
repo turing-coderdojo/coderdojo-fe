@@ -10,6 +10,7 @@ import StudentAttendanceCard from '../StudentAttendanceCard/StudentAttendanceCar
 export function AdminDash(props) {
   const [adminData, setAdminData] = useState({});
   const [eventFormVisible, showEventForm] = useState(false);
+  const [currentVenue, setCurrentVenue] = useState({});
   const [currentEvent, setCurrentEvent] = useState({});
   const { error, isLoading, user } = props;
   const today = new Date();
@@ -20,16 +21,21 @@ export function AdminDash(props) {
 
   const sortEvents = arr => arr.sort((a, b) => new Date(b.startTime) - new Date(a.endTime));
 
+  const getCurrentEvent = async (venue) => {
+    const currEvent = venue.events
+      .find(event => today.toDateString() === new Date(event.startTime).toDateString());
+    const attendance = await requests.getEventAttendance({ eventId: 1 });
+    setCurrentEvent({ ...currEvent, ...attendance });
+  };
+
   const getEventsAndVenues = async () => {
     const result = await requests.getAdminDetails();
     const { me } = await result;
     if (result.me) {
-      const currEvent = result.me.venues[0].events
-        .find(event => today.toDateString() === new Date(event.startTime).toDateString());
-      const attendance = await requests.getEventAttendance({ eventId: 1 });
-      setCurrentEvent({ ...currEvent, ...attendance });
+      getCurrentEvent(result.me.venues[0]);
     }
     setAdminData(me);
+    setCurrentVenue(me.venues[0]);
   };
   
   useEffect(() => {
@@ -80,12 +86,12 @@ export function AdminDash(props) {
   };
 
   const generateEventCards = () => {
-    const sorted = sortEvents(adminData.venues[0].events);
+    const sorted = sortEvents(currentVenue.events || []);
     const pastEvents = [];
     const futureEvents = [];
     sorted.forEach((event) => {
       if (new Date(event.startTime) > today) {
-        futureEvents.push({ ...event, venueId: adminData.venues[0].id });
+        futureEvents.push({ ...event, venueId: currentVenue.id || [] });
       } else pastEvents.push(event);
     });
 
@@ -144,26 +150,39 @@ export function AdminDash(props) {
     );
   };
 
+  const selectVenue = (venueId) => {
+    const foundVenue = adminData.venues.find(venue => venue.id === venueId);
+    setCurrentVenue(foundVenue);
+  };
+
   const generateVenueDetails = () => {
-    const { 
-      name, email, webUrl 
-    } = adminData.venues[0];
+    const venues = adminData.venues.map((venue) => {
+      const { 
+        name, email, webUrl 
+      } = venue;
+      return (
+        <li className="venue" key={venue.id}>
+          <button type="button" onClick={() => selectVenue(venue.id)}>Select</button>
+          <h3>{name}</h3>
+          <p>Website:</p>
+          <a className="venue-site" href={webUrl}>{webUrl}</a>
+          <p>
+            Email: &nbsp;
+            <span>{email}</span>
+          </p>
+        </li>
+      );
+    });
     return (
-      <div className="venue">
-        <h3>{name}</h3>
-        <p>Website:</p>
-        <a className="venue-site" href={webUrl}>{webUrl}</a>
-        <p>
-          Email: &nbsp;
-          <span>{email}</span>
-        </p>
-      </div>
+      <ul>
+        {venues}
+      </ul>
     );
   };
 
   return (
     <section className="AdminDash">
-      {eventFormVisible && <EventForm updateAdminDash={getEventsAndVenues} venueId={adminData.venues[0].id} toggleView={toggleEventForm} event={false} />}
+      {eventFormVisible && <EventForm updateAdminDash={getEventsAndVenues} venueId={currentVenue.id} toggleView={toggleEventForm} event={false} />}
       <div className="admin-header">
         <h2>
           Admin:&nbsp;&nbsp;
