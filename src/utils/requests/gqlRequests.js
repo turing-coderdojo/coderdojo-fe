@@ -101,7 +101,7 @@ export const SIGN_IN = gql`
     $password: String!    
     ) {
     signIn(
-      nameOrEmail: $nameOrEmail,
+      username: $nameOrEmail,
       password: $password
     ) {
       token
